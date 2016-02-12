@@ -133,7 +133,7 @@
   
 
   
-    <ul id="menu" class="menu ">
+    <ul id="menu" class="menu menu-left">
       
         
         <li class="menu-item menu-item-home">
@@ -169,9 +169,37 @@
       
       
       
+        <li class="menu-item menu-item-search">
+          <a href="#" class="st-search-show-outputs">
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'etxpBzXPHyYxAdGY8nuQ','2.0.0');
+</script>
+
+
+
+    </div>
   
 </nav>
 
@@ -269,16 +297,13 @@
 
       
         
-          
-            <h4 id="u5B89_u88C5MongDB_uFF08Mac_uFF09_u5B98_u7F51_u6559_u7A0B"><a href="#u5B89_u88C5MongDB_uFF08Mac_uFF09_u5B98_u7F51_u6559_u7A0B" class="headerlink" title="安装MongDB（Mac）官网教程"></a>安装MongDB（Mac）<a href="https://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/" target="_blank" rel="external">官网教程</a></h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">$ brew install mongodb</span><br><span class="line"></span><br><span class="line"><span class="comment"># 全局配置(.zshrc)</span></span><br><span class="line"><span class="built_in">export</span> PATH=&lt;mongodb-install-directory&gt;/bin:<span class="variable">$PATH</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动mongodb服务</span></span><br><span class="line">$ mongod</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入mongodb shell </span></span><br><span class="line">$ mogodb</span><br></pre></td></tr></table></figure>
+          <h4 id="u5B89_u88C5MongDB_uFF08Mac_uFF09_u5B98_u7F51_u6559_u7A0B"><a href="#u5B89_u88C5MongDB_uFF08Mac_uFF09_u5B98_u7F51_u6559_u7A0B" class="headerlink" title="安装MongDB（Mac）官网教程"></a>安装MongDB（Mac）<a href="https://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/">官网教程</a></h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">$ brew install mongodb</span><br><span class="line"></span><br><span class="line"><span class="comment"># 全局配置(.zshrc)</span></span><br><span class="line"><span class="built_in">export</span> PATH=&lt;mongodb-install-directory&gt;/bin:<span class="variable">$PATH</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动mongodb服务</span></span><br><span class="line">$ mongod</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入mongodb shell </span></span><br><span class="line">$ mogodb</span><br></pre></td></tr></table></figure>
 <h4 id="u542F_u52A8/_u5173_u95EDMongoDB_u670D_u52A1"><a href="#u542F_u52A8/_u5173_u95EDMongoDB_u670D_u52A1" class="headerlink" title="启动/关闭MongoDB服务"></a>启动/关闭MongoDB服务</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动服务</span></span><br><span class="line">    mongod</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭服务</span></span><br><span class="line">    方法<span class="number">1</span>. use admin <span class="number">2</span>. db.shutdownServer()</span><br><span class="line">    方法<span class="number">2</span>. <span class="built_in">kill</span> &lt;mongod proces D&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="u521B_u5EFA_u6570_u636E_u5E93"><a href="#u521B_u5EFA_u6570_u636E_u5E93" class="headerlink" title="创建数据库"></a>创建数据库</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果数据库不存在，则创建数据库，否则切换到指定数据库。</span></span><br><span class="line">use DATABASE_NAME （imooc）</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看数据库</span></span><br><span class="line">show dbsshow dbs</span><br><span class="line"></span><br><span class="line"><span class="comment"># 插入数据</span></span><br><span class="line">db.imooc.insert(&#123;<span class="string">"name"</span>:<span class="string">"菜鸟教程"</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除数据库</span></span><br><span class="line">db.dropDatabase()</span><br></pre></td></tr></table></figure>
-<h4 id="u63D2_u5165_u6587_u6863"><a href="#u63D2_u5165_u6587_u6863" class="headerlink" title="插入文档"></a>插入文档</h4><ul>
-<li>文档的数据结构和JSON基本一样，所有存储在集合中的数据都是BSON格式，BSON是一种类json的一种二进制形式的存储格式,简称Binary JSON</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># MongoDB 使用 insert() 或 save() 方法向集合中插入文档</span></span><br><span class="line">db.COLLECTION_NAME.insert(document)</span><br></pre></td></tr></table></figure>
-<h4 id="u5220_u9664_u8BB0_u5F55"><a href="#u5220_u9664_u8BB0_u5F55" class="headerlink" title="删除记录"></a>删除记录</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除表中数据</span></span><br><span class="line">db.movies.remove(&#123;&#125;);</span><br><span class="line"><span class="comment"># 删除表</span></span><br><span class="line">db.movies.drop();</span><br><span class="line"><span class="comment"># 查询表长度</span></span><br><span class="line">db.movies.find(&#123;&#125;).count();</span><br></pre></td></tr></table></figure>
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/12/mongodb/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -366,8 +391,7 @@
 
       
         
-          
-            <p>终于要成为社会青年（反正早就没觉得自己还是个学生），走向社会，工作第一年，写下些愿景，走着瞧着……</p>
+          <p>终于要成为社会青年（反正早就没觉得自己还是个学生），走向社会，工作第一年，写下些愿景，走着瞧着……</p>
 <h4 id="u953B_u70BC_u597D_u8EAB_u4F53_uFF0C_u591A_u957F_u51E0_u65A4_u8089"><a href="#u953B_u70BC_u597D_u8EAB_u4F53_uFF0C_u591A_u957F_u51E0_u65A4_u8089" class="headerlink" title="锻炼好身体，多长几斤肉"></a>锻炼好身体，多长几斤肉</h4><blockquote>
 <p>健康第一，早睡早起，抽空锻炼，多吃饭 </p>
 </blockquote>
@@ -377,25 +401,11 @@
 <h4 id="u591A_u8BFB_u51E0_u672C_u4E66"><a href="#u591A_u8BFB_u51E0_u672C_u4E66" class="headerlink" title="多读几本书"></a>多读几本书</h4><blockquote>
 <p>读书少，不敢乱思考，准备好了上半年的书单，一大斗的精神食粮 </p>
 </blockquote>
-<ol>
-<li><p>历史的教训<br> 历史漫长，无法还原真实；历史到底是猜测，部分是偏见；再读历史，也不纠结历史真相，以发掘独特的历史观为乐；书到手就翻了一遍，大题短论，视野广阔；作者威尔·杜兰特，不熟悉，不过其哲学导师是大名鼎鼎的杜威（和罗素一起来过湖南做演讲），估计毛爷爷年轻时见过杜威。</p>
-</li>
-<li><p>湖南人与现代中国<br> 第一次读地方史，作者又是个美利坚，自然也是译作。当年读的毛爷爷传，作者是澳洲人。过年走亲串户的空当也翻了一遍，此书比毛传要学术些。读完又是一堆故事留下，惆怅，自己到底还是肤浅的浊物，没留下深刻的道理供我去“传道”。湖南的近代史上群英璀璨，曾国藩、郭嵩焘、张之洞、谭嗣同、陈天华、黄兴、蔡锷（可惜英年早逝）、宋教仁、杨昌济、毛泽东、彭德怀……看着散落的龙珠，在这里被穿了起来，这兴奋的心情怎一个爽字！！！</p>
-</li>
-<li><p>一生里的某个时刻<br> 翻了个开头，文艺粮？不确定，写下生活里胡思乱想的瞬间的看来不止我一个，看看别人家的三观作践下自己……</p>
-</li>
-<li><p>穷忙<br> 财经类？分不清，谁推荐给我的？ 抽空翻翻，估计也没多大兴趣……</p>
-</li>
-<li><p>看见未来 一个人的电商 互联网+从IT到DT<br> 这三本算是财经类。吃的也算是互联网的饭，避免闲聊时的尴尬……</p>
-</li>
-<li><p>失控<br> 厚厚一本，翻了一点点，又是一本碾压思想的大部头……</p>
-</li>
-</ol>
-<h4 id="u52AA_u529B_u5DE5_u4F5C_uFF0C_u63D0_u5347_u6280_u80FD"><a href="#u52AA_u529B_u5DE5_u4F5C_uFF0C_u63D0_u5347_u6280_u80FD" class="headerlink" title="努力工作，提升技能"></a>努力工作，提升技能</h4><blockquote>
-<p>争取不拖队友后腿</p>
-</blockquote>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/11/2016-plan/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -483,27 +493,16 @@
 
       
         
-          
-            <p><img src="/uploads/jade.jpeg" alt="jade"></p>
+          <p><img src="/uploads/jade.jpeg" alt="jade"></p>
 <h4 id="u5B89_u88C5"><a href="#u5B89_u88C5" class="headerlink" title="安装"></a>安装</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install jade -global</span><br></pre></td></tr></table></figure>
 <h4 id="u7F16_u8BD1jade_u6587_u4EF6"><a href="#u7F16_u8BD1jade_u6587_u4EF6" class="headerlink" title="编译jade文件"></a>编译jade文件</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jade index.jade </span><br><span class="line">jade -P index.jade (formatted)</span><br></pre></td></tr></table></figure>
 <h4 id="u5B9E_u65F6_u7F16_u8BD1"><a href="#u5B9E_u65F6_u7F16_u8BD1" class="headerlink" title="实时编译"></a>实时编译</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jade -P -w index.jade (formatted)</span><br></pre></td></tr></table></figure>
 <h4 id="u6807_u7B7Eid_u548Cclass"><a href="#u6807_u7B7Eid_u548Cclass" class="headerlink" title="标签id和class"></a>标签id和class</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p#wrapper.warn</span><br><span class="line">#wrapper</span><br></pre></td></tr></table></figure>
-<h4 id="u6DF7_u5408_u7684_u6587_u672C_u548C_u6807_u7B7E"><a href="#u6DF7_u5408_u7684_u6587_u672C_u548C_u6807_u7B7E" class="headerlink" title="混合的文本和标签"></a>混合的文本和标签</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">a 大段的文本会换行  </span><br><span class="line">方案一：竖线加空格，独立成一行</span><br><span class="line">    p </span><br><span class="line">        | 1.aa</span><br><span class="line">        | 2.bb</span><br><span class="line">        | 3.cc</span><br><span class="line"></span><br><span class="line">方案二：紧贴p加点</span><br><span class="line">    p. </span><br><span class="line">        1.aa</span><br><span class="line">        2.bb</span><br><span class="line">        3.cc</span><br><span class="line"></span><br><span class="line">b 标签文本混合在一起</span><br><span class="line">p. </span><br><span class="line">    1.aa&lt;strong&gt;22&lt;/strong&gt;</span><br><span class="line">    2.bb</span><br><span class="line">    &lt;span&gt;333&lt;/span&gt;</span><br><span class="line">    3.cc    </span><br><span class="line">    &lt;a href="#" /&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="u52A0_u6CE8_u91CA"><a href="#u52A0_u6CE8_u91CA" class="headerlink" title="加注释"></a>加注释</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">单行注释  =&gt;  <span class="string">'//'</span>, 会在代码中保留</span><br><span class="line">非缓冲注释 =&gt; <span class="string">'//- '</span> 注释文本不会在文本中保留</span><br><span class="line">块注释 =&gt; 层级关系</span><br><span class="line">为IE注释 =&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="u58F0_u660E_u53D8_u91CF"><a href="#u58F0_u660E_u53D8_u91CF" class="headerlink" title="声明变量"></a>声明变量</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">方式一：直接在文件中定义变量</span><br><span class="line">    - var course = <span class="string">'jade2'</span></span><br><span class="line">    title <span class="comment">#&#123;course.upperCase()&#125; hehe</span></span><br><span class="line">方式二：在命令行传递变量（优先级低于方式一）</span><br><span class="line">    jade index.jade -P -w -obj <span class="string">'&#123;"course":"jade"&#125;'</span></span><br><span class="line">方式三：通过json文件来定义变量</span><br><span class="line">        jade index.jade -P -w -O imocc.json</span><br></pre></td></tr></table></figure>
-<h4 id="u5B89_u5168_u8F6C_u4E49_u4E0E_u975E_u8F6C_u4E49"><a href="#u5B89_u5168_u8F6C_u4E49_u4E0E_u975E_u8F6C_u4E49" class="headerlink" title="安全转义与非转义"></a>安全转义与非转义</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt; =&gt; &amp;lt;script&amp;gt;</span><br><span class="line">p<span class="comment">#&#123;htmlData&#125; 转义</span></span><br><span class="line">p!&#123;htmlData&#125; 非转义</span><br><span class="line">p\<span class="comment">#&#123;htmlData&#125; 输出#&#123;htmlData&#125;</span></span><br><span class="line">p\!&#123;htmlData&#125; 输出!&#123;htmlData&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># "undefined" 情况 </span></span><br><span class="line">input (value = <span class="comment">#&#123;newData&#125;)</span></span><br><span class="line">    &lt;input value=<span class="string">"undefined"</span> /&gt;</span><br><span class="line">input (value=newData)</span><br><span class="line">    &lt;input&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="for-each-else"><a href="#for-each-else" class="headerlink" title="for-each-else"></a>for-each-else</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># while循环</span></span><br><span class="line">    - var n = <span class="number">0</span> </span><br><span class="line">    ul </span><br><span class="line">        <span class="keyword">while</span> n &lt; <span class="number">4</span></span><br><span class="line">            li= n++</span><br><span class="line"></span><br><span class="line"><span class="comment"># for-each 循环（1)</span></span><br><span class="line"></span><br><span class="line">    - var imooc = &#123;course: <span class="string">'jade'</span>,level: <span class="string">'high'</span>&#125;</span><br><span class="line">    - <span class="keyword">for</span> (var k <span class="keyword">in</span> imooc) </span><br><span class="line">        p= imooc[k]</span><br><span class="line">    - each value, key <span class="keyword">in</span> imooc</span><br><span class="line">    p <span class="comment">#&#123;key&#125;: #&#123;value&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># for-each 循环(2)</span></span><br><span class="line">-var sections = [&#123;id:<span class="number">1</span>,items:[<span class="string">'a'</span>,<span class="string">'b'</span>]&#125;,&#123;id:<span class="number">2</span>,items:[<span class="string">'c'</span>,<span class="string">'d'</span>]&#125;]</span><br><span class="line">dl</span><br><span class="line">    each section <span class="keyword">in</span> sections.length &gt; <span class="number">0</span> </span><br><span class="line">        ? sections : [&#123;id:<span class="number">0</span>,items:[<span class="string">'f'</span>,<span class="string">'g'</span>]&#125;]</span><br><span class="line">        dt= section.id</span><br><span class="line">        each item <span class="keyword">in</span> section.items</span><br><span class="line">            dd = item</span><br></pre></td></tr></table></figure>
-<h4 id="u6761_u4EF6_u5224_u65AD_u8BED_u53E5"><a href="#u6761_u4EF6_u5224_u65AD_u8BED_u53E5" class="headerlink" title="条件判断语句"></a>条件判断语句</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">switch-case:</span><br><span class="line">    - var name = <span class="string">'java'</span></span><br><span class="line">        <span class="keyword">case</span> name</span><br><span class="line">            when <span class="string">'java'</span></span><br><span class="line">            when <span class="string">'node'</span></span><br><span class="line">                p Hi node!</span><br><span class="line">            when <span class="string">'jade'</span></span><br><span class="line">                p Hi jade</span><br><span class="line">            default</span><br><span class="line">                p nothing</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>-else：</span><br><span class="line">    - var lessons = [<span class="string">'jade'</span>,<span class="string">'node'</span>]</span><br><span class="line">    <span class="keyword">if</span> lessons</span><br><span class="line">        <span class="keyword">if</span> lessons.length &gt; <span class="number">2</span></span><br><span class="line">            p more than <span class="number">2</span> <span class="comment">#&#123;lessons.join(', ')&#125;</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> lessons.length &gt; <span class="number">1</span></span><br><span class="line">            p more than <span class="number">1</span> <span class="comment">#&#123;lessons.join(', ')&#125;</span></span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">            p no lesson</span><br><span class="line"></span><br><span class="line">unless：</span><br><span class="line">- var isImooc = <span class="literal">true</span></span><br><span class="line">unless !isImooc</span><br><span class="line">    p <span class="comment">#&#123;lessons.length&#125;</span></span><br></pre></td></tr></table></figure>
-<h4 id="mixin__u5B9A_u4E49_u4EE3_u7801_u7247_u6BB5"><a href="#mixin__u5B9A_u4E49_u4EE3_u7801_u7247_u6BB5" class="headerlink" title="mixin 定义代码片段"></a>mixin 定义代码片段</h4><h4 id="mixin__u6A21_u677F_u7EE7_u627F"><a href="#mixin__u6A21_u677F_u7EE7_u627F" class="headerlink" title="mixin 模板继承"></a>mixin 模板继承</h4><ul>
-<li>文件之间传递代码片段</li>
-</ul>
-<h4 id="mixin__u6A21_u677F_u5305_u542B"><a href="#mixin__u6A21_u677F_u5305_u542B" class="headerlink" title="mixin 模板包含"></a>mixin 模板包含</h4><ul>
-<li>文件头部、脚部代码片段</li>
-</ul>
-<h4 id="u6D4F_u89C8_u5668_u5224_u65AD_u8BED_u53E5"><a href="#u6D4F_u89C8_u5668_u5224_u65AD_u8BED_u53E5" class="headerlink" title="浏览器判断语句"></a>浏览器判断语句</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--[<span class="keyword">if</span> IE <span class="number">6</span>]&gt;</span><br><span class="line">    Special instructions <span class="keyword">for</span> IE <span class="number">6</span> here</span><br><span class="line">&lt;![endif]--&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="jade_api"><a href="#jade_api" class="headerlink" title="jade api"></a>jade api</h4>
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/11/jade/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>

@@ -60,8 +60,7 @@
 <meta name="description" content="安装1sudo npm install jade -global
 编译jade文件12jade index.jade jade -P index.jade (formatted)
 实时编译1jade -P -w index.jade (formatted)
-标签id和class12p#wrapper.warn#wrapper
-混合的文本和标签1234567891011121314151617181">
+标签id和class12p#wrapper.warn#wrapper">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Jade模板引擎">
 <meta property="og:url" content="http://xiuhonglee.com/2016/02/11/jade/index.html">
@@ -69,17 +68,15 @@
 <meta property="og:description" content="安装1sudo npm install jade -global
 编译jade文件12jade index.jade jade -P index.jade (formatted)
 实时编译1jade -P -w index.jade (formatted)
-标签id和class12p#wrapper.warn#wrapper
-混合的文本和标签1234567891011121314151617181">
+标签id和class12p#wrapper.warn#wrapper">
 <meta property="og:image" content="http://xiuhonglee.com/uploads/jade.jpeg">
-<meta property="og:updated_time" content="2016-02-12T03:41:15.000Z">
+<meta property="og:updated_time" content="2016-02-12T07:25:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jade模板引擎">
 <meta name="twitter:description" content="安装1sudo npm install jade -global
 编译jade文件12jade index.jade jade -P index.jade (formatted)
 实时编译1jade -P -w index.jade (formatted)
-标签id和class12p#wrapper.warn#wrapper
-混合的文本和标签1234567891011121314151617181">
+标签id和class12p#wrapper.warn#wrapper">
 
 
 
@@ -145,7 +142,7 @@
   
 
   
-    <ul id="menu" class="menu ">
+    <ul id="menu" class="menu menu-left">
       
         
         <li class="menu-item menu-item-home">
@@ -181,9 +178,37 @@
       
       
       
+        <li class="menu-item menu-item-search">
+          <a href="#" class="st-search-show-outputs">
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'etxpBzXPHyYxAdGY8nuQ','2.0.0');
+</script>
+
+
+
+    </div>
   
 </nav>
 
@@ -267,6 +292,7 @@
 <h4 id="u7F16_u8BD1jade_u6587_u4EF6"><a href="#u7F16_u8BD1jade_u6587_u4EF6" class="headerlink" title="编译jade文件"></a>编译jade文件</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jade index.jade </span><br><span class="line">jade -P index.jade (formatted)</span><br></pre></td></tr></table></figure>
 <h4 id="u5B9E_u65F6_u7F16_u8BD1"><a href="#u5B9E_u65F6_u7F16_u8BD1" class="headerlink" title="实时编译"></a>实时编译</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jade -P -w index.jade (formatted)</span><br></pre></td></tr></table></figure>
 <h4 id="u6807_u7B7Eid_u548Cclass"><a href="#u6807_u7B7Eid_u548Cclass" class="headerlink" title="标签id和class"></a>标签id和class</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p#wrapper.warn</span><br><span class="line">#wrapper</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h4 id="u6DF7_u5408_u7684_u6587_u672C_u548C_u6807_u7B7E"><a href="#u6DF7_u5408_u7684_u6587_u672C_u548C_u6807_u7B7E" class="headerlink" title="混合的文本和标签"></a>混合的文本和标签</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">a 大段的文本会换行  </span><br><span class="line">方案一：竖线加空格，独立成一行</span><br><span class="line">    p </span><br><span class="line">        | 1.aa</span><br><span class="line">        | 2.bb</span><br><span class="line">        | 3.cc</span><br><span class="line"></span><br><span class="line">方案二：紧贴p加点</span><br><span class="line">    p. </span><br><span class="line">        1.aa</span><br><span class="line">        2.bb</span><br><span class="line">        3.cc</span><br><span class="line"></span><br><span class="line">b 标签文本混合在一起</span><br><span class="line">p. </span><br><span class="line">    1.aa&lt;strong&gt;22&lt;/strong&gt;</span><br><span class="line">    2.bb</span><br><span class="line">    &lt;span&gt;333&lt;/span&gt;</span><br><span class="line">    3.cc    </span><br><span class="line">    &lt;a href="#" /&gt;</span><br></pre></td></tr></table></figure>
 <h4 id="u52A0_u6CE8_u91CA"><a href="#u52A0_u6CE8_u91CA" class="headerlink" title="加注释"></a>加注释</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">单行注释  =&gt;  <span class="string">'//'</span>, 会在代码中保留</span><br><span class="line">非缓冲注释 =&gt; <span class="string">'//- '</span> 注释文本不会在文本中保留</span><br><span class="line">块注释 =&gt; 层级关系</span><br><span class="line">为IE注释 =&gt;</span><br></pre></td></tr></table></figure>
 <h4 id="u58F0_u660E_u53D8_u91CF"><a href="#u58F0_u660E_u53D8_u91CF" class="headerlink" title="声明变量"></a>声明变量</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">方式一：直接在文件中定义变量</span><br><span class="line">    - var course = <span class="string">'jade2'</span></span><br><span class="line">    title <span class="comment">#&#123;course.upperCase()&#125; hehe</span></span><br><span class="line">方式二：在命令行传递变量（优先级低于方式一）</span><br><span class="line">    jade index.jade -P -w -obj <span class="string">'&#123;"course":"jade"&#125;'</span></span><br><span class="line">方式三：通过json文件来定义变量</span><br><span class="line">        jade index.jade -P -w -O imocc.json</span><br></pre></td></tr></table></figure>
