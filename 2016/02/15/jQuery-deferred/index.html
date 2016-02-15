@@ -79,7 +79,7 @@ promise的核心思想就是让非同步操作返回一个对象，其它后续�
 
 Promise对象
 deferred.promise(">
-<meta property="og:updated_time" content="2016-02-15T05:20:00.000Z">
+<meta property="og:updated_time" content="2016-02-15T05:29:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jQuery.deferred">
 <meta name="twitter:description" content="本节内容123Deferred对象介绍Promise对象介绍接口方法介绍
@@ -312,6 +312,7 @@ deferred.promise(">
 <p>deferred.promise()在原来的Deferred对象上返回一个Deferred对象，即受限制的Promise对象，受限制的Promise对象将屏蔽与改变执行状态有关的方法（比如resolve方法和reject方法），从而使得执行状态不能被改变。</p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Example</span></span><br><span class="line">Twitter = &#123;</span><br><span class="line">  search:<span class="function"><span class="keyword">function</span>(<span class="params">query</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> dfd = $.Deferred();</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">     url:<span class="string">"http://search.twitter.com/search.json"</span>,</span><br><span class="line">     data:&#123;q:query&#125;,</span><br><span class="line">     dataType:<span class="string">'jsonp'</span>,</span><br><span class="line">     success:dfd.resolve</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> dfd.promise();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 任意操作都可以用done()和fail()指定回调函数</span></span><br><span class="line">Twitter.search().fail(cb1).done(cb2)</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h4 id="u63A5_u53E3_u65B9_u6CD5_u4ECB_u7ECD"><a href="#u63A5_u53E3_u65B9_u6CD5_u4ECB_u7ECD" class="headerlink" title="接口方法介绍"></a>接口方法介绍</h4><ul>
 <li><ol>
 <li>deferred.always()<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建Deferred对象</span></span><br><span class="line"><span class="keyword">var</span> deferred = $.Deferred();</span><br><span class="line"><span class="comment">// 不管状态变为resolved或rejected，都会触发的方法</span></span><br><span class="line">deferred.always()</span><br><span class="line"></span><br><span class="line"><span class="comment">// Example:</span></span><br><span class="line">$.get( <span class="string">"test.php"</span> ).always(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert( <span class="string">"$.get completed with success or error callback arguments"</span> );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
@@ -368,6 +369,10 @@ deferred.promise(">
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/15/CommonJs/" rel="prev" title="CommonJs规范">
+                CommonJs规范 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -439,7 +444,7 @@ deferred.promise(">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -449,7 +454,7 @@ deferred.promise(">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

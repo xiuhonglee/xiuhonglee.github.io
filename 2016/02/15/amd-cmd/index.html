@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="MongoDB," />
+  <meta name="keywords" content="模块化," />
 
 
 
@@ -57,22 +57,26 @@
 
 
 
-<meta name="description" content="学习Node，接触MongoDB不是很熟练，日后慢慢补充; 
+<meta name="description" content="本节内容123AMD规范介绍CMD规范介绍AMD和CMD比较
+AMD规范介绍AMD中文WIKI
 
-安装MongoDB（Mac）官网教程1234567891011# 安装$ brew install mongodb# 全局配置(.zshrc)export PATH=&amp;lt;mongodb-install-directory&amp;gt;/bin:$PATH# 启动mongodb服务$ mongod# 进入mongodb shell $ m">
+CommonJS主要是为JS在后端的变现制定的，但并不适合前端（浏览器端）的异步特点；AMD (Asynchronous Module Definition : 异步模块定义规范 )它主要是为前端JS的表现指定的规范。AMD就只有一个接口：define(id? dependencies?, facto">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MongoDB">
-<meta property="og:url" content="http://xiuhonglee.com/2016/02/12/mongodb/index.html">
+<meta property="og:title" content="AMD和CMD规范">
+<meta property="og:url" content="http://xiuhonglee.com/2016/02/15/amd-cmd/index.html">
 <meta property="og:site_name" content="xiuhong">
-<meta property="og:description" content="学习Node，接触MongoDB不是很熟练，日后慢慢补充; 
+<meta property="og:description" content="本节内容123AMD规范介绍CMD规范介绍AMD和CMD比较
+AMD规范介绍AMD中文WIKI
 
-安装MongoDB（Mac）官网教程1234567891011# 安装$ brew install mongodb# 全局配置(.zshrc)export PATH=&amp;lt;mongodb-install-directory&amp;gt;/bin:$PATH# 启动mongodb服务$ mongod# 进入mongodb shell $ m">
-<meta property="og:updated_time" content="2016-02-13T12:01:59.000Z">
+CommonJS主要是为JS在后端的变现制定的，但并不适合前端（浏览器端）的异步特点；AMD (Asynchronous Module Definition : 异步模块定义规范 )它主要是为前端JS的表现指定的规范。AMD就只有一个接口：define(id? dependencies?, facto">
+<meta property="og:image" content="http://xiuhonglee.com/uploads/amd_cmd.png">
+<meta property="og:updated_time" content="2016-02-15T06:39:27.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MongoDB">
-<meta name="twitter:description" content="学习Node，接触MongoDB不是很熟练，日后慢慢补充; 
+<meta name="twitter:title" content="AMD和CMD规范">
+<meta name="twitter:description" content="本节内容123AMD规范介绍CMD规范介绍AMD和CMD比较
+AMD规范介绍AMD中文WIKI
 
-安装MongoDB（Mac）官网教程1234567891011# 安装$ brew install mongodb# 全局配置(.zshrc)export PATH=&amp;lt;mongodb-install-directory&amp;gt;/bin:$PATH# 启动mongodb服务$ mongod# 进入mongodb shell $ m">
+CommonJS主要是为JS在后端的变现制定的，但并不适合前端（浏览器端）的异步特点；AMD (Asynchronous Module Definition : 异步模块定义规范 )它主要是为前端JS的表现指定的规范。AMD就只有一个接口：define(id? dependencies?, facto">
 
 
 
@@ -90,7 +94,7 @@
   };
 </script>
 
-  <title> MongoDB | xiuhong </title>
+  <title> AMD和CMD规范 | xiuhong </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -238,7 +242,7 @@
             
             
               
-                MongoDB
+                AMD和CMD规范
               
             
           </h1>
@@ -250,8 +254,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-12T12:19:16+08:00" content="2016-02-12">
-              2016-02-12
+            <time itemprop="dateCreated" datetime="2016-02-15T13:51:21+08:00" content="2016-02-15">
+              2016-02-15
             </time>
           </span>
 
@@ -261,8 +265,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/12/mongodb/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/12/mongodb/" itemprop="commentsCount"></span>
+                <a href="/2016/02/15/amd-cmd/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/15/amd-cmd/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -283,18 +287,31 @@
       
 
       
-        <blockquote>
-<p>学习Node，接触MongoDB不是很熟练，日后慢慢补充; </p>
+        <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">AMD规范介绍</span><br><span class="line">CMD规范介绍</span><br><span class="line">AMD和CMD比较</span><br></pre></td></tr></table></figure>
+<h4 id="AMD_u89C4_u8303_u4ECB_u7ECD"><a href="#AMD_u89C4_u8303_u4ECB_u7ECD" class="headerlink" title="AMD规范介绍"></a>AMD规范介绍</h4><p><a href="https://github.com/amdjs/amdjs-api/wiki/AMD-(%E4%B8%AD%E6%96%87%E7%89%88" target="_blank" rel="external">AMD中文WIKI</a></p>
+<blockquote>
+<p>CommonJS主要是为JS在后端的变现制定的，但并不适合前端（浏览器端）的异步特点；<br>AMD (Asynchronous Module Definition : 异步模块定义规范 )它主要是为前端JS的表现指定的规范。AMD就只有一个接口：<code>define(id? dependencies?, factory)</code></p>
 </blockquote>
-<h4 id="u5B89_u88C5MongoDB_uFF08Mac_uFF09"><a href="#u5B89_u88C5MongoDB_uFF08Mac_uFF09" class="headerlink" title="安装MongoDB（Mac）"></a>安装MongoDB（Mac）</h4><p><a href="https://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/" target="_blank" rel="external">官网教程</a><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">$ brew install mongodb</span><br><span class="line"></span><br><span class="line"><span class="comment"># 全局配置(.zshrc)</span></span><br><span class="line"><span class="built_in">export</span> PATH=&lt;mongodb-install-directory&gt;/bin:<span class="variable">$PATH</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动mongodb服务</span></span><br><span class="line">$ mongod</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入mongodb shell </span></span><br><span class="line">$ mogodb</span><br></pre></td></tr></table></figure></p>
-<h4 id="u542F_u52A8/_u5173_u95EDMongoDB_u670D_u52A1"><a href="#u542F_u52A8/_u5173_u95EDMongoDB_u670D_u52A1" class="headerlink" title="启动/关闭MongoDB服务"></a>启动/关闭MongoDB服务</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动服务</span></span><br><span class="line">$ mongod</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭服务</span></span><br><span class="line">    方法<span class="number">1</span> </span><br><span class="line">    $ use admin </span><br><span class="line">    $ db.shutdownServer()</span><br><span class="line"></span><br><span class="line">    方法<span class="number">2</span></span><br><span class="line">    $ <span class="built_in">kill</span> &lt;mongod proces ID&gt;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h4 id="u521B_u5EFA_u6570_u636E_u5E93"><a href="#u521B_u5EFA_u6570_u636E_u5E93" class="headerlink" title="创建数据库"></a>创建数据库</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果数据库不存在，则创建数据库，否则切换到指定数据库。</span></span><br><span class="line">use DATABASE_NAME （imooc）</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看数据库</span></span><br><span class="line">show dbsshow dbs</span><br><span class="line"></span><br><span class="line"><span class="comment"># 插入数据</span></span><br><span class="line">db.imooc.insert(&#123;<span class="string">"name"</span>:<span class="string">"菜鸟教程"</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除数据库</span></span><br><span class="line">db.dropDatabase()</span><br></pre></td></tr></table></figure>
-<h4 id="u63D2_u5165_u6587_u6863"><a href="#u63D2_u5165_u6587_u6863" class="headerlink" title="插入文档"></a>插入文档</h4><ul>
-<li>文档的数据结构和JSON基本一样，所有存储在集合中的数据都是BSON格式，BSON是一种类json的一种二进制形式的存储格式,简称Binary JSON</li>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加依赖</span></span><br><span class="line">define([<span class="string">'dep1'</span>,<span class="string">'dep2'</span>],<span class="function"><span class="keyword">function</span>(<span class="params">dep1,dep2</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 若没有依赖</span></span><br><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> exports = &#123;&#125;;</span><br><span class="line">    exports.method = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;...&#125;;</span><br><span class="line">    <span class="keyword">return</span> exports;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>RequireJS就是实现了AMD规范的呢。</p>
+</blockquote>
+<h4 id="CMD_u89C4_u8303_u4ECB_u7ECD"><a href="#CMD_u89C4_u8303_u4ECB_u7ECD" class="headerlink" title="CMD规范介绍"></a>CMD规范介绍</h4><blockquote>
+<p>CMD (Common Module Definition，通用模块定义)模块定义规范，和AMD规范一样都是针对浏览器端模块化开发的规范；理解CMD，需要和AMD进行对比来理解</p>
+</blockquote>
+<p>下面是Sea.js 推荐的 CMD 模块书写格式 (<a href="http://seajs.org/docs/#quick-start" target="_blank" rel="external">参考官网</a>)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模块定义 </span></span><br><span class="line">define(id?, deps?, factory)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 所有模块都通过 define 来定义</span></span><br><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params">require, exports, module</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 通过 require 引入依赖</span></span><br><span class="line">  <span class="keyword">var</span> $ = <span class="built_in">require</span>(<span class="string">'jquery'</span>);</span><br><span class="line">  <span class="keyword">var</span> Spinning = <span class="built_in">require</span>(<span class="string">'./spinning'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 通过 exports 对外提供接口</span></span><br><span class="line">  exports.doSomething = ...</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 或者通过 module.exports 提供整个接口</span></span><br><span class="line">  <span class="built_in">module</span>.exports = ...</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h4 id="AMD_u548CCMD_u6BD4_u8F83"><a href="#AMD_u548CCMD_u6BD4_u8F83" class="headerlink" title="AMD和CMD比较"></a>AMD和CMD比较</h4><p><a href="https://github.com/seajs/seajs/issues/277" target="_blank" rel="external">参考</a><br><a href="http://div.io/topic/430" target="_blank" rel="external">这个也不错</a></p>
+<p><img src="/uploads/amd_cmd.png" alt="盗图"></p>
+<ul>
+<li>CMD 模块依赖声明方式<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="function"><span class="keyword">function</span> (<span class="params">require</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="built_in">require</span>(<span class="string">'./a'</span>);</span><br><span class="line">    <span class="keyword">var</span> b = <span class="built_in">require</span>(<span class="string">'./b'</span>);</span><br><span class="line">    <span class="comment">// more code ..</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// CMD依赖是就近声明，通过内部的require方法进行声明。</span></span><br><span class="line"><span class="comment">// 但因为是异步模块，加载器需要提前加载这些模块，</span></span><br><span class="line"><span class="comment">// 所以模块真正使用前需要提取模块里面所有的依赖。</span></span><br><span class="line"><span class="comment">// CMD的这种依赖声明格式只能通过静态分析方式实现，</span></span><br><span class="line"><span class="comment">// 这也正是CMD的弊端所在。</span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># MongoDB 使用 insert() 或 save() 方法向集合中插入文档</span></span><br><span class="line">db.COLLECTION_NAME.insert(document)</span><br></pre></td></tr></table></figure>
-<h4 id="u5220_u9664_u8BB0_u5F55"><a href="#u5220_u9664_u8BB0_u5F55" class="headerlink" title="删除记录"></a>删除记录</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除表中数据</span></span><br><span class="line">db.movies.remove(&#123;&#125;);</span><br><span class="line"><span class="comment"># 删除表</span></span><br><span class="line">db.movies.drop();</span><br><span class="line"><span class="comment"># 查询表长度</span></span><br><span class="line">db.movies.find(&#123;&#125;).count();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>AMD 模块依赖声明方式<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">define([<span class="string">'./a'</span>, <span class="string">'./b'</span>], <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// more code ..</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// AMD依赖是提前声明。这种方式的优势就是依赖无需通过静态分析</span></span><br><span class="line"><span class="comment">// 这对加载器和自动化分析工具都是有利的</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>目前理解比较大的区别是：SeaJS对模块的态度是<em>懒执行</em>，而RequireJS对模块的态度是<em>预执行</em></p>
+
       
     </div>
 
@@ -302,7 +319,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/MongoDB/" rel="tag">#MongoDB</a>
+            <a href="/tags/模块化/" rel="tag">#模块化</a>
           
         </div>
       
@@ -311,17 +328,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/11/jade/" rel="next" title="Jade模板引擎">
-                <i class="fa fa-chevron-left"></i> Jade模板引擎
+              <a href="/2016/02/15/CommonJs/" rel="next" title="CommonJs规范">
+                <i class="fa fa-chevron-left"></i> CommonJs规范
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/02/13/2016-02-13-git/" rel="prev" title="Git常用命令（1）">
-                Git常用命令（1） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -347,8 +360,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/02/12/mongodb/"
-           data-title="MongoDB" data-url="http://xiuhonglee.com/2016/02/12/mongodb/">
+      <div class="ds-thread" data-thread-key="2016/02/15/amd-cmd/"
+           data-title="AMD和CMD规范" data-url="http://xiuhonglee.com/2016/02/15/amd-cmd/">
       </div>
     
   </div>
@@ -436,7 +449,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#u5B89_u88C5MongoDB_uFF08Mac_uFF09"><span class="nav-number">1.</span> <span class="nav-text">安装MongoDB（Mac）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u542F_u52A8/_u5173_u95EDMongoDB_u670D_u52A1"><span class="nav-number">2.</span> <span class="nav-text">启动/关闭MongoDB服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u521B_u5EFA_u6570_u636E_u5E93"><span class="nav-number">3.</span> <span class="nav-text">创建数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u63D2_u5165_u6587_u6863"><span class="nav-number">4.</span> <span class="nav-text">插入文档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u5220_u9664_u8BB0_u5F55"><span class="nav-number">5.</span> <span class="nav-text">删除记录</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#u672C_u8282_u5185_u5BB9"><span class="nav-number">1.</span> <span class="nav-text">本节内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AMD_u89C4_u8303_u4ECB_u7ECD"><span class="nav-number">2.</span> <span class="nav-text">AMD规范介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CMD_u89C4_u8303_u4ECB_u7ECD"><span class="nav-number">3.</span> <span class="nav-text">CMD规范介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AMD_u548CCMD_u6BD4_u8F83"><span class="nav-number">4.</span> <span class="nav-text">AMD和CMD比较</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
