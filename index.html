@@ -217,15 +217,6 @@
 
     
     
-      
-      
-        
-        
-        
-      
-
-      
-    
 
     
       
@@ -297,33 +288,16 @@
 
       
         
-          
-            <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">AMD规范介绍</span><br><span class="line">CMD规范介绍</span><br><span class="line">AMD和CMD比较</span><br></pre></td></tr></table></figure>
-<h4 id="AMD_u89C4_u8303_u4ECB_u7ECD"><a href="#AMD_u89C4_u8303_u4ECB_u7ECD" class="headerlink" title="AMD规范介绍"></a>AMD规范介绍</h4><p><a href="https://github.com/amdjs/amdjs-api/wiki/AMD-(%E4%B8%AD%E6%96%87%E7%89%88" target="_blank" rel="external">AMD中文WIKI</a></p>
+          <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">AMD规范介绍</span><br><span class="line">CMD规范介绍</span><br><span class="line">AMD和CMD比较</span><br></pre></td></tr></table></figure>
+<h4 id="AMD_u89C4_u8303_u4ECB_u7ECD"><a href="#AMD_u89C4_u8303_u4ECB_u7ECD" class="headerlink" title="AMD规范介绍"></a>AMD规范介绍</h4><p><a href="https://github.com/amdjs/amdjs-api/wiki/AMD-(%E4%B8%AD%E6%96%87%E7%89%88">AMD中文WIKI</a></p>
 <blockquote>
 <p>CommonJS主要是为JS在后端的变现制定的，但并不适合前端（浏览器端）的异步特点；<br>AMD (Asynchronous Module Definition : 异步模块定义规范 )它主要是为前端JS的表现指定的规范。AMD就只有一个接口：<code>define(id? dependencies?, factory)</code></p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加依赖</span></span><br><span class="line">define([<span class="string">'dep1'</span>,<span class="string">'dep2'</span>],<span class="function"><span class="keyword">function</span>(<span class="params">dep1,dep2</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 若没有依赖</span></span><br><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> exports = &#123;&#125;;</span><br><span class="line">    exports.method = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;...&#125;;</span><br><span class="line">    <span class="keyword">return</span> exports;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>RequireJS就是实现了AMD规范的呢。</p>
-</blockquote>
-<h4 id="CMD_u89C4_u8303_u4ECB_u7ECD"><a href="#CMD_u89C4_u8303_u4ECB_u7ECD" class="headerlink" title="CMD规范介绍"></a>CMD规范介绍</h4><blockquote>
-<p>CMD (Common Module Definition，通用模块定义)模块定义规范，和AMD规范一样都是针对浏览器端模块化开发的规范；理解CMD，需要和AMD进行对比来理解</p>
-</blockquote>
-<p>下面是Sea.js 推荐的 CMD 模块书写格式 (<a href="http://seajs.org/docs/#quick-start" target="_blank" rel="external">参考官网</a>)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 模块定义 </span></span><br><span class="line">define(id?, deps?, factory)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 所有模块都通过 define 来定义</span></span><br><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params">require, exports, module</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 通过 require 引入依赖</span></span><br><span class="line">  <span class="keyword">var</span> $ = <span class="built_in">require</span>(<span class="string">'jquery'</span>);</span><br><span class="line">  <span class="keyword">var</span> Spinning = <span class="built_in">require</span>(<span class="string">'./spinning'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 通过 exports 对外提供接口</span></span><br><span class="line">  exports.doSomething = ...</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 或者通过 module.exports 提供整个接口</span></span><br><span class="line">  <span class="built_in">module</span>.exports = ...</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<h4 id="AMD_u548CCMD_u6BD4_u8F83"><a href="#AMD_u548CCMD_u6BD4_u8F83" class="headerlink" title="AMD和CMD比较"></a>AMD和CMD比较</h4><p><a href="https://github.com/seajs/seajs/issues/277" target="_blank" rel="external">参考</a><br><a href="http://div.io/topic/430" target="_blank" rel="external">这个也不错</a></p>
-<p><img src="/uploads/amd_cmd.png" alt="盗图"></p>
-<ul>
-<li>CMD 模块依赖声明方式<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="function"><span class="keyword">function</span> (<span class="params">require</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="built_in">require</span>(<span class="string">'./a'</span>);</span><br><span class="line">    <span class="keyword">var</span> b = <span class="built_in">require</span>(<span class="string">'./b'</span>);</span><br><span class="line">    <span class="comment">// more code ..</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// CMD依赖是就近声明，通过内部的require方法进行声明。</span></span><br><span class="line"><span class="comment">// 但因为是异步模块，加载器需要提前加载这些模块，</span></span><br><span class="line"><span class="comment">// 所以模块真正使用前需要提取模块里面所有的依赖。</span></span><br><span class="line"><span class="comment">// CMD的这种依赖声明格式只能通过静态分析方式实现，</span></span><br><span class="line"><span class="comment">// 这也正是CMD的弊端所在。</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>AMD 模块依赖声明方式<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">define([<span class="string">'./a'</span>, <span class="string">'./b'</span>], <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// more code ..</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// AMD依赖是提前声明。这种方式的优势就是依赖无需通过静态分析</span></span><br><span class="line"><span class="comment">// 这对加载器和自动化分析工具都是有利的</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>目前理解比较大的区别是：SeaJS对模块的态度是<em>懒执行</em>，而RequireJS对模块的态度是<em>预执行</em></p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/15/amd-cmd/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -411,8 +385,7 @@
 
       
         
-          
-            <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">模块化规范介绍</span><br><span class="line">CommonJS标准</span><br></pre></td></tr></table></figure>
+          <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">模块化规范介绍</span><br><span class="line">CommonJS标准</span><br></pre></td></tr></table></figure>
 <h4 id="u6A21_u5757_u5316_u89C4_u8303_u4ECB_u7ECD"><a href="#u6A21_u5757_u5316_u89C4_u8303_u4ECB_u7ECD" class="headerlink" title="模块化规范介绍"></a>模块化规范介绍</h4><blockquote>
 <p>CommonJS的目标是定义一套普通应用程序使用的API，弥补JavaScript标准库过少的缺点。NodeJS就是一个CommonJS的一个实现；CommonJS是一种规范，NodeJS是这种规范的实现</p>
 </blockquote>
@@ -420,18 +393,11 @@
 <li>模块化规范，主要是为了统一模块化的编写方式</li>
 <li>Javascript本身没有内置的模块系统（ES6引入了模块系统）</li>
 </ol>
-<h4 id="CommonJS_u6807_u51C6"><a href="#CommonJS_u6807_u51C6" class="headerlink" title="CommonJS标准"></a>CommonJS标准</h4><ol>
-<li><p>CommonJS有一个全局性的方法require()，主要用于加载模块，加载后，就可以调用模块的方法；</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入模块</span></span><br><span class="line"><span class="keyword">var</span> math = <span class="built_in">require</span>(<span class="string">'math'</span>)</span><br><span class="line"><span class="comment">// 调用math模块方法</span></span><br><span class="line">math.add(<span class="number">2</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>CommonJS通过全局变量exports来导入模块的方法。导入的方法，便是这个模块的API</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// math.js</span></span><br><span class="line">exports.add = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> sum = <span class="number">0</span>, i = <span class="number">0</span>, args = <span class="built_in">arguments</span>, l = args.length;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; l) &#123;</span><br><span class="line">        sum += args[i++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>CommonJS规范中的require是同步的，模块系统同步读取模块文件内容，并编译执行得到模块接口。在服务器端(如Node)文件都是本地获取，对性能没有什么影响。但在浏览器端，请求文件要异步获取，于是针对浏览器就有了新标准的出现，如AMD（Asynchronous Module Definition异步模块定义）规范。最终AMD从CommonJS社区中独立出来。</p>
-</li>
-</ol>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/15/CommonJs/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
