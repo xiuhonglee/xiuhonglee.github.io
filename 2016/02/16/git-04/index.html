@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="MongoDB," />
+  <meta name="keywords" content="Git," />
 
 
 
@@ -57,22 +57,19 @@
 
 
 
-<meta name="description" content="学习Node，接触MongoDB不是很熟练，日后慢慢补充; 
-
-安装MongoDB（Mac）官网教程1234567891011# 安装$ brew install mongodb# 全局配置(.zshrc)export PATH=&amp;lt;mongodb-install-directory&amp;gt;/bin:$PATH# 启动mongodb服务$ mongod# 进入mongodb shell $ m">
+<meta name="description" content="本节内容1查看提交历史
+查看提交历史123456789101112&amp;lt;!-- 主要命令 --&amp;gt;# SHA-1校验和 / 提交时间 / 作者 / 邮件 / 提交时间$ git log # 显示每次提交的内容差异，-n显示最近n次提交$ git log -p -n # 提交摘要，仅显示简要的增改行数统计$ git log --stat# 高度可自定义 $ git log --pretty=o">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MongoDB">
-<meta property="og:url" content="http://xiuhonglee.com/2016/02/12/mongodb/index.html">
+<meta property="og:title" content="Git常用命令（4）">
+<meta property="og:url" content="http://xiuhonglee.com/2016/02/16/git-04/index.html">
 <meta property="og:site_name" content="xiuhong">
-<meta property="og:description" content="学习Node，接触MongoDB不是很熟练，日后慢慢补充; 
-
-安装MongoDB（Mac）官网教程1234567891011# 安装$ brew install mongodb# 全局配置(.zshrc)export PATH=&amp;lt;mongodb-install-directory&amp;gt;/bin:$PATH# 启动mongodb服务$ mongod# 进入mongodb shell $ m">
-<meta property="og:updated_time" content="2016-02-13T12:01:59.000Z">
+<meta property="og:description" content="本节内容1查看提交历史
+查看提交历史123456789101112&amp;lt;!-- 主要命令 --&amp;gt;# SHA-1校验和 / 提交时间 / 作者 / 邮件 / 提交时间$ git log # 显示每次提交的内容差异，-n显示最近n次提交$ git log -p -n # 提交摘要，仅显示简要的增改行数统计$ git log --stat# 高度可自定义 $ git log --pretty=o">
+<meta property="og:updated_time" content="2016-02-16T11:56:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MongoDB">
-<meta name="twitter:description" content="学习Node，接触MongoDB不是很熟练，日后慢慢补充; 
-
-安装MongoDB（Mac）官网教程1234567891011# 安装$ brew install mongodb# 全局配置(.zshrc)export PATH=&amp;lt;mongodb-install-directory&amp;gt;/bin:$PATH# 启动mongodb服务$ mongod# 进入mongodb shell $ m">
+<meta name="twitter:title" content="Git常用命令（4）">
+<meta name="twitter:description" content="本节内容1查看提交历史
+查看提交历史123456789101112&amp;lt;!-- 主要命令 --&amp;gt;# SHA-1校验和 / 提交时间 / 作者 / 邮件 / 提交时间$ git log # 显示每次提交的内容差异，-n显示最近n次提交$ git log -p -n # 提交摘要，仅显示简要的增改行数统计$ git log --stat# 高度可自定义 $ git log --pretty=o">
 
 
 
@@ -90,7 +87,7 @@
   };
 </script>
 
-  <title> MongoDB | xiuhong </title>
+  <title> Git常用命令（4） | xiuhong </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -238,7 +235,7 @@
             
             
               
-                MongoDB
+                Git常用命令（4）
               
             
           </h1>
@@ -250,8 +247,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-12T12:19:16+08:00" content="2016-02-12">
-              2016-02-12
+            <time itemprop="dateCreated" datetime="2016-02-16T17:43:52+08:00" content="2016-02-16">
+              2016-02-16
             </time>
           </span>
 
@@ -261,8 +258,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/12/mongodb/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/12/mongodb/" itemprop="commentsCount"></span>
+                <a href="/2016/02/16/git-04/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/16/git-04/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -283,18 +280,10 @@
       
 
       
-        <blockquote>
-<p>学习Node，接触MongoDB不是很熟练，日后慢慢补充; </p>
-</blockquote>
-<h4 id="u5B89_u88C5MongoDB_uFF08Mac_uFF09"><a href="#u5B89_u88C5MongoDB_uFF08Mac_uFF09" class="headerlink" title="安装MongoDB（Mac）"></a>安装MongoDB（Mac）</h4><p><a href="https://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/" target="_blank" rel="external">官网教程</a><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">$ brew install mongodb</span><br><span class="line"></span><br><span class="line"><span class="comment"># 全局配置(.zshrc)</span></span><br><span class="line"><span class="built_in">export</span> PATH=&lt;mongodb-install-directory&gt;/bin:<span class="variable">$PATH</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动mongodb服务</span></span><br><span class="line">$ mongod</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入mongodb shell </span></span><br><span class="line">$ mogodb</span><br></pre></td></tr></table></figure></p>
-<h4 id="u542F_u52A8/_u5173_u95EDMongoDB_u670D_u52A1"><a href="#u542F_u52A8/_u5173_u95EDMongoDB_u670D_u52A1" class="headerlink" title="启动/关闭MongoDB服务"></a>启动/关闭MongoDB服务</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动服务</span></span><br><span class="line">$ mongod</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭服务</span></span><br><span class="line">    方法<span class="number">1</span> </span><br><span class="line">    $ use admin </span><br><span class="line">    $ db.shutdownServer()</span><br><span class="line"></span><br><span class="line">    方法<span class="number">2</span></span><br><span class="line">    $ <span class="built_in">kill</span> &lt;mongod proces ID&gt;</span><br></pre></td></tr></table></figure>
+        <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查看提交历史</span><br></pre></td></tr></table></figure>
+<h4 id="u67E5_u770B_u63D0_u4EA4_u5386_u53F2"><a href="#u67E5_u770B_u63D0_u4EA4_u5386_u53F2" class="headerlink" title="查看提交历史"></a>查看提交历史</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 主要命令 --&gt;</span><br><span class="line"><span class="comment"># SHA-1校验和 / 提交时间 / 作者 / 邮件 / 提交时间</span></span><br><span class="line">$ git <span class="built_in">log</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示每次提交的内容差异，-n显示最近n次提交</span></span><br><span class="line">$ git <span class="built_in">log</span> -p -n </span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交摘要，仅显示简要的增改行数统计</span></span><br><span class="line">$ git <span class="built_in">log</span> --stat</span><br><span class="line"></span><br><span class="line"><span class="comment"># 高度可自定义 </span></span><br><span class="line">$ git <span class="built_in">log</span> --pretty=oneline</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h4 id="u521B_u5EFA_u6570_u636E_u5E93"><a href="#u521B_u5EFA_u6570_u636E_u5E93" class="headerlink" title="创建数据库"></a>创建数据库</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果数据库不存在，则创建数据库，否则切换到指定数据库。</span></span><br><span class="line">use DATABASE_NAME （imooc）</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看数据库</span></span><br><span class="line">show dbsshow dbs</span><br><span class="line"></span><br><span class="line"><span class="comment"># 插入数据</span></span><br><span class="line">db.imooc.insert(&#123;<span class="string">"name"</span>:<span class="string">"菜鸟教程"</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除数据库</span></span><br><span class="line">db.dropDatabase()</span><br></pre></td></tr></table></figure>
-<h4 id="u63D2_u5165_u6587_u6863"><a href="#u63D2_u5165_u6587_u6863" class="headerlink" title="插入文档"></a>插入文档</h4><ul>
-<li>文档的数据结构和JSON基本一样，所有存储在集合中的数据都是BSON格式，BSON是一种类json的一种二进制形式的存储格式,简称Binary JSON</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># MongoDB 使用 insert() 或 save() 方法向集合中插入文档</span></span><br><span class="line">db.COLLECTION_NAME.insert(document)</span><br></pre></td></tr></table></figure>
-<h4 id="u5220_u9664_u8BB0_u5F55"><a href="#u5220_u9664_u8BB0_u5F55" class="headerlink" title="删除记录"></a>删除记录</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除表中数据</span></span><br><span class="line">db.movies.remove(&#123;&#125;);</span><br><span class="line"><span class="comment"># 删除表</span></span><br><span class="line">db.movies.drop();</span><br><span class="line"><span class="comment"># 查询表长度</span></span><br><span class="line">db.movies.find(&#123;&#125;).count();</span><br></pre></td></tr></table></figure>
+<h5 id="git_log__u2013pretty"><a href="#git_log__u2013pretty" class="headerlink" title="git log –pretty"></a>git log –pretty</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> --pretty=format:<span class="string">"%h - %an, %ar : %s"</span></span><br><span class="line"></span><br><span class="line">选项   说明</span><br><span class="line">%h  提交对象的简短哈希字串</span><br><span class="line">%an 作者（author）的名字</span><br><span class="line">%ae 作者的电子邮件地址</span><br><span class="line">%ad 作者修订日期（可以用 -date= 选项定制格式）</span><br><span class="line">%ar 作者修订日期，按多久以前的方式显示</span><br><span class="line">%cn 提交者(committer)的名字</span><br><span class="line">%ce 提交者的电子邮件地址</span><br><span class="line">%<span class="built_in">cd</span> 提交日期</span><br><span class="line">%cr 提交日期，按多久以前的方式显示</span><br><span class="line">%s  提交说明</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -302,7 +291,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/MongoDB/" rel="tag">#MongoDB</a>
+            <a href="/tags/Git/" rel="tag">#Git</a>
           
         </div>
       
@@ -311,17 +300,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/11/jade/" rel="next" title="Jade模板引擎">
-                <i class="fa fa-chevron-left"></i> Jade模板引擎
+              <a href="/2016/02/15/css3-transform/" rel="next" title="CSS3 transform属性">
+                <i class="fa fa-chevron-left"></i> CSS3 transform属性
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/02/13/2016-02-13-git/" rel="prev" title="Git常用命令（1）">
-                Git常用命令（1） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -336,10 +321,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/02/12/mongodb/"
-     data-title="MongoDB"
+        <div class="ds-share flat" data-thread-key="2016/02/16/git-04/"
+     data-title="Git常用命令（4）"
      data-content=""
-     data-url="http://xiuhonglee.com/2016/02/12/mongodb/">
+     data-url="http://xiuhonglee.com/2016/02/16/git-04/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -366,8 +351,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/02/12/mongodb/"
-           data-title="MongoDB" data-url="http://xiuhonglee.com/2016/02/12/mongodb/">
+      <div class="ds-thread" data-thread-key="2016/02/16/git-04/"
+           data-title="Git常用命令（4）" data-url="http://xiuhonglee.com/2016/02/16/git-04/">
       </div>
     
   </div>
@@ -465,7 +450,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#u5B89_u88C5MongoDB_uFF08Mac_uFF09"><span class="nav-number">1.</span> <span class="nav-text">安装MongoDB（Mac）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u542F_u52A8/_u5173_u95EDMongoDB_u670D_u52A1"><span class="nav-number">2.</span> <span class="nav-text">启动/关闭MongoDB服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u521B_u5EFA_u6570_u636E_u5E93"><span class="nav-number">3.</span> <span class="nav-text">创建数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u63D2_u5165_u6587_u6863"><span class="nav-number">4.</span> <span class="nav-text">插入文档</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u5220_u9664_u8BB0_u5F55"><span class="nav-number">5.</span> <span class="nav-text">删除记录</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#u672C_u8282_u5185_u5BB9"><span class="nav-number">1.</span> <span class="nav-text">本节内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u67E5_u770B_u63D0_u4EA4_u5386_u53F2"><span class="nav-number">2.</span> <span class="nav-text">查看提交历史</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#git_log__u2013pretty"><span class="nav-number">2.1.</span> <span class="nav-text">git log –pretty</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
