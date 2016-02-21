@@ -249,6 +249,103 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/20/git-06/" itemprop="url">
+                  Git常用命令（6）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-20T11:10:09+08:00" content="2016-02-20">
+              2016-02-20
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/20/git-06/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/20/git-06/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">查看当前的远程库</span><br><span class="line">添加远程仓库</span><br><span class="line">从远程仓库抓取数据</span><br><span class="line">推送数据到远程仓库</span><br><span class="line">查看远程仓库信息</span><br></pre></td></tr></table></figure>
+<h4 id="u67E5_u770B_u5F53_u524D_u7684_u8FDC_u7A0B_u5E93"><a href="#u67E5_u770B_u5F53_u524D_u7684_u8FDC_u7A0B_u5E93" class="headerlink" title="查看当前的远程库"></a>查看当前的远程库</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 可以看到一个origin的远程库</span></span><br><span class="line">$ git remote  </span><br><span class="line"></span><br><span class="line"><span class="comment"># verbose：详细</span></span><br><span class="line">$ git remote -v</span><br></pre></td></tr></table></figure>
+<h4 id="u6DFB_u52A0_u8FDC_u7A0B_u5E93"><a href="#u6DFB_u52A0_u8FDC_u7A0B_u5E93" class="headerlink" title="添加远程库"></a>添加远程库</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 自己的本地代码可以来自多个仓库</span></span><br><span class="line"><span class="comment"># 每个仓库默认的名字为orgin，</span></span><br><span class="line"><span class="comment"># 如果项目来自多个仓库，git会提醒使用不同的仓库名字</span></span><br><span class="line">$ git remote add [shortname] [url]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 当然可以修改仓库的名字</span></span><br><span class="line">$ git remote rename [oldname] [newname]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可以删除仓库</span></span><br><span class="line">$ git remote rm [repositoryName]</span><br></pre></td></tr></table></figure>
+<h4 id="u4ECE_u8FDC_u7A0B_u4ED3_u5E93_u6293_u53D6_u6570_u636E"><a href="#u4ECE_u8FDC_u7A0B_u4ED3_u5E93_u6293_u53D6_u6570_u636E" class="headerlink" title="从远程仓库抓取数据"></a>从远程仓库抓取数据</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># fetch只会将远程仓库的数据拉取到本地，并不会自动合并到本地分支</span></span><br><span class="line">$ git fetch [remote-name]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 只有确认准备好，才能手动合并</span></span><br><span class="line">$ git merge [remote-name]</span><br></pre></td></tr></table></figure>
+<h4 id="u63A8_u9001_u6570_u636E_u5230_u8FDC_u7A0B_u4ED3_u5E93"><a href="#u63A8_u9001_u6570_u636E_u5230_u8FDC_u7A0B_u4ED3_u5E93" class="headerlink" title="推送数据到远程仓库"></a>推送数据到远程仓库</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git push [remote-name] [branch-name]</span><br><span class="line"><span class="comment"># 要想推送成功，必须保证</span></span><br><span class="line"><span class="comment"># 1 在所clone的服务器上有写权限（就是开通了权限）</span></span><br><span class="line"><span class="comment"># 2 同一时刻没有其他人推送数据</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># warn: 如果在你推送数据前，已经有其他人推送了若干分支，你的推送会被驳回</span></span><br><span class="line"><span class="comment"># 就是说，必须先pull更新本地代码，再做提交</span></span><br></pre></td></tr></table></figure>
+<h5 id="warn_u60C5_u51B5_u7684_u62A5_u9519_u4FE1_u606F"><a href="#warn_u60C5_u51B5_u7684_u62A5_u9519_u4FE1_u606F" class="headerlink" title="warn情况的报错信息"></a>warn情况的报错信息</h5><p><img src="/uploads/git-06-push.png" alt=""><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. Updates were rejected because the remote contains work that you <span class="keyword">do</span></span><br><span class="line">hint: not have locally</span><br><span class="line">翻译： 远程仓库有些数据(work)没有在本地缓存，就是说远程代码仓库版本比本地仓库新</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>. This is usually caused by another repository pushing to the same ref</span><br><span class="line">翻译：这是因为有其它仓库（比如其他人的本地仓库）和你提交到了同一个分支</span><br><span class="line"></span><br><span class="line"><span class="number">3</span>. You may want to first integrate the remote changes (e.g., <span class="string">'git pull ...'</span>) before pushing again</span><br><span class="line">翻译： 让你在提交前，先合并远程分支（同步远程仓库版本），然后再提交</span><br></pre></td></tr></table></figure></p>
+<h4 id="u67E5_u770B_u8FDC_u7A0B_u4ED3_u5E93_u4FE1_u606F"><a href="#u67E5_u770B_u8FDC_u7A0B_u4ED3_u5E93_u4FE1_u606F" class="headerlink" title="查看远程仓库信息"></a>查看远程仓库信息</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 我还不大常用，可能更高的需求会用到吧</span></span><br><span class="line">$ git remote show [remote-name]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 结果如下</span></span><br><span class="line">$ git remote show origin</span><br><span class="line">* remote origin</span><br><span class="line">  URL: git://github.com/schacon/ticgit.git</span><br><span class="line">  Remote branch merged with <span class="string">'git pull'</span> <span class="keyword">while</span> on branch master</span><br><span class="line">    master</span><br><span class="line">  Tracked remote branches</span><br><span class="line">    master</span><br><span class="line">    ticgit</span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可能长这样，信息量很足的！！！ </span></span><br><span class="line">$ git remote show origin</span><br><span class="line">* remote origin</span><br><span class="line">  URL: git@github.com:defunkt/github.git</span><br><span class="line">  Remote branch merged with <span class="string">'git pull'</span> <span class="keyword">while</span> on branch issues</span><br><span class="line">    issues</span><br><span class="line">  Remote branch merged with <span class="string">'git pull'</span> <span class="keyword">while</span> on branch master</span><br><span class="line">    master</span><br><span class="line">  New remote branches (next fetch will store <span class="keyword">in</span> remotes/origin)</span><br><span class="line">    caching</span><br><span class="line">  Stale tracking branches (use <span class="string">'git remote prune'</span>)</span><br><span class="line">    libwalker</span><br><span class="line">    walker2</span><br><span class="line">  Tracked remote branches</span><br><span class="line">    acl</span><br><span class="line">    apiv2</span><br><span class="line">    dashboard2</span><br><span class="line">    issues</span><br><span class="line">    master</span><br><span class="line">    postgres</span><br><span class="line">  Local branch pushed with <span class="string">'git push'</span></span><br><span class="line">    master:master</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/02/18/git-05/" itemprop="url">
                   Git常用命令（5）
                 </a>
@@ -1100,103 +1197,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/12/mongodb/" itemprop="url">
-                  MongoDB
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-12T12:19:16+08:00" content="2016-02-12">
-              2016-02-12
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/12/mongodb/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/12/mongodb/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>学习Node，接触MongoDB不是很熟练，日后慢慢补充; </p>
-</blockquote>
-<h4 id="u5B89_u88C5MongoDB_uFF08Mac_uFF09"><a href="#u5B89_u88C5MongoDB_uFF08Mac_uFF09" class="headerlink" title="安装MongoDB（Mac）"></a>安装MongoDB（Mac）</h4><p><a href="https://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/">官网教程</a><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">$ brew install mongodb</span><br><span class="line"></span><br><span class="line"><span class="comment"># 全局配置(.zshrc)</span></span><br><span class="line"><span class="built_in">export</span> PATH=&lt;mongodb-install-directory&gt;/bin:<span class="variable">$PATH</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动mongodb服务</span></span><br><span class="line">$ mongod</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入mongodb shell </span></span><br><span class="line">$ mogodb</span><br></pre></td></tr></table></figure></p>
-<h4 id="u542F_u52A8/_u5173_u95EDMongoDB_u670D_u52A1"><a href="#u542F_u52A8/_u5173_u95EDMongoDB_u670D_u52A1" class="headerlink" title="启动/关闭MongoDB服务"></a>启动/关闭MongoDB服务</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动服务</span></span><br><span class="line">$ mongod</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭服务</span></span><br><span class="line">    方法<span class="number">1</span> </span><br><span class="line">    $ use admin </span><br><span class="line">    $ db.shutdownServer()</span><br><span class="line"></span><br><span class="line">    方法<span class="number">2</span></span><br><span class="line">    $ <span class="built_in">kill</span> &lt;mongod proces ID&gt;</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/12/mongodb/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1243,7 +1243,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
