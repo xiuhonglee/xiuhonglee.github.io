@@ -58,30 +58,18 @@
 
 
 <meta name="description" content="本节内容12关联远程仓库分支$ git branch --set-upstream-to=origin/&amp;lt;branch&amp;gt; dev
-关联远程仓库分支
-当从远程仓库clone的时候，git会自动把本地的master和远程的master对应起来，并且远程仓库的的默认名称是origin
-推送分支，添加上分支的名称，就能把分支推送到远程对应的分支上
-
-1234567891011121314$ g">
+关联远程仓库分支1234567891011121314151617# 当从远程仓库clone的时候，git会自动把本地的master和远程的master对应起来# 并且远程仓库的的默认名称是origin# 推送分支，添加上分支的名称，就能把分支推送到远程对应">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git常用命令（7）- 远程分支">
 <meta property="og:url" content="http://xiuhonglee.com/2016/02/24/git-07/index.html">
 <meta property="og:site_name" content="xiuhong">
 <meta property="og:description" content="本节内容12关联远程仓库分支$ git branch --set-upstream-to=origin/&amp;lt;branch&amp;gt; dev
-关联远程仓库分支
-当从远程仓库clone的时候，git会自动把本地的master和远程的master对应起来，并且远程仓库的的默认名称是origin
-推送分支，添加上分支的名称，就能把分支推送到远程对应的分支上
-
-1234567891011121314$ g">
-<meta property="og:updated_time" content="2016-02-25T12:24:28.000Z">
+关联远程仓库分支1234567891011121314151617# 当从远程仓库clone的时候，git会自动把本地的master和远程的master对应起来# 并且远程仓库的的默认名称是origin# 推送分支，添加上分支的名称，就能把分支推送到远程对应">
+<meta property="og:updated_time" content="2016-02-25T12:34:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git常用命令（7）- 远程分支">
 <meta name="twitter:description" content="本节内容12关联远程仓库分支$ git branch --set-upstream-to=origin/&amp;lt;branch&amp;gt; dev
-关联远程仓库分支
-当从远程仓库clone的时候，git会自动把本地的master和远程的master对应起来，并且远程仓库的的默认名称是origin
-推送分支，添加上分支的名称，就能把分支推送到远程对应的分支上
-
-1234567891011121314$ g">
+关联远程仓库分支1234567891011121314151617# 当从远程仓库clone的时候，git会自动把本地的master和远程的master对应起来# 并且远程仓库的的默认名称是origin# 推送分支，添加上分支的名称，就能把分支推送到远程对应">
 
 
 
@@ -258,13 +246,9 @@
 
       
         <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">关联远程仓库分支</span><br><span class="line">$ git branch --set-upstream-to=origin/&lt;branch&gt; dev</span><br></pre></td></tr></table></figure>
-<h4 id="u5173_u8054_u8FDC_u7A0B_u4ED3_u5E93_u5206_u652F"><a href="#u5173_u8054_u8FDC_u7A0B_u4ED3_u5E93_u5206_u652F" class="headerlink" title="关联远程仓库分支"></a>关联远程仓库分支</h4><ul>
-<li>当从远程仓库clone的时候，git会自动把本地的master和远程的master对应起来，并且远程仓库的的默认名称是origin</li>
-<li>推送分支，添加上分支的名称，就能把分支推送到远程对应的分支上</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master </span><br><span class="line"><span class="comment"># 默认</span></span><br><span class="line"></span><br><span class="line">$ git push origin dev  </span><br><span class="line"><span class="comment"># 如果远程没有该分支会自动添加</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 但如果远程存在dev分支，且本地仓库是从origin clone来的，那么需要自己建立分支；如下</span></span><br><span class="line"><span class="comment"># 这个命令会省去一个麻烦，就是它会自动添加本地分支和远程分支关系；</span></span><br><span class="line">$ git checkout -b dev origin/dev</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果自己建立分支dev，修改代码后提交到远程dev分支</span></span><br><span class="line">$ git chekout -b dev </span><br><span class="line"><span class="comment">###  make some change ###</span></span><br></pre></td></tr></table></figure>
+<h4 id="u5173_u8054_u8FDC_u7A0B_u4ED3_u5E93_u5206_u652F"><a href="#u5173_u8054_u8FDC_u7A0B_u4ED3_u5E93_u5206_u652F" class="headerlink" title="关联远程仓库分支"></a>关联远程仓库分支</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 当从远程仓库clone的时候，git会自动把本地的master和远程的master对应起来</span></span><br><span class="line"><span class="comment"># 并且远程仓库的的默认名称是origin</span></span><br><span class="line"><span class="comment"># 推送分支，添加上分支的名称，就能把分支推送到远程对应的分支上</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 默认</span></span><br><span class="line">$ git push origin master </span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果远程没有该分支会自动添加</span></span><br><span class="line">$ git push origin dev  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 但如果远程存在dev分支，且本地仓库是从origin clone来的，那么需要自己建立分支；如下</span></span><br><span class="line"><span class="comment"># 这个命令会省去一个麻烦，就是它会自动添加本地分支和远程分支关系；</span></span><br><span class="line">$ git checkout -b dev origin/dev <span class="comment"># 已经关联远程分支</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果自己建立分支dev，修改代码后提交到远程dev分支</span></span><br><span class="line">$ git chekout -b dev </span><br><span class="line"><span class="comment">###  make some change ###</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ git push</span><br><span class="line"><span class="comment"># 会提示：There is no tracking information for the current branch.</span></span><br><span class="line">Please specify <span class="built_in">which</span> branch you want to merge with.</span><br><span class="line">……</span><br><span class="line">If you wish to <span class="built_in">set</span> tracking information <span class="keyword">for</span> this branch you can <span class="keyword">do</span> so with:</span><br><span class="line"></span><br><span class="line">    git branch --set-upstream-to=origin/&lt;branch&gt; dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 说是你的本地分支dev没有和远程的dev分支关联起来，关联分支的命令也告诉你了 </span></span><br><span class="line"></span><br><span class="line">$ git branch --set-upstrea-to=origin/dev dev</span><br><span class="line"><span class="comment"># 关联分支之后，还需要git pull一下远程分支代码进行合并</span></span><br><span class="line"></span><br><span class="line">$ git pull </span><br><span class="line"><span class="comment"># 这个命令会弹出vim编辑界面，是告诉你远程的dev分支要和你本地的dev进行合并</span></span><br><span class="line"><span class="comment"># 这里提醒输入合并信息，如果 :q 退出，则会取消合并</span></span><br><span class="line"></span><br><span class="line">$ git push </span><br><span class="line"><span class="comment"># 然后push就可以推送本地分支dev代码到远端分支dev了</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ git push</span><br><span class="line"><span class="comment"># 会提示：There is no tracking information for the current branch.</span></span><br><span class="line">Please specify <span class="built_in">which</span> branch you want to merge with.</span><br><span class="line">……</span><br><span class="line">If you wish to <span class="built_in">set</span> tracking information <span class="keyword">for</span> this branch you can <span class="keyword">do</span> so with:</span><br><span class="line">    git branch --set-upstream-to=origin/&lt;branch&gt; dev</span><br><span class="line"><span class="comment"># 说是你的本地分支dev没有和远程的dev分支关联起来，关联分支的命令也告诉你了 </span></span><br><span class="line"></span><br><span class="line">$ git branch --set-upstrea-to=origin/dev dev</span><br><span class="line"><span class="comment"># 关联分支之后，还需要git pull一下远程分支代码进行合并</span></span><br><span class="line"></span><br><span class="line">$ git pull </span><br><span class="line"><span class="comment"># 这个命令会弹出vim编辑界面，是告诉你远程的dev分支要和你本地的dev进行合并</span></span><br><span class="line"><span class="comment"># 这里提醒输入合并信息，如果 :q 退出，则会取消合并</span></span><br><span class="line"></span><br><span class="line">$ git push </span><br><span class="line"><span class="comment"># 然后push就可以推送本地分支dev代码到远端分支dev了</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -360,7 +344,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
