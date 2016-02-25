@@ -133,7 +133,7 @@
   
 
   
-    <ul id="menu" class="menu menu-left">
+    <ul id="menu" class="menu ">
       
         
         <li class="menu-item menu-item-home">
@@ -169,37 +169,9 @@
       
       
       
-        <li class="menu-item menu-item-search">
-          <a href="#" class="st-search-show-outputs">
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
-        </li>
-      
     </ul>
   
 
-  
-    <div class="site-search">
-      
-  <form class="site-search-form">
-  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
-</form>
-
-<script type="text/javascript">
-  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-
-  _st('install', 'etxpBzXPHyYxAdGY8nuQ','2.0.0');
-</script>
-
-
-
-    </div>
   
 </nav>
 
@@ -217,6 +189,269 @@
 
     
     
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/25/linux常用命令/" itemprop="url">
+                  linux常用命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-25T09:45:05+08:00" content="2016-02-25">
+              2016-02-25
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">反向删除文件</span><br></pre></td></tr></table></figure>
+<h4 id="u53CD_u5411_u5220_u9664_u6587_u4EF6"><a href="#u53CD_u5411_u5220_u9664_u6587_u4EF6" class="headerlink" title="反向删除文件"></a>反向删除文件</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先了解一下Linux下强大的文本搜索工具，它能使用正则表达是搜索文本，并把匹配的行打印出来</span></span><br><span class="line"></span><br><span class="line">$ grep [-acinv] [--color=auto] <span class="string">'搜索字符串'</span> file-name</span><br><span class="line"></span><br><span class="line">选项与参数：</span><br><span class="line"><span class="operator">-a</span> : 将binary文件以text文件的方式搜寻数据（并不明白）</span><br><span class="line">-c : 计算找到 <span class="string">'搜寻字符串'</span>的次数</span><br><span class="line">-i : 忽略大小写</span><br><span class="line">-n : 输出行号</span><br><span class="line">-v : 反向选择（就是用这个参数来实现反向删除文件的）</span><br><span class="line">--color=auto : 对匹配到的关键词进行高亮显示（鸡肋）</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实现反向删除；把除README.md之外的文件全部删除</span></span><br><span class="line">$ rm `ls | grep -v <span class="string">'README.md'</span>`</span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/25/linux常用命令/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/24/git-00/" itemprop="url">
+                  Git常用命令（0） - 配置篇
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-24T19:25:14+08:00" content="2016-02-24">
+              2016-02-24
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Git高效配置</span><br></pre></td></tr></table></figure>
+<h4 id="Git_u9AD8_u6548_u914D_u7F6E"><a href="#Git_u9AD8_u6548_u914D_u7F6E" class="headerlink" title="Git高效配置"></a>Git高效配置</h4><h5 id="Git_u522B_u540D_u914D_u7F6E"><a href="#Git_u522B_u540D_u914D_u7F6E" class="headerlink" title="Git别名配置"></a>Git别名配置</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global alias.co checkout</span><br><span class="line">$ git config --global alias.ci commit</span><br><span class="line">$ git config --global alias.st status</span><br><span class="line">$ git config --global alias.br branch</span><br><span class="line">$ git config --global alias.hist <span class="string">'log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 或在.gitconfig文件中进行配置</span></span><br><span class="line"></span><br><span class="line">[<span class="built_in">alias</span>]</span><br><span class="line">  co = checkout</span><br><span class="line">  ci = commit</span><br><span class="line">  st = status</span><br><span class="line">  br = branch</span><br><span class="line">  hist = <span class="built_in">log</span> --pretty=format:\<span class="string">"%h %ad | %s%d [%an]\" --graph --date=short</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/24/git-07/" itemprop="url">
+                  Git常用命令（7）- 远程分支
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-24T19:10:22+08:00" content="2016-02-24">
+              2016-02-24
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">关联远程仓库分支</span><br><span class="line">$ git branch --set-upstream-to=origin/&lt;branch&gt; dev</span><br></pre></td></tr></table></figure>
+<h4 id="u5173_u8054_u8FDC_u7A0B_u4ED3_u5E93_u5206_u652F"><a href="#u5173_u8054_u8FDC_u7A0B_u4ED3_u5E93_u5206_u652F" class="headerlink" title="关联远程仓库分支"></a>关联远程仓库分支</h4><ul>
+<li>当从远程仓库clone的时候，git会自动把本地的master和远程的master对应起来，并且远程仓库的的默认名称是origin</li>
+<li>推送分支，添加上分支的名称，就能把分支推送到远程对应的分支上</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master </span><br><span class="line"><span class="comment"># 默认</span></span><br><span class="line"></span><br><span class="line">$ git push origin dev  </span><br><span class="line"><span class="comment"># 如果远程没有该分支会自动添加</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 但如果远程存在dev分支，且本地仓库是从origin clone来的，那么需要自己建立分支；如下</span></span><br><span class="line"><span class="comment"># 这个命令会省去一个麻烦，就是它会自动添加本地分支和远程分支关系；</span></span><br><span class="line">$ git checkout -b dev origin/dev</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果自己建立分支dev，修改代码后提交到远程dev分支</span></span><br><span class="line">$ git chekout -b dev </span><br><span class="line"><span class="comment">###  make some change ###</span></span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/24/git-07/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -262,13 +497,6 @@
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/20/git-06/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/20/git-06/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -358,13 +586,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/18/git-05/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/18/git-05/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -453,13 +674,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/16/git-04/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/16/git-04/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -547,13 +761,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/15/css3-transform/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/15/css3-transform/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -638,13 +845,6 @@
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/15/amd-cmd/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/15/amd-cmd/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -735,13 +935,6 @@
           
 
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/15/CommonJs/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/15/CommonJs/" itemprop="commentsCount"></span>
-                </a>
-              </span>
             
           
 
@@ -836,13 +1029,6 @@
 
           
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/15/jQuery-deferred/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/15/jQuery-deferred/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -874,297 +1060,6 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Example</span></span><br><span class="line">Twitter = &#123;</span><br><span class="line">  search:<span class="function"><span class="keyword">function</span>(<span class="params">query</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> dfd = $.Deferred();</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">     url:<span class="string">"http://search.twitter.com/search.json"</span>,</span><br><span class="line">     data:&#123;q:query&#125;,</span><br><span class="line">     dataType:<span class="string">'jsonp'</span>,</span><br><span class="line">     success:dfd.resolve</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> dfd.promise();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 任意操作都可以用done()和fail()指定回调函数</span></span><br><span class="line">Twitter.search().fail(cb1).done(cb2)</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/02/15/jQuery-deferred/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/15/git-03/" itemprop="url">
-                  Git常用命令（3）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-15T09:50:01+08:00" content="2016-02-15">
-              2016-02-15
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/15/git-03/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/15/git-03/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="/uploads/git-03-staged.png" alt=""></p>
-<h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">查看已暂存和未暂存的更新</span><br><span class="line">提交更新</span><br><span class="line">跳过使用暂存区域</span><br><span class="line">移除文件</span><br><span class="line">移动文件</span><br></pre></td></tr></table></figure>
-<h4 id="u67E5_u770B_u5DF2_u6682_u5B58_u548C_u672A_u6682_u5B58_u7684_u66F4_u65B0"><a href="#u67E5_u770B_u5DF2_u6682_u5B58_u548C_u672A_u6682_u5B58_u7684_u66F4_u65B0" class="headerlink" title="查看已暂存和未暂存的更新"></a>查看已暂存和未暂存的更新</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git diff</span><br><span class="line"><span class="comment"># 此命令比较的是工作目录中当前文件和暂存区域快照之间的差异，</span></span><br><span class="line"><span class="comment"># 就是修改之后还没暂存起来的变化内容</span></span><br><span class="line"></span><br><span class="line">$ git diff --cached (Git <span class="number">1.6</span>.<span class="number">1</span>及高版本 ： --staged)</span><br><span class="line"><span class="comment"># --cached和--staged效果相同</span></span><br><span class="line"><span class="comment"># 此命令比较已暂存起来的文件和上次提交的快照之间的差异</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意：<code>$ git diff</code> 不过是显示还没有暂存起来的改动，而不是这次工作和上次提交之间的差异。若一下子暂存了所有更新过的文件后，运行<code>git diff</code>后却什么也没有</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/15/git-03/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/14/git-02/" itemprop="url">
-                  Git常用命令（2）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-14T08:49:46+08:00" content="2016-02-14">
-              2016-02-14
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/14/git-02/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/14/git-02/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="/uploads/git-life-style.png" alt=""></p>
-<h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">检查当前文件状态</span><br><span class="line">跟踪新文件</span><br><span class="line">暂存已修改文件</span><br><span class="line">忽略某些文件</span><br></pre></td></tr></table></figure>
-<h4 id="u68C0_u67E5_u5F53_u524D_u6587_u4EF6_u72B6_u6001"><a href="#u68C0_u67E5_u5F53_u524D_u6587_u4EF6_u72B6_u6001" class="headerlink" title="检查当前文件状态"></a>检查当前文件状态</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working directory clean</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例信息</span></span><br><span class="line">已跟踪文件未被更改过</span><br><span class="line">没有未跟踪的新文件</span><br><span class="line">当前所在分支为master</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/14/git-02/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/13/2016-02-13-git/" itemprop="url">
-                  Git常用命令（1）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-13T20:01:20+08:00" content="2016-02-13">
-              2016-02-13
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/13/2016-02-13-git/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/13/2016-02-13-git/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>Git用了许久，却没有系统学习过，每遇到问题便Google之，笔记零散，巡查无迹；今欲每日一节，系统记录一遍</p>
-</blockquote>
-<p><img src="/uploads/git-task-list.png" alt="git-task-list"></p>
-<h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">初始化一个新的代码仓库</span><br></pre></td></tr></table></figure>
-<h4 id="u521D_u59CB_u5316_u4E00_u4E2A_u65B0_u7684_u4EE3_u7801_u4ED3_u5E93"><a href="#u521D_u59CB_u5316_u4E00_u4E2A_u65B0_u7684_u4EE3_u7801_u4ED3_u5E93" class="headerlink" title="初始化一个新的代码仓库"></a>初始化一个新的代码仓库</h4>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/13/2016-02-13-git/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1232,7 +1127,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1242,7 +1137,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1253,16 +1148,6 @@
         
 
         <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/xiuhonglee" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> github
-                  
-                </a>
-              </span>
-            
           
         </div>
 
@@ -1366,28 +1251,9 @@
 
   
 
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"xiuhonglee"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-  
 
 
+  
 
 
 
