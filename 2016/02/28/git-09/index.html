@@ -57,20 +57,20 @@
 
 
 
-<meta name="description" content="本节内容1234检查当前文件状态跟踪新文件暂存已修改文件忽略某些文件
-检查当前文件状态12345678$ git statusOn branch masternothing to commit, working directory clean# 示例信息已跟踪文件未被更改过没有未跟踪的新文件当前所在分支为master">
+<meta name="description" content="12git push的语法多分支情况下git push 出现的报错信息分析
+git push语法1234567891011121314151617181920$ git push &amp;lt;远程主机名&amp;gt; &amp;lt;本地分支名&amp;gt;:&amp;lt;远程分支名&amp;gt; # 如果省略远程分支名，则表示将本地分支与之存在“追踪关系”的远程分支(通常两者同名)，# 如果该远程分支不存在，则会被新建$ git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git常用命令（2）">
-<meta property="og:url" content="http://xiuhonglee.com/2016/02/14/git-02/index.html">
+<meta property="og:title" content="Git常用命令（8）-- 关于push">
+<meta property="og:url" content="http://xiuhonglee.com/2016/02/28/git-09/index.html">
 <meta property="og:site_name" content="xiuhong">
-<meta property="og:description" content="本节内容1234检查当前文件状态跟踪新文件暂存已修改文件忽略某些文件
-检查当前文件状态12345678$ git statusOn branch masternothing to commit, working directory clean# 示例信息已跟踪文件未被更改过没有未跟踪的新文件当前所在分支为master">
-<meta property="og:image" content="http://xiuhonglee.com/uploads/git-life-style.png">
-<meta property="og:updated_time" content="2016-02-21T01:02:38.000Z">
+<meta property="og:description" content="12git push的语法多分支情况下git push 出现的报错信息分析
+git push语法1234567891011121314151617181920$ git push &amp;lt;远程主机名&amp;gt; &amp;lt;本地分支名&amp;gt;:&amp;lt;远程分支名&amp;gt; # 如果省略远程分支名，则表示将本地分支与之存在“追踪关系”的远程分支(通常两者同名)，# 如果该远程分支不存在，则会被新建$ git">
+<meta property="og:image" content="http://xiuhonglee.com/uploads/git-09-push.png">
+<meta property="og:updated_time" content="2016-02-28T01:37:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git常用命令（2）">
-<meta name="twitter:description" content="本节内容1234检查当前文件状态跟踪新文件暂存已修改文件忽略某些文件
-检查当前文件状态12345678$ git statusOn branch masternothing to commit, working directory clean# 示例信息已跟踪文件未被更改过没有未跟踪的新文件当前所在分支为master">
+<meta name="twitter:title" content="Git常用命令（8）-- 关于push">
+<meta name="twitter:description" content="12git push的语法多分支情况下git push 出现的报错信息分析
+git push语法1234567891011121314151617181920$ git push &amp;lt;远程主机名&amp;gt; &amp;lt;本地分支名&amp;gt;:&amp;lt;远程分支名&amp;gt; # 如果省略远程分支名，则表示将本地分支与之存在“追踪关系”的远程分支(通常两者同名)，# 如果该远程分支不存在，则会被新建$ git">
 
 
 
@@ -88,7 +88,7 @@
   };
 </script>
 
-  <title> Git常用命令（2） | xiuhong </title>
+  <title> Git常用命令（8）-- 关于push | xiuhong </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -208,7 +208,7 @@
             
             
               
-                Git常用命令（2）
+                Git常用命令（8）-- 关于push
               
             
           </h1>
@@ -220,8 +220,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-14T08:49:46+08:00" content="2016-02-14">
-              2016-02-14
+            <time itemprop="dateCreated" datetime="2016-02-28T09:07:30+08:00" content="2016-02-28">
+              2016-02-28
             </time>
           </span>
 
@@ -246,22 +246,12 @@
       
 
       
-        <p><img src="/uploads/git-life-style.png" alt=""></p>
-<h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">检查当前文件状态</span><br><span class="line">跟踪新文件</span><br><span class="line">暂存已修改文件</span><br><span class="line">忽略某些文件</span><br></pre></td></tr></table></figure>
-<h4 id="u68C0_u67E5_u5F53_u524D_u6587_u4EF6_u72B6_u6001"><a href="#u68C0_u67E5_u5F53_u524D_u6587_u4EF6_u72B6_u6001" class="headerlink" title="检查当前文件状态"></a>检查当前文件状态</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working directory clean</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例信息</span></span><br><span class="line">已跟踪文件未被更改过</span><br><span class="line">没有未跟踪的新文件</span><br><span class="line">当前所在分支为master</span><br></pre></td></tr></table></figure>
+        <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push的语法</span><br><span class="line">多分支情况下git push 出现的报错信息分析</span><br></pre></td></tr></table></figure>
+<h4 id="git_push_u8BED_u6CD5"><a href="#git_push_u8BED_u6CD5" class="headerlink" title="git push语法"></a>git push语法</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$ git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt; </span><br><span class="line"><span class="comment"># 如果省略远程分支名，则表示将本地分支与之存在“追踪关系”的远程分支(通常两者同名)，</span></span><br><span class="line"><span class="comment"># 如果该远程分支不存在，则会被新建</span></span><br><span class="line"></span><br><span class="line">$ git push origin master</span><br><span class="line"><span class="comment"># 上面命令表示，将本地的master分支推送到origin主机的master分支</span></span><br><span class="line"><span class="comment"># 如果后者不存在，则会被新建</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果省略本地分支名，则表示删除指定的远程分支</span></span><br><span class="line"><span class="comment"># 等同于推送一个空的本地分支到远程分支</span></span><br><span class="line">$ git push origin :master</span><br><span class="line"><span class="comment"># 等同于</span></span><br><span class="line">$ git push origin --delete master</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果当前分支与远程分支之间存在追踪关系</span></span><br><span class="line"><span class="comment"># 则本地分支和远程分支都可以省略</span></span><br><span class="line">$ git push origin</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果当前分支只有一个追踪分支，那么主机名都可以省略</span></span><br><span class="line">$ git push</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<blockquote>
-<p>创建新文件 README，保存退出后运行 git status</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ vim README</span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Untracked files:</span><br><span class="line">  (use <span class="string">"git add &lt;file&gt;..."</span> to include <span class="keyword">in</span> what will be committed)</span><br><span class="line"></span><br><span class="line">        README</span><br><span class="line"></span><br><span class="line">nothing added to commit but untracked files present (use <span class="string">"git add"</span> to track)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例信息</span></span><br><span class="line">README出现在Untracked files下</span><br><span class="line">Git在之前的快照（提交中）没有README这个文件</span><br><span class="line">除非手动跟踪README，git不会自动跟踪文件</span><br></pre></td></tr></table></figure>
-<h4 id="u8DDF_u8E2A_u65B0_u6587_u4EF6"><a href="#u8DDF_u8E2A_u65B0_u6587_u4EF6" class="headerlink" title="跟踪新文件"></a>跟踪新文件</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ git add README</span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use <span class="string">"git reset HEAD &lt;file&gt;..."</span> to unstage)</span><br><span class="line"></span><br><span class="line">        new file:   README</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例信息</span></span><br><span class="line">只要是在Changes to be committed下面，就说明是已暂存状态</span><br><span class="line">如果此时提交，文件此时的版本将被留存在历史记录中</span><br><span class="line">git add后面可以指明要跟踪文件或目录路径。</span><br><span class="line">如果是目录，就说明要递归跟踪该目录下的所有文件</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>git add 是个多功能命令，根据目标文件的状态不同，此命令的效果也不同：可以用它开始跟踪新文件，或者把已跟踪的文件放到暂存区，还能用于合并时把有冲突的文件标记为已解决状态</p>
-</blockquote>
-<h4 id="u5FFD_u7565_u67D0_u4E9B_u6587_u4EF6"><a href="#u5FFD_u7565_u67D0_u4E9B_u6587_u4EF6" class="headerlink" title="忽略某些文件"></a>忽略某些文件</h4><blockquote>
-<p>对于一些自动生成的日志文件、编译过程中创建的临时文件，不需要git进行跟踪。创建.gitignore，列出要忽略的文件模式(可用正则)。</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 此为注释 – 将被 Git 忽略</span></span><br><span class="line"><span class="comment"># 忽略所有 .a 结尾的文件</span></span><br><span class="line">*.a</span><br><span class="line"><span class="comment"># 但 lib.a 除外</span></span><br><span class="line">!lib.a</span><br><span class="line"><span class="comment"># 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO</span></span><br><span class="line">/TODO</span><br><span class="line"><span class="comment"># 忽略 build/ 目录下的所有文件</span></span><br><span class="line">build/</span><br><span class="line"><span class="comment"># 会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</span></span><br><span class="line">doc/*.txt</span><br><span class="line"><span class="comment"># ignore all .txt files in the doc/ directory</span></span><br><span class="line">doc/**/*.txt</span><br></pre></td></tr></table></figure>
+<h4 id="u591A_u5206_u652F_u60C5_u51B5_u4E0Bgit_push_u51FA_u73B0_u7684_u62A5_u9519_u4FE1_u606F"><a href="#u591A_u5206_u652F_u60C5_u51B5_u4E0Bgit_push_u51FA_u73B0_u7684_u62A5_u9519_u4FE1_u606F" class="headerlink" title="多分支情况下git push出现的报错信息"></a>多分支情况下git push出现的报错信息</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 背景：</span></span><br><span class="line"><span class="comment"># 1 远程和本地有多条分支</span></span><br><span class="line"><span class="comment"># 2 使用git push （不带参数）推送本地分支数据</span></span><br></pre></td></tr></table></figure>
+<p><img src="/uploads/git-09-push.png" alt=""></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">分析：</span><br><span class="line"><span class="comment"># 1 红框内表示dev-&gt;dev分支推送成功</span></span><br><span class="line"><span class="comment"># 2 绿框内表示master-&gt;master分支推送失败</span></span><br><span class="line">    原因是，本地分支版本落后于远程库版本</span><br><span class="line"></span><br><span class="line"><span class="comment"># 原因：git push时不带任何参数有两种推送方式</span></span><br><span class="line"><span class="comment"># simple方式：只推送当前分支</span></span><br><span class="line"><span class="comment"># matching方式：推送所有有对应关系的分支</span></span><br><span class="line"><span class="comment"># 显然上面git push出错是因为默认使用了matching方式推送</span></span><br><span class="line"><span class="comment"># 它不但把dev分支推送到了远程库，也尝试把master分支推送到远程库</span></span><br><span class="line"><span class="comment"># 由于本地master分支代码没有拉取合并（pull）过，所以push时报错</span></span><br><span class="line"></span><br><span class="line">解决：</span><br><span class="line"><span class="comment"># 1 明确指定推送分支信息</span></span><br><span class="line">$ git push origin dev:dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2 设置推送方式</span></span><br><span class="line">$ git config --global push.default simple （推荐）</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">$ git config --global push.default matching</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -279,17 +269,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/13/2016-02-13-git/" rel="next" title="Git常用命令（1）">
-                <i class="fa fa-chevron-left"></i> Git常用命令（1）
+              <a href="/2016/02/26/judg-ie-version/" rel="next" title="Html判断IE浏览器版本">
+                <i class="fa fa-chevron-left"></i> Html判断IE浏览器版本
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/02/15/git-03/" rel="prev" title="Git常用命令（3）">
-                Git常用命令（3） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -400,7 +386,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#u672C_u8282_u5185_u5BB9"><span class="nav-number">1.</span> <span class="nav-text">本节内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u68C0_u67E5_u5F53_u524D_u6587_u4EF6_u72B6_u6001"><span class="nav-number">2.</span> <span class="nav-text">检查当前文件状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u8DDF_u8E2A_u65B0_u6587_u4EF6"><span class="nav-number">3.</span> <span class="nav-text">跟踪新文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u5FFD_u7565_u67D0_u4E9B_u6587_u4EF6"><span class="nav-number">4.</span> <span class="nav-text">忽略某些文件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#git_push_u8BED_u6CD5"><span class="nav-number">1.</span> <span class="nav-text">git push语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u591A_u5206_u652F_u60C5_u51B5_u4E0Bgit_push_u51FA_u73B0_u7684_u62A5_u9519_u4FE1_u606F"><span class="nav-number">2.</span> <span class="nav-text">多分支情况下git push出现的报错信息</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
