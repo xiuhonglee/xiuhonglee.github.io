@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="模块化," />
+  <meta name="keywords" content="Gulp," />
 
 
 
@@ -57,34 +57,25 @@
 
 
 
-<meta name="description" content="本节内容12模块化规范介绍CommonJS标准
-模块化规范介绍
-CommonJS的目标是定义一套普通应用程序使用的API，弥补JavaScript标准库过少的缺点。NodeJS就是一个CommonJS的一个实现；CommonJS是一种规范，NodeJS是这种规范的实现
-
-
-模块化规范，主要是为了统一模块化的编写方式
-Javascript本身没有内置的模块系统（ES6引入了模块系统）">
+<meta name="description" content="本节内容12手动创建项目框架gulp常用API
+手动创建项目框架123456# 创建项目目录$ mkdir your_project &amp;amp;&amp;amp; cd your_project# 创建package.json文件# 会引导输入有关项目的一些信息（如：项目名称、版本、作者信息等）$ npm init
+以jade为例1$ npm install jade --dev-save
+初始化pack">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CommonJs规范">
-<meta property="og:url" content="http://xiuhonglee.com/2016/02/15/CommonJs/index.html">
+<meta property="og:title" content="前端自动化-gulp">
+<meta property="og:url" content="http://xiuhonglee.com/2016/02/28/gulp-01/index.html">
 <meta property="og:site_name" content="xiuhong">
-<meta property="og:description" content="本节内容12模块化规范介绍CommonJS标准
-模块化规范介绍
-CommonJS的目标是定义一套普通应用程序使用的API，弥补JavaScript标准库过少的缺点。NodeJS就是一个CommonJS的一个实现；CommonJS是一种规范，NodeJS是这种规范的实现
-
-
-模块化规范，主要是为了统一模块化的编写方式
-Javascript本身没有内置的模块系统（ES6引入了模块系统）">
-<meta property="og:updated_time" content="2016-02-15T06:41:28.000Z">
+<meta property="og:description" content="本节内容12手动创建项目框架gulp常用API
+手动创建项目框架123456# 创建项目目录$ mkdir your_project &amp;amp;&amp;amp; cd your_project# 创建package.json文件# 会引导输入有关项目的一些信息（如：项目名称、版本、作者信息等）$ npm init
+以jade为例1$ npm install jade --dev-save
+初始化pack">
+<meta property="og:updated_time" content="2016-02-28T07:30:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CommonJs规范">
-<meta name="twitter:description" content="本节内容12模块化规范介绍CommonJS标准
-模块化规范介绍
-CommonJS的目标是定义一套普通应用程序使用的API，弥补JavaScript标准库过少的缺点。NodeJS就是一个CommonJS的一个实现；CommonJS是一种规范，NodeJS是这种规范的实现
-
-
-模块化规范，主要是为了统一模块化的编写方式
-Javascript本身没有内置的模块系统（ES6引入了模块系统）">
+<meta name="twitter:title" content="前端自动化-gulp">
+<meta name="twitter:description" content="本节内容12手动创建项目框架gulp常用API
+手动创建项目框架123456# 创建项目目录$ mkdir your_project &amp;amp;&amp;amp; cd your_project# 创建package.json文件# 会引导输入有关项目的一些信息（如：项目名称、版本、作者信息等）$ npm init
+以jade为例1$ npm install jade --dev-save
+初始化pack">
 
 
 
@@ -102,7 +93,7 @@ Javascript本身没有内置的模块系统（ES6引入了模块系统）">
   };
 </script>
 
-  <title> CommonJs规范 | xiuhong </title>
+  <title> 前端自动化-gulp | xiuhong </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -222,7 +213,7 @@ Javascript本身没有内置的模块系统（ES6引入了模块系统）">
             
             
               
-                CommonJs规范
+                前端自动化-gulp
               
             
           </h1>
@@ -234,8 +225,8 @@ Javascript本身没有内置的模块系统（ES6引入了模块系统）">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-15T13:23:50+08:00" content="2016-02-15">
-              2016-02-15
+            <time itemprop="dateCreated" datetime="2016-02-28T13:43:08+08:00" content="2016-02-28">
+              2016-02-28
             </time>
           </span>
 
@@ -260,25 +251,14 @@ Javascript本身没有内置的模块系统（ES6引入了模块系统）">
       
 
       
-        <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">模块化规范介绍</span><br><span class="line">CommonJS标准</span><br></pre></td></tr></table></figure>
-<h4 id="u6A21_u5757_u5316_u89C4_u8303_u4ECB_u7ECD"><a href="#u6A21_u5757_u5316_u89C4_u8303_u4ECB_u7ECD" class="headerlink" title="模块化规范介绍"></a>模块化规范介绍</h4><blockquote>
-<p>CommonJS的目标是定义一套普通应用程序使用的API，弥补JavaScript标准库过少的缺点。NodeJS就是一个CommonJS的一个实现；CommonJS是一种规范，NodeJS是这种规范的实现</p>
-</blockquote>
-<ol>
-<li>模块化规范，主要是为了统一模块化的编写方式</li>
-<li>Javascript本身没有内置的模块系统（ES6引入了模块系统）</li>
-</ol>
+        <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">手动创建项目框架</span><br><span class="line">gulp常用API</span><br></pre></td></tr></table></figure>
+<h4 id="u624B_u52A8_u521B_u5EFA_u9879_u76EE_u6846_u67B6"><a href="#u624B_u52A8_u521B_u5EFA_u9879_u76EE_u6846_u67B6" class="headerlink" title="手动创建项目框架"></a>手动创建项目框架</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建项目目录</span></span><br><span class="line">$ mkdir your_project &amp;&amp; <span class="built_in">cd</span> your_project</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建package.json文件</span></span><br><span class="line"><span class="comment"># 会引导输入有关项目的一些信息（如：项目名称、版本、作者信息等）</span></span><br><span class="line">$ npm init</span><br></pre></td></tr></table></figure>
+<h5 id="u4EE5jade_u4E3A_u4F8B"><a href="#u4EE5jade_u4E3A_u4F8B" class="headerlink" title="以jade为例"></a>以jade为例</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install jade --dev-save</span><br></pre></td></tr></table></figure>
+<h5 id="u521D_u59CB_u5316package-json_u6587_u4EF6"><a href="#u521D_u59CB_u5316package-json_u6587_u4EF6" class="headerlink" title="初始化package.json文件"></a>初始化package.json文件</h5><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "<span class="attribute">name</span>": <span class="value"><span class="string">"gulpfile"</span></span>,</span><br><span class="line">  "<span class="attribute">version</span>": <span class="value"><span class="string">"1.0.0"</span></span>,</span><br><span class="line">  "<span class="attribute">description</span>": <span class="value"><span class="string">"learn gulp"</span></span>,</span><br><span class="line">  "<span class="attribute">main</span>": <span class="value"><span class="string">"gulpfile.js"</span></span>,</span><br><span class="line">  "<span class="attribute">dependencies</span>": <span class="value">&#123;&#125;</span>,</span><br><span class="line">  "<span class="attribute">devDependencies</span>": <span class="value">&#123;&#125;</span>,</span><br><span class="line">  "<span class="attribute">scripts</span>": <span class="value">&#123;</span><br><span class="line">    "<span class="attribute">test</span>": <span class="value"><span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span></span><br><span class="line">  </span>&#125;</span>,</span><br><span class="line">  "<span class="attribute">author</span>": <span class="value"><span class="string">"xiuhong"</span></span>,</span><br><span class="line">  "<span class="attribute">license</span>": <span class="value"><span class="string">"ISC"</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h4 id="CommonJS_u6807_u51C6"><a href="#CommonJS_u6807_u51C6" class="headerlink" title="CommonJS标准"></a>CommonJS标准</h4><ol>
-<li><p>CommonJS有一个全局性的方法require()，主要用于加载模块，加载后，就可以调用模块的方法；</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入模块</span></span><br><span class="line"><span class="keyword">var</span> math = <span class="built_in">require</span>(<span class="string">'math'</span>)</span><br><span class="line"><span class="comment">// 调用math模块方法</span></span><br><span class="line">math.add(<span class="number">2</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>CommonJS通过全局变量exports来导入模块的方法。导入的方法，便是这个模块的API</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// math.js</span></span><br><span class="line">exports.add = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> sum = <span class="number">0</span>, i = <span class="number">0</span>, args = <span class="built_in">arguments</span>, l = args.length;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; l) &#123;</span><br><span class="line">        sum += args[i++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>CommonJS规范中的require是同步的，模块系统同步读取模块文件内容，并编译执行得到模块接口。在服务器端(如Node)文件都是本地获取，对性能没有什么影响。但在浏览器端，请求文件要异步获取，于是针对浏览器就有了新标准的出现，如AMD（Asynchronous Module Definition异步模块定义）规范。最终AMD从CommonJS社区中独立出来。</p>
-</li>
-</ol>
+<h5 id="u9879_u76EE_u76EE_u5F55_u7ED3_u6784"><a href="#u9879_u76EE_u76EE_u5F55_u7ED3_u6784" class="headerlink" title="项目目录结构"></a>项目目录结构</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">└── view</span><br><span class="line">    ├── head.jade</span><br><span class="line">    ├── index.jade</span><br><span class="line">    └── layout.jade</span><br><span class="line">├── node_modules/</span><br><span class="line">├── package.json</span><br><span class="line">└── gulpfile.js</span><br></pre></td></tr></table></figure>
+<h5 id="gulpfile-js_u6587_u4EF6"><a href="#gulpfile-js_u6587_u4EF6" class="headerlink" title="gulpfile.js文件"></a>gulpfile.js文件</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="keyword">var</span> jade = <span class="built_in">require</span>(<span class="string">'gulp-jade'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1 gulp.src(globs[, options])</span></span><br><span class="line">gulp.task(<span class="string">'build'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">    gulp.src(<span class="string">'view/*.jade'</span>)</span><br><span class="line">        .pipe(jade())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'build/minified_templates'</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="gulp_u5E38_u7528API"><a href="#gulp_u5E38_u7528API" class="headerlink" title="gulp常用API"></a>gulp常用API</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. gulp.src(globs[, options])</span></span><br><span class="line"><span class="comment"># 参数globs: 匹配模式，将返回一个stream被piped到其它插件中</span></span><br><span class="line"><span class="comment"># 上例中：gulp.src('view/*.jade')将匹配到view下的jade文件，</span></span><br><span class="line"><span class="comment"># 将*.jade文件通过pipe流到下一个插件(jade)被处理</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. gulp.dest(path[, options])</span></span><br><span class="line"><span class="comment"># 参数path:目标文件地址</span></span><br><span class="line"><span class="comment"># 上例中：gulp.dest('build/minified_templates')</span></span><br><span class="line"><span class="comment"># 将编译好的文件放到了build/minified_templates文件夹下</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. gulp.task(name[, deps], fn) (重点)</span></span><br><span class="line"><span class="comment"># 参数name: task的名字（不要使用空格）</span></span><br><span class="line"><span class="comment"># deps: arr依赖的任务名</span></span><br><span class="line"><span class="comment"># fn: 该函数定义任务所要执行的一些操作，通常是这中形式</span></span><br><span class="line"><span class="comment"># gulp.src().pipe(someplugin())</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -287,7 +267,7 @@ Javascript本身没有内置的模块系统（ES6引入了模块系统）">
       
         <div class="post-tags">
           
-            <a href="/tags/模块化/" rel="tag">#模块化</a>
+            <a href="/tags/Gulp/" rel="tag">#Gulp</a>
           
         </div>
       
@@ -296,17 +276,13 @@ Javascript本身没有内置的模块系统（ES6引入了模块系统）">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/15/jQuery-deferred/" rel="next" title="jQuery.deferred">
-                <i class="fa fa-chevron-left"></i> jQuery.deferred
+              <a href="/2016/02/28/git-09/" rel="next" title="Git常用命令（9）-- 关于push">
+                <i class="fa fa-chevron-left"></i> Git常用命令（9）-- 关于push
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/02/15/amd-cmd/" rel="prev" title="AMD和CMD规范">
-                AMD和CMD规范 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -417,7 +393,7 @@ Javascript本身没有内置的模块系统（ES6引入了模块系统）">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#u672C_u8282_u5185_u5BB9"><span class="nav-number">1.</span> <span class="nav-text">本节内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u6A21_u5757_u5316_u89C4_u8303_u4ECB_u7ECD"><span class="nav-number">2.</span> <span class="nav-text">模块化规范介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CommonJS_u6807_u51C6"><span class="nav-number">3.</span> <span class="nav-text">CommonJS标准</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#u672C_u8282_u5185_u5BB9"><span class="nav-number">1.</span> <span class="nav-text">本节内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u624B_u52A8_u521B_u5EFA_u9879_u76EE_u6846_u67B6"><span class="nav-number">2.</span> <span class="nav-text">手动创建项目框架</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#u4EE5jade_u4E3A_u4F8B"><span class="nav-number">2.1.</span> <span class="nav-text">以jade为例</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u521D_u59CB_u5316package-json_u6587_u4EF6"><span class="nav-number">2.2.</span> <span class="nav-text">初始化package.json文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u9879_u76EE_u76EE_u5F55_u7ED3_u6784"><span class="nav-number">2.3.</span> <span class="nav-text">项目目录结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#gulpfile-js_u6587_u4EF6"><span class="nav-number">2.4.</span> <span class="nav-text">gulpfile.js文件</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gulp_u5E38_u7528API"><span class="nav-number">3.</span> <span class="nav-text">gulp常用API</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
