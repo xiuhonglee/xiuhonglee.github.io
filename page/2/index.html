@@ -217,6 +217,94 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/18/git-05/" itemprop="url">
+                  Git常用命令（5）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-18T22:01:21+08:00" content="2016-02-18">
+              2016-02-18
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">撤消操作</span><br><span class="line">回退未推送远程仓库</span><br><span class="line">再次回退到新版本</span><br></pre></td></tr></table></figure>
+<h4 id="u4FEE_u6539_u6700_u540E_u4E00_u6B21_u63D0_u4EA4"><a href="#u4FEE_u6539_u6700_u540E_u4E00_u6B21_u63D0_u4EA4" class="headerlink" title="修改最后一次提交"></a>修改最后一次提交</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 情况一： 所有文件都已提交，只是想修改提交信息</span></span><br><span class="line">$ git commit --amend</span><br><span class="line"></span><br><span class="line"><span class="comment"># 情况二： 有文件未提交修改，可先提交，再使用--amend</span></span><br><span class="line">$ git add <span class="built_in">test</span>1.md </span><br><span class="line">$ git commit -m <span class="string">"add test1.md"</span></span><br><span class="line">$ git add .test2.md </span><br><span class="line">$ git commit --amend</span><br></pre></td></tr></table></figure>
+<h4 id="u5411_u540E_u56DE_u9000_u672A_u63A8_u9001_u8FDC_u7A0B_u4ED3_u5E93"><a href="#u5411_u540E_u56DE_u9000_u672A_u63A8_u9001_u8FDC_u7A0B_u4ED3_u5E93" class="headerlink" title="向后回退未推送远程仓库"></a>向后回退未推送远程仓库</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 本地代码库还没有push，add\commit 后想回退  </span></span><br><span class="line">$ git reset  [—soft | —mixed | —hard ]  HEAD^ </span><br><span class="line"></span><br><span class="line"><span class="comment">#-—soft：会保留源码，只回退到commit的某个版本，</span></span><br><span class="line"><span class="comment"># 不涉及index的回退，如果还需要提交，直接commit即可</span></span><br><span class="line"><span class="comment"># 觉得有点类似 $ git commit --amend</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># --mixed：会保留源码，只将git commit 和index(add)信息回退到某个版本  </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># --hard：源码也会回退到某个版本，commit和index也会回退（会改变本地代码）</span></span><br></pre></td></tr></table></figure>
+<h4 id="u518D_u6B21_u56DE_u9000_u5230_u65B0_u7248_u672C"><a href="#u518D_u6B21_u56DE_u9000_u5230_u65B0_u7248_u672C" class="headerlink" title="再次回退到新版本"></a>再次回退到新版本</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看提交历史版本信息</span></span><br><span class="line">（包括回退掉的，比如$ git reset --hard HEAD^后，$ git <span class="built_in">log</span>的信息不回包括reset掉的那个版本） </span><br><span class="line">$ git reflog</span><br><span class="line"></span><br><span class="line"><span class="comment"># 回退到指定</span></span><br><span class="line">$ git reset —hard <span class="built_in">hash</span>-value</span><br></pre></td></tr></table></figure>
+<h5 id="u5DF2_u63A8_u9001_u5230_u8FDC_u7A0B_u7248_u672C_u56DE_u9000"><a href="#u5DF2_u63A8_u9001_u5230_u8FDC_u7A0B_u7248_u672C_u56DE_u9000" class="headerlink" title="已推送到远程版本回退"></a>已推送到远程版本回退</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git revert &lt;commit <span class="built_in">hash</span>&gt;</span><br><span class="line"><span class="comment"># 需保证工作目录干净</span></span><br><span class="line"><span class="comment"># 用一次新的提交来覆盖旧的提交</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 别忘了push更新远程目录</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/02/16/git-04/" itemprop="url">
                   Git常用命令（4）
                 </a>
@@ -1016,120 +1104,12 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/11/2016-plan/" itemprop="url">
-                  2016，一点愿景
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-11T17:11:39+08:00" content="2016-02-11">
-              2016-02-11
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>要结束学生身份（反正早就没觉得自己还是个学生），走向社会，工作第一年，写下些愿景，走着瞧着……</p>
-<h4 id="u953B_u70BC_u597D_u8EAB_u4F53_uFF0C_u591A_u957F_u51E0_u65A4_u8089"><a href="#u953B_u70BC_u597D_u8EAB_u4F53_uFF0C_u591A_u957F_u51E0_u65A4_u8089" class="headerlink" title="锻炼好身体，多长几斤肉"></a>锻炼好身体，多长几斤肉</h4><blockquote>
-<p>健康第一，早睡早起，抽空锻炼，多吃米饭 </p>
-</blockquote>
-<h4 id="u5199_u597D_u8BBA_u6587_uFF0C_u987A_u5229_u6BD5_u4E1A"><a href="#u5199_u597D_u8BBA_u6587_uFF0C_u987A_u5229_u6BD5_u4E1A" class="headerlink" title="写好论文，顺利毕业"></a>写好论文，顺利毕业</h4><blockquote>
-<p>说好年假多收集些论文资料，翻了些闲书、捣鼓其它东西给耽误了……时间紧迫，要抓紧咯……</p>
-</blockquote>
-<h4 id="u591A_u8BFB_u51E0_u672C_u4E66"><a href="#u591A_u8BFB_u51E0_u672C_u4E66" class="headerlink" title="多读几本书"></a>多读几本书</h4><blockquote>
-<p>读书少，不敢乱思考，准备好了上半年的书单，一大斗的精神食粮  </p>
-</blockquote>
-<ol>
-<li><p>历史的教训<br> 历史漫长，无法还原真实；历史到底是猜测，部分是偏见；再读历史，也不纠结历史真相，以发掘独特的历史观为乐；书到手就翻了一遍，大题短论，视野广阔；作者威尔·杜兰特，不熟悉，不过其哲学导师是大名鼎鼎的杜威（和罗素一起来过湖南做演讲），估计毛爷爷年轻时见过杜威。</p>
-</li>
-<li><p>湖南人与现代中国<br> 第一次读地方史，作者又是个美利坚，自然也是译作。当年读的毛爷爷传，作者是澳洲人。过年走亲串户的空当也翻了一遍，此书比毛传要学术些。读完又是一堆故事留下，惆怅，自己到底还是肤浅的浊物，没留下深刻的道理供我去“传道”。湖南的近代史上群英璀璨，曾国藩、郭嵩焘、张之洞、谭嗣同、陈天华、黄兴、蔡锷（可惜英年早逝）、宋教仁、杨昌济、毛泽东、彭德怀……看着散落的龙珠，在这里被穿了起来，这兴奋的心情怎一个爽字！！！</p>
-</li>
-<li><p>一生里的某个时刻<br> 翻了个开头，文艺粮？不确定，写下生活里胡思乱想的瞬间的看来不止我一个，看看别人家的三观作践下自己……</p>
-</li>
-<li><p>穷忙<br> 财经类？分不清，谁推荐给我的？ 抽空咽下去，尝尝什么味道……</p>
-</li>
-<li><p>看见未来 一个人的电商 互联网+从IT到DT<br> 这三本算是财经类。吃的也算是互联网的饭，避免闲聊时的尴尬，</p>
-</li>
-<li><p>失控<br> 厚厚一本，翻了一点点，有一本碾压思想的大部头……</p>
-</li>
-</ol>
-<h4 id="u52AA_u529B_u5DE5_u4F5C_uFF0C_u63D0_u5347_u6280_u80FD"><a href="#u52AA_u529B_u5DE5_u4F5C_uFF0C_u63D0_u5347_u6280_u80FD" class="headerlink" title="努力工作，提升技能"></a>努力工作，提升技能</h4><p>先养活好自己</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1170,7 +1150,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
