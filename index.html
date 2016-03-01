@@ -221,6 +221,109 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/29/phantomJS-01/" itemprop="url">
+                  phantomJS-01
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-29T13:48:43+08:00" content="2016-02-29">
+              2016-02-29
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">phantomJS介绍</span><br><span class="line">phantomJS安装</span><br><span class="line">phantomJS入门</span><br></pre></td></tr></table></figure>
+<h4 id="phantomJS_u4ECB_u7ECD"><a href="#phantomJS_u4ECB_u7ECD" class="headerlink" title="phantomJS介绍"></a>phantomJS介绍</h4><ol>
+<li>PhantomJS是一个基于webkit的javaScript API</li>
+<li>它使用QtWebKit作为它核心浏览器功能</li>
+<li>使用webKit来编译解释执行JavaScript代码</li>
+<li>任何可以基于webkit浏览器做的事情，它都可以做到</li>
+<li>提供了诸如CSS选择器、支持Web标准、DOM操作、JSON、HTML5、Canvas等</li>
+<li>同事提供了处理文件I/O的操作，可以向操作系统读写文件</li>
+<li>用途广泛：网络监控、网页截屏、无需浏览器的Web测试、页面访问自动化<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">PhantomJS官方地址：http://phantomjs.org/</span><br><span class="line"></span><br><span class="line">PhantomJS官方API：http://phantomjs.org/api/</span><br><span class="line"></span><br><span class="line">PhantomJS官方示例：http://phantomjs.org/examples/</span><br><span class="line"></span><br><span class="line">PhantomJS GitHub：https://github.com/ariya/phantomjs/</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="phantomJS_u5B89_u88C5"><a href="#phantomJS_u5B89_u88C5" class="headerlink" title="phantomJS安装"></a>phantomJS安装</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1 下载phantomJS安装包</span></span><br><span class="line"><span class="comment"># 2 解压进入bin目录，获取路径</span></span><br><span class="line"><span class="comment"># 3 将bin路径添加到环境变量中</span></span><br></pre></td></tr></table></figure>
+<p><img src="/uploads/phantomJS.png" alt=""></p>
+<ul>
+<li>如何添加环境变量，请<a href="http://xiuhonglee.com/2016/02/25/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">点我</a></li>
+</ul>
+<h4 id="phantomJS_u5165_u95E8"><a href="#phantomJS_u5165_u95E8" class="headerlink" title="phantomJS入门"></a>phantomJS入门</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// hello.js文件</span></span><br><span class="line"><span class="pi">"use strict"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Hello, world!'</span>);</span><br><span class="line">phantom.exit(); <span class="comment">// 必需！否则无法退出phantomJS</span></span><br></pre></td></tr></table></figure>
+<p><strong> 运行 </strong><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装包里有examples/hello.js文件</span></span><br><span class="line">$ phantomJS hello.js</span><br><span class="line"><span class="comment"># The output is: Hello, world!</span></span><br></pre></td></tr></table></figure></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/29/phantomJS-01/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/02/28/gulp-01/" itemprop="url">
                   前端自动化-gulp
                 </a>
@@ -659,7 +762,7 @@
 
       
         
-          <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">反向删除文件</span><br></pre></td></tr></table></figure>
+          <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">反向删除文件</span><br><span class="line">配置环境变量(mac)</span><br></pre></td></tr></table></figure>
 <h4 id="u53CD_u5411_u5220_u9664_u6587_u4EF6"><a href="#u53CD_u5411_u5220_u9664_u6587_u4EF6" class="headerlink" title="反向删除文件"></a>反向删除文件</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先了解一下Linux下强大的文本搜索工具</span></span><br><span class="line"><span class="comment"># 它能使用正则表达是搜索文本，并把匹配的行打印出来</span></span><br><span class="line">$ grep [-acinv] [--color=auto] <span class="string">'搜索字符串'</span> file-name</span><br><span class="line"></span><br><span class="line"><span class="comment"># 选项与参数：</span></span><br><span class="line"><span class="comment"># -a : 将binary文件以text文件的方式搜寻数据（并不明白）</span></span><br><span class="line"><span class="comment"># -c : 计算找到 '搜寻字符串'的次数</span></span><br><span class="line"><span class="comment"># -i : 忽略大小写</span></span><br><span class="line"><span class="comment"># -n : 输出行号</span></span><br><span class="line"><span class="comment"># -v : 反向选择（就是用这个参数来实现反向删除文件的）</span></span><br><span class="line"><span class="comment"># --color=auto : 对匹配到的关键词进行高亮显示（鸡肋）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 实现反向删除；把除README.md之外的文件全部删除</span></span><br><span class="line">$ rm `ls | grep -v <span class="string">'README.md'</span>`</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/02/25/linux常用命令/#more" rel="contents">
@@ -1031,93 +1134,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/16/git-04/" itemprop="url">
-                  Git常用命令（4）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-16T17:43:52+08:00" content="2016-02-16">
-              2016-02-16
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查看提交历史</span><br></pre></td></tr></table></figure>
-<h4 id="u67E5_u770B_u63D0_u4EA4_u5386_u53F2"><a href="#u67E5_u770B_u63D0_u4EA4_u5386_u53F2" class="headerlink" title="查看提交历史"></a>查看提交历史</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 主要命令 --&gt;</span><br><span class="line"><span class="comment"># SHA-1校验和 / 提交时间 / 作者 / 邮件 / 提交时间</span></span><br><span class="line">$ git <span class="built_in">log</span> </span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示每次提交的内容差异，-n显示最近n次提交</span></span><br><span class="line">$ git <span class="built_in">log</span> -p -n </span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交摘要，仅显示简要的增改行数统计</span></span><br><span class="line">$ git <span class="built_in">log</span> --stat</span><br><span class="line"></span><br><span class="line"><span class="comment"># 高度可自定义 </span></span><br><span class="line">$ git <span class="built_in">log</span> --pretty=oneline</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/16/git-04/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1174,7 +1190,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
