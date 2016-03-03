@@ -189,6 +189,15 @@
 
     
     
+      
+      
+        
+        
+        
+      
+
+      
+    
 
     
       
@@ -341,15 +350,17 @@
 
       
         
-          
-            <p><img src="/uploads/javascript-date.jpg" alt=""></p>
+          <p><img src="/uploads/javascript-date.jpg" alt=""></p>
 <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ECMAScript Date类型</span><br></pre></td></tr></table></figure>
 <h4 id="ECMAScript_Date_u7C7B_u578B"><a href="#ECMAScript_Date_u7C7B_u578B" class="headerlink" title="ECMAScript Date类型"></a>ECMAScript Date类型</h4><blockquote>
 <p>Date类型使用UTC(国际协调时间)1970年1月1日午夜(零时)开始经过的毫秒数来保存日期。<br>Date类型保存的日期能够精确到1970年1月1日之前或之后285616年（&gt;28万年，呵呵~~）</p>
 </blockquote>
-<h5 id="u521B_u5EFA_u4E00_u4E2A_u65E5_u671F_u5BF9_u8C61"><a href="#u521B_u5EFA_u4E00_u4E2A_u65E5_u671F_u5BF9_u8C61" class="headerlink" title="创建一个日期对象"></a>创建一个日期对象</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="comment">// 不传参数的情况下，新创建的对象自动获得当前日期和时间</span></span><br><span class="line"><span class="comment">//</span></span><br></pre></td></tr></table></figure>
-
-          
+<h5 id="u521B_u5EFA_u4E00_u4E2A_u65E5_u671F_u5BF9_u8C61"><a href="#u521B_u5EFA_u4E00_u4E2A_u65E5_u671F_u5BF9_u8C61" class="headerlink" title="创建一个日期对象"></a>创建一个日期对象</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="comment">// 不传参数的情况下，新创建的对象自动获得当前日期和时间</span></span><br><span class="line"><span class="comment">// 如果想根据特定的日期和时间创建日期对象，必须传入表示改日期的毫秒数</span></span><br><span class="line"><span class="comment">// (即从UTC时间1970年1月1日午夜起至改日期为止经过的毫秒数)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 有两种方法可以简化这一过程Date.parse()和Date.UTC()</span></span><br><span class="line"><span class="built_in">Date</span>.parse()</span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/03/javascript-date/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
