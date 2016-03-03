@@ -57,20 +57,22 @@
 
 
 
-<meta name="description" content="12git push的语法多分支情况下git push 出现的报错信息分析
-git push语法1234567891011121314151617181920$ git push &amp;lt;远程主机名&amp;gt; &amp;lt;本地分支名&amp;gt;:&amp;lt;远程分支名&amp;gt; # 如果省略远程分支名，则表示将本地分支与之存在“追踪关系”的远程分支(通常两者同名)，# 如果该远程分支不存在，则会被新建$ git">
+<meta name="description" content="12345git push的语法多分支情况下git push 出现的报错信息分析git pull默认行为关于upstream和downstream关于push.default
+git push语法1234567891011121314151617181920$ git push &amp;lt;远程主机名&amp;gt; &amp;lt;本地分支名&amp;gt;:&amp;lt;远程分支名&amp;gt; # 如果省略远程分支名，则表示将本地">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git常用命令（9）-- 关于push">
+<meta property="og:title" content="Git常用命令（9）-- 关于push/pull 默认行为">
 <meta property="og:url" content="http://xiuhonglee.com/2016/02/28/git-09/index.html">
 <meta property="og:site_name" content="xiuhong">
-<meta property="og:description" content="12git push的语法多分支情况下git push 出现的报错信息分析
-git push语法1234567891011121314151617181920$ git push &amp;lt;远程主机名&amp;gt; &amp;lt;本地分支名&amp;gt;:&amp;lt;远程分支名&amp;gt; # 如果省略远程分支名，则表示将本地分支与之存在“追踪关系”的远程分支(通常两者同名)，# 如果该远程分支不存在，则会被新建$ git">
+<meta property="og:description" content="12345git push的语法多分支情况下git push 出现的报错信息分析git pull默认行为关于upstream和downstream关于push.default
+git push语法1234567891011121314151617181920$ git push &amp;lt;远程主机名&amp;gt; &amp;lt;本地分支名&amp;gt;:&amp;lt;远程分支名&amp;gt; # 如果省略远程分支名，则表示将本地">
 <meta property="og:image" content="http://xiuhonglee.com/uploads/git-09-push.png">
-<meta property="og:updated_time" content="2016-02-28T01:50:08.000Z">
+<meta property="og:image" content="http://xiuhonglee.com/uploads/git-pull-01.png">
+<meta property="og:image" content="http://xiuhonglee.com/uploads/git-pull-02.png">
+<meta property="og:updated_time" content="2016-03-02T23:48:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git常用命令（9）-- 关于push">
-<meta name="twitter:description" content="12git push的语法多分支情况下git push 出现的报错信息分析
-git push语法1234567891011121314151617181920$ git push &amp;lt;远程主机名&amp;gt; &amp;lt;本地分支名&amp;gt;:&amp;lt;远程分支名&amp;gt; # 如果省略远程分支名，则表示将本地分支与之存在“追踪关系”的远程分支(通常两者同名)，# 如果该远程分支不存在，则会被新建$ git">
+<meta name="twitter:title" content="Git常用命令（9）-- 关于push/pull 默认行为">
+<meta name="twitter:description" content="12345git push的语法多分支情况下git push 出现的报错信息分析git pull默认行为关于upstream和downstream关于push.default
+git push语法1234567891011121314151617181920$ git push &amp;lt;远程主机名&amp;gt; &amp;lt;本地分支名&amp;gt;:&amp;lt;远程分支名&amp;gt; # 如果省略远程分支名，则表示将本地">
 
 
 
@@ -88,7 +90,7 @@ git push语法1234567891011121314151617181920$ git push &amp;lt;远程主机名&
   };
 </script>
 
-  <title> Git常用命令（9）-- 关于push | xiuhong </title>
+  <title> Git常用命令（9）-- 关于push/pull 默认行为 | xiuhong </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -208,7 +210,7 @@ git push语法1234567891011121314151617181920$ git push &amp;lt;远程主机名&
             
             
               
-                Git常用命令（9）-- 关于push
+                Git常用命令（9）-- 关于push/pull 默认行为
               
             
           </h1>
@@ -246,12 +248,34 @@ git push语法1234567891011121314151617181920$ git push &amp;lt;远程主机名&
       
 
       
-        <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push的语法</span><br><span class="line">多分支情况下git push 出现的报错信息分析</span><br></pre></td></tr></table></figure>
+        <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git push的语法</span><br><span class="line">多分支情况下git push 出现的报错信息分析</span><br><span class="line">git pull默认行为</span><br><span class="line">关于upstream和downstream</span><br><span class="line">关于push.default</span><br></pre></td></tr></table></figure>
 <h4 id="git_push_u8BED_u6CD5"><a href="#git_push_u8BED_u6CD5" class="headerlink" title="git push语法"></a>git push语法</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$ git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt; </span><br><span class="line"><span class="comment"># 如果省略远程分支名，则表示将本地分支与之存在“追踪关系”的远程分支(通常两者同名)，</span></span><br><span class="line"><span class="comment"># 如果该远程分支不存在，则会被新建</span></span><br><span class="line"></span><br><span class="line">$ git push origin master</span><br><span class="line"><span class="comment"># 上面命令表示，将本地的master分支推送到origin主机的master分支</span></span><br><span class="line"><span class="comment"># 如果后者不存在，则会被新建</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果省略本地分支名，则表示删除指定的远程分支</span></span><br><span class="line"><span class="comment"># 等同于推送一个空的本地分支到远程分支</span></span><br><span class="line">$ git push origin :master</span><br><span class="line"><span class="comment"># 等同于</span></span><br><span class="line">$ git push origin --delete master</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果当前分支与远程分支之间存在追踪关系</span></span><br><span class="line"><span class="comment"># 则本地分支和远程分支都可以省略</span></span><br><span class="line">$ git push origin</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果当前分支只有一个追踪分支，那么主机名都可以省略</span></span><br><span class="line">$ git push</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h4 id="u591A_u5206_u652F_u60C5_u51B5_u4E0Bgit_push_u51FA_u73B0_u7684_u62A5_u9519_u4FE1_u606F"><a href="#u591A_u5206_u652F_u60C5_u51B5_u4E0Bgit_push_u51FA_u73B0_u7684_u62A5_u9519_u4FE1_u606F" class="headerlink" title="多分支情况下git push出现的报错信息"></a>多分支情况下git push出现的报错信息</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 背景：</span></span><br><span class="line"><span class="comment"># 1 远程和本地有多条分支</span></span><br><span class="line"><span class="comment"># 2 使用git push （不带参数）推送本地分支数据</span></span><br></pre></td></tr></table></figure>
 <p><img src="/uploads/git-09-push.png" alt=""></p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">分析：</span><br><span class="line"><span class="comment"># 1 红框内表示dev-&gt;dev分支推送成功</span></span><br><span class="line"><span class="comment"># 2 绿框内表示master-&gt;master分支推送失败</span></span><br><span class="line">    原因是，本地分支版本落后于远程库版本</span><br><span class="line"></span><br><span class="line"><span class="comment"># 原因：git push时不带任何参数有两种推送方式</span></span><br><span class="line"><span class="comment"># simple方式：只推送当前分支</span></span><br><span class="line"><span class="comment"># matching方式：推送所有有对应关系的分支</span></span><br><span class="line"><span class="comment"># 显然上面git push出错是因为默认使用了matching方式推送</span></span><br><span class="line"><span class="comment"># 它不但把dev分支推送到了远程库，也尝试把master分支推送到远程库</span></span><br><span class="line"><span class="comment"># 由于本地master分支代码没有拉取合并（pull）过，所以push时报错</span></span><br><span class="line"></span><br><span class="line">解决：</span><br><span class="line"><span class="comment"># 1 明确指定推送分支信息</span></span><br><span class="line">$ git push origin dev:dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2 设置推送方式</span></span><br><span class="line">$ git config --global push.default simple （推荐）</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">$ git config --global push.default matching</span><br></pre></td></tr></table></figure>
+<h4 id="git_pull_u9ED8_u8BA4_u884C_u4E3A"><a href="#git_pull_u9ED8_u8BA4_u884C_u4E3A" class="headerlink" title="git pull默认行为"></a>git pull默认行为</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ git pull </span><br><span class="line"><span class="comment"># 实际行为：$ git fetch &amp;&amp; git merge</span></span><br><span class="line"><span class="comment"># fetch操作将会更新本地仓库的remote tracking,也就是refs/remotes中的代码，</span></span><br><span class="line"><span class="comment"># 并不会对对refs/heads中当前的代码早晨影响(通俗讲：就是这把代码从远程库取回，并不做合并) </span></span><br><span class="line"><span class="comment"># merge操作开始尝试合并代码；分歧就在这里，如果当前有多个分支，git 应该把代码合并到哪个分支呢？ </span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 我们需要通过下面的代码指定当前分支的upstream</span></span><br><span class="line">$ git branch --set-upstream-to=origin/&lt;branch&gt; develop  </span><br><span class="line">&lt;or&gt;</span><br><span class="line">$ git push --set-upstream origin develop</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>实际上，如果我们没有指定upstream，git在merge时会访问git config中当前分支merge的默认配置  </p>
+</blockquote>
+<p><img src="/uploads/git-pull-01.png" alt="默认配置"> </p>
+<blockquote>
+<p>总之，当我们的develope分支git pull时，如果没有指定upstream分支，git将根据我们的配置文件去<br>merge origin/develope;如果指定了upstream分支，则会忽略config中的merge默认配置</p>
+</blockquote>
+<h4 id="u5173_u4E8Eupstream_u548Cdownstream"><a href="#u5173_u4E8Eupstream_u548Cdownstream" class="headerlink" title="关于upstream和downstream"></a>关于upstream和downstream</h4><p><img src="/uploads/git-pull-02.png" alt=""></p>
+<p>初次提交本地分支，例如<code>git push origin develp</code>操作，并不会定义当前本地分支的upstream分支，可以通过<code>git push --set-upstream origin develop</code>，关联本地develop分支的upstream分支，更简洁的办法，加入<code>-u</code>参数，例如<code>git push -u origin develop</code>，这个操作在push的同时会指定当前分支upstream</p>
+<h4 id="u5173_u4E8Epush-default"><a href="#u5173_u4E8Epush-default" class="headerlink" title="关于push.default"></a>关于push.default</h4><ol>
+<li><p>nothing - push操作无效，除非显式指定远程分支，例如git push origin develop</p>
+</li>
+<li><p>current - push当前分支到远程同名分支，如果远程同名分支不存在则<strong>自动创建</strong>同名分支。</p>
+</li>
+<li><p>upstream - push当前分支到它的upstream分支上（这一项其实用于经常从本地分支push/pull到同一远程仓库的情景，这种模式叫做central workflow）</p>
+</li>
+<li><p>simple - simple和upstream是相似的，只有一点不同，simple必须保证本地分支和它的远程 upstream分支同名，否则会拒绝push操作</p>
+</li>
+<li><p>matching - push所有本地和远程两端都存在的同名分支 </p>
+</li>
+</ol>
 
       
     </div>
@@ -347,7 +371,7 @@ git push语法1234567891011121314151617181920$ git push &amp;lt;远程主机名&
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -390,7 +414,7 @@ git push语法1234567891011121314151617181920$ git push &amp;lt;远程主机名&
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#git_push_u8BED_u6CD5"><span class="nav-number">1.</span> <span class="nav-text">git push语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u591A_u5206_u652F_u60C5_u51B5_u4E0Bgit_push_u51FA_u73B0_u7684_u62A5_u9519_u4FE1_u606F"><span class="nav-number">2.</span> <span class="nav-text">多分支情况下git push出现的报错信息</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#git_push_u8BED_u6CD5"><span class="nav-number">1.</span> <span class="nav-text">git push语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u591A_u5206_u652F_u60C5_u51B5_u4E0Bgit_push_u51FA_u73B0_u7684_u62A5_u9519_u4FE1_u606F"><span class="nav-number">2.</span> <span class="nav-text">多分支情况下git push出现的报错信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git_pull_u9ED8_u8BA4_u884C_u4E3A"><span class="nav-number">3.</span> <span class="nav-text">git pull默认行为</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u5173_u4E8Eupstream_u548Cdownstream"><span class="nav-number">4.</span> <span class="nav-text">关于upstream和downstream</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u5173_u4E8Epush-default"><span class="nav-number">5.</span> <span class="nav-text">关于push.default</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
