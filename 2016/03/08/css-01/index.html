@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Git," />
+  <meta name="keywords" content="CSS," />
 
 
 
@@ -57,19 +57,28 @@
 
 
 
-<meta name="description" content="本节内容123撤消操作回退未推送远程仓库再次回退到新版本
-修改最后一次提交12345678# 情况一： 所有文件都已提交，只是想修改提交信息$ git commit --amend# 情况二： 有文件未提交修改，可先提交，再使用--amend$ git add test1.md $ git commit -m &quot;add test1.md&quot;$ git add .test2.md $ git comm">
+<meta name="description" content="本节内容12垂直对齐使用:not()添加去除不需要的边框
+垂直对齐
+在容器中将文本或元素垂直对齐；使用CSS3的Transform属性
+
+1234567.verticalcenter &amp;#123;    position: relative;    top: 50%;    -webkit-transform: translateY(-50%);    -o-transform: translat">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git常用命令（5）">
-<meta property="og:url" content="http://xiuhonglee.com/2016/02/18/git-05/index.html">
+<meta property="og:title" content="css技巧（01）">
+<meta property="og:url" content="http://xiuhonglee.com/2016/03/08/css-01/index.html">
 <meta property="og:site_name" content="xiuhong">
-<meta property="og:description" content="本节内容123撤消操作回退未推送远程仓库再次回退到新版本
-修改最后一次提交12345678# 情况一： 所有文件都已提交，只是想修改提交信息$ git commit --amend# 情况二： 有文件未提交修改，可先提交，再使用--amend$ git add test1.md $ git commit -m &quot;add test1.md&quot;$ git add .test2.md $ git comm">
-<meta property="og:updated_time" content="2016-02-20T03:08:52.000Z">
+<meta property="og:description" content="本节内容12垂直对齐使用:not()添加去除不需要的边框
+垂直对齐
+在容器中将文本或元素垂直对齐；使用CSS3的Transform属性
+
+1234567.verticalcenter &amp;#123;    position: relative;    top: 50%;    -webkit-transform: translateY(-50%);    -o-transform: translat">
+<meta property="og:updated_time" content="2016-03-08T13:05:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git常用命令（5）">
-<meta name="twitter:description" content="本节内容123撤消操作回退未推送远程仓库再次回退到新版本
-修改最后一次提交12345678# 情况一： 所有文件都已提交，只是想修改提交信息$ git commit --amend# 情况二： 有文件未提交修改，可先提交，再使用--amend$ git add test1.md $ git commit -m &quot;add test1.md&quot;$ git add .test2.md $ git comm">
+<meta name="twitter:title" content="css技巧（01）">
+<meta name="twitter:description" content="本节内容12垂直对齐使用:not()添加去除不需要的边框
+垂直对齐
+在容器中将文本或元素垂直对齐；使用CSS3的Transform属性
+
+1234567.verticalcenter &amp;#123;    position: relative;    top: 50%;    -webkit-transform: translateY(-50%);    -o-transform: translat">
 
 
 
@@ -87,7 +96,7 @@
   };
 </script>
 
-  <title> Git常用命令（5） | xiuhong </title>
+  <title> css技巧（01） | xiuhong </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -207,7 +216,7 @@
             
             
               
-                Git常用命令（5）
+                css技巧（01）
               
             
           </h1>
@@ -219,8 +228,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-18T22:01:21+08:00" content="2016-02-18">
-              2016-02-18
+            <time itemprop="dateCreated" datetime="2016-03-08T20:32:06+08:00" content="2016-03-08">
+              2016-03-08
             </time>
           </span>
 
@@ -245,12 +254,12 @@
       
 
       
-        <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">撤消操作</span><br><span class="line">回退未推送远程仓库</span><br><span class="line">再次回退到新版本</span><br></pre></td></tr></table></figure>
-<h4 id="u4FEE_u6539_u6700_u540E_u4E00_u6B21_u63D0_u4EA4"><a href="#u4FEE_u6539_u6700_u540E_u4E00_u6B21_u63D0_u4EA4" class="headerlink" title="修改最后一次提交"></a>修改最后一次提交</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 情况一： 所有文件都已提交，只是想修改提交信息</span></span><br><span class="line">$ git commit --amend</span><br><span class="line"></span><br><span class="line"><span class="comment"># 情况二： 有文件未提交修改，可先提交，再使用--amend</span></span><br><span class="line">$ git add <span class="built_in">test</span>1.md </span><br><span class="line">$ git commit -m <span class="string">"add test1.md"</span></span><br><span class="line">$ git add .test2.md </span><br><span class="line">$ git commit --amend</span><br></pre></td></tr></table></figure>
-<h4 id="u5411_u540E_u56DE_u9000_u672A_u63A8_u9001_u8FDC_u7A0B_u4ED3_u5E93"><a href="#u5411_u540E_u56DE_u9000_u672A_u63A8_u9001_u8FDC_u7A0B_u4ED3_u5E93" class="headerlink" title="向后回退未推送远程仓库"></a>向后回退未推送远程仓库</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 本地代码库还没有push，add\commit 后想回退  </span></span><br><span class="line">$ git reset  [—soft | —mixed | —hard ]  HEAD^ </span><br><span class="line"></span><br><span class="line"><span class="comment">#-—soft：会保留源码，只回退到commit的某个版本，</span></span><br><span class="line"><span class="comment"># 不涉及index的回退，如果还需要提交，直接commit即可</span></span><br><span class="line"><span class="comment"># 觉得有点类似 $ git commit --amend</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># --mixed：会保留源码，只将git commit 和index(add)信息回退到某个版本  </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># --hard：源码也会回退到某个版本，commit和index也会回退（会改变本地代码）</span></span><br></pre></td></tr></table></figure>
-<h4 id="u518D_u6B21_u56DE_u9000_u5230_u65B0_u7248_u672C"><a href="#u518D_u6B21_u56DE_u9000_u5230_u65B0_u7248_u672C" class="headerlink" title="再次回退到新版本"></a>再次回退到新版本</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看提交历史版本信息</span></span><br><span class="line">（包括回退掉的，比如$ git reset --hard HEAD^后，$ git <span class="built_in">log</span>的信息不回包括reset掉的那个版本） </span><br><span class="line">$ git reflog</span><br><span class="line"></span><br><span class="line"><span class="comment"># 回退到指定</span></span><br><span class="line">$ git reset —hard <span class="built_in">hash</span>-value</span><br></pre></td></tr></table></figure>
-<h5 id="u5DF2_u63A8_u9001_u5230_u8FDC_u7A0B_u7248_u672C_u56DE_u9000"><a href="#u5DF2_u63A8_u9001_u5230_u8FDC_u7A0B_u7248_u672C_u56DE_u9000" class="headerlink" title="已推送到远程版本回退"></a>已推送到远程版本回退</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git revert &lt;commit <span class="built_in">hash</span>&gt;</span><br><span class="line"><span class="comment"># 需保证工作目录干净</span></span><br><span class="line"><span class="comment"># 用一次新的提交来覆盖旧的提交</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 别忘了push更新远程目录</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
-
+        <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">垂直对齐</span><br><span class="line">使用:not()添加去除不需要的边框</span><br></pre></td></tr></table></figure>
+<h4 id="u5782_u76F4_u5BF9_u9F50"><a href="#u5782_u76F4_u5BF9_u9F50" class="headerlink" title="垂直对齐"></a>垂直对齐</h4><blockquote>
+<p>在容器中将文本或元素垂直对齐；使用CSS3的Transform属性</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.verticalcenter</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">position</span>:<span class="value"> relative</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">top</span>:<span class="value"> <span class="number">50%</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">-webkit-transform</span>:<span class="value"> <span class="function">translateY</span>(-<span class="number">50%</span>)</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">-o-transform</span>:<span class="value"> <span class="function">translateY</span>(-<span class="number">50%</span>)</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">translateY</span>(-<span class="number">50%</span>)</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="u4F7F_u7528_3Anot_28_29_u6DFB_u52A0/_u53BB_u9664_u5BFC_u822A_u4E0A_u4E0D_u9700_u8981_u7684_u8FB9_u6846"><a href="#u4F7F_u7528_3Anot_28_29_u6DFB_u52A0/_u53BB_u9664_u5BFC_u822A_u4E0A_u4E0D_u9700_u8981_u7684_u8FB9_u6846" class="headerlink" title="使用:not()添加/去除导航上不需要的边框"></a>使用:not()添加/去除导航上不需要的边框</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/*** 普通写法 ***/</span></span><br><span class="line"><span class="class">.nav</span> <span class="tag">li</span> <span class="rules">&#123; </span><br><span class="line">     <span class="rule"><span class="attribute">border-right</span>:<span class="value"> <span class="number">1px</span> solid <span class="hexcolor">#666</span></span></span>; </span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">nav</span> <span class="tag">li</span><span class="pseudo">:last-child</span> <span class="rules">&#123;</span><br><span class="line">     <span class="rule"><span class="attribute">border-right</span>:<span class="value"> none</span></span>; </span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*** 使用not ***/</span></span><br><span class="line"><span class="class">.nav</span> <span class="tag">li</span><span class="pseudo">:not(</span><span class="pseudo">:last-child)</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">border-right</span>:<span class="value"> <span class="number">1px</span> solid <span class="hexcolor">#666</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -258,7 +267,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Git/" rel="tag">#Git</a>
+            <a href="/tags/CSS/" rel="tag">#CSS</a>
           
         </div>
       
@@ -267,17 +276,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/16/git-04/" rel="next" title="Git常用命令（4）">
-                <i class="fa fa-chevron-left"></i> Git常用命令（4）
+              <a href="/2016/03/03/githubpages-hexo/" rel="next" title="利用githubpages搭建个人主页">
+                <i class="fa fa-chevron-left"></i> 利用githubpages搭建个人主页
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/02/20/git-06/" rel="prev" title="Git常用命令（6）">
-                Git常用命令（6） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -388,7 +393,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#u672C_u8282_u5185_u5BB9"><span class="nav-number">1.</span> <span class="nav-text">本节内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u4FEE_u6539_u6700_u540E_u4E00_u6B21_u63D0_u4EA4"><span class="nav-number">2.</span> <span class="nav-text">修改最后一次提交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u5411_u540E_u56DE_u9000_u672A_u63A8_u9001_u8FDC_u7A0B_u4ED3_u5E93"><span class="nav-number">3.</span> <span class="nav-text">向后回退未推送远程仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u518D_u6B21_u56DE_u9000_u5230_u65B0_u7248_u672C"><span class="nav-number">4.</span> <span class="nav-text">再次回退到新版本</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#u5DF2_u63A8_u9001_u5230_u8FDC_u7A0B_u7248_u672C_u56DE_u9000"><span class="nav-number">4.1.</span> <span class="nav-text">已推送到远程版本回退</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#u672C_u8282_u5185_u5BB9"><span class="nav-number">1.</span> <span class="nav-text">本节内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u5782_u76F4_u5BF9_u9F50"><span class="nav-number">2.</span> <span class="nav-text">垂直对齐</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u4F7F_u7528_3Anot_28_29_u6DFB_u52A0/_u53BB_u9664_u5BFC_u822A_u4E0A_u4E0D_u9700_u8981_u7684_u8FB9_u6846"><span class="nav-number">3.</span> <span class="nav-text">使用:not()添加/去除导航上不需要的边框</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

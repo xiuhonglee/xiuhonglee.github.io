@@ -189,15 +189,94 @@
 
     
     
+
+    
       
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/08/css-01/" itemprop="url">
+                  css技巧（01）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-08T20:32:06+08:00" content="2016-03-08">
+              2016-03-08
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
-        
-        
-        
       
 
       
-    
+        
+          
+            <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">垂直对齐</span><br><span class="line">使用:not()添加去除不需要的边框</span><br></pre></td></tr></table></figure>
+<h4 id="u5782_u76F4_u5BF9_u9F50"><a href="#u5782_u76F4_u5BF9_u9F50" class="headerlink" title="垂直对齐"></a>垂直对齐</h4><blockquote>
+<p>在容器中将文本或元素垂直对齐；使用CSS3的Transform属性</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.verticalcenter</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">position</span>:<span class="value"> relative</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">top</span>:<span class="value"> <span class="number">50%</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">-webkit-transform</span>:<span class="value"> <span class="function">translateY</span>(-<span class="number">50%</span>)</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">-o-transform</span>:<span class="value"> <span class="function">translateY</span>(-<span class="number">50%</span>)</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">translateY</span>(-<span class="number">50%</span>)</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="u4F7F_u7528_3Anot_28_29_u6DFB_u52A0/_u53BB_u9664_u5BFC_u822A_u4E0A_u4E0D_u9700_u8981_u7684_u8FB9_u6846"><a href="#u4F7F_u7528_3Anot_28_29_u6DFB_u52A0/_u53BB_u9664_u5BFC_u822A_u4E0A_u4E0D_u9700_u8981_u7684_u8FB9_u6846" class="headerlink" title="使用:not()添加/去除导航上不需要的边框"></a>使用:not()添加/去除导航上不需要的边框</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/*** 普通写法 ***/</span></span><br><span class="line"><span class="class">.nav</span> <span class="tag">li</span> <span class="rules">&#123; </span><br><span class="line">     <span class="rule"><span class="attribute">border-right</span>:<span class="value"> <span class="number">1px</span> solid <span class="hexcolor">#666</span></span></span>; </span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">nav</span> <span class="tag">li</span><span class="pseudo">:last-child</span> <span class="rules">&#123;</span><br><span class="line">     <span class="rule"><span class="attribute">border-right</span>:<span class="value"> none</span></span>; </span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*** 使用not ***/</span></span><br><span class="line"><span class="class">.nav</span> <span class="tag">li</span><span class="pseudo">:not(</span><span class="pseudo">:last-child)</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">border-right</span>:<span class="value"> <span class="number">1px</span> solid <span class="hexcolor">#666</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -1068,94 +1147,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/25/git-08/" itemprop="url">
-                  Git常用命令（8）- 打标签
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-25T20:37:07+08:00" content="2016-02-25">
-              2016-02-25
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">列出已有标签</span><br><span class="line">新建附注标签</span><br><span class="line">新建轻量级标签</span><br><span class="line">分享标签</span><br></pre></td></tr></table></figure>
-<h4 id="u5217_u51FA_u5DF2_u6709_u6807_u7B7E"><a href="#u5217_u51FA_u5DF2_u6709_u6807_u7B7E" class="headerlink" title="列出已有标签"></a>列出已有标签</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 结果按字母排序</span></span><br><span class="line">$ git tag</span><br><span class="line"></span><br><span class="line"><span class="comment"># 支持正则搜索</span></span><br><span class="line"><span class="comment"># 匹配所有v1.1相关标签</span></span><br><span class="line">$ git tag <span class="operator">-l</span> <span class="string">'v1.1*'</span></span><br></pre></td></tr></table></figure>
-<h4 id="u65B0_u5EFA_u6807_u7B7E"><a href="#u65B0_u5EFA_u6807_u7B7E" class="headerlink" title="新建标签"></a>新建标签</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Git使用标签有两种类型：</span><br><span class="line">轻量级(lightweight): 相当于软链接吧（个人理解）；它是个指向特定提交对象的引用   </span><br><span class="line">含附注(annotated): 硬链接；实际存储在仓库中的一个对象，有自身的校验和信息</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建含附注(annotated)标签</span></span><br><span class="line">-------------------------------------------------------</span><br><span class="line"><span class="comment"># -a: annotated</span></span><br><span class="line"><span class="comment"># -m: 添加标签提示信息（和commit的-m一样）</span></span><br><span class="line"><span class="comment"># 不加-m的话会进入vim编辑页面，:q退出的话取消新建</span></span><br><span class="line">$ git tag <span class="operator">-a</span> v1.<span class="number">1</span> -m <span class="string">'my version 1.4'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看标签tag</span></span><br><span class="line">$ git show v1.<span class="number">1</span></span><br><span class="line"><span class="comment"># 显示标签的版本信息</span></span><br><span class="line"><span class="comment"># 显示打标签的提交对象</span></span><br><span class="line">-------------------------------------------------------</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建轻量级标签</span></span><br><span class="line">-------------------------------------------------------</span><br><span class="line"><span class="comment"># 不用加任何参数</span></span><br><span class="line">$ git tag v1.<span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看标签信息</span></span><br><span class="line">$ git show v1.<span class="number">2</span></span><br><span class="line"><span class="comment"># 只会显示提交对象摘要</span></span><br><span class="line">-------------------------------------------------------</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/25/git-08/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1202,7 +1193,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1212,7 +1203,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
