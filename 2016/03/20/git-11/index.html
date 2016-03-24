@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Git," />
 
 
 
@@ -57,16 +57,25 @@
 
 
 
-<meta name="description" content="随便写写~">
+<meta name="description" content="本节内容1功能分支工作流
+功能分支工作流所有功能开发应该在一个专门分支上，而不是在master。方便多个开发者在各自功能上开发而不会弄乱代码。保证master分支稳定。
+
+具体实践123456789101112131415161718# 1 创建新分支$ git checkout  -b new-feature master  # 检出一个基于master名为new-feature的新分支……一系">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git-11">
+<meta property="og:title" content="Git工作流 - 功能分支工作流">
 <meta property="og:url" content="http://xiuhonglee.com/2016/03/20/git-11/index.html">
 <meta property="og:site_name" content="xiuhong">
-<meta property="og:description" content="随便写写~">
-<meta property="og:updated_time" content="2016-03-20T12:11:56.000Z">
+<meta property="og:description" content="本节内容1功能分支工作流
+功能分支工作流所有功能开发应该在一个专门分支上，而不是在master。方便多个开发者在各自功能上开发而不会弄乱代码。保证master分支稳定。
+
+具体实践123456789101112131415161718# 1 创建新分支$ git checkout  -b new-feature master  # 检出一个基于master名为new-feature的新分支……一系">
+<meta property="og:updated_time" content="2016-03-24T12:03:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git-11">
-<meta name="twitter:description" content="随便写写~">
+<meta name="twitter:title" content="Git工作流 - 功能分支工作流">
+<meta name="twitter:description" content="本节内容1功能分支工作流
+功能分支工作流所有功能开发应该在一个专门分支上，而不是在master。方便多个开发者在各自功能上开发而不会弄乱代码。保证master分支稳定。
+
+具体实践123456789101112131415161718# 1 创建新分支$ git checkout  -b new-feature master  # 检出一个基于master名为new-feature的新分支……一系">
 
 
 
@@ -84,7 +93,7 @@
   };
 </script>
 
-  <title> git-11 | xiuhong </title>
+  <title> Git工作流 - 功能分支工作流 | xiuhong </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -232,7 +241,7 @@
             
             
               
-                git-11
+                Git工作流 - 功能分支工作流
               
             
           </h1>
@@ -277,19 +286,30 @@
       
 
       
-        
+        <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">功能分支工作流</span><br></pre></td></tr></table></figure>
+<h4 id="u529F_u80FD_u5206_u652F_u5DE5_u4F5C_u6D41"><a href="#u529F_u80FD_u5206_u652F_u5DE5_u4F5C_u6D41" class="headerlink" title="功能分支工作流"></a>功能分支工作流</h4><p style="background: #f5f5d5;border:1px solid #ccc;border-radius: 3px;margin-bottom:10px;padding:10px;">所有功能开发应该在一个专门分支上，而不是在master。方便多个开发者在各自功能上开发而不会弄乱代码。保证master分支稳定。<br></p>
+
+<h4 id="u5177_u4F53_u5B9E_u8DF5"><a href="#u5177_u4F53_u5B9E_u8DF5" class="headerlink" title="具体实践"></a>具体实践</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1 创建新分支</span></span><br><span class="line">$ git checkout  -b new-feature master  <span class="comment"># 检出一个基于master名为new-feature的新分支</span></span><br><span class="line"></span><br><span class="line">……一系列开发、测试后……</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2 推送功能分支代码到远程库</span></span><br><span class="line">$ git push -u origin new-feature </span><br><span class="line"><span class="comment"># push new-feature分支到中央仓库(origin), -u 设置本地分支跟踪远程对应分支。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3 在Git GUI客户端（或在github等第三方托管网站都有合并请求选项）发起pull Request请求合并功能分支（new-feature）到master，团队成员会自动收到通知。这在github上很常见，用来多人协作，交流，评论……</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4 合并分支</span></span><br><span class="line">$ git checkout master</span><br><span class="line">$ git pull --rebase </span><br><span class="line">$ git pull origin new-feature</span><br><span class="line">$ git push </span><br><span class="line"></span><br><span class="line"><span class="comment">## ！！ 合并前，首先要检出master分支并确认它是最新的，然后在合并功能分支。</span></span><br></pre></td></tr></table></figure>
+<h4 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h4><p><cite>个人觉得，功能分支工作流，只不过利用了下git多分支功能，不过收益还是可观的，多人协作，保证主分支代码健壮，也方便了开发人员交流；但是如果组内项目迭代周期很短，提交代码次数频繁，每次提交都去pull request代码显然不是很合适，而且这种情况下code Review也需要很大的工作量。如何去按“功能”划分去新建分支，在使用功能分支流程前还是有必要三思的。</cite></p>
+
       
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Git/" rel="tag">#Git</a>
+          
+        </div>
       
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/20/git-10/" rel="next" title="Git分布式工作流程 - 01">
-                <i class="fa fa-chevron-left"></i> Git分布式工作流程 - 01
+              <a href="/2016/03/20/git-10/" rel="next" title="Git工作流 - 集中式工作流">
+                <i class="fa fa-chevron-left"></i> Git工作流 - 集中式工作流
               </a>
             
           </div>
@@ -321,7 +341,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/03/20/git-11/"
-           data-title="git-11" data-url="http://xiuhonglee.com/2016/03/20/git-11/">
+           data-title="Git工作流 - 功能分支工作流" data-url="http://xiuhonglee.com/2016/03/20/git-11/">
       </div>
     
   </div>
@@ -419,7 +439,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#u672C_u8282_u5185_u5BB9"><span class="nav-number">1.</span> <span class="nav-text">本节内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u529F_u80FD_u5206_u652F_u5DE5_u4F5C_u6D41"><span class="nav-number">2.</span> <span class="nav-text">功能分支工作流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u5177_u4F53_u5B9E_u8DF5"><span class="nav-number">3.</span> <span class="nav-text">具体实践</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u603B_u7ED3"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

@@ -57,26 +57,23 @@
 
 
 
-<meta name="description" content=".imp {        color: red;    }    .bd {        border: 1px solid #ccc;    }
-
-本节内容1集中式工作流
-集中式工作流单点协作模式，和SVN（Subversion）类似。一个存放代码的中心服务器，接受所有开发者提交的代码。所有开发者都是普通的节点，作为集线器的消费者，平时的工作就是和中心仓库同步数据。（盗的字，再盗张图）注意：">
+<meta name="description" content="本节内容1集中式工作流
+集中式工作流单点协作模式，和SVN（Subversion）类似。一个存放代码的中心服务器，接受所有开发者提交的代码。所有开发者都是普通的节点，作为集线器的消费者，平时的工作就是和中心仓库同步数据。（盗的字，再盗张图）注意：1.每次只能有一个开发者推送数据2.第二个开发者在提交数据前，必须先合并服务器上代码
+适用场景 团队比较小，只需要配好一台中心服务器，并给每个人推送数据的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git分布式工作流程 - 01">
+<meta property="og:title" content="Git工作流 - 集中式工作流">
 <meta property="og:url" content="http://xiuhonglee.com/2016/03/20/git-10/index.html">
 <meta property="og:site_name" content="xiuhong">
-<meta property="og:description" content=".imp {        color: red;    }    .bd {        border: 1px solid #ccc;    }
-
-本节内容1集中式工作流
-集中式工作流单点协作模式，和SVN（Subversion）类似。一个存放代码的中心服务器，接受所有开发者提交的代码。所有开发者都是普通的节点，作为集线器的消费者，平时的工作就是和中心仓库同步数据。（盗的字，再盗张图）注意：">
+<meta property="og:description" content="本节内容1集中式工作流
+集中式工作流单点协作模式，和SVN（Subversion）类似。一个存放代码的中心服务器，接受所有开发者提交的代码。所有开发者都是普通的节点，作为集线器的消费者，平时的工作就是和中心仓库同步数据。（盗的字，再盗张图）注意：1.每次只能有一个开发者推送数据2.第二个开发者在提交数据前，必须先合并服务器上代码
+适用场景 团队比较小，只需要配好一台中心服务器，并给每个人推送数据的">
 <meta property="og:image" content="http://xiuhonglee.com/uploads/git-10.png">
-<meta property="og:updated_time" content="2016-03-20T12:11:44.000Z">
+<meta property="og:updated_time" content="2016-03-24T11:39:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git分布式工作流程 - 01">
-<meta name="twitter:description" content=".imp {        color: red;    }    .bd {        border: 1px solid #ccc;    }
-
-本节内容1集中式工作流
-集中式工作流单点协作模式，和SVN（Subversion）类似。一个存放代码的中心服务器，接受所有开发者提交的代码。所有开发者都是普通的节点，作为集线器的消费者，平时的工作就是和中心仓库同步数据。（盗的字，再盗张图）注意：">
+<meta name="twitter:title" content="Git工作流 - 集中式工作流">
+<meta name="twitter:description" content="本节内容1集中式工作流
+集中式工作流单点协作模式，和SVN（Subversion）类似。一个存放代码的中心服务器，接受所有开发者提交的代码。所有开发者都是普通的节点，作为集线器的消费者，平时的工作就是和中心仓库同步数据。（盗的字，再盗张图）注意：1.每次只能有一个开发者推送数据2.第二个开发者在提交数据前，必须先合并服务器上代码
+适用场景 团队比较小，只需要配好一台中心服务器，并给每个人推送数据的">
 
 
 
@@ -94,7 +91,7 @@
   };
 </script>
 
-  <title> Git分布式工作流程 - 01 | xiuhong </title>
+  <title> Git工作流 - 集中式工作流 | xiuhong </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -242,7 +239,7 @@
             
             
               
-                Git分布式工作流程 - 01
+                Git工作流 - 集中式工作流
               
             
           </h1>
@@ -287,9 +284,7 @@
       
 
       
-        <p><style><br>    .imp {<br>        color: red;<br>    }<br>    .bd {<br>        border: 1px solid #ccc;<br>    }</p>
-<p></style></p>
-<h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">集中式工作流</span><br></pre></td></tr></table></figure>
+        <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">集中式工作流</span><br></pre></td></tr></table></figure>
 <h4 id="u96C6_u4E2D_u5F0F_u5DE5_u4F5C_u6D41"><a href="#u96C6_u4E2D_u5F0F_u5DE5_u4F5C_u6D41" class="headerlink" title="集中式工作流"></a>集中式工作流</h4><p><cite><span style="color:red">单点协作模式，和SVN（Subversion）类似。</span>一个存放代码的中心服务器，接受所有开发者提交的代码。所有开发者都是普通的节点，作为集线器的消费者，平时的工作就是和中心仓库同步数据。（盗的字，再盗张图）</cite><br><img src="/uploads/git-10.png" alt=""><br><em>注意：</em><br>1.每次只能有一个开发者推送数据<br>2.第二个开发者在提交数据前，必须先合并服务器上代码</p>
 <h4 id="u9002_u7528_u573A_u666F"><a href="#u9002_u7528_u573A_u666F" class="headerlink" title="适用场景"></a>适用场景</h4><p style="background: #f5f5d5;border:1px solid #ccc;border-radius: 3px;margin-bottom:10px;padding:10px;"> 团队比较小，只需要配好一台中心服务器，并给每个人推送数据的权限。代码冲突，Git不会让用户覆盖他人代码，直接回驳回第二个人的提交操作。出现冲突需要手动合并。</p>
 
@@ -319,8 +314,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/03/20/git-11/" rel="prev" title="git-11">
-                git-11 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/03/20/git-11/" rel="prev" title="Git工作流 - 功能分支工作流">
+                Git工作流 - 功能分支工作流 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -348,7 +343,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/03/20/git-10/"
-           data-title="Git分布式工作流程 - 01" data-url="http://xiuhonglee.com/2016/03/20/git-10/">
+           data-title="Git工作流 - 集中式工作流" data-url="http://xiuhonglee.com/2016/03/20/git-10/">
       </div>
     
   </div>
