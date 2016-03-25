@@ -249,6 +249,115 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/25/remove-emojj-code/" itemprop="url">
+                  js过滤Emojj
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-25T11:22:49+08:00" content="2016-03-25">
+              2016-03-25
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/25/remove-emojj-code/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/25/remove-emojj-code/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">emojj在IOS显示问题描述</span><br><span class="line">js过滤emojj</span><br></pre></td></tr></table></figure>
+<h4 id="emojj_u5728IOS_u5BA2_u6237_u7AEF_u663E_u793A_u95EE_u9898"><a href="#emojj_u5728IOS_u5BA2_u6237_u7AEF_u663E_u793A_u95EE_u9898" class="headerlink" title="emojj在IOS客户端显示问题"></a>emojj在IOS客户端显示问题</h4><p><cite style="color:#ff0000">开发H5页面过程中，后端返回的emojj表情无法显示，直接显示Unicode</cite><br><img src="/uploads/emojj.png" alt=""></p>
+<p style="background: #f5f5d5;border:1px solid #ccc;border-radius: 3px;margin-bottom:10px;padding:10px;">问题原因：首页经调查，这里的emojj是手机输入法自带的emojj表情，emojj用到的字符是UTF-16(有2字节和4字节两种编码)，而后端数据库是采用utf-8，并且最大只允许3字节的字符，所以产生了冲突。处理办法有两种，一是让后台处理，对这些UTF-16的字符做些转换；二是在前端直接过滤掉这些emojj；<br></p>
+
+<h4 id="js_u8FC7_u6EE4emojj"><a href="#js_u8FC7_u6EE4emojj" class="headerlink" title="js过滤emojj"></a>js过滤emojj</h4><ol>
+<li><p>前端过滤emojj表情符，首先定位emojj unicode编码范围 = &gt; <a href="http://punchdrunker.github.io/iOSEmoji/table_html/index.html" target="_blank" rel="external">戳我</a></p>
+</li>
+<li><p>利用正则匹配过滤 (94芥末简单~)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str = str.replace(<span class="regexp">/[\\uD800-\\uDBFF][\\uDC00-\\uDFFF]/ig</span>,<span class="string">''</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>pc显示emojj毫无压力，你看 ☞ 🐒🐶 🐴 😊 😢</p>
+</li>
+</ol>
+<h4 id="u5176_u5B83_u8D44_u6599"><a href="#u5176_u5B83_u8D44_u6599" class="headerlink" title="其它资料"></a>其它资料</h4><ul>
+<li><a href="http://crocodillon.com/blog/parsing-emoji-unicode-in-javascript" target="_blank" rel="external">js转换emojj</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html" target="_blank" rel="external">底层点的知识-关于字符编码</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2008/06/base64.html" target="_blank" rel="external">base64介绍</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/Base64" target="_blank" rel="external">base64维基百科</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/20/git-11/" itemprop="url">
                   Git工作流 - 功能分支工作流
                 </a>
@@ -1090,120 +1199,12 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/01/jasmine入门/" itemprop="url">
-                  前端单元测试框架-jasmine
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-01T14:29:50+08:00" content="2016-03-01">
-              2016-03-01
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/01/jasmine入门/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/01/jasmine入门/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jasmine介绍</span><br><span class="line">jasmine快速入门</span><br></pre></td></tr></table></figure>
-<h4 id="jasmine_u4ECB_u7ECD"><a href="#jasmine_u4ECB_u7ECD" class="headerlink" title="jasmine介绍"></a>jasmine介绍</h4><blockquote>
-<p>适合团队的测试框架<br>行为驱动BBD(behavior-driven development)<br>jasmine是一种JavaScript单元测试框架，不依赖其它JS框架，也不需要对DOM操作</p>
-</blockquote>
-<h4 id="jasmine_u5FEB_u901F_u5165_u95E8"><a href="#jasmine_u5FEB_u901F_u5165_u95E8" class="headerlink" title="jasmine快速入门"></a>jasmine快速入门</h4><ol>
-<li><p>下载Standalone版本的Jasmine，目前最新版本是2.4.1<br>下载地址:<a href="https://github.com/jasmine/jasmine/releases">https://github.com/jasmine/jasmine/releases</a><br><img src="/uploads/jasmine-01.png" alt=""></p>
-</li>
-<li><p>将jasmine-standalone-2.4.1.zip解压，用Chrome打开SpecRunner.html，界面如下<br><img src="/uploads/jasmine-02.png" alt=""></p>
-</li>
-<li><p>下面我们自己写个单元测试</p>
-</li>
-</ol>
-<ul>
-<li>myTest.html<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">title</span>&gt;</span>my test<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 引入必要的文件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"shortcut icon"</span> <span class="attribute">type</span>=<span class="value">"image/png"</span> <span class="attribute">href</span>=<span class="value">"lib/jasmine-2.4.1/jasmine_favicon.png"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">href</span>=<span class="value">"lib/jasmine-2.4.1/jasmine.css"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"lib/jasmine-2.4.1/jasmine.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"lib/jasmine-2.4.1/jasmine-html.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"lib/jasmine-2.4.1/boot.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 被测试文件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"src/mytest.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 测试用例文件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"spec/specTest.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- </span><br><span class="line">    # 这里几个类库文件作一下说明：</span><br><span class="line">    # jasmine.css :  测试界面css样式  </span><br><span class="line">    # jasmine.js  : 核心文件用于执行单元测试的类库  </span><br><span class="line">    # jasmine-html.js : 用于显示单元测试结果的类库  </span><br><span class="line">    # boot.js :  用于初始化单元测试所需的执行环境类库  </span><br><span class="line"> --&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/01/jasmine入门/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1244,7 +1245,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1254,7 +1255,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
