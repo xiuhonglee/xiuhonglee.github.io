@@ -245,6 +245,101 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/03/jasmine-syntax/" itemprop="url">
+                  jasmine-基础语法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-03T07:50:00+08:00" content="2016-03-03">
+              2016-03-03
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/03/jasmine-syntax/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/03/jasmine-syntax/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jasmine基础语法</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>jasmine有四个核心概念：分组(Suites)、用例(Specs)、期望(Expectations)、匹配(Matchers)</p>
+</blockquote>
+<p><strong>示例</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">describe(<span class="string">"A suite"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">// 测试组 （可一组测试用例） </span></span><br><span class="line">    <span class="keyword">var</span> a;</span><br><span class="line"></span><br><span class="line">    it(<span class="string">"A spec"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">// 测试用例</span></span><br><span class="line">        a = <span class="literal">true</span>;</span><br><span class="line">        expect(a).toBe(<span class="literal">true</span>); <span class="comment">// 期望匹配</span></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    describe(<span class="string">"a suite"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">// 测试组内分组</span></span><br><span class="line">        it(<span class="string">"a spec"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">// 测试用例</span></span><br><span class="line">            expect(a).toBe(<span class="literal">true</span>); <span class="comment">// 期望匹配</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1 Suites可以理解为一组测试用例，使用全局的Jamine函数describe创建</span></span><br><span class="line"><span class="comment">// 2 Specs可以理解为一个测试用例，使用全局函数的it创建</span></span><br><span class="line"><span class="comment">// 3 Expectations由expect函数创建，和Matcher一起联用，设置测试的预期值</span></span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/01/jasmine入门/" itemprop="url">
                   前端单元测试框架-jasmine
                 </a>
@@ -1146,101 +1241,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/20/git-06/" itemprop="url">
-                  Git常用命令（6）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-20T11:10:09+08:00" content="2016-02-20">
-              2016-02-20
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/20/git-06/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/20/git-06/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">查看当前的远程库</span><br><span class="line">添加远程仓库</span><br><span class="line">从远程仓库抓取数据</span><br><span class="line">推送数据到远程仓库</span><br><span class="line">查看远程仓库信息</span><br></pre></td></tr></table></figure>
-<h4 id="u67E5_u770B_u5F53_u524D_u7684_u8FDC_u7A0B_u5E93"><a href="#u67E5_u770B_u5F53_u524D_u7684_u8FDC_u7A0B_u5E93" class="headerlink" title="查看当前的远程库"></a>查看当前的远程库</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 可以看到一个origin的远程库</span></span><br><span class="line">$ git remote  </span><br><span class="line"></span><br><span class="line"><span class="comment"># verbose：详细</span></span><br><span class="line">$ git remote -v</span><br></pre></td></tr></table></figure>
-<h4 id="u6DFB_u52A0_u8FDC_u7A0B_u5E93"><a href="#u6DFB_u52A0_u8FDC_u7A0B_u5E93" class="headerlink" title="添加远程库"></a>添加远程库</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 自己的本地代码可以来自多个仓库</span></span><br><span class="line"><span class="comment"># 每个仓库默认的名字为orgin，</span></span><br><span class="line"><span class="comment"># 如果项目来自多个仓库，git会提醒使用不同的仓库名字</span></span><br><span class="line">$ git remote add [shortname] [url]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 当然可以修改仓库的名字</span></span><br><span class="line">$ git remote rename [oldname] [newname]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可以删除仓库</span></span><br><span class="line">$ git remote rm [repositoryName]</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/20/git-06/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1287,7 +1287,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1297,7 +1297,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
