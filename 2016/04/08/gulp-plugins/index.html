@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Git," />
+  <meta name="keywords" content="Gulp," />
 
 
 
@@ -57,19 +57,31 @@
 
 
 
-<meta name="description" content="本节内容123撤消操作回退未推送远程仓库再次回退到新版本
-修改最后一次提交12345678# 情况一： 所有文件都已提交，只是想修改提交信息$ git commit --amend# 情况二： 有文件未提交修改，可先提交，再使用--amend$ git add test1.md $ git commit -m &quot;add test1.md&quot;$ git add .test2.md $ git comm">
+<meta name="description" content="本节内容1自启动Node服务插件
+自启动Node服务刚开始学习node时，每次修改完app.js，都去手动敲$ node app.js重启node Server，在stackoverflow上发现了gulp-develop-server这个插件
+
+特点：task可以监听app.js文件变化，自动重启Node Server☞插件地址
+监听文件变化需要结合gulp-livereload这个插件使用
+s">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git常用命令（5）">
-<meta property="og:url" content="http://xiuhonglee.com/2016/02/18/git-05/index.html">
+<meta property="og:title" content="gulp常用插件（1）">
+<meta property="og:url" content="http://xiuhonglee.com/2016/04/08/gulp-plugins/index.html">
 <meta property="og:site_name" content="xiuhong">
-<meta property="og:description" content="本节内容123撤消操作回退未推送远程仓库再次回退到新版本
-修改最后一次提交12345678# 情况一： 所有文件都已提交，只是想修改提交信息$ git commit --amend# 情况二： 有文件未提交修改，可先提交，再使用--amend$ git add test1.md $ git commit -m &quot;add test1.md&quot;$ git add .test2.md $ git comm">
-<meta property="og:updated_time" content="2016-04-03T15:01:32.000Z">
+<meta property="og:description" content="本节内容1自启动Node服务插件
+自启动Node服务刚开始学习node时，每次修改完app.js，都去手动敲$ node app.js重启node Server，在stackoverflow上发现了gulp-develop-server这个插件
+
+特点：task可以监听app.js文件变化，自动重启Node Server☞插件地址
+监听文件变化需要结合gulp-livereload这个插件使用
+s">
+<meta property="og:updated_time" content="2016-04-08T06:55:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git常用命令（5）">
-<meta name="twitter:description" content="本节内容123撤消操作回退未推送远程仓库再次回退到新版本
-修改最后一次提交12345678# 情况一： 所有文件都已提交，只是想修改提交信息$ git commit --amend# 情况二： 有文件未提交修改，可先提交，再使用--amend$ git add test1.md $ git commit -m &quot;add test1.md&quot;$ git add .test2.md $ git comm">
+<meta name="twitter:title" content="gulp常用插件（1）">
+<meta name="twitter:description" content="本节内容1自启动Node服务插件
+自启动Node服务刚开始学习node时，每次修改完app.js，都去手动敲$ node app.js重启node Server，在stackoverflow上发现了gulp-develop-server这个插件
+
+特点：task可以监听app.js文件变化，自动重启Node Server☞插件地址
+监听文件变化需要结合gulp-livereload这个插件使用
+s">
 
 
 
@@ -87,7 +99,7 @@
   };
 </script>
 
-  <title> Git常用命令（5） | xiuhong </title>
+  <title> gulp常用插件（1） | xiuhong </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -235,7 +247,7 @@
             
             
               
-                Git常用命令（5）
+                gulp常用插件（1）
               
             
           </h1>
@@ -247,8 +259,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-18T22:01:21+08:00" content="2016-02-18">
-              2016-02-18
+            <time itemprop="dateCreated" datetime="2016-04-08T14:37:14+08:00" content="2016-04-08">
+              2016-04-08
             </time>
           </span>
 
@@ -258,8 +270,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/18/git-05/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/18/git-05/" itemprop="commentsCount"></span>
+                <a href="/2016/04/08/gulp-plugins/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/08/gulp-plugins/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -280,11 +292,14 @@
       
 
       
-        <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">撤消操作</span><br><span class="line">回退未推送远程仓库</span><br><span class="line">再次回退到新版本</span><br></pre></td></tr></table></figure>
-<h4 id="u4FEE_u6539_u6700_u540E_u4E00_u6B21_u63D0_u4EA4"><a href="#u4FEE_u6539_u6700_u540E_u4E00_u6B21_u63D0_u4EA4" class="headerlink" title="修改最后一次提交"></a>修改最后一次提交</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 情况一： 所有文件都已提交，只是想修改提交信息</span></span><br><span class="line">$ git commit --amend</span><br><span class="line"></span><br><span class="line"><span class="comment"># 情况二： 有文件未提交修改，可先提交，再使用--amend</span></span><br><span class="line">$ git add <span class="built_in">test</span>1.md </span><br><span class="line">$ git commit -m <span class="string">"add test1.md"</span></span><br><span class="line">$ git add .test2.md </span><br><span class="line">$ git commit --amend</span><br></pre></td></tr></table></figure>
-<h4 id="u5411_u540E_u56DE_u9000_u672A_u63A8_u9001_u8FDC_u7A0B_u4ED3_u5E93"><a href="#u5411_u540E_u56DE_u9000_u672A_u63A8_u9001_u8FDC_u7A0B_u4ED3_u5E93" class="headerlink" title="向后回退未推送远程仓库"></a>向后回退未推送远程仓库</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 本地代码库还没有push，add\commit 后想回退  </span></span><br><span class="line">$ git reset  [—soft | —mixed | —hard ]  HEAD^ </span><br><span class="line"></span><br><span class="line"><span class="comment">#-—soft：会保留源码，只回退到commit的某个版本，</span></span><br><span class="line"><span class="comment"># 不涉及index的回退，如果还需要提交，直接commit即可</span></span><br><span class="line"><span class="comment"># 觉得有点类似 $ git commit --amend</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># --mixed：会保留源码，只将git commit 和index(add)信息回退到某个版本  </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># --hard：源码也会回退到某个版本，commit和index也会回退（会改变本地代码）</span></span><br></pre></td></tr></table></figure>
-<h4 id="u518D_u6B21_u56DE_u9000_u5230_u65B0_u7248_u672C"><a href="#u518D_u6B21_u56DE_u9000_u5230_u65B0_u7248_u672C" class="headerlink" title="再次回退到新版本"></a>再次回退到新版本</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看提交历史版本信息</span></span><br><span class="line">（包括回退掉的，比如$ git reset --hard HEAD^后，$ git <span class="built_in">log</span>的信息不回包括reset掉的那个版本） </span><br><span class="line">$ git reflog</span><br><span class="line"></span><br><span class="line"><span class="comment"># 回退到指定</span></span><br><span class="line">$ git reset —hard <span class="built_in">hash</span>-value</span><br></pre></td></tr></table></figure>
-<h5 id="u5DF2_u63A8_u9001_u5230_u8FDC_u7A0B_u7248_u672C_u56DE_u9000"><a href="#u5DF2_u63A8_u9001_u5230_u8FDC_u7A0B_u7248_u672C_u56DE_u9000" class="headerlink" title="已推送到远程版本回退"></a>已推送到远程版本回退</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git revert &lt;commit <span class="built_in">hash</span>&gt;</span><br><span class="line"><span class="comment"># 需保证工作目录干净</span></span><br><span class="line"><span class="comment"># 用一次新的提交来覆盖旧的提交</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 别忘了push更新远程目录</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+        <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">自启动Node服务插件</span><br></pre></td></tr></table></figure>
+<h4 id="u81EA_u542F_u52A8Node_u670D_u52A1"><a href="#u81EA_u542F_u52A8Node_u670D_u52A1" class="headerlink" title="自启动Node服务"></a>自启动Node服务</h4><p><cite style="background: #f5f5d5;padding:10px;">刚开始学习node时，每次修改完app.js，都去手动敲$ node app.js重启node Server，在stackoverflow上发现了gulp-develop-server这个插件<br></cite></p>
+<ul>
+<li>特点：task可以监听app.js文件变化，自动重启Node Server☞<a href="https://github.com/narirou/gulp-develop-server" target="_blank" rel="external">插件地址</a></li>
+<li>监听文件变化需要结合gulp-livereload这个插件使用</li>
+<li>server.restart == server.changed</li>
+<li>下面是示例<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>),</span><br><span class="line">    server = <span class="built_in">require</span>(<span class="string">'gulp-develop-server'</span>),</span><br><span class="line">    livereload = <span class="built_in">require</span>(<span class="string">'gulp-livereload'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">    path: <span class="string">'./app.js'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> serverFiles = [</span><br><span class="line">    <span class="string">'./app.js'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'server:start'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    server.listen(options, livereload.listen);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// If server scripts change, restart the server and then livereload.</span></span><br><span class="line">gulp.task(<span class="string">'default'</span>, [<span class="string">'server:start'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">restart</span>(<span class="params">file</span>) </span>&#123;</span><br><span class="line">        server.changed(<span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (!error) livereload.changed(file.path);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    gulp.watch(serverFiles).on(<span class="string">'change'</span>, restart);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+</ul>
 
       
     </div>
@@ -293,7 +308,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Git/" rel="tag">#Git</a>
+            <a href="/tags/Gulp/" rel="tag">#Gulp</a>
           
         </div>
       
@@ -302,17 +317,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/16/git-04/" rel="next" title="Git常用命令（4）">
-                <i class="fa fa-chevron-left"></i> Git常用命令（4）
+              <a href="/2016/04/07/berserkjs/" rel="next" title="性能监控——berserkjs">
+                <i class="fa fa-chevron-left"></i> 性能监控——berserkjs
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/02/20/git-06/" rel="prev" title="Git常用命令（6）">
-                Git常用命令（6） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -338,8 +349,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/02/18/git-05/"
-           data-title="Git常用命令（5）" data-url="http://xiuhonglee.com/2016/02/18/git-05/">
+      <div class="ds-thread" data-thread-key="2016/04/08/gulp-plugins/"
+           data-title="gulp常用插件（1）" data-url="http://xiuhonglee.com/2016/04/08/gulp-plugins/">
       </div>
     
   </div>
@@ -437,7 +448,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#u672C_u8282_u5185_u5BB9"><span class="nav-number">1.</span> <span class="nav-text">本节内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u4FEE_u6539_u6700_u540E_u4E00_u6B21_u63D0_u4EA4"><span class="nav-number">2.</span> <span class="nav-text">修改最后一次提交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u5411_u540E_u56DE_u9000_u672A_u63A8_u9001_u8FDC_u7A0B_u4ED3_u5E93"><span class="nav-number">3.</span> <span class="nav-text">向后回退未推送远程仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u518D_u6B21_u56DE_u9000_u5230_u65B0_u7248_u672C"><span class="nav-number">4.</span> <span class="nav-text">再次回退到新版本</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#u5DF2_u63A8_u9001_u5230_u8FDC_u7A0B_u7248_u672C_u56DE_u9000"><span class="nav-number">4.1.</span> <span class="nav-text">已推送到远程版本回退</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#u672C_u8282_u5185_u5BB9"><span class="nav-number">1.</span> <span class="nav-text">本节内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u81EA_u542F_u52A8Node_u670D_u52A1"><span class="nav-number">2.</span> <span class="nav-text">自启动Node服务</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
