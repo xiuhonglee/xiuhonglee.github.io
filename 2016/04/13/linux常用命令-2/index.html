@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Git," />
+  <meta name="keywords" content="Linux," />
 
 
 
@@ -57,19 +57,22 @@
 
 
 
-<meta name="description" content="本节内容123撤消操作回退未推送远程仓库再次回退到新版本
-修改最后一次提交12345678# 情况一： 所有文件都已提交，只是想修改提交信息$ git commit --amend# 情况二： 有文件未提交修改，可先提交，再使用--amend$ git add test1.md $ git commit -m &quot;add test1.md&quot;$ git add .test2.md $ git comm">
+<meta name="description" content="本节内容1Linux定时执行任务
+设置editor打开方式1$ EDITOR=vim; export EDITOR
+Linux定时执行任务123456789101112131415161718# 命令格式 at[参数][时间] # 命令功能：在一个指定的时间执行一个指定任务，只能执行一次# 需要开启atd进程$ ps -ef | grep atd  查看# mac下开启服务$ sudo launc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git常用命令（5）">
-<meta property="og:url" content="http://xiuhonglee.com/2016/02/18/git-05/index.html">
+<meta property="og:title" content="linux常用命令(2)">
+<meta property="og:url" content="http://xiuhonglee.com/2016/04/13/linux常用命令-2/index.html">
 <meta property="og:site_name" content="xiuhong">
-<meta property="og:description" content="本节内容123撤消操作回退未推送远程仓库再次回退到新版本
-修改最后一次提交12345678# 情况一： 所有文件都已提交，只是想修改提交信息$ git commit --amend# 情况二： 有文件未提交修改，可先提交，再使用--amend$ git add test1.md $ git commit -m &quot;add test1.md&quot;$ git add .test2.md $ git comm">
-<meta property="og:updated_time" content="2016-04-03T15:01:32.000Z">
+<meta property="og:description" content="本节内容1Linux定时执行任务
+设置editor打开方式1$ EDITOR=vim; export EDITOR
+Linux定时执行任务123456789101112131415161718# 命令格式 at[参数][时间] # 命令功能：在一个指定的时间执行一个指定任务，只能执行一次# 需要开启atd进程$ ps -ef | grep atd  查看# mac下开启服务$ sudo launc">
+<meta property="og:updated_time" content="2016-04-15T13:53:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git常用命令（5）">
-<meta name="twitter:description" content="本节内容123撤消操作回退未推送远程仓库再次回退到新版本
-修改最后一次提交12345678# 情况一： 所有文件都已提交，只是想修改提交信息$ git commit --amend# 情况二： 有文件未提交修改，可先提交，再使用--amend$ git add test1.md $ git commit -m &quot;add test1.md&quot;$ git add .test2.md $ git comm">
+<meta name="twitter:title" content="linux常用命令(2)">
+<meta name="twitter:description" content="本节内容1Linux定时执行任务
+设置editor打开方式1$ EDITOR=vim; export EDITOR
+Linux定时执行任务123456789101112131415161718# 命令格式 at[参数][时间] # 命令功能：在一个指定的时间执行一个指定任务，只能执行一次# 需要开启atd进程$ ps -ef | grep atd  查看# mac下开启服务$ sudo launc">
 
 
 
@@ -87,7 +90,7 @@
   };
 </script>
 
-  <title> Git常用命令（5） | xiuhong </title>
+  <title> linux常用命令(2) | xiuhong </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -235,7 +238,7 @@
             
             
               
-                Git常用命令（5）
+                linux常用命令(2)
               
             
           </h1>
@@ -247,8 +250,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-18T22:01:21+08:00" content="2016-02-18">
-              2016-02-18
+            <time itemprop="dateCreated" datetime="2016-04-13T10:01:22+08:00" content="2016-04-13">
+              2016-04-13
             </time>
           </span>
 
@@ -258,8 +261,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/18/git-05/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/18/git-05/" itemprop="commentsCount"></span>
+                <a href="/2016/04/13/linux常用命令-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/13/linux常用命令-2/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -280,11 +283,10 @@
       
 
       
-        <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">撤消操作</span><br><span class="line">回退未推送远程仓库</span><br><span class="line">再次回退到新版本</span><br></pre></td></tr></table></figure>
-<h4 id="u4FEE_u6539_u6700_u540E_u4E00_u6B21_u63D0_u4EA4"><a href="#u4FEE_u6539_u6700_u540E_u4E00_u6B21_u63D0_u4EA4" class="headerlink" title="修改最后一次提交"></a>修改最后一次提交</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 情况一： 所有文件都已提交，只是想修改提交信息</span></span><br><span class="line">$ git commit --amend</span><br><span class="line"></span><br><span class="line"><span class="comment"># 情况二： 有文件未提交修改，可先提交，再使用--amend</span></span><br><span class="line">$ git add <span class="built_in">test</span>1.md </span><br><span class="line">$ git commit -m <span class="string">"add test1.md"</span></span><br><span class="line">$ git add .test2.md </span><br><span class="line">$ git commit --amend</span><br></pre></td></tr></table></figure>
-<h4 id="u5411_u540E_u56DE_u9000_u672A_u63A8_u9001_u8FDC_u7A0B_u4ED3_u5E93"><a href="#u5411_u540E_u56DE_u9000_u672A_u63A8_u9001_u8FDC_u7A0B_u4ED3_u5E93" class="headerlink" title="向后回退未推送远程仓库"></a>向后回退未推送远程仓库</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 本地代码库还没有push，add\commit 后想回退  </span></span><br><span class="line">$ git reset  [—soft | —mixed | —hard ]  HEAD^ </span><br><span class="line"></span><br><span class="line"><span class="comment">#-—soft：会保留源码，只回退到commit的某个版本，</span></span><br><span class="line"><span class="comment"># 不涉及index的回退，如果还需要提交，直接commit即可</span></span><br><span class="line"><span class="comment"># 觉得有点类似 $ git commit --amend</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># --mixed：会保留源码，只将git commit 和index(add)信息回退到某个版本  </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># --hard：源码也会回退到某个版本，commit和index也会回退（会改变本地代码）</span></span><br></pre></td></tr></table></figure>
-<h4 id="u518D_u6B21_u56DE_u9000_u5230_u65B0_u7248_u672C"><a href="#u518D_u6B21_u56DE_u9000_u5230_u65B0_u7248_u672C" class="headerlink" title="再次回退到新版本"></a>再次回退到新版本</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看提交历史版本信息</span></span><br><span class="line">（包括回退掉的，比如$ git reset --hard HEAD^后，$ git <span class="built_in">log</span>的信息不回包括reset掉的那个版本） </span><br><span class="line">$ git reflog</span><br><span class="line"></span><br><span class="line"><span class="comment"># 回退到指定</span></span><br><span class="line">$ git reset —hard <span class="built_in">hash</span>-value</span><br></pre></td></tr></table></figure>
-<h5 id="u5DF2_u63A8_u9001_u5230_u8FDC_u7A0B_u7248_u672C_u56DE_u9000"><a href="#u5DF2_u63A8_u9001_u5230_u8FDC_u7A0B_u7248_u672C_u56DE_u9000" class="headerlink" title="已推送到远程版本回退"></a>已推送到远程版本回退</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git revert &lt;commit <span class="built_in">hash</span>&gt;</span><br><span class="line"><span class="comment"># 需保证工作目录干净</span></span><br><span class="line"><span class="comment"># 用一次新的提交来覆盖旧的提交</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 别忘了push更新远程目录</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+        <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Linux定时执行任务</span><br></pre></td></tr></table></figure>
+<h4 id="u8BBE_u7F6Eeditor_u6253_u5F00_u65B9_u5F0F"><a href="#u8BBE_u7F6Eeditor_u6253_u5F00_u65B9_u5F0F" class="headerlink" title="设置editor打开方式"></a>设置editor打开方式</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ EDITOR=vim; <span class="built_in">export</span> EDITOR</span><br></pre></td></tr></table></figure>
+<h4 id="Linux_u5B9A_u65F6_u6267_u884C_u4EFB_u52A1"><a href="#Linux_u5B9A_u65F6_u6267_u884C_u4EFB_u52A1" class="headerlink" title="Linux定时执行任务"></a>Linux定时执行任务</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 命令格式 at[参数][时间] </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 命令功能：在一个指定的时间执行一个指定任务，只能执行一次</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 需要开启atd进程</span></span><br><span class="line">$ ps -ef | grep atd  查看</span><br><span class="line"></span><br><span class="line"><span class="comment"># mac下开启服务</span></span><br><span class="line">$ sudo launchctl unload -F /System/Library/LaunchDaemons/com.apple.atrun.plist</span><br><span class="line">$ sudo launchctl load -F /System/Library/LaunchDaemons/com.apple.atrun.plist</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例</span></span><br><span class="line">$ at <span class="number">13</span>:<span class="number">00</span></span><br><span class="line">&gt;  ls </span><br><span class="line">&gt; &lt;EOT&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 详细用法如下</span></span><br><span class="line">$ man at</span><br></pre></td></tr></table></figure>
+<h4 id="crontab"><a href="#crontab" class="headerlink" title="crontab"></a>crontab</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mac下启动、关闭cron服务</span></span><br><span class="line">$ launchctl load -w /System/Library/LaunchDaemons/com.vix.cron.plist</span><br><span class="line">$ launchctl unload -w /System/Library/LaunchDaemons/com.vix.cron.plist</span><br><span class="line"></span><br><span class="line"><span class="comment">###  使用方法，step by step  ###</span></span><br><span class="line"><span class="number">1</span>. 设置crontab <span class="operator">-e</span> 默认打开浏览器，推荐用nano，vim可能会报错</span><br><span class="line">$ EDITOR=nano; <span class="built_in">export</span>=EDITOR</span><br><span class="line"><span class="number">2</span>. 编写任务crontab job</span><br><span class="line">$ crontab <span class="operator">-e</span>  // 这条命令会用nano打开编辑框，下面是每分钟执行下指定目录的脚本任务（一定要用绝对路径，脚本里也是）</span><br><span class="line">* * * * * /Users/xiuhong/xh_github/monitoring/gruntPhantomas/task.sh</span><br><span class="line"><span class="number">3</span>. 保存退出即可，crontab会自动运行</span><br><span class="line"></span><br><span class="line"><span class="comment">### 下面这个是我的脚本，一定要用绝对路径！！！包括命令也是  ###</span></span><br><span class="line"><span class="shebang">#!/bin/sh</span></span><br><span class="line">PATH=/usr/<span class="built_in">local</span>/bin:/usr/<span class="built_in">local</span>/sbin:~/bin:/usr/bin:/bin:/usr/sbin:/sbin</span><br><span class="line"><span class="built_in">cd</span> /Users/xiuhong/xh_github/monitoring/gruntPhantomas</span><br><span class="line">/usr/<span class="built_in">local</span>/bin/grunt</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -293,7 +295,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Git/" rel="tag">#Git</a>
+            <a href="/tags/Linux/" rel="tag">#Linux</a>
           
         </div>
       
@@ -302,16 +304,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/16/git-04/" rel="next" title="Git常用命令（4）">
-                <i class="fa fa-chevron-left"></i> Git常用命令（4）
+              <a href="/2016/04/08/gulp-plugins/" rel="next" title="gulp常用插件（1）">
+                <i class="fa fa-chevron-left"></i> gulp常用插件（1）
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/02/20/git-06/" rel="prev" title="Git常用命令（6）">
-                Git常用命令（6） <i class="fa fa-chevron-right"></i>
+              <a href="/2016/04/16/jenkins/" rel="prev" title="搭建Jenkins Server(安装Jenkins)">
+                搭建Jenkins Server(安装Jenkins) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -338,8 +340,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/02/18/git-05/"
-           data-title="Git常用命令（5）" data-url="http://xiuhonglee.com/2016/02/18/git-05/">
+      <div class="ds-thread" data-thread-key="2016/04/13/linux常用命令-2/"
+           data-title="linux常用命令(2)" data-url="http://xiuhonglee.com/2016/04/13/linux常用命令-2/">
       </div>
     
   </div>
@@ -437,7 +439,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#u672C_u8282_u5185_u5BB9"><span class="nav-number">1.</span> <span class="nav-text">本节内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u4FEE_u6539_u6700_u540E_u4E00_u6B21_u63D0_u4EA4"><span class="nav-number">2.</span> <span class="nav-text">修改最后一次提交</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u5411_u540E_u56DE_u9000_u672A_u63A8_u9001_u8FDC_u7A0B_u4ED3_u5E93"><span class="nav-number">3.</span> <span class="nav-text">向后回退未推送远程仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u518D_u6B21_u56DE_u9000_u5230_u65B0_u7248_u672C"><span class="nav-number">4.</span> <span class="nav-text">再次回退到新版本</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#u5DF2_u63A8_u9001_u5230_u8FDC_u7A0B_u7248_u672C_u56DE_u9000"><span class="nav-number">4.1.</span> <span class="nav-text">已推送到远程版本回退</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#u672C_u8282_u5185_u5BB9"><span class="nav-number">1.</span> <span class="nav-text">本节内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u8BBE_u7F6Eeditor_u6253_u5F00_u65B9_u5F0F"><span class="nav-number">2.</span> <span class="nav-text">设置editor打开方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux_u5B9A_u65F6_u6267_u884C_u4EFB_u52A1"><span class="nav-number">3.</span> <span class="nav-text">Linux定时执行任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#crontab"><span class="nav-number">4.</span> <span class="nav-text">crontab</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

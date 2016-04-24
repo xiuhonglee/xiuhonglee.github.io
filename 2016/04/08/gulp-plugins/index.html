@@ -57,31 +57,28 @@
 
 
 
-<meta name="description" content="本节内容1自启动Node服务插件
+<meta name="description" content="本节内容12自启动Node服务插件同一个项目使用Gulp和Grunt
 自启动Node服务刚开始学习node时，每次修改完app.js，都去手动敲$ node app.js重启node Server，在stackoverflow上发现了gulp-develop-server这个插件
 
 特点：task可以监听app.js文件变化，自动重启Node Server☞插件地址
-监听文件变化需要结合gulp-livereload这个插件使用
-s">
+监听文件变化需要结合gulp-">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gulp常用插件（1）">
 <meta property="og:url" content="http://xiuhonglee.com/2016/04/08/gulp-plugins/index.html">
 <meta property="og:site_name" content="xiuhong">
-<meta property="og:description" content="本节内容1自启动Node服务插件
+<meta property="og:description" content="本节内容12自启动Node服务插件同一个项目使用Gulp和Grunt
 自启动Node服务刚开始学习node时，每次修改完app.js，都去手动敲$ node app.js重启node Server，在stackoverflow上发现了gulp-develop-server这个插件
 
 特点：task可以监听app.js文件变化，自动重启Node Server☞插件地址
-监听文件变化需要结合gulp-livereload这个插件使用
-s">
-<meta property="og:updated_time" content="2016-04-08T06:55:10.000Z">
+监听文件变化需要结合gulp-">
+<meta property="og:updated_time" content="2016-04-08T08:16:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gulp常用插件（1）">
-<meta name="twitter:description" content="本节内容1自启动Node服务插件
+<meta name="twitter:description" content="本节内容12自启动Node服务插件同一个项目使用Gulp和Grunt
 自启动Node服务刚开始学习node时，每次修改完app.js，都去手动敲$ node app.js重启node Server，在stackoverflow上发现了gulp-develop-server这个插件
 
 特点：task可以监听app.js文件变化，自动重启Node Server☞插件地址
-监听文件变化需要结合gulp-livereload这个插件使用
-s">
+监听文件变化需要结合gulp-">
 
 
 
@@ -292,14 +289,23 @@ s">
       
 
       
-        <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">自启动Node服务插件</span><br></pre></td></tr></table></figure>
+        <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">自启动Node服务插件</span><br><span class="line">同一个项目使用Gulp和Grunt</span><br></pre></td></tr></table></figure>
 <h4 id="u81EA_u542F_u52A8Node_u670D_u52A1"><a href="#u81EA_u542F_u52A8Node_u670D_u52A1" class="headerlink" title="自启动Node服务"></a>自启动Node服务</h4><p><cite style="background: #f5f5d5;padding:10px;">刚开始学习node时，每次修改完app.js，都去手动敲$ node app.js重启node Server，在stackoverflow上发现了gulp-develop-server这个插件<br></cite></p>
 <ul>
 <li>特点：task可以监听app.js文件变化，自动重启Node Server☞<a href="https://github.com/narirou/gulp-develop-server" target="_blank" rel="external">插件地址</a></li>
 <li>监听文件变化需要结合gulp-livereload这个插件使用</li>
 <li>server.restart == server.changed</li>
-<li>下面是示例<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>),</span><br><span class="line">    server = <span class="built_in">require</span>(<span class="string">'gulp-develop-server'</span>),</span><br><span class="line">    livereload = <span class="built_in">require</span>(<span class="string">'gulp-livereload'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">    path: <span class="string">'./app.js'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> serverFiles = [</span><br><span class="line">    <span class="string">'./app.js'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'server:start'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    server.listen(options, livereload.listen);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// If server scripts change, restart the server and then livereload.</span></span><br><span class="line">gulp.task(<span class="string">'default'</span>, [<span class="string">'server:start'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">restart</span>(<span class="params">file</span>) </span>&#123;</span><br><span class="line">        server.changed(<span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (!error) livereload.changed(file.path);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    gulp.watch(serverFiles).on(<span class="string">'change'</span>, restart);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>下面是示例<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>),</span><br><span class="line">    server = <span class="built_in">require</span>(<span class="string">'gulp-develop-server'</span>),</span><br><span class="line">    livereload = <span class="built_in">require</span>(<span class="string">'gulp-livereload'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">    path: <span class="string">'./app.js'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> serverFiles = [</span><br><span class="line">    <span class="string">'./app.js'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'server:start'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    server.listen(options, livereload.listen);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// If server scripts change, restart the server and then livereload.</span></span><br><span class="line">gulp.task(<span class="string">'default'</span>, [<span class="string">'server:start'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">restart</span>(<span class="params">file</span>) </span>&#123;</span><br><span class="line">        server.changed(<span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (!error) livereload.changed(file.path);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    gulp.watch(serverFiles).on(<span class="string">'change'</span>, restart);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
+<a id="more"></a>
+<h4 id="u540C_u4E00_u4E2A_u9879_u76EE_u4F7F_u7528Gulp_u548CGrunt"><a href="#u540C_u4E00_u4E2A_u9879_u76EE_u4F7F_u7528Gulp_u548CGrunt" class="headerlink" title="同一个项目使用Gulp和Grunt"></a>同一个项目使用Gulp和Grunt</h4><p><cite style="background: #f5f5d5;padding:10px;">有这样一个需求，要在项目中使用grunt-phantomas这个插件做自动化监控，可是项目当初使用的Gulp。难道为要为了使用这个插件弃用Gulp？果然：我遇到的每个问题已经有100个人（何止）也遇到过，找到了解决方案，就是（gulp-grunt，This classifies gulp-grunt as gulpfriendly, not a gulpplugin.）☞<a href="https://www.npmjs.com/package/gulp-grunt" target="_blank" rel="external">地址</a><br></cite></p>
+<h5 id="u6B65_u9AA4_u4E00"><a href="#u6B65_u9AA4_u4E00" class="headerlink" title="步骤一"></a>步骤一</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install gulp-grunt --save-dev</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>gulp和grunt可以共用package.json，它们的插件可以放在一起</p>
+</blockquote>
+<h5 id="u6B65_u9AA4_u4E8C"><a href="#u6B65_u9AA4_u4E8C" class="headerlink" title="步骤二"></a>步骤二</h5><p>新建Gruntfile.js文件，gulpfile.js和Gruntfile.js里写各自的task即可。</p>
+<h5 id="u6B65_u9AA4_u4E09"><a href="#u6B65_u9AA4_u4E09" class="headerlink" title="步骤三"></a>步骤三</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Gruntfile.js里的uglify task</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">grunt</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Project configuration.</span></span><br><span class="line">    grunt.initConfig(&#123;</span><br><span class="line">        pkg: grunt.file.readJSON(<span class="string">'package.json'</span>),</span><br><span class="line">        uglify: &#123;</span><br><span class="line">            options: &#123;</span><br><span class="line">            &#125;,</span><br><span class="line">            build: &#123;</span><br><span class="line">                src: <span class="string">'public/js/index.js'</span>,</span><br><span class="line">                dest: <span class="string">'build/index.min.js'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Load the plugin that provides the "uglify" task.</span></span><br><span class="line">    grunt.loadNpmTasks(<span class="string">'grunt-contrib-uglify'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Default task(s).</span></span><br><span class="line">    grunt.registerTask(<span class="string">'uglify'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Gulpfile.js里的uglify task</span></span><br><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'gulp-grunt'</span>)(gulp); <span class="comment">// 重点是这句，建立了gulp-grunt的连接机制</span></span><br><span class="line">gulp.task(<span class="string">'grunt-uglify'</span>); <span class="comment">// 然后就可以调用grunt的task</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -324,6 +330,10 @@ s">
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/13/linux常用命令-2/" rel="prev" title="linux常用命令(2)">
+                linux常用命令(2) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -395,7 +405,7 @@ s">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -405,7 +415,7 @@ s">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -448,7 +458,7 @@ s">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#u672C_u8282_u5185_u5BB9"><span class="nav-number">1.</span> <span class="nav-text">本节内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u81EA_u542F_u52A8Node_u670D_u52A1"><span class="nav-number">2.</span> <span class="nav-text">自启动Node服务</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#u672C_u8282_u5185_u5BB9"><span class="nav-number">1.</span> <span class="nav-text">本节内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u81EA_u542F_u52A8Node_u670D_u52A1"><span class="nav-number">2.</span> <span class="nav-text">自启动Node服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u540C_u4E00_u4E2A_u9879_u76EE_u4F7F_u7528Gulp_u548CGrunt"><span class="nav-number">3.</span> <span class="nav-text">同一个项目使用Gulp和Grunt</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#u6B65_u9AA4_u4E00"><span class="nav-number">3.1.</span> <span class="nav-text">步骤一</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u6B65_u9AA4_u4E8C"><span class="nav-number">3.2.</span> <span class="nav-text">步骤二</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u6B65_u9AA4_u4E09"><span class="nav-number">3.3.</span> <span class="nav-text">步骤三</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
