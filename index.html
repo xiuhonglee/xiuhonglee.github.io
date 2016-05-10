@@ -249,6 +249,107 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/10/javascript-plus/" itemprop="url">
+                  javascript加号运算符
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-10T18:08:54+08:00" content="2016-05-10">
+              2016-05-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/10/javascript-plus/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/10/javascript-plus/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">JavaScript中的加号运算符</span><br><span class="line">使用场景</span><br></pre></td></tr></table></figure>
+<h4 id="JavaScript_u4E2D_u7684_u52A0_u53F7_u8FD0_u7B97_u7B26"><a href="#JavaScript_u4E2D_u7684_u52A0_u53F7_u8FD0_u7B97_u7B26" class="headerlink" title="JavaScript中的加号运算符"></a>JavaScript中的加号运算符</h4><blockquote>
+<p>通常，在JavaScript中的“+”运算符用来进行数字运算和字符串连接。但是，它也可作为一元运算符通过调用操作对象的valueOf()或toString()方法来使用。</p>
+</blockquote>
+<h4 id="u4F7F_u7528_u573A_u666F"><a href="#u4F7F_u7528_u573A_u666F" class="headerlink" title="使用场景"></a>使用场景</h4><p>1.获取时间戳</p>
+<blockquote>
+<p>The Date object has handy implementations for valueOf() and toString()</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>().valueOf()</span><br><span class="line"><span class="comment">// 1369472124400 (milliseconds timestamp)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>().toString()</span><br><span class="line"><span class="comment">// "Sat May 25 2013 10:55:17 GMT+0200"</span></span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/10/javascript-plus/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/26/phantomas/" itemprop="url">
                   phantomas
                 </a>
@@ -309,7 +410,7 @@
 <li>方便集成到持续集成(CI)工具中（如：Jenkins）</li>
 <li>有Node Module可供使用，方便集成到Node项目中（不过文档不怎么全）</li>
 </ul>
-<h4 id="Phantomas_u547D_u4EE4_u884C_u4E0B_u4F7F_u7528"><a href="#Phantomas_u547D_u4EE4_u884C_u4E0B_u4F7F_u7528" class="headerlink" title="Phantomas命令行下使用"></a>Phantomas命令行下使用</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ phantomas https://github.com/macbre/phantomas --verbose</span><br></pre></td></tr></table></figure>
+<h4 id="Phantomas_u547D_u4EE4_u884C_u4E0B_u4F7F_u7528"><a href="#Phantomas_u547D_u4EE4_u884C_u4E0B_u4F7F_u7528" class="headerlink" title="Phantomas命令行下使用"></a>Phantomas命令行下使用</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不过这样也只能在命令行下看结果</span></span><br><span class="line">$ phantomas https://github.com/macbre/phantomas --verbose</span><br><span class="line"></span><br><span class="line"><span class="comment"># 想要把结果存到json</span></span><br><span class="line">$ phantomas https://github.com/macbre/phantomas --verbose --reporter=json &gt; result.json</span><br></pre></td></tr></table></figure>
 
           
         
@@ -497,10 +598,12 @@
       
         
           
-            <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Linux定时执行任务</span><br></pre></td></tr></table></figure>
+            <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Linux定时执行任务</span><br><span class="line">Linux关闭进程</span><br></pre></td></tr></table></figure>
 <h4 id="u8BBE_u7F6Eeditor_u6253_u5F00_u65B9_u5F0F"><a href="#u8BBE_u7F6Eeditor_u6253_u5F00_u65B9_u5F0F" class="headerlink" title="设置editor打开方式"></a>设置editor打开方式</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ EDITOR=vim; <span class="built_in">export</span> EDITOR</span><br></pre></td></tr></table></figure>
 <h4 id="Linux_u5B9A_u65F6_u6267_u884C_u4EFB_u52A1"><a href="#Linux_u5B9A_u65F6_u6267_u884C_u4EFB_u52A1" class="headerlink" title="Linux定时执行任务"></a>Linux定时执行任务</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 命令格式 at[参数][时间] </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 命令功能：在一个指定的时间执行一个指定任务，只能执行一次</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 需要开启atd进程</span></span><br><span class="line">$ ps -ef | grep atd  查看</span><br><span class="line"></span><br><span class="line"><span class="comment"># mac下开启服务</span></span><br><span class="line">$ sudo launchctl unload -F /System/Library/LaunchDaemons/com.apple.atrun.plist</span><br><span class="line">$ sudo launchctl load -F /System/Library/LaunchDaemons/com.apple.atrun.plist</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例</span></span><br><span class="line">$ at <span class="number">13</span>:<span class="number">00</span></span><br><span class="line">&gt;  ls </span><br><span class="line">&gt; &lt;EOT&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 详细用法如下</span></span><br><span class="line">$ man at</span><br></pre></td></tr></table></figure>
 <h4 id="crontab"><a href="#crontab" class="headerlink" title="crontab"></a>crontab</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mac下启动、关闭cron服务</span></span><br><span class="line">$ launchctl load -w /System/Library/LaunchDaemons/com.vix.cron.plist</span><br><span class="line">$ launchctl unload -w /System/Library/LaunchDaemons/com.vix.cron.plist</span><br><span class="line"></span><br><span class="line"><span class="comment">###  使用方法，step by step  ###</span></span><br><span class="line"><span class="number">1</span>. 设置crontab <span class="operator">-e</span> 默认打开浏览器，推荐用nano，vim可能会报错</span><br><span class="line">$ EDITOR=nano; <span class="built_in">export</span>=EDITOR</span><br><span class="line"><span class="number">2</span>. 编写任务crontab job</span><br><span class="line">$ crontab <span class="operator">-e</span>  // 这条命令会用nano打开编辑框，下面是每分钟执行下指定目录的脚本任务（一定要用绝对路径，脚本里也是）</span><br><span class="line">* * * * * /Users/xiuhong/xh_github/monitoring/gruntPhantomas/task.sh</span><br><span class="line"><span class="number">3</span>. 保存退出即可，crontab会自动运行</span><br><span class="line"></span><br><span class="line"><span class="comment">### 下面这个是我的脚本，一定要用绝对路径！！！包括命令也是  ###</span></span><br><span class="line"><span class="shebang">#!/bin/sh</span></span><br><span class="line">PATH=/usr/<span class="built_in">local</span>/bin:/usr/<span class="built_in">local</span>/sbin:~/bin:/usr/bin:/bin:/usr/sbin:/sbin</span><br><span class="line"><span class="built_in">cd</span> /Users/xiuhong/xh_github/monitoring/gruntPhantomas</span><br><span class="line">/usr/<span class="built_in">local</span>/bin/grunt</span><br></pre></td></tr></table></figure>
+<h4 id="Linux_u5173_u95ED_u8FDB_u7A0B"><a href="#Linux_u5173_u95ED_u8FDB_u7A0B" class="headerlink" title="Linux关闭进程"></a>Linux关闭进程</h4><p>需求：node进程在后台开启，如何通过shell关闭<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看当前进程</span></span><br><span class="line">$ lsof -Pi | grep LISTEN</span><br><span class="line">mongod     <span class="number">8662</span> jacob    <span class="number">6</span>u  IPv4 <span class="number">0</span>x17ceae4e0970fbe9      <span class="number">0</span>t0  TCP localhost:<span class="number">27017</span> (LISTEN)</span><br><span class="line">mongod     <span class="number">8662</span> jacob    <span class="number">7</span>u  IPv4 <span class="number">0</span>x17ceae4e0f9c24b1      <span class="number">0</span>t0  TCP localhost:<span class="number">28017</span> (LISTEN)</span><br><span class="line">……</span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可以这样查找</span></span><br><span class="line">$ netstat -nlp | grep :<span class="number">8341</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># 终止与node相关的服务</span></span><br><span class="line">$ killall node</span><br></pre></td></tr></table></figure></p>
+<p><img src="/uploads/linux2-kill.png" alt=""></p>
 
           
         
@@ -1134,104 +1237,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/03/javascript-date/" itemprop="url">
-                  javascript-Date类型
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-03T21:24:26+08:00" content="2016-03-03">
-              2016-03-03
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/03/javascript-date/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/03/javascript-date/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="/uploads/javascript-date.jpg" alt=""></p>
-<h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ECMAScript Date类型</span><br></pre></td></tr></table></figure>
-<h4 id="ECMAScript_Date_u7C7B_u578B"><a href="#ECMAScript_Date_u7C7B_u578B" class="headerlink" title="ECMAScript Date类型"></a>ECMAScript Date类型</h4><blockquote>
-<p>Date类型使用UTC(国际协调时间)1970年1月1日午夜(零时)开始经过的毫秒数来保存日期。<br>Date类型保存的日期能够精确到1970年1月1日之前或之后285616年（&gt;28万年，呵呵~~）</p>
-</blockquote>
-<h5 id="u521B_u5EFA_u4E00_u4E2A_u65E5_u671F_u5BF9_u8C61"><a href="#u521B_u5EFA_u4E00_u4E2A_u65E5_u671F_u5BF9_u8C61" class="headerlink" title="创建一个日期对象"></a>创建一个日期对象</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="comment">// 不传参数的情况下，新创建的对象自动获得当前日期和时间</span></span><br><span class="line"><span class="comment">// 如果想根据特定的日期和时间创建日期对象，必须传入表示改日期的毫秒数</span></span><br><span class="line"><span class="comment">// (即从UTC时间1970年1月1日午夜起至改日期为止经过的毫秒数)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 有两种方法可以简化这一过程Date.parse()和Date.UTC()</span></span><br><span class="line"><span class="built_in">Date</span>.parse()</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/03/javascript-date/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1278,7 +1283,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-count">34</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
