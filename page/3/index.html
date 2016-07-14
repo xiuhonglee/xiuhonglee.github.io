@@ -217,11 +217,195 @@
 
     
     
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/25/git-08/" itemprop="url">
+                  Git常用命令（8）- 打标签
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-25T20:37:07+08:00" content="2016-02-25">
+              2016-02-25
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/25/git-08/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/25/git-08/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
       
 
       
+        
+          <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">列出已有标签</span><br><span class="line">新建附注标签</span><br><span class="line">新建轻量级标签</span><br><span class="line">分享标签</span><br></pre></td></tr></table></figure>
+<h4 id="u5217_u51FA_u5DF2_u6709_u6807_u7B7E"><a href="#u5217_u51FA_u5DF2_u6709_u6807_u7B7E" class="headerlink" title="列出已有标签"></a>列出已有标签</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 结果按字母排序</span></span><br><span class="line">$ git tag</span><br><span class="line"></span><br><span class="line"><span class="comment"># 支持正则搜索</span></span><br><span class="line"><span class="comment"># 匹配所有v1.1相关标签</span></span><br><span class="line">$ git tag <span class="operator">-l</span> <span class="string">'v1.1*'</span></span><br></pre></td></tr></table></figure>
+<h4 id="u65B0_u5EFA_u6807_u7B7E"><a href="#u65B0_u5EFA_u6807_u7B7E" class="headerlink" title="新建标签"></a>新建标签</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Git使用标签有两种类型：</span><br><span class="line">轻量级(lightweight): 相当于软链接吧（个人理解）；它是个指向特定提交对象的引用   </span><br><span class="line">含附注(annotated): 硬链接；实际存储在仓库中的一个对象，有自身的校验和信息</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建含附注(annotated)标签</span></span><br><span class="line">-------------------------------------------------------</span><br><span class="line"><span class="comment"># -a: annotated</span></span><br><span class="line"><span class="comment"># -m: 添加标签提示信息（和commit的-m一样）</span></span><br><span class="line"><span class="comment"># 不加-m的话会进入vim编辑页面，:q退出的话取消新建</span></span><br><span class="line">$ git tag <span class="operator">-a</span> v1.<span class="number">1</span> -m <span class="string">'my version 1.4'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看标签tag</span></span><br><span class="line">$ git show v1.<span class="number">1</span></span><br><span class="line"><span class="comment"># 显示标签的版本信息</span></span><br><span class="line"><span class="comment"># 显示打标签的提交对象</span></span><br><span class="line">-------------------------------------------------------</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新建轻量级标签</span></span><br><span class="line">-------------------------------------------------------</span><br><span class="line"><span class="comment"># 不用加任何参数</span></span><br><span class="line">$ git tag v1.<span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看标签信息</span></span><br><span class="line">$ git show v1.<span class="number">2</span></span><br><span class="line"><span class="comment"># 只会显示提交对象摘要</span></span><br><span class="line">-------------------------------------------------------</span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/25/git-08/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/25/linux常用命令/" itemprop="url">
+                  linux常用命令(1)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-25T09:45:05+08:00" content="2016-02-25">
+              2016-02-25
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/25/linux常用命令/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/25/linux常用命令/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">反向删除文件</span><br><span class="line">配置环境变量(mac)</span><br><span class="line">更改文件(夹)权限</span><br></pre></td></tr></table></figure>
+<h4 id="u53CD_u5411_u5220_u9664_u6587_u4EF6"><a href="#u53CD_u5411_u5220_u9664_u6587_u4EF6" class="headerlink" title="反向删除文件"></a>反向删除文件</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先了解一下Linux下强大的文本搜索工具</span></span><br><span class="line"><span class="comment"># 它能使用正则表达是搜索文本，并把匹配的行打印出来</span></span><br><span class="line">$ grep [-acinv] [--color=auto] <span class="string">'搜索字符串'</span> file-name</span><br><span class="line"></span><br><span class="line"><span class="comment"># 选项与参数：</span></span><br><span class="line"><span class="comment"># -a : 将binary文件以text文件的方式搜寻数据（并不明白）</span></span><br><span class="line"><span class="comment"># -c : 计算找到 '搜寻字符串'的次数</span></span><br><span class="line"><span class="comment"># -i : 忽略大小写</span></span><br><span class="line"><span class="comment"># -n : 输出行号</span></span><br><span class="line"><span class="comment"># -v : 反向选择（就是用这个参数来实现反向删除文件的）</span></span><br><span class="line"><span class="comment"># --color=auto : 对匹配到的关键词进行高亮显示（鸡肋）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 实现反向删除；把除README.md之外的文件全部删除</span></span><br><span class="line">$ rm `ls | grep -v <span class="string">'README.md'</span>`</span><br></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/02/25/linux常用命令/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -993,199 +1177,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/15/git-03/" itemprop="url">
-                  Git常用命令（3）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-15T09:50:01+08:00" content="2016-02-15">
-              2016-02-15
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/15/git-03/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/15/git-03/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="/uploads/git-03-staged.png" alt=""></p>
-<h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">查看已暂存和未暂存的更新</span><br><span class="line">提交更新</span><br><span class="line">跳过使用暂存区域</span><br><span class="line">移除文件</span><br><span class="line">移动文件</span><br></pre></td></tr></table></figure>
-<h4 id="u67E5_u770B_u5DF2_u6682_u5B58_u548C_u672A_u6682_u5B58_u7684_u66F4_u65B0"><a href="#u67E5_u770B_u5DF2_u6682_u5B58_u548C_u672A_u6682_u5B58_u7684_u66F4_u65B0" class="headerlink" title="查看已暂存和未暂存的更新"></a>查看已暂存和未暂存的更新</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git diff</span><br><span class="line"><span class="comment"># 此命令比较的是工作目录中当前文件和暂存区域快照之间的差异，</span></span><br><span class="line"><span class="comment"># 就是修改之后还没暂存起来的变化内容</span></span><br><span class="line"></span><br><span class="line">$ git diff --cached (Git <span class="number">1.6</span>.<span class="number">1</span>及高版本 ： --staged)</span><br><span class="line"><span class="comment"># --cached和--staged效果相同</span></span><br><span class="line"><span class="comment"># 此命令比较已暂存起来的文件和上次提交的快照之间的差异</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意：<code>$ git diff</code> 不过是显示还没有暂存起来的改动，而不是这次工作和上次提交之间的差异。若一下子暂存了所有更新过的文件后，运行<code>git diff</code>后却什么也没有</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/15/git-03/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/14/git-02/" itemprop="url">
-                  Git常用命令（2）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-14T08:49:46+08:00" content="2016-02-14">
-              2016-02-14
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/14/git-02/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/14/git-02/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="/uploads/git-life-style.png" alt=""></p>
-<h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">检查当前文件状态</span><br><span class="line">跟踪新文件</span><br><span class="line">暂存已修改文件</span><br><span class="line">忽略某些文件</span><br></pre></td></tr></table></figure>
-<h4 id="u68C0_u67E5_u5F53_u524D_u6587_u4EF6_u72B6_u6001"><a href="#u68C0_u67E5_u5F53_u524D_u6587_u4EF6_u72B6_u6001" class="headerlink" title="检查当前文件状态"></a>检查当前文件状态</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working directory clean</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例信息</span></span><br><span class="line">已跟踪文件未被更改过</span><br><span class="line">没有未跟踪的新文件</span><br><span class="line">当前所在分支为master</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/02/14/git-02/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1232,7 +1223,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">34</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1242,7 +1233,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
