@@ -1,0 +1,852 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Chrome Developer Tools," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="内容来自Google Developers
+使用Network面板来评估站点网络性能
+
+
+
+Network面板记录了每个页面与网络交互的信息，包括详细的时间线数据，HTTP请求和响应头部，cookies等。
+
+内容如下1* [1. Network&amp;#38754;&amp;#26495;&amp;#20171;&amp;#32461;](#1)&amp;#10;* [2. &amp;#35760;&amp;#24405;Network&amp;#2013">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chrome开发者工具-network面板">
+<meta property="og:url" content="http://xiuhonglee.com/2016/08/03/Chrome开发者工具-network-panel/index.html">
+<meta property="og:site_name" content="xiuhong">
+<meta property="og:description" content="内容来自Google Developers
+使用Network面板来评估站点网络性能
+
+
+
+Network面板记录了每个页面与网络交互的信息，包括详细的时间线数据，HTTP请求和响应头部，cookies等。
+
+内容如下1* [1. Network&amp;#38754;&amp;#26495;&amp;#20171;&amp;#32461;](#1)&amp;#10;* [2. &amp;#35760;&amp;#24405;Network&amp;#2013">
+<meta property="og:image" content="http://s17.mogucdn.com/p2/160802/upload_38kd0gf4c2kg42d5ll7cba0c6hjkb_1400x713.png">
+<meta property="og:image" content="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/imgs/panes.png">
+<meta property="og:image" content="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/imgs/filmstrip.png">
+<meta property="og:image" content="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/imgs/filmstrip-timeline-overlay.png">
+<meta property="og:image" content="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/imgs/filmstrip-zoom.png">
+<meta property="og:image" content="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/imgs/domcontentloaded.png">
+<meta property="og:image" content="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/imgs/load.png">
+<meta property="og:image" content="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/imgs/network-headers.png">
+<meta property="og:image" content="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/imgs/timing-tab.png">
+<meta property="og:image" content="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/imgs/initiators-dependencies.png">
+<meta property="og:image" content="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/imgs/larger-than.png">
+<meta property="og:updated_time" content="2016-08-03T00:35:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chrome开发者工具-network面板">
+<meta name="twitter:description" content="内容来自Google Developers
+使用Network面板来评估站点网络性能
+
+
+
+Network面板记录了每个页面与网络交互的信息，包括详细的时间线数据，HTTP请求和响应头部，cookies等。
+
+内容如下1* [1. Network&amp;#38754;&amp;#26495;&amp;#20171;&amp;#32461;](#1)&amp;#10;* [2. &amp;#35760;&amp;#24405;Network&amp;#2013">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Chrome开发者工具-network面板 | xiuhong </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">xiuhong</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+      
+        <li class="menu-item menu-item-search">
+          <a href="#" class="st-search-show-outputs">
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '_dbi8dbgTfn51_2tXcKc','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Chrome开发者工具-network面板
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-03T08:17:50+08:00" content="2016-08-03">
+              2016-08-03
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/03/Chrome开发者工具-network-panel/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/03/Chrome开发者工具-network-panel/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h5 id="u5185_u5BB9_u6765_u81EAGoogle_Developers"><a href="#u5185_u5BB9_u6765_u81EAGoogle_Developers" class="headerlink" title="内容来自Google Developers"></a>内容来自<a href="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/resource-loading?utm_source=dcc&amp;utm_medium=redirect&amp;utm_campaign=2016q3" target="_blank" rel="external">Google Developers</a></h5><blockquote>
+<p>使用Network面板来评估站点网络性能</p>
+</blockquote>
+<p><img src="http://s17.mogucdn.com/p2/160802/upload_38kd0gf4c2kg42d5ll7cba0c6hjkb_1400x713.png" alt=""></p>
+<ul>
+<li>Network面板记录了每个页面与网络交互的信息，包括详细的时间线数据，HTTP请求和响应头部，cookies等。</li>
+</ul>
+<h5 id="u5185_u5BB9_u5982_u4E0B"><a href="#u5185_u5BB9_u5982_u4E0B" class="headerlink" title="内容如下"></a>内容如下</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* [1. Network&#38754;&#26495;&#20171;&#32461;](#1)&#10;* [2. &#35760;&#24405;Network&#20132;&#20114;&#34892;&#20026;](#2)&#10;* [&#33719;&#21462;Network&#20132;&#20114;&#36807;&#31243;&#20013;&#30340;&#39029;&#38754;&#25130;&#22270;](#2)&#10;* [3. &#26597;&#30475;DOMContentLoaded&#21644;load&#20107;&#20214;&#10;&#10;](#3)&#10;* [4. &#26597;&#30475;&#39029;&#38754;&#35831;&#27714;&#36164;&#28304;&#30340;&#35814;&#32454;&#20449;&#24687;](#4)&#10;* [5. &#26597;&#30475;&#39029;&#38754;&#35831;&#27714;&#36164;&#28304;&#20043;&#38388;&#30340;&#21796;&#36215;&#21644;&#20381;&#36182;&#20851;&#31995;](#5)&#10;* [6. &#23545;&#35831;&#27714;&#36164;&#28304;&#21015;&#34920;&#31579;&#36873;](#6)&#10;* [7. &#25335;&#36125;&#12289;&#20445;&#23384;&#12289;&#28165;&#38500;network&#20449;&#24687;](#7)&#10;* [8. &#23450;&#21046;network&#38754;&#26495;](#8)</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h5 id="Network_u9762_u677F_u4ECB_u7ECD"><a href="#Network_u9762_u677F_u4ECB_u7ECD" class="headerlink" title="Network面板介绍"></a>Network面板介绍</h5><blockquote>
+<p>Network面板有5个部分组成  </p>
+</blockquote>
+<ol>
+<li><strong>Controls</strong>：控制面板外观&amp;功能</li>
+<li><strong>Filters</strong>：筛选请求资源列表内容，可按住<code>cmd</code>进行多选</li>
+<li><strong>Overview</strong>：显示加载资源的时间线，垂直堆叠的时间线表示资源在同步加载</li>
+<li><strong>Requests Table</strong>：列出了所有被页面加载的资源信息。列表默认按加载的时间顺序排序；单击列表中的资源名可查看详细信息&amp;邮件列表标题可以显示/隐藏标题</li>
+<li><strong>Summary</strong>：摘要页面加载资源数目&amp;加载资源大小(kb)&amp;加载时间(s)  </li>
+</ol>
+<p><img src="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/imgs/panes.png" alt=""></p>
+<blockquote>
+<p>页面请求资源列表(Requests Table)默认显示下列信息。也可右键点击标题进行显示/隐藏  </p>
+</blockquote>
+<ul>
+<li><strong>Name</strong>：资源名</li>
+<li><strong>Status</strong>：Http状态码</li>
+<li><strong>Type</strong>：请求资源的MINI类型</li>
+<li><strong>Initiator</strong>：触发请求的进程/实体。取值如下：<ul>
+<li><strong>Parser</strong>：Chrome解析器发起的请求</li>
+<li><strong>Redirect</strong>：HTTP重定向发起的请求</li>
+<li><strong>Script</strong>：脚本发起的请求</li>
+<li><strong>Other</strong>：其它进程发起的请求。比如用户通过链接请求跳转页面或用户在地址栏输入URL请求目标页</li>
+</ul>
+</li>
+<li><strong>Size</strong>： 请求资源大小。包括响应头(response headers)+请求体(response body)</li>
+<li><p><strong>Time</strong>: 资源响应时间 = 从浏览器开始发起请求 <strong>到</strong> 浏览器接受到资源的最后一个字节所耗费的时间</p>
+</li>
+<li><p><strong>Timeline</strong>：展示资源请求的时间瀑布流。单击可查看资源加载的详细信息</p>
+</li>
+</ul>
+<h5 id="u8BB0_u5F55Network_u4EA4_u4E92_u884C_u4E3A"><a href="#u8BB0_u5F55Network_u4EA4_u4E92_u884C_u4E3A" class="headerlink" title="记录Network交互行为"></a>记录Network交互行为</h5><blockquote>
+<p>Network默认记录页面的网络请求等行为信息。开启/关闭此功能的快捷键<code>cmd</code> + <code>e</code></p>
+</blockquote>
+<h5 id="u83B7_u53D6Network_u4EA4_u4E92_u8FC7_u7A0B_u4E2D_u7684_u9875_u9762_u622A_u56FE"><a href="#u83B7_u53D6Network_u4EA4_u4E92_u8FC7_u7A0B_u4E2D_u7684_u9875_u9762_u622A_u56FE" class="headerlink" title="获取Network交互过程中的页面截图"></a>获取Network交互过程中的页面截图</h5><blockquote>
+<p>Network可以捕获资源加载过程中的页面截图/幻灯片(Filmstrip)。通过点击面板中的<code>camera</code>来开启/关闭此功能  </p>
+</blockquote>
+<ul>
+<li>重载页面获取页面截图，页面截图(screenshot)在<code>overview</code>区域  </li>
+</ul>
+<p><img src="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/imgs/filmstrip.png" alt=""><br><strong>Tips</strong>：当鼠标悬浮在截图上面，Timeline区域会显示一条垂直度黄线，这条线标注页面片段(screenshot)加载进来的时间。  </p>
+<p><img src="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/imgs/filmstrip-timeline-overlay.png" alt=""><br><strong>Tips</strong>：双击截图可放大截图查看截图状态  </p>
+<p><img src="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/imgs/filmstrip-zoom.png" alt=""></p>
+<h5 id="u67E5_u770BDOMContentLoaded_u548Cload_u4E8B_u4EF6"><a href="#u67E5_u770BDOMContentLoaded_u548Cload_u4E8B_u4EF6" class="headerlink" title="查看DOMContentLoaded和load事件"></a>查看DOMContentLoaded和load事件</h5><blockquote>
+<p>Network面板会高亮两个事件<a href="https://developer.mozilla.org/en-US/docs/Web/Events/DOMContentLoaded" target="_blank" rel="external">DOMContentLoaded</a>和<a href="https://developer.mozilla.org/en-US/docs/Web/Events/load" target="_blank" rel="external">load</a></p>
+</blockquote>
+<p>DOMContentLoaded事件信息在面板中有两处都用蓝色标记标注。一处在<code>overview</code>用蓝色垂直线标注；另一处在<code>Summary</code>中用蓝色粗体问题标注。  </p>
+<p><img src="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/imgs/domcontentloaded.png" alt=""><br>loaded事件用红色标注，一共有三处。两处在<code>overview</code>和<code>summary</code>中，另一处在<code>Requests Table</code>中  </p>
+<p><img src="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/imgs/load.png" alt=""></p>
+<h5 id="u67E5_u770B_u9875_u9762_u8BF7_u6C42_u8D44_u6E90_u7684_u8BE6_u7EC6_u4FE1_u606F"><a href="#u67E5_u770B_u9875_u9762_u8BF7_u6C42_u8D44_u6E90_u7684_u8BE6_u7EC6_u4FE1_u606F" class="headerlink" title="查看页面请求资源的详细信息"></a>查看页面请求资源的详细信息</h5><blockquote>
+<p>单击资源名查看更多信息，一般包含下面四个基本信息  </p>
+</blockquote>
+<ul>
+<li><strong>Headers</strong>：请求资源的HTTP头部信息</li>
+<li><strong>Preview</strong>：预览请求资源。JSON/image/text resources</li>
+<li><strong>Response</strong>：HTTP响应数据（或为空）</li>
+<li><strong>Timing</strong>：资源加载时间线（后有详述）  </li>
+</ul>
+<p><img src="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/imgs/network-headers.png" alt=""></p>
+<h6 id="u8D44_u6E90_u52A0_u8F7D_u65F6_u95F4_u7EBF"><a href="#u8D44_u6E90_u52A0_u8F7D_u65F6_u95F4_u7EBF" class="headerlink" title="资源加载时间线"></a>资源加载时间线</h6><blockquote>
+<p>单击资源详情里的Timing选项(或鼠标悬浮)查看资源加载各环节(<strong>granular breakdown of request lifecycle</strong>)所耗费的时间  </p>
+</blockquote>
+<p>下面是资源加载耗时点</p>
+<ul>
+<li>排队等待时间(Queuing)</li>
+<li>阻塞时间(stalled)</li>
+<li>请求/响应时间(Request/Response)：个人理解为发送的准备时间，不是过程(during)时间</li>
+<li>Request的发送时间</li>
+<li>等待时间(等待首字节的时间)</li>
+<li>内容加载时间(Content Download)  </li>
+</ul>
+<p><img src="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/imgs/timing-tab.png" alt=""></p>
+<p><a href="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/understanding-resource-timing" target="_blank" rel="external">Timeline详解</a></p>
+<h5 id="u67E5_u770B_u9875_u9762_u8BF7_u6C42_u8D44_u6E90_u4E4B_u95F4_u7684_u5524_u8D77_u548C_u4F9D_u8D56_u5173_u7CFB"><a href="#u67E5_u770B_u9875_u9762_u8BF7_u6C42_u8D44_u6E90_u4E4B_u95F4_u7684_u5524_u8D77_u548C_u4F9D_u8D56_u5173_u7CFB" class="headerlink" title="查看页面请求资源之间的唤起和依赖关系"></a>查看页面请求资源之间的唤起和依赖关系</h5><ul>
+<li>按住<code>shift</code> &amp; 鼠标悬浮在资源条目上可以查看资源加载之间的相互依赖关系</li>
+<li>绿色底色标注表示资源的发起者(initiators)或依赖者(dependencies)</li>
+<li>如果有多个绿色底色标注的资源，则表示资源的发起者或依赖者有多个<br><img src="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/imgs/initiators-dependencies.png" alt=""></li>
+</ul>
+<h5 id="u5BF9_u8BF7_u6C42_u8D44_u6E90_u5217_u8868_u7B5B_u9009"><a href="#u5BF9_u8BF7_u6C42_u8D44_u6E90_u5217_u8868_u7B5B_u9009" class="headerlink" title="对请求资源列表筛选"></a>对请求资源列表筛选</h5><ul>
+<li>可通过资源列表上的title选择显示/隐藏（比如：显示All/XHR/JS/CSS…）,也可以按住cmd(mac)或ctrl(windows或Linux)进行多选</li>
+<li>可通过筛选框进行文本匹配进行筛选(比如：搜索关键字,baidu；来匹配资源名字中包含baidu的资源项)</li>
+<li>chrome提供了强大的关键字筛选器（比如：large-than:20k;将会筛选出资源大小超过20k的资源向）</li>
+<li>列举几个chrome提供的常见的关键字筛选<ul>
+<li><strong>domain</strong>：根据域名进行筛选</li>
+<li><strong>larger-than</strong>：根据资源大小进行筛选</li>
+<li><strong>mime-type</strong>：根据资源MINI类型进行筛选</li>
+<li><strong>status-code</strong>：根据状态码进行筛选</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/imgs/larger-than.png" alt=""></p>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Chrome-Developer-Tools/" rel="tag">#Chrome Developer Tools</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/22/touchmoveBug/" rel="next" title="移动端下touchmove event bug">
+                <i class="fa fa-chevron-left"></i> 移动端下touchmove event bug
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/03/Chrome开发者工具-network-panel/"
+           data-title="Chrome开发者工具-network面板" data-url="http://xiuhonglee.com/2016/08/03/Chrome开发者工具-network-panel/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="修鸿" />
+          <p class="site-author-name" itemprop="name">修鸿</p>
+          <p class="site-description motion-element" itemprop="description">随便写写~</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xiuhonglee" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#u5185_u5BB9_u6765_u81EAGoogle_Developers"><span class="nav-number">1.</span> <span class="nav-text">内容来自Google Developers</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u5185_u5BB9_u5982_u4E0B"><span class="nav-number">2.</span> <span class="nav-text">内容如下</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Network_u9762_u677F_u4ECB_u7ECD"><span class="nav-number">3.</span> <span class="nav-text">Network面板介绍</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u8BB0_u5F55Network_u4EA4_u4E92_u884C_u4E3A"><span class="nav-number">4.</span> <span class="nav-text">记录Network交互行为</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u83B7_u53D6Network_u4EA4_u4E92_u8FC7_u7A0B_u4E2D_u7684_u9875_u9762_u622A_u56FE"><span class="nav-number">5.</span> <span class="nav-text">获取Network交互过程中的页面截图</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u67E5_u770BDOMContentLoaded_u548Cload_u4E8B_u4EF6"><span class="nav-number">6.</span> <span class="nav-text">查看DOMContentLoaded和load事件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u67E5_u770B_u9875_u9762_u8BF7_u6C42_u8D44_u6E90_u7684_u8BE6_u7EC6_u4FE1_u606F"><span class="nav-number">7.</span> <span class="nav-text">查看页面请求资源的详细信息</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#u8D44_u6E90_u52A0_u8F7D_u65F6_u95F4_u7EBF"><span class="nav-number">7.1.</span> <span class="nav-text">资源加载时间线</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u67E5_u770B_u9875_u9762_u8BF7_u6C42_u8D44_u6E90_u4E4B_u95F4_u7684_u5524_u8D77_u548C_u4F9D_u8D56_u5173_u7CFB"><span class="nav-number">8.</span> <span class="nav-text">查看页面请求资源之间的唤起和依赖关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u5BF9_u8BF7_u6C42_u8D44_u6E90_u5217_u8868_u7B5B_u9009"><span class="nav-number">9.</span> <span class="nav-text">对请求资源列表筛选</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">修鸿</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"http://xiuhonglee.duoshuo.com/admin/"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+
+</body>
+</html>
