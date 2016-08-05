@@ -245,6 +245,102 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/13/linux常用命令-2/" itemprop="url">
+                  linux常用命令(2)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-13T10:01:22+08:00" content="2016-04-13">
+              2016-04-13
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/13/linux常用命令-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/13/linux常用命令-2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Linux定时执行任务</span><br><span class="line">Linux关闭进程</span><br></pre></td></tr></table></figure>
+<h4 id="u8BBE_u7F6Eeditor_u6253_u5F00_u65B9_u5F0F"><a href="#u8BBE_u7F6Eeditor_u6253_u5F00_u65B9_u5F0F" class="headerlink" title="设置editor打开方式"></a>设置editor打开方式</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ EDITOR=vim; <span class="built_in">export</span> EDITOR</span><br></pre></td></tr></table></figure>
+<h4 id="Linux_u5B9A_u65F6_u6267_u884C_u4EFB_u52A1"><a href="#Linux_u5B9A_u65F6_u6267_u884C_u4EFB_u52A1" class="headerlink" title="Linux定时执行任务"></a>Linux定时执行任务</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 命令格式 at[参数][时间] </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 命令功能：在一个指定的时间执行一个指定任务，只能执行一次</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 需要开启atd进程</span></span><br><span class="line">$ ps -ef | grep atd  查看</span><br><span class="line"></span><br><span class="line"><span class="comment"># mac下开启服务</span></span><br><span class="line">$ sudo launchctl unload -F /System/Library/LaunchDaemons/com.apple.atrun.plist</span><br><span class="line">$ sudo launchctl load -F /System/Library/LaunchDaemons/com.apple.atrun.plist</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例</span></span><br><span class="line">$ at <span class="number">13</span>:<span class="number">00</span></span><br><span class="line">&gt;  ls </span><br><span class="line">&gt; &lt;EOT&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 详细用法如下</span></span><br><span class="line">$ man at</span><br></pre></td></tr></table></figure>
+<h4 id="crontab"><a href="#crontab" class="headerlink" title="crontab"></a>crontab</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mac下启动、关闭cron服务</span></span><br><span class="line">$ launchctl load -w /System/Library/LaunchDaemons/com.vix.cron.plist</span><br><span class="line">$ launchctl unload -w /System/Library/LaunchDaemons/com.vix.cron.plist</span><br><span class="line"></span><br><span class="line"><span class="comment">###  使用方法，step by step  ###</span></span><br><span class="line"><span class="number">1</span>. 设置crontab <span class="operator">-e</span> 默认打开浏览器，推荐用nano，vim可能会报错</span><br><span class="line">$ EDITOR=nano; <span class="built_in">export</span>=EDITOR</span><br><span class="line"><span class="number">2</span>. 编写任务crontab job</span><br><span class="line">$ crontab <span class="operator">-e</span>  // 这条命令会用nano打开编辑框，下面是每分钟执行下指定目录的脚本任务（一定要用绝对路径，脚本里也是）</span><br><span class="line">* * * * * /Users/xiuhong/xh_github/monitoring/gruntPhantomas/task.sh</span><br><span class="line"><span class="number">3</span>. 保存退出即可，crontab会自动运行</span><br><span class="line"></span><br><span class="line"><span class="comment">### 下面这个是我的脚本，一定要用绝对路径！！！包括命令也是  ###</span></span><br><span class="line"><span class="shebang">#!/bin/sh</span></span><br><span class="line">PATH=/usr/<span class="built_in">local</span>/bin:/usr/<span class="built_in">local</span>/sbin:~/bin:/usr/bin:/bin:/usr/sbin:/sbin</span><br><span class="line"><span class="built_in">cd</span> /Users/xiuhong/xh_github/monitoring/gruntPhantomas</span><br><span class="line">/usr/<span class="built_in">local</span>/bin/grunt</span><br></pre></td></tr></table></figure>
+<h4 id="Linux_u5173_u95ED_u8FDB_u7A0B"><a href="#Linux_u5173_u95ED_u8FDB_u7A0B" class="headerlink" title="Linux关闭进程"></a>Linux关闭进程</h4><p>需求：node进程在后台开启，如何通过shell关闭<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看当前进程</span></span><br><span class="line">$ lsof -Pi | grep LISTEN</span><br><span class="line">mongod     <span class="number">8662</span> jacob    <span class="number">6</span>u  IPv4 <span class="number">0</span>x17ceae4e0970fbe9      <span class="number">0</span>t0  TCP localhost:<span class="number">27017</span> (LISTEN)</span><br><span class="line">mongod     <span class="number">8662</span> jacob    <span class="number">7</span>u  IPv4 <span class="number">0</span>x17ceae4e0f9c24b1      <span class="number">0</span>t0  TCP localhost:<span class="number">28017</span> (LISTEN)</span><br><span class="line">……</span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可以这样查找</span></span><br><span class="line">$ netstat -nlp | grep :<span class="number">8341</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># 终止与node相关的服务</span></span><br><span class="line">$ killall node</span><br></pre></td></tr></table></figure></p>
+<p><img src="/uploads/linux2-kill.png" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/08/gulp-plugins/" itemprop="url">
                   gulp常用插件（1）
                 </a>
@@ -1125,120 +1221,12 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/01/jasmine入门/" itemprop="url">
-                  前端单元测试框架-jasmine
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-01T14:29:50+08:00" content="2016-03-01">
-              2016-03-01
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/01/jasmine入门/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/01/jasmine入门/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jasmine介绍</span><br><span class="line">jasmine快速入门</span><br></pre></td></tr></table></figure>
-<h4 id="jasmine_u4ECB_u7ECD"><a href="#jasmine_u4ECB_u7ECD" class="headerlink" title="jasmine介绍"></a>jasmine介绍</h4><blockquote>
-<p>适合团队的测试框架<br>行为驱动BBD(behavior-driven development)<br>jasmine是一种JavaScript单元测试框架，不依赖其它JS框架，也不需要对DOM操作</p>
-</blockquote>
-<h4 id="jasmine_u5FEB_u901F_u5165_u95E8"><a href="#jasmine_u5FEB_u901F_u5165_u95E8" class="headerlink" title="jasmine快速入门"></a>jasmine快速入门</h4><ol>
-<li><p>下载Standalone版本的Jasmine，目前最新版本是2.4.1<br>下载地址:<a href="https://github.com/jasmine/jasmine/releases">https://github.com/jasmine/jasmine/releases</a><br><img src="/uploads/jasmine-01.png" alt=""></p>
-</li>
-<li><p>将jasmine-standalone-2.4.1.zip解压，用Chrome打开SpecRunner.html，界面如下<br><img src="/uploads/jasmine-02.png" alt=""></p>
-</li>
-<li><p>下面我们自己写个单元测试</p>
-</li>
-</ol>
-<ul>
-<li>myTest.html<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">title</span>&gt;</span>my test<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 引入必要的文件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"shortcut icon"</span> <span class="attribute">type</span>=<span class="value">"image/png"</span> <span class="attribute">href</span>=<span class="value">"lib/jasmine-2.4.1/jasmine_favicon.png"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">href</span>=<span class="value">"lib/jasmine-2.4.1/jasmine.css"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"lib/jasmine-2.4.1/jasmine.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"lib/jasmine-2.4.1/jasmine-html.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"lib/jasmine-2.4.1/boot.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 被测试文件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"src/mytest.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 测试用例文件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"spec/specTest.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- </span><br><span class="line">    # 这里几个类库文件作一下说明：</span><br><span class="line">    # jasmine.css :  测试界面css样式  </span><br><span class="line">    # jasmine.js  : 核心文件用于执行单元测试的类库  </span><br><span class="line">    # jasmine-html.js : 用于显示单元测试结果的类库  </span><br><span class="line">    # boot.js :  用于初始化单元测试所需的执行环境类库  </span><br><span class="line"> --&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/03/01/jasmine入门/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1279,7 +1267,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-count">41</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
