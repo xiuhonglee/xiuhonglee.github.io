@@ -1,0 +1,127 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="description" content="随便写写~"><meta name="viewport" content="width=device-width, initial-scale=1"><title>前端性能-优化内容 · xiuhong</title><link rel="short icon" href="/favicon.ico"><!-- font--><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Roboto Mono"><!-- icon--><link rel="stylesheet" href="/fonts/iconfont/iconfont.css"><!-- theme style--><link rel="stylesheet" href="/css/style.css"><!-- baidu analytics--><script type="text/javascript">var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?9e0cbea7d3319c6c94c71dfb93c151b8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><!-- google analytics--><script type="text/javascript">(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-74273646-1', 'auto');
+ga('send', 'pageview');</script></head><body><div id="main"><header><a href="/." class="logo">xiuhong</a><ul class="nav"><li class="nav-link"><a href="/" target="_self">Accueil</a></li><li class="nav-link"><a href="/archives/" target="_self">Archives</a></li><li class="nav-link"><a href="/categories/" target="_self">Catégories</a></li><li class="nav-link"><a href="/tags/" target="_self">Tags</a></li><li class="nav-link"><a href="/about/" target="_self">À propos</a></li></ul></header><section id="container"><article class="post"><h1 class="post-title">前端性能-优化内容</h1><span class="post-time">Aug 6, 2016</span><div id="sidebar" class="post-sidebar"><h3 class="heading">Sommaire</h3><ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#u5185_u5BB9_u6765_u81EA"><span class="toc-text">内容来自</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-__u6570_u636E_u538B_u7F29"><span class="toc-text">1. 数据压缩</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-__u9884_u5904_u7406_u548C_u57FA_u4E8E_u6587_u672C_u7C7B_u578B_u7684_u5185_u5BB9_u4F18_u5316"><span class="toc-text">2. 预处理和基于文本类型的内容优化</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-__u901A_u8FC7GZIP_u5BF9_u6587_u672C_u8FDB_u884C_u538B_u7F29"><span class="toc-text">3. 通过GZIP对文本进行压缩</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#u76F8_u5173_u8D44_u6599"><span class="toc-text">相关资料</span></a></li></ol></div><div class="post-content"><h5 id="u5185_u5BB9_u6765_u81EA"><a href="#u5185_u5BB9_u6765_u81EA" class="headerlink" title="内容来自"></a>内容来自</h5><p><a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/optimize-encoding-and-transfer" target="_blank" rel="external">☞ Google Develper</a></p>
+<p><img src="/uploads/Gzip.jpeg" alt=""></p>
+<ul>
+<li>减少不必要的资源加载最直接的方式是<strong>压缩</strong>请求资源的大小</li>
+</ul>
+<h5 id="1-__u6570_u636E_u538B_u7F29"><a href="#1-__u6570_u636E_u538B_u7F29" class="headerlink" title="1. 数据压缩"></a>1. 数据压缩</h5><blockquote>
+<ul>
+<li>当移除掉所有冗余文件后，下一步就是对必要的页面加载资源进行压缩来实现网络传输最小化。对于不同的资源类型（文本、图片、字体），需要使用不同的方法来实现压缩目的。通用的压缩服务可以在Server端通过配置来开启，来对优化加载资源进行预处理，特殊的压缩行为需要开发者编码实现。</li>
+<li><p>实现最优的压缩目的需要多种技术来结合实现。</p>
+</li>
+<li><p>数据压缩就是通过压缩技术和算法对信息进行编码来移除冗余数据。最优化的压缩实现需要结合多种压缩技术和算法逻辑来实现。</p>
+</li>
+<li><p>数据压缩领域涉及知识较深，下面举例说明文本压缩的具体过程，具体实现比示例复杂，下面为一段传输原文件内容  </p>
+</li>
+</ul>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Below is a secret message, which consists of a set of headers in</span><br><span class="line"># key-value format followed by a newline and the encrypted message.</span><br><span class="line">format: secret-cipher</span><br><span class="line">date: 04/04/14</span><br><span class="line">AAAZZBBBBEEEMMM EEETTTAAA</span><br></pre></td></tr></table></figure>
+<ol>
+<li>“#”开头为注释</li>
+<li>传输内容格式：key-value，中间用”:”分隔</li>
+</ol>
+<blockquote>
+<p>如何对上面文本进行压缩?  </p>
+<ul>
+<li>去掉注释</li>
+<li>通过用较短的别名或ID来代替”HEAD”来缩短文本长度。例如，如果文本中”format”或”date”出现频率较高，可以考虑用ID来分别代替</li>
+<li>从文本来看，这显然是端加密后的文件；不过针对此文本开可以进一步压缩（利用自定义方式）；比如”AAA”可以用3A来代替</li>
+</ul>
+</blockquote>
+<p><strong>进过上述方式压缩过的文件↓</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">format: secret-cipher</span><br><span class="line">date: <span class="number">04</span>/<span class="number">04</span>/<span class="number">14</span></span><br><span class="line"><span class="number">3</span>A2Z4B3E3M <span class="number">3E3</span>T3A</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>新文本只有56个字符，对比原始文件，压缩率达到72%;对于webpage，如果进行压缩文本，我们并是不去尝试自己写压缩算法，而是综合多种压缩技术来优化传输的文本内容：预处理、针对不同文本文件使用不同的压缩算法</p>
+</blockquote>
+<h5 id="2-__u9884_u5904_u7406_u548C_u57FA_u4E8E_u6587_u672C_u7C7B_u578B_u7684_u5185_u5BB9_u4F18_u5316"><a href="#2-__u9884_u5904_u7406_u548C_u57FA_u4E8E_u6587_u672C_u7C7B_u578B_u7684_u5185_u5BB9_u4F18_u5316" class="headerlink" title="2. 预处理和基于文本类型的内容优化"></a>2. 预处理和基于文本类型的内容优化</h5><blockquote>
+<p>基于文本类型的优化可以实现明显的优化率，而这也应成为发布web应用压缩文本内容的最优解;最优的压缩策略就是彻底删除不必要的文件。当然我们不能任意删除文本中的数据，基于文本类型的文本压缩是考虑到在实现最大压缩率的前提下而不干扰原始文件所表达的信息。  </p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span><br><span class="line">     <span class="comment">/* awesome-container is only used on the landing page */</span></span><br><span class="line">     <span class="class">.awesome-container</span> <span class="rules">&#123; <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">120%</span> </span></span></span>&#125;</span><br><span class="line">     <span class="class">.awesome-container</span> <span class="rules">&#123; <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">50%</span> </span></span></span>&#125;</span><br><span class="line">  </span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"> <span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- awesome container content: START --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span>&gt;</span>…<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!-- awesome container content: END --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="actionscript"></span><br><span class="line">     awesomeAnalytics(); <span class="comment">// beacon conversion metrics</span></span><br><span class="line">   </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上面的这段HTML网页包含三段不同的内容：HTML、CSS、Javascript.每段内容对应有不同的语法规则.</p>
+<p>下面考虑如何对其进行压缩?</p>
+<ul>
+<li>去掉代码注释;<code>&lt;!-- xxx --&gt;</code> <code>// xxx</code> <code>/* xxx */</code></li>
+<li>合并css规则，删除换行</li>
+<li>删除空格&amp;缩进  </li>
+</ul>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">html&gt;<span class="tag">&lt;<span class="title">head</span>&gt;</span><span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"><span class="class">.awesome-container</span><span class="rules">&#123;<span class="rule"><span class="attribute">font-size</span>:<span class="value"><span class="number">120%</span></span></span>;<span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">50%</span></span></span></span>&#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span><span class="tag">&lt;/<span class="title">head</span>&gt;</span><span class="tag">&lt;<span class="title">body</span>&gt;</span><span class="tag">&lt;<span class="title">div</span>&gt;</span>…<span class="tag">&lt;/<span class="title">div</span>&gt;</span><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="undefined">awesomeAnalytics();</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span><span class="tag">&lt;/<span class="title">body</span>&gt;</span><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>压缩过的文本字符150,相比原文件406字符，压缩率达到63%.压缩后的文件可读性差，只用于发布使用.压缩过的文本并不影响浏览器解析.预处理和基于文本格式的处理收益明显。例如，未压缩的JQuery原始文件300kb左右,压缩后的文件只有100kb左右</li>
+<li>类似文本文件的压缩，针对其它格式的文件如图片(image)、视/音频… 也可采用类似的压缩方法。比如数码相机机会在图片中嵌入冗余信息（拍摄时间、地点等）这部分信息可以被压缩掉。不同的设备会携带不同的”冗余”信息，而不同的站点需要或不需要这些”冗余”的信息。比如，类似社交平台的分享网站需要这些附带图片拍摄地点、拍摄时间的”冗余”信息，这时就不应该对这些”冗余”信息进行删除。</li>
+<li>简言之，优化内容的第一步是针对目标内容(type)，并根据站点需求来确定压缩的策略。这样才能达到最优的压缩目的</li>
+</ul>
+</blockquote>
+<h5 id="3-__u901A_u8FC7GZIP_u5BF9_u6587_u672C_u8FDB_u884C_u538B_u7F29"><a href="#3-__u901A_u8FC7GZIP_u5BF9_u6587_u672C_u8FDB_u884C_u538B_u7F29" class="headerlink" title="3. 通过GZIP对文本进行压缩"></a>3. 通过GZIP对文本进行压缩</h5><blockquote>
+<ul>
+<li>GZIP针对基于文本的内容：HTML、CSS、JavaScript表现优异(压缩率可以达到70%-90%)。所有现代浏览器都支持GZIP&gt;，服务器需要进行配置来开启（不过大部分server会默认开启）;一些CDNs需要特别留意是否支持GZIP.</li>
+<li>更多关于GZIP的介绍，<a href="">移步这里</a></li>
+</ul>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Library</th>
+<th>Size</th>
+<th>Compressed size</th>
+<th>Compression ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jquery-1.11.0.js</td>
+<td>276 KB</td>
+<td>82 KB</td>
+<td>70%</td>
+</tr>
+<tr>
+<td>jquery-1.11.0.min.js</td>
+<td>94 KB</td>
+<td>33 KB</td>
+<td>65%</td>
+</tr>
+<tr>
+<td>angular-1.2.15.js</td>
+<td>729 KB</td>
+<td>182 KB</td>
+<td>75%</td>
+</tr>
+<tr>
+<td>angular-1.2.15.min.js</td>
+<td>101 KB</td>
+<td>37 KB</td>
+<td>63%</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li>即使针对.min后的文件，GZIP依然可以进一步压缩,我们要做的只是在Server端开启这项服务即可,<a href="https://github.com/h5bp/server-configs" target="_blank" rel="external">如何开启?</a></li>
+<li>查看自己的站点是否开启了GZIP，<a href="http://www.whatsmyip.org/http-compression-test/" target="_blank" rel="external">戳这里</a></li>
+</ul>
+</blockquote>
+<p><img src="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/images/transfer-vs-actual-size.png" alt=""></p>
+<h5 id="u76F8_u5173_u8D44_u6599"><a href="#u76F8_u5173_u8D44_u6599" class="headerlink" title="相关资料"></a>相关资料</h5><p><a href="https://www.youtube.com/watch?v=whGwm0Lky2s&amp;feature=youtu.be&amp;t=14m11s" target="_blank" rel="external">☞ Youtube: Gzip介绍</a></p>
+<p><a href="http://www.whatsmyip.org/http-headers/" target="_blank" rel="external">☞ Networking Tool</a></p>
+</div></article><div class="tags"><a href="/tags/性能监控/">性能监控</a></div><div class="paginator"><a href="/2016/08/05/Chrome开发者工具-Timeline面板/" class="next"><span>Suivant</span><i class="iconfont icon-right"></i></a></div><section id="comments"><div id="disqus_thread"></div></section><script type="text/javascript">(function() {
+var d = document, s = d.createElement('script');
+
+s.src = '//ahonn.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script></section><footer><div class="copyright"><p>&copy;2013-2016<span class="heart"><i class="iconfont icon-heart"></i></span><span class="author">修鸿</span></p><p class="theme">Theme by <a href="https://github.com/ahonn/hexo-theme-even"> Even</a></p></div><label id="back2top"><i class="iconfont icon-up"></i></label></footer></div></body><script src="/js/zepto.min.js"></script><script src="/js/theme.js"></script></html>
