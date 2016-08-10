@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xiuhonglee.com/"/>
-  <updated>2016-08-06T13:20:16.000Z</updated>
+  <updated>2016-08-10T01:41:45.000Z</updated>
   <id>http://xiuhonglee.com/</id>
   
   <author>
@@ -16,11 +16,103 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>构建对象模型</title>
+    <link href="http://xiuhonglee.com/2016/08/09/Constructing-the-Object-model/"/>
+    <id>http://xiuhonglee.com/2016/08/09/Constructing-the-Object-model/</id>
+    <published>2016-08-09T14:18:54.000Z</published>
+    <updated>2016-08-10T01:41:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/constructing-the-object-model?hl=en" target="_blank" rel="external">内容来自Google Developer</a></p>
+<blockquote>
+<p>浏览器在渲染页面之前，需要构建DOM树和CSSOM树。因此，我们需要确保HTML和CSS文件尽快给浏览器解析。  </p>
+</blockquote>
+<h4 id="1-__u672C_u8282_u5185_u5BB9"><a href="#1-__u672C_u8282_u5185_u5BB9" class="headerlink" title="1. 本节内容"></a>1. 本节内容</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Document Object Model (DOM)</span><br><span class="line"># CSS Object Model (CSSOM)</span><br></pre></td></tr></table></figure>
+<p>简要</p>
+<ul>
+<li>字节 → 字符 → 标记(tokens) → 节点 → 对象模型</li>
+<li>HTML被解析为DOM(Document Object Model),CSS被解析为CSSOM(CSS Object Model)</li>
+<li>可以通过Chrome DevTools Timeline来检测浏览器构建DOM树和CSSOM树的流程</li>
+</ul>
+<h4 id="2-_Document_Object_Model_28DOM_29"><a href="#2-_Document_Object_Model_28DOM_29" class="headerlink" title="2. Document Object Model(DOM)"></a>2. Document Object Model(DOM)</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"viewport"</span> <span class="attribute">content</span>=<span class="value">"width=device-width,initial-scale=1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"style.css"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">title</span>&gt;</span>Critical Path<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">p</span>&gt;</span>Hello <span class="tag">&lt;<span class="title">span</span>&gt;</span>web performance<span class="tag">&lt;/<span class="title">span</span>&gt;</span> students!<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"awesome-photo.jpg"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上例，一段简单的HTML文档包含一段text文本和一张图片。下面来分析浏览器是如何渲染出一张页面的。</p>
+</blockquote>
+<p><img src="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/images/full-process.png" alt=""></p>
+<ul>
+<li><strong>转化</strong>：浏览器将从硬盘/网络读到的字节来按照编码规则(如UTF-8)转化为字符串</li>
+<li><strong>语义化</strong>：浏览器根据W3C HTML5标准规范将字符串进行语义化解析。- 比如，将”&lt;html&gt;”转化为”<html>“</html></li>
+<li><strong>语法分析</strong>：浏览器把语义化标签转化为对象，并为它添加属性和规则</li>
+<li><strong>构建DOM树</strong>：HTML语言定义了不同标签之间的关系（有些标签含有嵌套关系），最终这些标签被创建为一个树形结构的对象，此树形结构包含了标签之前最初的的父-子关系：HTML是body的父级元素，body元素又是p标签的父级元素等等</li>
+</ul>
+<p><img src="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/images/dom-tree.png" alt=""></p>
+<blockquote>
+<p>浏览器的整个解析过程最终输出一个文档对象模型(Document Object Model)，浏览器将基于此DOM继续后续的页面构建。浏览器每次接收到HTML之后都要重复上面的操作，整个过程会消耗时间，特别处理大量HTML时。</p>
+</blockquote>
+<p><img src="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/images/dom-timeline.png" alt=""></p>
+<ul>
+<li><a href="https://developers.google.com/web/tools/chrome-devtools/" target="_blank" rel="external">Chrome Developer Tools 文档</a></li>
+<li><a href="http://discover-devtools.codeschool.com/chapters/1/challenges/1?locale=en" target="_blank" rel="external">Chrome Developer Tools视频教程</a></li>
+</ul>
+<blockquote>
+<p>If you open up Chrome DevTools and record a timeline while the page is loaded, you can see the actual time taken to perform this step — in the example above, it took us ~5ms to convert a chunk of HTML bytes into a DOM tree. Of course, if the page was larger, as most pages are, this process might take significantly longer. You will see in our future sections on creating smooth animations that this can easily become your bottleneck if the browser has to process large amounts of HTML.</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://developers.google.com/web/fundamentals/performance/critical-rendering-path/constructing-the-object-model?hl=en&quot; target=&quot;
+    
+    </summary>
+    
+    
+      <category term="前端性能" scheme="http://xiuhonglee.com/tags/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>优化关键渲染路径</title>
+    <link href="http://xiuhonglee.com/2016/08/09/Critical-rendering-path/"/>
+    <id>http://xiuhonglee.com/2016/08/09/Critical-rendering-path/</id>
+    <published>2016-08-09T07:52:18.000Z</published>
+    <updated>2016-08-09T14:19:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>内容来自<a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/?hl=en" target="_blank" rel="external">Google Developers</a></p>
+<h4 id="1-__u4F18_u5316_u5173_u952E_u6E32_u67D3_u8DEF_u5F84"><a href="#1-__u4F18_u5316_u5173_u952E_u6E32_u67D3_u8DEF_u5F84" class="headerlink" title="1. 优化关键渲染路径"></a>1. 优化关键渲染路径</h4><blockquote>
+<p>优化关键渲染路径，是根据用户行为来确定浏览器展示内容的优先级；浏览器渲染页面在底层做了很多操作。优化页面性能，需要理解浏览器在接收到HTML、CSS和JavaScript之后如何对其进行解析、渲染的机制。</p>
+</blockquote>
+<p><img src="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/images/progressive-rendering.png" alt=""></p>
+<blockquote>
+<p>为了优化关键渲染路径，我们可以从缩短首字节渲染时间来入手。理解关键渲染路径也为开发性能优良的web应用奠定了基础。页面最为理想的渲染时刻应该是在每秒60帧的刷新频率结束的同一时刻。忽略这些，先快速了解下浏览器渲染出一张页面的流程。</p>
+</blockquote>
+<h5 id="2-_Topics"><a href="#2-_Topics" class="headerlink" title="2. Topics"></a>2. Topics</h5><ul>
+<li>Constructing the Object Model</li>
+<li>Render-tree construction, layout, and paint</li>
+<li>Render blocking CSS</li>
+<li>Adding interactivity with JavaScript</li>
+<li>Measuring the critical rendering path with Navigation Timing</li>
+<li>Analyzing critical rendering path performance</li>
+<li>Optimizing the critical rendering path</li>
+<li>PageSpeed rules and recommendations</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;内容来自&lt;a href=&quot;https://developers.google.com/web/fundamentals/performance/critical-rendering-path/?hl=en&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Go
+    
+    </summary>
+    
+    
+      <category term="前端性能" scheme="http://xiuhonglee.com/tags/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD/"/>
+    
+  </entry>
+  
+  <entry>
     <title>前端性能-优化内容</title>
     <link href="http://xiuhonglee.com/2016/08/06/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD-%E4%BC%98%E5%8C%96%E5%86%85%E5%AE%B9/"/>
     <id>http://xiuhonglee.com/2016/08/06/前端性能-优化内容/</id>
     <published>2016-08-06T12:25:08.000Z</published>
-    <updated>2016-08-06T13:20:16.000Z</updated>
+    <updated>2016-08-06T15:17:09.000Z</updated>
     
     <content type="html"><![CDATA[<h5 id="u5185_u5BB9_u6765_u81EA"><a href="#u5185_u5BB9_u6765_u81EA" class="headerlink" title="内容来自"></a>内容来自</h5><p><a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/optimize-encoding-and-transfer" target="_blank" rel="external">☞ Google Develper</a></p>
 <p><img src="/uploads/Gzip.jpeg" alt=""></p>
@@ -227,7 +319,7 @@
     <link href="http://xiuhonglee.com/2016/08/03/Chrome%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7-network-panel/"/>
     <id>http://xiuhonglee.com/2016/08/03/Chrome开发者工具-network-panel/</id>
     <published>2016-08-03T00:17:50.000Z</published>
-    <updated>2016-08-05T07:48:37.000Z</updated>
+    <updated>2016-08-06T15:18:09.000Z</updated>
     
     <content type="html"><![CDATA[<h5 id="u5185_u5BB9_u6765_u81EAGoogle_Developers"><a href="#u5185_u5BB9_u6765_u81EAGoogle_Developers" class="headerlink" title="内容来自Google Developers"></a>内容来自<a href="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/resource-loading?utm_source=dcc&amp;utm_medium=redirect&amp;utm_campaign=2016q3" target="_blank" rel="external">Google Developers</a></h5><blockquote>
 <p>使用Network面板来评估站点网络性能</p>
@@ -236,7 +328,6 @@
 <ul>
 <li>Network面板记录了每个页面与网络交互的信息，包括详细的时间线数据，HTTP请求和响应头部，cookies等。</li>
 </ul>
-<a id="more"></a>
 <h5 id="Network_u9762_u677F_u4ECB_u7ECD"><a href="#Network_u9762_u677F_u4ECB_u7ECD" class="headerlink" title="Network面板介绍"></a>Network面板介绍</h5><blockquote>
 <p>Network面板有5个部分组成  </p>
 </blockquote>
@@ -332,13 +423,7 @@
     
     <summary type="html">
     
-      &lt;h5 id=&quot;u5185_u5BB9_u6765_u81EAGoogle_Developers&quot;&gt;&lt;a href=&quot;#u5185_u5BB9_u6765_u81EAGoogle_Developers&quot; class=&quot;headerlink&quot; title=&quot;内容来自Google Developers&quot;&gt;&lt;/a&gt;内容来自&lt;a href=&quot;https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/resource-loading?utm_source=dcc&amp;amp;utm_medium=redirect&amp;amp;utm_campaign=2016q3&quot;&gt;Google Developers&lt;/a&gt;&lt;/h5&gt;&lt;blockquote&gt;
-&lt;p&gt;使用Network面板来评估站点网络性能&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img src=&quot;http://s17.mogucdn.com/p2/160802/upload_38kd0gf4c2kg42d5ll7cba0c6hjkb_1400x713.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Network面板记录了每个页面与网络交互的信息，包括详细的时间线数据，HTTP请求和响应头部，cookies等。&lt;/li&gt;
-&lt;/ul&gt;
+      &lt;h5 id=&quot;u5185_u5BB9_u6765_u81EAGoogle_Developers&quot;&gt;&lt;a href=&quot;#u5185_u5BB9_u6765_u81EAGoogle_Developers&quot; class=&quot;headerlink&quot; title=&quot;内容来自Google D
     
     </summary>
     
@@ -879,79 +964,6 @@
     
     
       <category term="个人主页" scheme="http://xiuhonglee.com/tags/%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>javascript-Date类型</title>
-    <link href="http://xiuhonglee.com/2016/03/03/javascript-date/"/>
-    <id>http://xiuhonglee.com/2016/03/03/javascript-date/</id>
-    <published>2016-03-03T13:24:26.000Z</published>
-    <updated>2016-04-03T15:01:32.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="/uploads/javascript-date.jpg" alt=""></p>
-<h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ECMAScript Date类型</span><br></pre></td></tr></table></figure>
-<h4 id="ECMAScript_Date_u7C7B_u578B"><a href="#ECMAScript_Date_u7C7B_u578B" class="headerlink" title="ECMAScript Date类型"></a>ECMAScript Date类型</h4><blockquote>
-<p>Date类型使用UTC(国际协调时间)1970年1月1日午夜(零时)开始经过的毫秒数来保存日期。<br>Date类型保存的日期能够精确到1970年1月1日之前或之后285616年（&gt;28万年，呵呵~~）</p>
-</blockquote>
-<h5 id="u521B_u5EFA_u4E00_u4E2A_u65E5_u671F_u5BF9_u8C61"><a href="#u521B_u5EFA_u4E00_u4E2A_u65E5_u671F_u5BF9_u8C61" class="headerlink" title="创建一个日期对象"></a>创建一个日期对象</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="comment">// 不传参数的情况下，新创建的对象自动获得当前日期和时间</span></span><br><span class="line"><span class="comment">// 如果想根据特定的日期和时间创建日期对象，必须传入表示改日期的毫秒数</span></span><br><span class="line"><span class="comment">// (即从UTC时间1970年1月1日午夜起至改日期为止经过的毫秒数)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 有两种方法可以简化这一过程Date.parse()和Date.UTC()</span></span><br><span class="line"><span class="built_in">Date</span>.parse()</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h4 id="Date-parse_28_29"><a href="#Date-parse_28_29" class="headerlink" title="Date.parse()"></a>Date.parse()</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> <span class="built_in">Date</span>.parse()方法接受一个表示该日期的字符串参数，然后尝试根据这个字符串返回相应的日期的毫秒数</span><br><span class="line"><span class="number">2.</span> ECMA-<span class="number">262</span>没有定义 <span class="built_in">Date</span>.parse()应该支持那种日期格式，因时间/地区而异</span><br><span class="line"></span><br><span class="line">* <span class="string">"月/日/年"</span>,如 <span class="number">6</span>/<span class="number">13</span>/<span class="number">2004</span></span><br><span class="line">* <span class="string">"英文月名 日 年"</span>,如January <span class="number">12</span>,<span class="number">2004</span></span><br><span class="line">* <span class="string">"ISO 8610扩展格式"</span>,YYYY-MM-DDTHH:mm:ss.sssZ(例如：<span class="number">2016</span>-<span class="number">03</span>-<span class="number">21</span>T00:<span class="number">00</span>:<span class="number">00</span>),</span><br><span class="line">   只有兼容ECMAScript的实现支持这种格式</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> someDate = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">Date</span>.parse(<span class="string">"May 25, 2004"</span>));</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> 如果传入 <span class="built_in">Date</span>.parse()方法的字符串不能表示日期，那么它返回<span class="literal">NaN</span>。实际上，</span><br><span class="line">如果直接将表示日期的字符串传递给<span class="built_in">Date</span>构造函数，也会在后台调用<span class="built_in">Date</span>.parse()</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> someDate = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"May 25, 2004"</span>); <span class="comment">// 与上面一句等价</span></span><br></pre></td></tr></table></figure>
-<h4 id="Date-UTC_28_29"><a href="#Date-UTC_28_29" class="headerlink" title="Date.UTC()"></a>Date.UTC()</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> <span class="built_in">Date</span>.UTC()也返回表示日期的毫秒数，但与 <span class="built_in">Date</span>.parse()在构建值时使用不同的信息。</span><br><span class="line"><span class="number">2.</span> <span class="built_in">Date</span>.UTC()的参数分别是年份、基于<span class="number">0</span>的月份（一月是<span class="number">0</span>，二月是<span class="number">1</span>……）、月中的哪一天（<span class="number">1</span>到<span class="number">31</span>）、小时数（<span class="number">0</span>到<span class="number">23</span>）、分钟、</span><br><span class="line">秒以及毫秒数。在这些参数中，只有前两个参数(年和月)是必需的。如果没有提供月中的天数，则假设天数为<span class="number">1</span>；如果省略其他参数，则统统假设为<span class="number">0.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// GMT时间2000年1月1日午夜零时</span></span><br><span class="line"><span class="comment">// GMT: 格林尼治标准时间</span></span><br><span class="line"><span class="keyword">var</span> y2k = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">Date</span>.UTC(<span class="number">2000</span>, <span class="number">0</span>)); <span class="comment">// 基于GMT创建</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// GMT时间2016年3月21日下午5:55:55</span></span><br><span class="line"><span class="keyword">var</span> t_321 = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">Date</span>.UTC(<span class="number">2016</span>, <span class="number">2</span>, <span class="number">21</span>, <span class="number">17</span>, <span class="number">55</span>, <span class="number">55</span>)); <span class="comment">// 基于GMT创建</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 如同模仿Date.parse()一样，Date构造函数也会模仿Date.UTC()，</span></span><br><span class="line"><span class="comment">// 但有一点明显不同：日期和时间都 **基于本地时区** 而非GMT来创建</span></span><br><span class="line"><span class="comment">// 不过，Date构造函数接收的参数仍然与Date.UTC()相同</span></span><br><span class="line"><span class="keyword">var</span> t_321 = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">2016</span>, <span class="number">2</span>, <span class="number">21</span>, <span class="number">17</span>, <span class="number">55</span>, <span class="number">55</span>); <span class="comment">// 与上面一句等价，基于本地时区，而非GMT创建</span></span><br></pre></td></tr></table></figure>
-<h5 id="u4E0D_u540C_u6D4F_u89C8_u5668_u4E0BDate-UTC_u548Cnew_Date_28_29_u7684_u533A_u522B"><a href="#u4E0D_u540C_u6D4F_u89C8_u5668_u4E0BDate-UTC_u548Cnew_Date_28_29_u7684_u533A_u522B" class="headerlink" title="不同浏览器下Date.UTC和new Date()的区别"></a>不同浏览器下Date.UTC和new Date()的区别</h5><p>chrome下的new Date()为GMT时间<br><img src="/uploads/date-chrome01.png" alt=""></p>
-<p>Firefox下的new Date()为本地时间<br><img src="/uploads/date-ff01.png" alt=""></p>
-<blockquote>
-<p>区别很明显，虽然new Date(Date.UTC(2016,2,31))都会比new Date()快8个小时，<br>但chrome是在2016年3月31 00:00:00的基础上加8个小时<br>而firefox是2016年3月31 00:00:00不变，new Date()却减了8个小时</p>
-</blockquote>
-<p>总之，个人觉得还是不要用new Date(Data.UTC());<br>推荐使用new Date(Date.parse(“3/21/2016”))</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;/uploads/javascript-date.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h4 id=&quot;u672C_u8282_u5185_u5BB9&quot;&gt;&lt;a href=&quot;#u672C_u8282_u5185_u5BB9&quot; class=&quot;headerlink&quot; title=&quot;本节内容&quot;&gt;&lt;/a&gt;本节内容&lt;/h4&gt;&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ECMAScript Date类型&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&quot;ECMAScript_Date_u7C7B_u578B&quot;&gt;&lt;a href=&quot;#ECMAScript_Date_u7C7B_u578B&quot; class=&quot;headerlink&quot; title=&quot;ECMAScript Date类型&quot;&gt;&lt;/a&gt;ECMAScript Date类型&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;Date类型使用UTC(国际协调时间)1970年1月1日午夜(零时)开始经过的毫秒数来保存日期。&lt;br&gt;Date类型保存的日期能够精确到1970年1月1日之前或之后285616年（&amp;gt;28万年，呵呵~~）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h5 id=&quot;u521B_u5EFA_u4E00_u4E2A_u65E5_u671F_u5BF9_u8C61&quot;&gt;&lt;a href=&quot;#u521B_u5EFA_u4E00_u4E2A_u65E5_u671F_u5BF9_u8C61&quot; class=&quot;headerlink&quot; title=&quot;创建一个日期对象&quot;&gt;&lt;/a&gt;创建一个日期对象&lt;/h5&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; now = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Date&lt;/span&gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 不传参数的情况下，新创建的对象自动获得当前日期和时间&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 如果想根据特定的日期和时间创建日期对象，必须传入表示改日期的毫秒数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// (即从UTC时间1970年1月1日午夜起至改日期为止经过的毫秒数)&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 有两种方法可以简化这一过程Date.parse()和Date.UTC()&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;Date&lt;/span&gt;.parse()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="javascript" scheme="http://xiuhonglee.com/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>karma集成jasmine框架</title>
-    <link href="http://xiuhonglee.com/2016/03/03/karma-jasmine/"/>
-    <id>http://xiuhonglee.com/2016/03/03/karma-jasmine/</id>
-    <published>2016-03-03T00:26:31.000Z</published>
-    <updated>2016-04-03T15:01:32.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">karma介绍</span><br><span class="line">karma配置文件</span><br><span class="line">karma示例</span><br></pre></td></tr></table></figure>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># karma构建在Node.js之上，以npm包形式安装</span></span><br><span class="line">$ npm install karma --save-dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装插件，因为要集成jasmine</span></span><br><span class="line">$ npm install karma-jasmine karma-chrome-launcher --save-dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行Karma</span></span><br><span class="line">$ ./node_modules/karma/bin/karma start</span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以安装命令行接口（全局安装）</span></span><br><span class="line">$ npm install -g karma-cli</span><br><span class="line"></span><br><span class="line"><span class="comment"># 然后就可以这样运行</span></span><br><span class="line">$ karma start</span><br></pre></td></tr></table></figure>
-<h4 id="karma_u914D_u7F6E_u6587_u4EF6"><a href="#karma_u914D_u7F6E_u6587_u4EF6" class="headerlink" title="karma配置文件"></a>karma配置文件</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化配置文件，可自行配置</span></span><br><span class="line"><span class="comment"># 可以参考这个：http://html-js.com/article/The-front-end-of-the-front-road-automation-test-automation-test-road--the-karma-configuration</span></span><br><span class="line"></span><br><span class="line">$ karma init </span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成配置文件后，也可以这么启动karma </span></span><br><span class="line">$ karma karma.conf.js</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>karma配置文件,官网(<a href="https://karma-runner.github.io/0.13/config/configuration-file.html" target="_blank" rel="external">https://karma-runner.github.io/0.13/config/configuration-file.html</a>)<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Karma configuration</span></span><br><span class="line"><span class="comment">// Generated on Mon Feb 29 2016 16:23:28 GMT+0800 (CST)</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">config</span>) </span>&#123;</span><br><span class="line">  config.set(&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 用来解析定义在files和exclude里的相对路径的根目录</span></span><br><span class="line">    <span class="comment">// 如果basePath是一个相对路径，那么它会被解析为相对于配置文件的__dirname</span></span><br><span class="line">    basePath: <span class="string">'./'</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 测试框架</span></span><br><span class="line">    frameworks: [<span class="string">'jasmine'</span>],</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 被加载到浏览器的js文件（被测试文件、测试文件）</span></span><br><span class="line">    files: [<span class="string">'public/js/src.js'</span>,<span class="string">'public/js/test.js'</span>,<span class="string">'test/srcSpec.js'</span>],</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 不会被加载到浏览器的js文件（过滤掉无用js）</span></span><br><span class="line">    exclude: [<span class="string">'karma.conf.js'</span>],</span><br><span class="line"></span><br><span class="line">    <span class="comment">// preprocess matching files before serving them to the browser</span></span><br><span class="line">    <span class="comment">// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor</span></span><br><span class="line">    <span class="comment">// 用到的预处理器映射表</span></span><br><span class="line">    <span class="comment">// 默认值&#123;’*/.coffee’: ‘coffee’&#125;</span></span><br><span class="line">    preprocessors: &#123;&#125;,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// test results reporter to use</span></span><br><span class="line">    <span class="comment">// possible values: 'dots', 'progress'</span></span><br><span class="line">    <span class="comment">// available reporters: https://npmjs.org/browse/keyword/karma-reporter</span></span><br><span class="line">    reporters: [<span class="string">'progress'</span>],</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// web server port</span></span><br><span class="line">    port: <span class="number">9876</span>,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// enable / disable colors in the output (reporters and logs)</span></span><br><span class="line">    colors: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// level of logging</span></span><br><span class="line">    <span class="comment">// possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG</span></span><br><span class="line">    logLevel: config.LOG_INFO,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 文件改动 / 保存会自行执行测试</span></span><br><span class="line">    autoWatch: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// start these browsers</span></span><br><span class="line">    <span class="comment">// available browser launchers: https://npmjs.org/browse/keyword/karma-launcher</span></span><br><span class="line">    browsers: [<span class="string">'Chrome'</span>],</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Continuous Integration mode</span></span><br><span class="line">    <span class="comment">// if true, Karma captures browsers, runs the tests and exits</span></span><br><span class="line">    singleRun: <span class="literal">false</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Concurrency level</span></span><br><span class="line">    <span class="comment">// how many browser should be started simultaneous</span></span><br><span class="line">    concurrency: <span class="literal">Infinity</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h5 id="u5927_u6982_u4ECB_u7ECD_u4E0Bkarma_u7684_u5B9E_u73B0_u539F_u7406"><a href="#u5927_u6982_u4ECB_u7ECD_u4E0Bkarma_u7684_u5B9E_u73B0_u539F_u7406" class="headerlink" title="大概介绍下karma的实现原理"></a>大概介绍下karma的实现原理</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># karma是一个工具，用来创建一个web server，web server会到每一连接上的浏览器中执行测试代码</span></span><br><span class="line"><span class="comment"># 每一个浏览器的测试结果都会通过命令行展示出来</span></span><br><span class="line"><span class="comment"># karma主要设计用来做底层级的测试（单元测试）。高级测试，推荐protractor（没用过）~~</span></span><br></pre></td></tr></table></figure>
-<h4 id="karma_u793A_u4F8B"><a href="#karma_u793A_u4F8B" class="headerlink" title="karma示例"></a>karma示例</h4><p>项目结构<br><img src="/uploads/karma-jasmine.png" alt=""><br><a href="https://github.com/xiuhonglee/express-node" target="_blank" rel="external">测试项目地址</a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// test.js 被测试文件</span></span><br><span class="line"><span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// src.js 被测试文件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> name.split(<span class="string">""</span>).reverse().join(<span class="string">""</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// srcSpec.js 两个测试用例</span></span><br><span class="line">describe(<span class="string">"A suite of basic functions"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    it(<span class="string">"reverse word"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        expect(<span class="string">"DCBA"</span>).toEqual(reverse(<span class="string">"ABCD"</span>));</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    it(<span class="string">"add fn"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        expect(<span class="number">7</span>).toEqual(add(<span class="number">3</span>, <span class="number">4</span>));</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>启动karma测试<br><img src="/uploads/karma-jasmine02.png" alt=""></p>
-<h2 id="u53C2_u8003_u8FDE_u63A5"><a href="#u53C2_u8003_u8FDE_u63A5" class="headerlink" title="参考连接"></a>参考连接</h2><ol>
-<li><a href="http://www.html-js.com/article/Road-test-automation-entry-frontend-automation-test-front-end--Introduction-to-karma" target="_blank" rel="external">前端自动化测试之路——karma入门</a> </li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;u672C_u8282_u5185_u5BB9&quot;&gt;&lt;a href=&quot;#u672C_u8282_u5185_u5BB9&quot; class=&quot;headerlink&quot; title=&quot;本节内容&quot;&gt;&lt;/a&gt;本节内容&lt;/h4&gt;&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;karma介绍&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;karma配置文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;karma示例&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# karma构建在Node.js之上，以npm包形式安装&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ npm install karma --save-dev&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 安装插件，因为要集成jasmine&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ npm install karma-jasmine karma-chrome-launcher --save-dev&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 运行Karma&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ ./node_modules/karma/bin/karma start&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 可以安装命令行接口（全局安装）&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ npm install -g karma-cli&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 然后就可以这样运行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ karma start&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&quot;karma_u914D_u7F6E_u6587_u4EF6&quot;&gt;&lt;a href=&quot;#karma_u914D_u7F6E_u6587_u4EF6&quot; class=&quot;headerlink&quot; title=&quot;karma配置文件&quot;&gt;&lt;/a&gt;karma配置文件&lt;/h4&gt;&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 初始化配置文件，可自行配置&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 可以参考这个：http://html-js.com/article/The-front-end-of-the-front-road-automation-test-automation-test-road--the-karma-configuration&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ karma init &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 生成配置文件后，也可以这么启动karma &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ karma karma.conf.js&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="前端测试" scheme="http://xiuhonglee.com/tags/%E5%89%8D%E7%AB%AF%E6%B5%8B%E8%AF%95/"/>
     
   </entry>
   

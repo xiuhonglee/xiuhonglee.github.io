@@ -1,0 +1,40 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="description" content="随便写写~"><meta name="viewport" content="width=device-width, initial-scale=1"><title>优化关键渲染路径 · xiuhong</title><link rel="short icon" href="/favicon.ico"><!-- font--><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Roboto Mono"><!-- icon--><link rel="stylesheet" href="/fonts/iconfont/iconfont.css"><!-- theme style--><link rel="stylesheet" href="/css/style.css"><!-- baidu analytics--><script type="text/javascript">var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?9e0cbea7d3319c6c94c71dfb93c151b8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><!-- google analytics--><script type="text/javascript">(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-74273646-1', 'auto');
+ga('send', 'pageview');</script></head><body><div id="main"><header><a href="/." class="logo">xiuhong</a><ul class="nav"><li class="nav-link"><a href="/" target="_self">Accueil</a></li><li class="nav-link"><a href="/archives/" target="_self">Archives</a></li><li class="nav-link"><a href="/categories/" target="_self">Catégories</a></li><li class="nav-link"><a href="/tags/" target="_self">Tags</a></li><li class="nav-link"><a href="/about/" target="_self">À propos</a></li></ul></header><section id="container"><article class="post"><h1 class="post-title">优化关键渲染路径</h1><span class="post-time">Aug 9, 2016</span><div id="sidebar" class="post-sidebar"><h3 class="heading">Sommaire</h3><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-__u4F18_u5316_u5173_u952E_u6E32_u67D3_u8DEF_u5F84"><span class="toc-text">1. 优化关键渲染路径</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-_Topics"><span class="toc-text">2. Topics</span></a></li></ol></li></ol></div><div class="post-content"><p>内容来自<a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/?hl=en" target="_blank" rel="external">Google Developers</a></p>
+<h4 id="1-__u4F18_u5316_u5173_u952E_u6E32_u67D3_u8DEF_u5F84"><a href="#1-__u4F18_u5316_u5173_u952E_u6E32_u67D3_u8DEF_u5F84" class="headerlink" title="1. 优化关键渲染路径"></a>1. 优化关键渲染路径</h4><blockquote>
+<p>优化关键渲染路径，是根据用户行为来确定浏览器展示内容的优先级；浏览器渲染页面在底层做了很多操作。优化页面性能，需要理解浏览器在接收到HTML、CSS和JavaScript之后如何对其进行解析、渲染的机制。</p>
+</blockquote>
+<p><img src="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/images/progressive-rendering.png" alt=""></p>
+<blockquote>
+<p>为了优化关键渲染路径，我们可以从缩短首字节渲染时间来入手。理解关键渲染路径也为开发性能优良的web应用奠定了基础。页面最为理想的渲染时刻应该是在每秒60帧的刷新频率结束的同一时刻。忽略这些，先快速了解下浏览器渲染出一张页面的流程。</p>
+</blockquote>
+<h5 id="2-_Topics"><a href="#2-_Topics" class="headerlink" title="2. Topics"></a>2. Topics</h5><ul>
+<li>Constructing the Object Model</li>
+<li>Render-tree construction, layout, and paint</li>
+<li>Render blocking CSS</li>
+<li>Adding interactivity with JavaScript</li>
+<li>Measuring the critical rendering path with Navigation Timing</li>
+<li>Analyzing critical rendering path performance</li>
+<li>Optimizing the critical rendering path</li>
+<li>PageSpeed rules and recommendations</li>
+</ul>
+</div></article><div class="tags"><a href="/tags/前端性能/">前端性能</a></div><div class="paginator"><a href="/2016/08/09/Constructing-the-Object-model/" class="prev"><i class="iconfont icon-left"></i><span> Précédent</span></a><a href="/2016/08/06/前端性能-优化内容/" class="next"><span>Suivant</span><i class="iconfont icon-right"></i></a></div><section id="comments"><div id="disqus_thread"></div></section><script type="text/javascript">(function() {
+var d = document, s = d.createElement('script');
+
+s.src = '//ahonn.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script></section><footer><div class="copyright"><p>&copy;2013-2016<span class="heart"><i class="iconfont icon-heart"></i></span><span class="author">修鸿</span></p><p class="theme">Theme by <a href="https://github.com/ahonn/hexo-theme-even"> Even</a></p></div><label id="back2top"><i class="iconfont icon-up"></i></label></footer></div></body><script src="/js/zepto.min.js"></script><script src="/js/theme.js"></script></html>
