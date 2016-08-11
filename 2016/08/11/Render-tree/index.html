@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="description" content="随便写写~"><meta name="viewport" content="width=device-width, initial-scale=1"><title>构建渲染树 · xiuhong</title><link rel="short icon" href="/favicon.ico"><!-- font--><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Roboto Mono"><!-- icon--><link rel="stylesheet" href="/fonts/iconfont/iconfont.css"><!-- theme style--><link rel="stylesheet" href="/css/style.css"><!-- baidu analytics--><script type="text/javascript">var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?9e0cbea7d3319c6c94c71dfb93c151b8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><!-- google analytics--><script type="text/javascript">(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-74273646-1', 'auto');
+ga('send', 'pageview');</script></head><body><div id="main"><header><a href="/." class="logo">xiuhong</a><ul class="nav"><li class="nav-link"><a href="/" target="_self">首页</a></li><li class="nav-link"><a href="/archives/" target="_self">归档</a></li><li class="nav-link"><a href="/categories/" target="_self">分类</a></li><li class="nav-link"><a href="/tags/" target="_self">标签</a></li><li class="nav-link"><a href="/about/" target="_self">关于</a></li></ul></header><section id="container"><article class="post"><h1 class="post-title">构建渲染树</h1><span class="post-time">Aug 11, 2016</span><div id="sidebar" class="post-sidebar"><h3 class="heading">目录</h3><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#u672C_u8282_u5185_u5BB9"><span class="toc-text">本节内容</span></a></li></ol></div><div class="post-content"><p><a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction?hl=en" target="_blank" rel="external">内容来自Google Developer</a></p>
+<h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><blockquote>
+<p>当浏览器布局可视元素时，会将CSSOM和DOM树链接成为渲染树，最终以像素形式绘制到屏幕上。优化渲染性能的关键在于优化这些渲染的每个阶段。浏览器构建的DOM和CSSOM是两个独立的树形结构。一个负责承载内容，一个负责描述样式，这两部分是如何合并阮然到页面的呢？ </p>
+</blockquote>
+<ul>
+<li>第一步：构建渲染树。浏览器捕获屏幕中的每一个可视DOM，并为每一个结点添加CSSOM样式信息，最终合并成为一个“渲染树”。</li>
+</ul>
+<p><img src="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/images/render-tree-construction.png" alt=""></p>
+<ul>
+<li>构建渲染树，具体步骤：</li>
+<li>从DOM树的root结点开始遍历每一个可视结点。<ul>
+<li>有些结点本身为非可视结点（如script、meta等标签），因为这些标签最终并不会呈现到页面上，浏览器在构建渲染树的过程中会忽略这些标签。</li>
+<li>有些结点通过css隐藏的(display:none)的结点，同样会被浏览器忽略。</li>
+</ul>
+</li>
+<li>对每一个可视元素结点匹配对应CSSOM规则。</li>
+<li><p>最终层显内容与样式（计算样式）结合的渲染树。</p>
+<blockquote>
+<p>提示：对于元素(visibility: hidden)和元素(display:none)，前者会被渲染为一个空白内容区(仍占位)，后者不会被渲染。</p>
+</blockquote>
+</li>
+<li><p>第二步：布局。 上面虽然计算得到了渲染树文本、样式信息。在渲染阶段，还需要知道元素在容器设备(<a href="https://developers.google.com/web/fundamentals/design-and-ui/responsive/fundamentals/set-the-viewport" target="_blank" rel="external">viewport</a>)中的确切位置——这将进入“布局”阶段，也称为“重排”。</p>
+</li>
+</ul>
+<blockquote>
+<p>为了得到每个元素确切的大小和位置，浏览器需要从root结点遍历并计算出页面元素的几何大小、位置。以下面为例：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"viewport"</span> <span class="attribute">content</span>=<span class="value">"width=device-width,initial-scale=1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">title</span>&gt;</span>Critial Path: Hello world!<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">style</span>=<span class="value">"width: 50%"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">div</span> <span class="attribute">style</span>=<span class="value">"width: 50%"</span>&gt;</span>Hello world!<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<ul>
+<li>页面包含两个嵌套的div元素，外层占屏幕宽50%，内容占外层div宽度50%（也就是占屏幕宽的25%）。</li>
+</ul>
+<p><img src="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/images/layout-viewport.png" alt=""></p>
+<ul>
+<li><p>布局阶段将产生一个个“盒模型”——包含元素相对屏幕(viewport)的精确位置、大小信息：所有的相对尺寸最终会被转化为屏幕上的像素单位（也是相对单位）。</p>
+</li>
+<li><p>最后：绘制（光栅化-rasterizing）。现在已经知道哪些元素可见，以及可见元素的计算样式、几何信息。浏览器将根据这些信息将节点以像素的形式绘制到页面上。</p>
+</li>
+</ul>
+<blockquote>
+<p>上面的每一个步骤，浏览器在底层做了很多处理。Chrome Developer Tool可以捕获到上面每个阶段的耗时，下面是布局阶段耗时（上面hello world示例）。</p>
+</blockquote>
+<p><img src="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/images/layout-timeline.png" alt=""></p>
+<ul>
+<li>Chrome Developer Tools Timeline的layout事件会记录渲染树构建、确定元素位置、计算元素占位大小耗时。</li>
+<li>布局完成，”Paint Setup”和”Paint”事件会将渲染树以像素的形式呈现到显示器。</li>
+<li>构建渲染树、布局、渲染都需要耗费时间。随着构建文档大小的增加，耗时也随之增加。另外，渲染复杂样式如(box shadow)要比简单样式(solid color)耗费更多的性能。</li>
+</ul>
+<blockquote>
+<p>回顾浏览器接收到整个文档的处理流程</p>
+</blockquote>
+<ul>
+<li>处理HTML，构建DOM树</li>
+<li>处理CSS， 构建CSSOM树</li>
+<li>将DOM和CSSOM树合并为渲染树(render tree)</li>
+<li>根据渲染树进行布局、计算每个节点(Node)几何信息</li>
+<li>将节点渲染的显示器</li>
+</ul>
+<blockquote>
+<p>上面的示例虽简单，浏览器做的很多底层工作。如果DOM树或CSSOM树被改动，浏览器会重复上面的所有操作，这就是重绘(re-rendered)的代价。</p>
+</blockquote>
+<p>优化渲染路径上的1-5个步骤，可以更快速渲染出页面内容，而且可以减少页面初始化完成后的屏幕刷新(fps)间隔时间——也就是使显示器达到更大的刷新频率。</p>
+</div></article><div class="tags"><a href="/tags/前端性能/">前端性能</a></div><div class="paginator"><a href="/2016/08/09/Constructing-the-Object-model/" class="next"><span>下一页</span><i class="iconfont icon-right"></i></a></div><section id="comments"><div id="disqus_thread"></div></section><script type="text/javascript">(function() {
+var d = document, s = d.createElement('script');
+
+s.src = '//ahonn.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script></section><footer><div class="copyright"><p>&copy;2013-2016<span class="heart"><i class="iconfont icon-heart"></i></span><span class="author">修鸿</span></p><p class="theme">Theme by <a href="https://github.com/ahonn/hexo-theme-even"> Even</a></p></div><label id="back2top"><i class="iconfont icon-up"></i></label></footer></div></body><script src="/js/zepto.min.js"></script><script src="/js/theme.js"></script></html>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xiuhonglee.com/"/>
-  <updated>2016-08-10T11:04:57.000Z</updated>
+  <updated>2016-08-11T23:48:08.000Z</updated>
   <id>http://xiuhonglee.com/</id>
   
   <author>
@@ -14,6 +14,86 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>构建渲染树</title>
+    <link href="http://xiuhonglee.com/2016/08/11/Render-tree/"/>
+    <id>http://xiuhonglee.com/2016/08/11/Render-tree/</id>
+    <published>2016-08-10T23:43:15.000Z</published>
+    <updated>2016-08-11T23:48:08.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction?hl=en" target="_blank" rel="external">内容来自Google Developer</a></p>
+<h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><blockquote>
+<p>当浏览器布局可视元素时，会将CSSOM和DOM树链接成为渲染树，最终以像素形式绘制到屏幕上。优化渲染性能的关键在于优化这些渲染的每个阶段。浏览器构建的DOM和CSSOM是两个独立的树形结构。一个负责承载内容，一个负责描述样式，这两部分是如何合并阮然到页面的呢？ </p>
+</blockquote>
+<ul>
+<li>第一步：构建渲染树。浏览器捕获屏幕中的每一个可视DOM，并为每一个结点添加CSSOM样式信息，最终合并成为一个“渲染树”。</li>
+</ul>
+<p><img src="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/images/render-tree-construction.png" alt=""></p>
+<ul>
+<li>构建渲染树，具体步骤：</li>
+<li>从DOM树的root结点开始遍历每一个可视结点。<ul>
+<li>有些结点本身为非可视结点（如script、meta等标签），因为这些标签最终并不会呈现到页面上，浏览器在构建渲染树的过程中会忽略这些标签。</li>
+<li>有些结点通过css隐藏的(display:none)的结点，同样会被浏览器忽略。</li>
+</ul>
+</li>
+<li>对每一个可视元素结点匹配对应CSSOM规则。</li>
+<li><p>最终层显内容与样式（计算样式）结合的渲染树。</p>
+<blockquote>
+<p>提示：对于元素(visibility: hidden)和元素(display:none)，前者会被渲染为一个空白内容区(仍占位)，后者不会被渲染。</p>
+</blockquote>
+</li>
+<li><p>第二步：布局。 上面虽然计算得到了渲染树文本、样式信息。在渲染阶段，还需要知道元素在容器设备(<a href="https://developers.google.com/web/fundamentals/design-and-ui/responsive/fundamentals/set-the-viewport" target="_blank" rel="external">viewport</a>)中的确切位置——这将进入“布局”阶段，也称为“重排”。</p>
+</li>
+</ul>
+<blockquote>
+<p>为了得到每个元素确切的大小和位置，浏览器需要从root结点遍历并计算出页面元素的几何大小、位置。以下面为例：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"viewport"</span> <span class="attribute">content</span>=<span class="value">"width=device-width,initial-scale=1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">title</span>&gt;</span>Critial Path: Hello world!<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">style</span>=<span class="value">"width: 50%"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">div</span> <span class="attribute">style</span>=<span class="value">"width: 50%"</span>&gt;</span>Hello world!<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<ul>
+<li>页面包含两个嵌套的div元素，外层占屏幕宽50%，内容占外层div宽度50%（也就是占屏幕宽的25%）。</li>
+</ul>
+<p><img src="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/images/layout-viewport.png" alt=""></p>
+<ul>
+<li><p>布局阶段将产生一个个“盒模型”——包含元素相对屏幕(viewport)的精确位置、大小信息：所有的相对尺寸最终会被转化为屏幕上的像素单位（也是相对单位）。</p>
+</li>
+<li><p>最后：绘制（光栅化-rasterizing）。现在已经知道哪些元素可见，以及可见元素的计算样式、几何信息。浏览器将根据这些信息将节点以像素的形式绘制到页面上。</p>
+</li>
+</ul>
+<blockquote>
+<p>上面的每一个步骤，浏览器在底层做了很多处理。Chrome Developer Tool可以捕获到上面每个阶段的耗时，下面是布局阶段耗时（上面hello world示例）。</p>
+</blockquote>
+<p><img src="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/images/layout-timeline.png" alt=""></p>
+<ul>
+<li>Chrome Developer Tools Timeline的layout事件会记录渲染树构建、确定元素位置、计算元素占位大小耗时。</li>
+<li>布局完成，”Paint Setup”和”Paint”事件会将渲染树以像素的形式呈现到显示器。</li>
+<li>构建渲染树、布局、渲染都需要耗费时间。随着构建文档大小的增加，耗时也随之增加。另外，渲染复杂样式如(box shadow)要比简单样式(solid color)耗费更多的性能。</li>
+</ul>
+<blockquote>
+<p>回顾浏览器接收到整个文档的处理流程</p>
+</blockquote>
+<ul>
+<li>处理HTML，构建DOM树</li>
+<li>处理CSS， 构建CSSOM树</li>
+<li>将DOM和CSSOM树合并为渲染树(render tree)</li>
+<li>根据渲染树进行布局、计算每个节点(Node)几何信息</li>
+<li>将节点渲染的显示器</li>
+</ul>
+<blockquote>
+<p>上面的示例虽简单，浏览器做的很多底层工作。如果DOM树或CSSOM树被改动，浏览器会重复上面的所有操作，这就是重绘(re-rendered)的代价。</p>
+</blockquote>
+<p>优化渲染路径上的1-5个步骤，可以更快速渲染出页面内容，而且可以减少页面初始化完成后的屏幕刷新(fps)间隔时间——也就是使显示器达到更大的刷新频率。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction?hl=en&quot; target=&quot;_blan
+    
+    </summary>
+    
+    
+      <category term="前端性能" scheme="http://xiuhonglee.com/tags/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>构建页面对象模型</title>
@@ -265,7 +345,7 @@
     <link href="http://xiuhonglee.com/2016/08/05/Chrome%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7-Timeline%E9%9D%A2%E6%9D%BF/"/>
     <id>http://xiuhonglee.com/2016/08/05/Chrome开发者工具-Timeline面板/</id>
     <published>2016-08-05T07:40:42.000Z</published>
-    <updated>2016-08-05T07:48:50.000Z</updated>
+    <updated>2016-08-11T23:24:46.000Z</updated>
     
     <content type="html"><![CDATA[<h5 id="u5185_u5BB9_u6765_u81EA_u261E_Google_Developers"><a href="#u5185_u5BB9_u6765_u81EA_u261E_Google_Developers" class="headerlink" title="内容来自☞ Google Developers"></a>内容来自<a href="https://developers.google.com/web/tools/chrome-devtools/profile/evaluate-performance/timeline-tool?hl=en" target="_blank" rel="external">☞ Google Developers</a></h5><blockquote>
 <p>Timeline面板来记录&amp;分析网络交互行为，能够很好地分析网络应用的性能表现  </p>
@@ -313,7 +393,6 @@
 <blockquote>
 <p>将鼠标悬浮在Screenshots上可放大查看，控制鼠标在Screenshots上左右滑动可现实模拟页面加载的动画效果</p>
 </blockquote>
-<p><img src="" alt=""></p>
 <h5 id="5-__u67E5_u770BJavaScript_u4FE1_u606F"><a href="#5-__u67E5_u770BJavaScript_u4FE1_u606F" class="headerlink" title="5. 查看JavaScript信息"></a>5. 查看JavaScript信息</h5><blockquote>
 <p>在Timeline记录之前开启control面板中的JS Profile选项，Flame图表中会显示每一个被调用Function信息</p>
 </blockquote>
@@ -958,40 +1037,6 @@
     
     
       <category term="CSS" scheme="http://xiuhonglee.com/tags/CSS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>利用githubpages搭建个人主页</title>
-    <link href="http://xiuhonglee.com/2016/03/03/githubpages-hexo/"/>
-    <id>http://xiuhonglee.com/2016/03/03/githubpages-hexo/</id>
-    <published>2016-03-03T13:42:17.000Z</published>
-    <updated>2016-04-03T15:01:32.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">申请Github Pages空间</span><br><span class="line">hexo博客框架</span><br><span class="line">主题NexT配置</span><br></pre></td></tr></table></figure>
-<h5 id="u642D_u5EFA_u6B65_u9AA4"><a href="#u642D_u5EFA_u6B65_u9AA4" class="headerlink" title="搭建步骤"></a>搭建步骤</h5><h6 id="1-_u7533_u8BF7GitHub_Pages_u7A7A_u95F4__u6559_u7A0B"><a href="#1-_u7533_u8BF7GitHub_Pages_u7A7A_u95F4__u6559_u7A0B" class="headerlink" title="1.申请GitHub Pages空间 教程"></a>1.申请GitHub Pages空间 <a href="https://pages.github.com/" target="_blank" rel="external">教程</a></h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#34917;&#20805;&#65306;&#10;    1.&#40664;&#35748;&#31354;&#38388;&#35775;&#38382;&#22320;&#22336;&#65288;url&#65289;:http://username.github.io &#10;    2.&#21487;&#32465;&#23450;&#33258;&#24049;&#30340;&#22495;&#21517;&#22320;&#22336;&#65288;&#21487;&#36873;&#65289;</span><br></pre></td></tr></table></figure>
-<h6 id="2-_u535A_u5BA2_u6846_u67B6Hexo__u5B98_u7F51"><a href="#2-_u535A_u5BA2_u6846_u67B6Hexo__u5B98_u7F51" class="headerlink" title="2.博客框架Hexo 官网"></a>2.博客框架Hexo <a href="https://hexo.io/" target="_blank" rel="external">官网</a></h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">******[&#20027;&#35201;&#21629;&#20196;](https://hexo.io/docs/commands.html)******&#10;&#10;# &#23433;&#35013;&#21629;&#20196;&#34892;&#24037;&#20855;&#10;$ npm install -g hexo-cli&#10;&#10;# &#21021;&#22987;&#21270;&#32593;&#31449;&#39033;&#30446;&#10;$ hexo init [folder]&#10;&#10;# &#29983;&#25104;&#38745;&#24577;&#25991;&#20214;&#10;$ hexo generate&#10;&#10;# &#27979;&#35797;&#29992;,&#21551;&#21160;&#26412;&#22320;&#26381;&#21153;&#22120;&#27979;&#35797;&#65292;&#40664;&#35748;http://localhost:4000/&#10;$ hexo server&#10;&#10;# &#37096;&#32626;&#32593;&#31449;&#10;$ hexo deploy &#10;    &#34917;&#20805;&#65306;&#22312;&#37096;&#32626;&#20043;&#21069;&#65292;&#35774;&#32622;&#22909;_config.yml(&#19979;&#38754;&#26377;&#35828;&#26126;)</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h6 id="3-Hexo_u914D_u7F6E_u6587_u4EF6_config-yml"><a href="#3-Hexo_u914D_u7F6E_u6587_u4EF6_config-yml" class="headerlink" title="3.Hexo配置文件_config.yml"></a>3.Hexo配置文件_config.yml</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#20027;&#35201;&#37197;&#32622;&#39033;&#10;...&#10;1.&#35775;&#38382;&#31449;&#28857;&#22320;&#22336;URL&#10;    # &#31449;&#28857;&#35775;&#38382;&#22320;&#22336;(&#38656;&#20462;&#25913;)&#10;    url: http://xiuhonglee.com &#10;&#10;    # baseUrl(&#40664;&#35748;)&#10;    root: /&#10;...&#10;&#10;2.&#37096;&#32626;deploy&#37197;&#32622;&#10;&#10;...&#10;deploy:&#10;&#10;  # &#25552;&#20132;&#26041;&#24335;&#10;  type: git&#10;&#10;  # &#25552;&#20132;&#22320;&#22336;(github&#20179;&#24211;&#22320;&#22336;)&#10;  repo: https://github.com/xiuhonglee/xiuhonglee.github.io.git&#10;&#10;  # &#25552;&#20132;&#20998;&#25903;&#10;  branch: master&#10;&#10;  # &#25552;&#20132;&#35828;&#26126;&#65292;&#30456;&#24403;&#20110;commit message&#10;  message: xxx&#10;...</span><br></pre></td></tr></table></figure>
-<h6 id="u4E3B_u9898NexT_u914D_u7F6E__28_u53EF_u81EA_u884C_u9009_u62E9_u4E3B_u9898_u8FDB_u884C_u914D_u7F6E_29"><a href="#u4E3B_u9898NexT_u914D_u7F6E__28_u53EF_u81EA_u884C_u9009_u62E9_u4E3B_u9898_u8FDB_u884C_u914D_u7F6E_29" class="headerlink" title="主题NexT配置 (可自行选择主题进行配置)"></a>主题NexT配置 (可自行选择主题进行配置)</h6><blockquote>
-<p>本站使用NexT主题，<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">参考</a></p>
-</blockquote>
-<h6 id="u7B2C_u4E09_u65B9_u670D_u52A1"><a href="#u7B2C_u4E09_u65B9_u670D_u52A1" class="headerlink" title="第三方服务"></a>第三方服务</h6><ol>
-<li>多说评论</li>
-<li>搜索</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;u672C_u8282_u5185_u5BB9&quot;&gt;&lt;a href=&quot;#u672C_u8282_u5185_u5BB9&quot; class=&quot;headerlink&quot; title=&quot;本节内容&quot;&gt;&lt;/a&gt;本节内容&lt;/h4&gt;&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;申请Github Pages空间&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;hexo博客框架&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;主题NexT配置&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h5 id=&quot;u642D_u5EFA_u6B65_u9AA4&quot;&gt;&lt;a href=&quot;#u642D_u5EFA_u6B65_u9AA4&quot; class=&quot;headerlink&quot; title=&quot;搭建步骤&quot;&gt;&lt;/a&gt;搭建步骤&lt;/h5&gt;&lt;h6 id=&quot;1-_u7533_u8BF7GitHub_Pages_u7A7A_u95F4__u6559_u7A0B&quot;&gt;&lt;a href=&quot;#1-_u7533_u8BF7GitHub_Pages_u7A7A_u95F4__u6559_u7A0B&quot; class=&quot;headerlink&quot; title=&quot;1.申请GitHub Pages空间 教程&quot;&gt;&lt;/a&gt;1.申请GitHub Pages空间 &lt;a href=&quot;https://pages.github.com/&quot;&gt;教程&lt;/a&gt;&lt;/h6&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#34917;&amp;#20805;&amp;#65306;&amp;#10;    1.&amp;#40664;&amp;#35748;&amp;#31354;&amp;#38388;&amp;#35775;&amp;#38382;&amp;#22320;&amp;#22336;&amp;#65288;url&amp;#65289;:http://username.github.io &amp;#10;    2.&amp;#21487;&amp;#32465;&amp;#23450;&amp;#33258;&amp;#24049;&amp;#30340;&amp;#22495;&amp;#21517;&amp;#22320;&amp;#22336;&amp;#65288;&amp;#21487;&amp;#36873;&amp;#65289;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h6 id=&quot;2-_u535A_u5BA2_u6846_u67B6Hexo__u5B98_u7F51&quot;&gt;&lt;a href=&quot;#2-_u535A_u5BA2_u6846_u67B6Hexo__u5B98_u7F51&quot; class=&quot;headerlink&quot; title=&quot;2.博客框架Hexo 官网&quot;&gt;&lt;/a&gt;2.博客框架Hexo &lt;a href=&quot;https://hexo.io/&quot;&gt;官网&lt;/a&gt;&lt;/h6&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;******[&amp;#20027;&amp;#35201;&amp;#21629;&amp;#20196;](https://hexo.io/docs/commands.html)******&amp;#10;&amp;#10;# &amp;#23433;&amp;#35013;&amp;#21629;&amp;#20196;&amp;#34892;&amp;#24037;&amp;#20855;&amp;#10;$ npm install -g hexo-cli&amp;#10;&amp;#10;# &amp;#21021;&amp;#22987;&amp;#21270;&amp;#32593;&amp;#31449;&amp;#39033;&amp;#30446;&amp;#10;$ hexo init [folder]&amp;#10;&amp;#10;# &amp;#29983;&amp;#25104;&amp;#38745;&amp;#24577;&amp;#25991;&amp;#20214;&amp;#10;$ hexo generate&amp;#10;&amp;#10;# &amp;#27979;&amp;#35797;&amp;#29992;,&amp;#21551;&amp;#21160;&amp;#26412;&amp;#22320;&amp;#26381;&amp;#21153;&amp;#22120;&amp;#27979;&amp;#35797;&amp;#65292;&amp;#40664;&amp;#35748;http://localhost:4000/&amp;#10;$ hexo server&amp;#10;&amp;#10;# &amp;#37096;&amp;#32626;&amp;#32593;&amp;#31449;&amp;#10;$ hexo deploy &amp;#10;    &amp;#34917;&amp;#20805;&amp;#65306;&amp;#22312;&amp;#37096;&amp;#32626;&amp;#20043;&amp;#21069;&amp;#65292;&amp;#35774;&amp;#32622;&amp;#22909;_config.yml(&amp;#19979;&amp;#38754;&amp;#26377;&amp;#35828;&amp;#26126;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="个人主页" scheme="http://xiuhonglee.com/tags/%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5/"/>
     
   </entry>
   
