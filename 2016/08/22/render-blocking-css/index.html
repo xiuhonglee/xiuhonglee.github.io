@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="description" content="随便写写~"><meta name="viewport" content="width=device-width, initial-scale=1"><title>render-blocking-css · xiuhong</title><link rel="short icon" href="/favicon.ico"><!-- font--><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Roboto Mono"><!-- icon--><link rel="stylesheet" href="/fonts/iconfont/iconfont.css"><!-- theme style--><link rel="stylesheet" href="/css/style.css"><!-- baidu analytics--><script type="text/javascript">var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?9e0cbea7d3319c6c94c71dfb93c151b8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><!-- google analytics--><script type="text/javascript">(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-74273646-1', 'auto');
+ga('send', 'pageview');</script></head><body><div id="main"><header><a href="/." class="logo">xiuhong</a><ul class="nav"><li class="nav-link"><a href="/" target="_self">首页</a></li><li class="nav-link"><a href="/archives/" target="_self">归档</a></li><li class="nav-link"><a href="/categories/" target="_self">分类</a></li><li class="nav-link"><a href="/tags/" target="_self">标签</a></li><li class="nav-link"><a href="/about/" target="_self">关于</a></li></ul></header><section id="container"><article class="post"><h1 class="post-title">render-blocking-css</h1><span class="post-time">Aug 22, 2016</span><div class="post-content"><p><a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-blocking-css?hl=en" target="_blank" rel="external">内容来自Google Developers</a></p>
+<blockquote>
+<p>上节提到关键渲染路径，渲染页面需要等待构建完成DOM树和CSSOM树。CSS是阻塞渲染资源(渲染页面的关键资源)，浏览器在未构建完CSSOM树之前是不会进行页面渲染的。</p>
+</blockquote>
+<ul>
+<li>媒体查询(media queries): 可以用来说明CSS resources是否为阻塞渲染资源</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"style.css"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"style.css"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">media</span>=<span class="value">"all"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"print.css"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">media</span>=<span class="value">"print"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"other.css"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">media</span>=<span class="value">"(min-width: 40em)"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>第一条和第二条等价</li>
+<li>第三条只会在文档被打印（打印预览效果）时，进行渲染，使用覆盖media=”all”样式来实现</li>
+<li>第四条会根据页面宽度来判断是否生效</li>
+<li>不论是否声明了media query，所有样式文件都会被下载</li>
+</ul>
+<blockquote>
+<p>阻塞资源(css、javascritp)只会阻塞浏览器渲染首屏页面, “渲染阻塞”只与浏览器是否会停止渲染页面而去加载“阻塞资源”相关。对于非阻塞资源，尽管对浏览器来说资源本身优先级比较低，这些非阻塞资源仍然会被下载到浏览器端。</p>
+</blockquote>
+</div></article><div class="tags"><a href="/tags/前端性能/">前端性能</a></div><div class="paginator"><a href="/2016/08/28/linuxset-environmental/" class="prev"><i class="iconfont icon-left"></i><span> 上一页</span></a><a href="/2016/08/12/vim/" class="next"><span>下一页</span><i class="iconfont icon-right"></i></a></div><section id="comments"><div id="disqus_thread"></div></section><script type="text/javascript">(function() {
+var d = document, s = d.createElement('script');
+
+s.src = '//ahonn.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script></section><footer><div class="copyright"><p>&copy;2013-2016<span class="heart"><i class="iconfont icon-heart"></i></span><span class="author">修鸿</span></p><p class="theme">Theme by <a href="https://github.com/ahonn/hexo-theme-even"> Even</a></p></div><label id="back2top"><i class="iconfont icon-up"></i></label></footer></div></body><script src="/js/zepto.min.js"></script><script src="/js/theme.js"></script></html>
