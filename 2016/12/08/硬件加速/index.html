@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="description" content="随便写写~"><meta name="viewport" content="width=device-width, initial-scale=1"><title>硬件加速 · xiuhong</title><link rel="short icon" href="/favicon.ico"><!-- font--><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600|Roboto Mono"><!-- icon--><link rel="stylesheet" href="/fonts/iconfont/iconfont.css"><!-- theme style--><link rel="stylesheet" href="/css/style.css"><!-- baidu analytics--><script type="text/javascript">var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?9e0cbea7d3319c6c94c71dfb93c151b8";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><!-- google analytics--><script type="text/javascript">(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-74273646-1', 'auto');
+ga('send', 'pageview');</script></head><body><div id="main"><header><a href="/." class="logo">xiuhong</a><ul class="nav"><li class="nav-link"><a href="/" target="_self">首页</a></li><li class="nav-link"><a href="/archives/" target="_self">归档</a></li><li class="nav-link"><a href="/categories/" target="_self">分类</a></li><li class="nav-link"><a href="/tags/" target="_self">标签</a></li><li class="nav-link"><a href="/about/" target="_self">关于</a></li></ul></header><section id="container"><article class="post"><h1 class="post-title">硬件加速</h1><span class="post-time">Dec 8, 2016</span><div id="sidebar" class="post-sidebar"><h3 class="heading">目录</h3><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-__u672C_u8282_u5185_u5BB9"><span class="toc-text">1. 本节内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-__u4E3A_u4EC0_u4E48_u4F7F_u7528_uFF1F"><span class="toc-text">2. 为什么使用？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1_u901A_u8FC7_u8C03_u6574_u5C0F_u7403_u7684left_u548Ctop_u6765_u5B9E_u73B0_u52A8_u753B_u6548_u679C_u3002"><span class="toc-text">2.1通过调整小球的left和top来实现动画效果。</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2_u901A_u8FC7translate_u6765_u5B9E_u73B0_u52A8_u753B"><span class="toc-text">2.2通过translate来实现动画</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-_u6027_u80FD_u5BF9_u6BD4"><span class="toc-text">3.性能对比</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-__u786C_u4EF6_u52A0_u901F_u5982_u4F55_u5DE5_u4F5C"><span class="toc-text">4. 硬件加速如何工作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-1__u4EC0_u4E48_u60C5_u51B5_u4E0B_u6D4F_u89C8_u5668_u4F1A_u65B0_u5EFA_u56FE_u5C42"><span class="toc-text">4.1 什么情况下浏览器会新建图层</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-2__u5BF9GPU_u652F_u6301_u53CB_u597D_u5C5E_u6027"><span class="toc-text">4.2 对GPU支持友好属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-3__u5F3A_u5236_u5143_u7D20_u5728GPU_u4E2D_u6E32_u67D3"><span class="toc-text">4.3 强制元素在GPU中渲染</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-__u614E_u7528_u786C_u4EF6_u52A0_u901F"><span class="toc-text">5. 慎用硬件加速</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#5-1__u5185_u5B58"><span class="toc-text">5.1 内存</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-2__u5B57_u4F53_u6E32_u67D3"><span class="toc-text">5.2 字体渲染</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-__u603B_u7ED3"><span class="toc-text">6. 总结</span></a></li></ol></div><div class="post-content"><p><a href="https://www.sitepoint.com/introduction-to-hardware-acceleration-css-animations/" target="_blank" rel="external">文章来源</a></p>
+<h4 id="1-__u672C_u8282_u5185_u5BB9"><a href="#1-__u672C_u8282_u5185_u5BB9" class="headerlink" title="1. 本节内容"></a>1. 本节内容</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1. &#30828;&#20214;&#21152;&#36895;&#22914;&#20309;&#24037;&#20316;&#10;2. &#22914;&#20309;&#21512;&#29702;&#20351;&#29992;&#30828;&#20214;&#21152;&#36895;</span><br></pre></td></tr></table></figure>
+<h4 id="2-__u4E3A_u4EC0_u4E48_u4F7F_u7528_uFF1F"><a href="#2-__u4E3A_u4EC0_u4E48_u4F7F_u7528_uFF1F" class="headerlink" title="2. 为什么使用？"></a>2. 为什么使用？</h4><blockquote>
+<p>示例：一组在z轴上堆叠起来的小球(看起来是一个，这里只是为了体现性能差异而堆叠了很多小球)</p>
+</blockquote>
+<h5 id="2-1_u901A_u8FC7_u8C03_u6574_u5C0F_u7403_u7684left_u548Ctop_u6765_u5B9E_u73B0_u52A8_u753B_u6548_u679C_u3002"><a href="#2-1_u901A_u8FC7_u8C03_u6574_u5C0F_u7403_u7684left_u548Ctop_u6765_u5B9E_u73B0_u52A8_u753B_u6548_u679C_u3002" class="headerlink" title="2.1通过调整小球的left和top来实现动画效果。"></a>2.1通过调整小球的left和top来实现动画效果。</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.ball-running</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">animation</span>:<span class="value"> run-around <span class="number">4s</span> infinite</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="at_rule">@<span class="keyword">keyframes</span> run-around </span>&#123;</span><br><span class="line">  0%: <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">top</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">left</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">  &#125;</span></span><br><span class="line"></span><br><span class="line">  25% <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">top</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">left</span>:<span class="value"> <span class="number">200px</span></span></span>;</span><br><span class="line">  &#125;</span></span><br><span class="line"></span><br><span class="line">  50% <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">top</span>:<span class="value"> <span class="number">200px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">left</span>:<span class="value"> <span class="number">200px</span></span></span>;</span><br><span class="line">  &#125;</span></span><br><span class="line"></span><br><span class="line">  75% <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">top</span>:<span class="value"> <span class="number">200px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">left</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">  &#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://d17oy1vhnax1f7.cloudfront.net/items/333s0o0m0i1T3S3E1c3m/Screen%20Recording%202016-12-08%20at%2011.18%20%E4%B8%8A%E5%8D%88.gif?v=c8a89a67" alt="动画效果"></p>
+<p><a href="http://codepen.io/SitePoint/pen/WQVxQQ/" target="_blank" rel="external">☞ CodePe完整示例</a></p>
+<h5 id="2-2_u901A_u8FC7translate_u6765_u5B9E_u73B0_u52A8_u753B"><a href="#2-2_u901A_u8FC7translate_u6765_u5B9E_u73B0_u52A8_u753B" class="headerlink" title="2.2通过translate来实现动画"></a>2.2通过translate来实现动画</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.ball-running</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">animation</span>:<span class="value"> run-around <span class="number">4s</span> infinite</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="at_rule">@<span class="keyword">keyframes</span> run-around </span>&#123;</span><br><span class="line">  0%: <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">translate</span>(<span class="number">0</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">  &#125;</span></span><br><span class="line"></span><br><span class="line">  25% <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">translate</span>(<span class="number">200px</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">  &#125;</span></span><br><span class="line"></span><br><span class="line">  50% <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">translate</span>(<span class="number">200px</span>, <span class="number">200px</span>)</span></span>;</span><br><span class="line">  &#125;</span></span><br><span class="line"></span><br><span class="line">  75% <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">translate</span>(<span class="number">0</span>, <span class="number">200px</span>)</span></span>;</span><br><span class="line">  &#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://d17oy1vhnax1f7.cloudfront.net/items/2z0120161D291Q2u0B2G/Screen%20Recording%202016-12-08%20at%2011.23%20%E4%B8%8A%E5%8D%88.gif?v=cc7bb3d1" alt="动画效果"></p>
+<p><a href="http://codepen.io/SitePoint/pen/OyKXyK/" target="_blank" rel="external">☞ CodePe完整示例</a></p>
+<h4 id="3-_u6027_u80FD_u5BF9_u6BD4"><a href="#3-_u6027_u80FD_u5BF9_u6BD4" class="headerlink" title="3.性能对比"></a>3.性能对比</h4><ul>
+<li><p>使用left-top来实现动画<br><img src="https://d17oy1vhnax1f7.cloudfront.net/items/153v083Z353K1u392q0b/Image%202016-12-08%20at%2012.05.53%20%E4%B8%8B%E5%8D%88.png?v=28340892" alt=""></p>
+</li>
+<li><p>使用translate来实现动画<br><img src="https://d17oy1vhnax1f7.cloudfront.net/items/1w1R2D1Y341W022D411v/Image%202016-12-08%20at%2012.08.38%20%E4%B8%8B%E5%8D%88.png?v=58cf1fb1" alt=""></p>
+</li>
+</ul>
+<blockquote>
+<p>使用left-top的示例，每一步的动画(animation step)都会导致页面重绘(green bar)。渲染速率FPS低于60，直观上感到动画不流畅。使用translate，不会导致页面重绘。</p>
+</blockquote>
+<ul>
+<li>开启下面的选项，可以观察到动画过程中页面那哪些部分尽心过来重绘<br><img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2015/11/1448804173hardware-acc-03.jpg" alt=""></li>
+</ul>
+<p><strong>为什么使用transform实现动画不需要重绘？</strong></p>
+<ul>
+<li>因为CSS transforms直接使用GPU内存来渲染（硬件），也就是触发了硬件加速，避免了重绘操作(软件)；线面详解!</li>
+</ul>
+<h4 id="4-__u786C_u4EF6_u52A0_u901F_u5982_u4F55_u5DE5_u4F5C"><a href="#4-__u786C_u4EF6_u52A0_u901F_u5982_u4F55_u5DE5_u4F5C" class="headerlink" title="4. 硬件加速如何工作"></a>4. 硬件加速如何工作</h4><blockquote>
+<p>浏览器加载完页面资源(HTML/CSS/JS)后，开始进行DOM树构建。最终浏览器将DOM树和CSS合成渲染树，渲染树上的每一个渲染对象都会被分配到一个图层上去渲染。各图层会被作为GPU的一个组成部分被加载进去。<strong>注意：图层顺序的改变不会触发页面重绘！</strong></p>
+</blockquote>
+<ul>
+<li>上例，CSS transform创建了一个新的图层，该图层上的元素可以在不导致重绘的情况下进行位移变换。<br><img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2015/11/1448804178hardware-acc-04.jpg" alt=""></li>
+</ul>
+<p>使用transform属性实现动画的小球，出在橘黄色边框内，单独成为一个图层。</p>
+<h5 id="4-1__u4EC0_u4E48_u60C5_u51B5_u4E0B_u6D4F_u89C8_u5668_u4F1A_u65B0_u5EFA_u56FE_u5C42"><a href="#4-1__u4EC0_u4E48_u60C5_u51B5_u4E0B_u6D4F_u89C8_u5668_u4F1A_u65B0_u5EFA_u56FE_u5C42" class="headerlink" title="4.1 什么情况下浏览器会新建图层"></a>4.1 什么情况下浏览器会新建图层</h5><ol>
+<li>对于3D或CSS transforms  </li>
+<li>video或canvas元素  </li>
+<li>当使用CSS filters属性时  </li>
+<li>重叠元素，分层（最常见的z-index分层）  </li>
+</ol>
+<blockquote>
+<p>示例中使用的是2D位移变换(transform)而非3D转换。区别在哪里？两者新建图层的时机不同。</p>
+</blockquote>
+<p><img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2015/11/1448781619hardware-acc-05.png" alt=""></p>
+<p>3D transfrom会在动画之前创建新的图层。而2D transform是在动画过程中(fly)进行图层创建，动画结束后，浏览器移除图层，所以2D transform是在动画开始和结束动态创建、移除图层的，这样会导致在动画开始、结束时刻导致页面重绘。</p>
+<h5 id="4-2__u5BF9GPU_u652F_u6301_u53CB_u597D_u5C5E_u6027"><a href="#4-2__u5BF9GPU_u652F_u6301_u53CB_u597D_u5C5E_u6027" class="headerlink" title="4.2 对GPU支持友好属性"></a>4.2 对GPU支持友好属性</h5><ul>
+<li>transform </li>
+<li>opacity</li>
+<li>filter</li>
+</ul>
+<blockquote>
+<p>为确保动画顺滑(high-quality animation)，尽量使用GUP-friendly属性</p>
+</blockquote>
+<h5 id="4-3__u5F3A_u5236_u5143_u7D20_u5728GPU_u4E2D_u6E32_u67D3"><a href="#4-3__u5F3A_u5236_u5143_u7D20_u5728GPU_u4E2D_u6E32_u67D3" class="headerlink" title="4.3 强制元素在GPU中渲染"></a>4.3 强制元素在GPU中渲染</h5><blockquote>
+<p>某种情况下，为了避免新建图层导致的重绘，我们希望在动画开始前就使用GPU进行渲染。可以通过下面的’transform hack’方法实现。</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.example1</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">translateZ</span>(<span class="number">0</span>)</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="class">.example2</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">rotateZ</span>(<span class="number">360deg</span>)</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<p><strong>使用场景</strong></p>
+<ul>
+<li>当渲染一个元素由于另一个元素的影响消耗性能严重时，使用上述方法可避免；如上例中使用top-left实现动画的场景，在底部添加filter背景图，这样导致动画不流畅。<br><a href="http://codepen.io/SitePoint/pen/LpwZbJ/" target="_blank" rel="external">1. 未使用transform hack的动画</a><br><a href="http://codepen.io/SitePoint/pen/zvgBNp/" target="_blank" rel="external">2. 使用transform hack的动画</a></li>
+</ul>
+<p>Why? 添加了`transfomr: translateZ(0)的背景(blurred paint-expensive)被移到另一个图层中去了，减少了渲染小球所耗费的性能。</p>
+<h4 id="5-__u614E_u7528_u786C_u4EF6_u52A0_u901F"><a href="#5-__u614E_u7528_u786C_u4EF6_u52A0_u901F" class="headerlink" title="5. 慎用硬件加速"></a>5. 慎用硬件加速</h4><h5 id="5-1__u5185_u5B58"><a href="#5-1__u5185_u5B58" class="headerlink" title="5.1 内存"></a>5.1 内存</h5><blockquote>
+<p>新建太多的图层会增减内存消耗；特别是在移动端使用硬件加速，使用不当会导致浏览器因内存溢出导致crash；</p>
+</blockquote>
+<h5 id="5-2__u5B57_u4F53_u6E32_u67D3"><a href="#5-2__u5B57_u4F53_u6E32_u67D3" class="headerlink" title="5.2 字体渲染"></a>5.2 字体渲染</h5><blockquote>
+<p>GPU和CPU的渲染机制差异，会导致字体的展示有差异。如：对字体使用transform实现动画是，字体会变糊 <a href="http://keithclark.co.uk/articles/gpu-text-rendering-in-webkit/" target="_blank" rel="external">具体参考</a></p>
+</blockquote>
+<h4 id="6-__u603B_u7ED3"><a href="#6-__u603B_u7ED3" class="headerlink" title="6. 总结"></a>6. 总结</h4><ul>
+<li>利用GPU可以提高动画质量</li>
+<li>GPU渲染动画帧率在任何设备上都应该是60帧/秒</li>
+<li>使用GPU-Friendly CSS属性</li>
+<li>如何通过’transform hack’触发硬件加速</li>
+</ul>
+</div></article><div class="tags"><a href="/tags/前端性能/">前端性能</a></div><div class="paginator"><a href="/2016/10/31/testable-javascript/" class="next"><span>下一页</span><i class="iconfont icon-right"></i></a></div><section id="comments"><div id="disqus_thread"></div></section><script type="text/javascript">(function() {
+var d = document, s = d.createElement('script');
+
+s.src = '//ahonn.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script></section><footer><div class="copyright"><p>&copy;2013-2016<span class="heart"><i class="iconfont icon-heart"></i></span><span class="author">修鸿</span></p><p class="theme">Theme by <a href="https://github.com/ahonn/hexo-theme-even"> Even</a></p></div><label id="back2top"><i class="iconfont icon-up"></i></label></footer></div></body><script src="/js/zepto.min.js"></script><script src="/js/theme.js"></script></html>

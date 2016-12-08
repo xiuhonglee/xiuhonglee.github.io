@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xiuhonglee.com/"/>
-  <updated>2016-09-06T05:18:51.000Z</updated>
+  <updated>2016-12-08T07:21:48.000Z</updated>
   <id>http://xiuhonglee.com/</id>
   
   <author>
@@ -14,6 +14,122 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>硬件加速</title>
+    <link href="http://xiuhonglee.com/2016/12/08/%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F/"/>
+    <id>http://xiuhonglee.com/2016/12/08/硬件加速/</id>
+    <published>2016-12-08T03:06:44.000Z</published>
+    <updated>2016-12-08T07:21:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://www.sitepoint.com/introduction-to-hardware-acceleration-css-animations/" target="_blank" rel="external">文章来源</a></p>
+<h4 id="1-__u672C_u8282_u5185_u5BB9"><a href="#1-__u672C_u8282_u5185_u5BB9" class="headerlink" title="1. 本节内容"></a>1. 本节内容</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1. &#30828;&#20214;&#21152;&#36895;&#22914;&#20309;&#24037;&#20316;&#10;2. &#22914;&#20309;&#21512;&#29702;&#20351;&#29992;&#30828;&#20214;&#21152;&#36895;</span><br></pre></td></tr></table></figure>
+<h4 id="2-__u4E3A_u4EC0_u4E48_u4F7F_u7528_uFF1F"><a href="#2-__u4E3A_u4EC0_u4E48_u4F7F_u7528_uFF1F" class="headerlink" title="2. 为什么使用？"></a>2. 为什么使用？</h4><blockquote>
+<p>示例：一组在z轴上堆叠起来的小球(看起来是一个，这里只是为了体现性能差异而堆叠了很多小球)</p>
+</blockquote>
+<h5 id="2-1_u901A_u8FC7_u8C03_u6574_u5C0F_u7403_u7684left_u548Ctop_u6765_u5B9E_u73B0_u52A8_u753B_u6548_u679C_u3002"><a href="#2-1_u901A_u8FC7_u8C03_u6574_u5C0F_u7403_u7684left_u548Ctop_u6765_u5B9E_u73B0_u52A8_u753B_u6548_u679C_u3002" class="headerlink" title="2.1通过调整小球的left和top来实现动画效果。"></a>2.1通过调整小球的left和top来实现动画效果。</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.ball-running</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">animation</span>:<span class="value"> run-around <span class="number">4s</span> infinite</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="at_rule">@<span class="keyword">keyframes</span> run-around </span>&#123;</span><br><span class="line">  0%: <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">top</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">left</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">  &#125;</span></span><br><span class="line"></span><br><span class="line">  25% <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">top</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">left</span>:<span class="value"> <span class="number">200px</span></span></span>;</span><br><span class="line">  &#125;</span></span><br><span class="line"></span><br><span class="line">  50% <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">top</span>:<span class="value"> <span class="number">200px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">left</span>:<span class="value"> <span class="number">200px</span></span></span>;</span><br><span class="line">  &#125;</span></span><br><span class="line"></span><br><span class="line">  75% <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">top</span>:<span class="value"> <span class="number">200px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">left</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">  &#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://d17oy1vhnax1f7.cloudfront.net/items/333s0o0m0i1T3S3E1c3m/Screen%20Recording%202016-12-08%20at%2011.18%20%E4%B8%8A%E5%8D%88.gif?v=c8a89a67" alt="动画效果"></p>
+<p><a href="http://codepen.io/SitePoint/pen/WQVxQQ/" target="_blank" rel="external">☞ CodePe完整示例</a></p>
+<h5 id="2-2_u901A_u8FC7translate_u6765_u5B9E_u73B0_u52A8_u753B"><a href="#2-2_u901A_u8FC7translate_u6765_u5B9E_u73B0_u52A8_u753B" class="headerlink" title="2.2通过translate来实现动画"></a>2.2通过translate来实现动画</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.ball-running</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">animation</span>:<span class="value"> run-around <span class="number">4s</span> infinite</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="at_rule">@<span class="keyword">keyframes</span> run-around </span>&#123;</span><br><span class="line">  0%: <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">translate</span>(<span class="number">0</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">  &#125;</span></span><br><span class="line"></span><br><span class="line">  25% <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">translate</span>(<span class="number">200px</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">  &#125;</span></span><br><span class="line"></span><br><span class="line">  50% <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">translate</span>(<span class="number">200px</span>, <span class="number">200px</span>)</span></span>;</span><br><span class="line">  &#125;</span></span><br><span class="line"></span><br><span class="line">  75% <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">translate</span>(<span class="number">0</span>, <span class="number">200px</span>)</span></span>;</span><br><span class="line">  &#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://d17oy1vhnax1f7.cloudfront.net/items/2z0120161D291Q2u0B2G/Screen%20Recording%202016-12-08%20at%2011.23%20%E4%B8%8A%E5%8D%88.gif?v=cc7bb3d1" alt="动画效果"></p>
+<p><a href="http://codepen.io/SitePoint/pen/OyKXyK/" target="_blank" rel="external">☞ CodePe完整示例</a></p>
+<h4 id="3-_u6027_u80FD_u5BF9_u6BD4"><a href="#3-_u6027_u80FD_u5BF9_u6BD4" class="headerlink" title="3.性能对比"></a>3.性能对比</h4><ul>
+<li><p>使用left-top来实现动画<br><img src="https://d17oy1vhnax1f7.cloudfront.net/items/153v083Z353K1u392q0b/Image%202016-12-08%20at%2012.05.53%20%E4%B8%8B%E5%8D%88.png?v=28340892" alt=""></p>
+</li>
+<li><p>使用translate来实现动画<br><img src="https://d17oy1vhnax1f7.cloudfront.net/items/1w1R2D1Y341W022D411v/Image%202016-12-08%20at%2012.08.38%20%E4%B8%8B%E5%8D%88.png?v=58cf1fb1" alt=""></p>
+</li>
+</ul>
+<blockquote>
+<p>使用left-top的示例，每一步的动画(animation step)都会导致页面重绘(green bar)。渲染速率FPS低于60，直观上感到动画不流畅。使用translate，不会导致页面重绘。</p>
+</blockquote>
+<ul>
+<li>开启下面的选项，可以观察到动画过程中页面那哪些部分尽心过来重绘<br><img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2015/11/1448804173hardware-acc-03.jpg" alt=""></li>
+</ul>
+<p><strong>为什么使用transform实现动画不需要重绘？</strong></p>
+<ul>
+<li>因为CSS transforms直接使用GPU内存来渲染（硬件），也就是触发了硬件加速，避免了重绘操作(软件)；线面详解!</li>
+</ul>
+<h4 id="4-__u786C_u4EF6_u52A0_u901F_u5982_u4F55_u5DE5_u4F5C"><a href="#4-__u786C_u4EF6_u52A0_u901F_u5982_u4F55_u5DE5_u4F5C" class="headerlink" title="4. 硬件加速如何工作"></a>4. 硬件加速如何工作</h4><blockquote>
+<p>浏览器加载完页面资源(HTML/CSS/JS)后，开始进行DOM树构建。最终浏览器将DOM树和CSS合成渲染树，渲染树上的每一个渲染对象都会被分配到一个图层上去渲染。各图层会被作为GPU的一个组成部分被加载进去。<strong>注意：图层顺序的改变不会触发页面重绘！</strong></p>
+</blockquote>
+<ul>
+<li>上例，CSS transform创建了一个新的图层，该图层上的元素可以在不导致重绘的情况下进行位移变换。<br><img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2015/11/1448804178hardware-acc-04.jpg" alt=""></li>
+</ul>
+<p>使用transform属性实现动画的小球，出在橘黄色边框内，单独成为一个图层。</p>
+<h5 id="4-1__u4EC0_u4E48_u60C5_u51B5_u4E0B_u6D4F_u89C8_u5668_u4F1A_u65B0_u5EFA_u56FE_u5C42"><a href="#4-1__u4EC0_u4E48_u60C5_u51B5_u4E0B_u6D4F_u89C8_u5668_u4F1A_u65B0_u5EFA_u56FE_u5C42" class="headerlink" title="4.1 什么情况下浏览器会新建图层"></a>4.1 什么情况下浏览器会新建图层</h5><ol>
+<li>对于3D或CSS transforms  </li>
+<li>video或canvas元素  </li>
+<li>当使用CSS filters属性时  </li>
+<li>重叠元素，分层（最常见的z-index分层）  </li>
+</ol>
+<blockquote>
+<p>示例中使用的是2D位移变换(transform)而非3D转换。区别在哪里？两者新建图层的时机不同。</p>
+</blockquote>
+<p><img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2015/11/1448781619hardware-acc-05.png" alt=""></p>
+<p>3D transfrom会在动画之前创建新的图层。而2D transform是在动画过程中(fly)进行图层创建，动画结束后，浏览器移除图层，所以2D transform是在动画开始和结束动态创建、移除图层的，这样会导致在动画开始、结束时刻导致页面重绘。</p>
+<h5 id="4-2__u5BF9GPU_u652F_u6301_u53CB_u597D_u5C5E_u6027"><a href="#4-2__u5BF9GPU_u652F_u6301_u53CB_u597D_u5C5E_u6027" class="headerlink" title="4.2 对GPU支持友好属性"></a>4.2 对GPU支持友好属性</h5><ul>
+<li>transform </li>
+<li>opacity</li>
+<li>filter</li>
+</ul>
+<blockquote>
+<p>为确保动画顺滑(high-quality animation)，尽量使用GUP-friendly属性</p>
+</blockquote>
+<h5 id="4-3__u5F3A_u5236_u5143_u7D20_u5728GPU_u4E2D_u6E32_u67D3"><a href="#4-3__u5F3A_u5236_u5143_u7D20_u5728GPU_u4E2D_u6E32_u67D3" class="headerlink" title="4.3 强制元素在GPU中渲染"></a>4.3 强制元素在GPU中渲染</h5><blockquote>
+<p>某种情况下，为了避免新建图层导致的重绘，我们希望在动画开始前就使用GPU进行渲染。可以通过下面的’transform hack’方法实现。</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.example1</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">translateZ</span>(<span class="number">0</span>)</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="class">.example2</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">transform</span>:<span class="value"> <span class="function">rotateZ</span>(<span class="number">360deg</span>)</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<p><strong>使用场景</strong></p>
+<ul>
+<li>当渲染一个元素由于另一个元素的影响消耗性能严重时，使用上述方法可避免；如上例中使用top-left实现动画的场景，在底部添加filter背景图，这样导致动画不流畅。<br><a href="http://codepen.io/SitePoint/pen/LpwZbJ/" target="_blank" rel="external">1. 未使用transform hack的动画</a><br><a href="http://codepen.io/SitePoint/pen/zvgBNp/" target="_blank" rel="external">2. 使用transform hack的动画</a></li>
+</ul>
+<p>Why? 添加了`transfomr: translateZ(0)的背景(blurred paint-expensive)被移到另一个图层中去了，减少了渲染小球所耗费的性能。</p>
+<h4 id="5-__u614E_u7528_u786C_u4EF6_u52A0_u901F"><a href="#5-__u614E_u7528_u786C_u4EF6_u52A0_u901F" class="headerlink" title="5. 慎用硬件加速"></a>5. 慎用硬件加速</h4><h5 id="5-1__u5185_u5B58"><a href="#5-1__u5185_u5B58" class="headerlink" title="5.1 内存"></a>5.1 内存</h5><blockquote>
+<p>新建太多的图层会增减内存消耗；特别是在移动端使用硬件加速，使用不当会导致浏览器因内存溢出导致crash；</p>
+</blockquote>
+<h5 id="5-2__u5B57_u4F53_u6E32_u67D3"><a href="#5-2__u5B57_u4F53_u6E32_u67D3" class="headerlink" title="5.2 字体渲染"></a>5.2 字体渲染</h5><blockquote>
+<p>GPU和CPU的渲染机制差异，会导致字体的展示有差异。如：对字体使用transform实现动画是，字体会变糊 <a href="http://keithclark.co.uk/articles/gpu-text-rendering-in-webkit/" target="_blank" rel="external">具体参考</a></p>
+</blockquote>
+<h4 id="6-__u603B_u7ED3"><a href="#6-__u603B_u7ED3" class="headerlink" title="6. 总结"></a>6. 总结</h4><ul>
+<li>利用GPU可以提高动画质量</li>
+<li>GPU渲染动画帧率在任何设备上都应该是60帧/秒</li>
+<li>使用GPU-Friendly CSS属性</li>
+<li>如何通过’transform hack’触发硬件加速</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://www.sitepoint.com/introduction-to-hardware-acceleration-css-animations/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;文章来源&lt;/a&gt;&lt;/p&gt;
+&lt;h4
+    
+    </summary>
+    
+    
+      <category term="前端性能" scheme="http://xiuhonglee.com/tags/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>编写可测试的javascript</title>
+    <link href="http://xiuhonglee.com/2016/10/31/testable-javascript/"/>
+    <id>http://xiuhonglee.com/2016/10/31/testable-javascript/</id>
+    <published>2016-10-31T09:03:39.000Z</published>
+    <updated>2016-11-03T07:29:04.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#10;</span><br></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span cla
+    
+    </summary>
+    
+    
+      <category term="前端测试" scheme="http://xiuhonglee.com/tags/%E5%89%8D%E7%AB%AF%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>css-charset-utf-8</title>
@@ -69,7 +185,7 @@
     <link href="http://xiuhonglee.com/2016/08/22/render-blocking-css/"/>
     <id>http://xiuhonglee.com/2016/08/22/render-blocking-css/</id>
     <published>2016-08-22T10:26:13.000Z</published>
-    <updated>2016-09-07T02:59:38.000Z</updated>
+    <updated>2016-09-07T03:00:48.000Z</updated>
     
     <content type="html"><![CDATA[<p><a href="https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-blocking-css?hl=en" target="_blank" rel="external">内容来自Google Developers</a></p>
 <blockquote>
@@ -942,77 +1058,6 @@
     
     
       <category term="Jenkins" scheme="http://xiuhonglee.com/tags/Jenkins/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>linux常用命令(2)</title>
-    <link href="http://xiuhonglee.com/2016/04/13/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4-2/"/>
-    <id>http://xiuhonglee.com/2016/04/13/linux常用命令-2/</id>
-    <published>2016-04-13T02:01:22.000Z</published>
-    <updated>2016-04-27T14:55:13.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Linux定时执行任务</span><br><span class="line">Linux关闭进程</span><br></pre></td></tr></table></figure>
-<h4 id="u8BBE_u7F6Eeditor_u6253_u5F00_u65B9_u5F0F"><a href="#u8BBE_u7F6Eeditor_u6253_u5F00_u65B9_u5F0F" class="headerlink" title="设置editor打开方式"></a>设置editor打开方式</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ EDITOR=vim; <span class="built_in">export</span> EDITOR</span><br></pre></td></tr></table></figure>
-<h4 id="Linux_u5B9A_u65F6_u6267_u884C_u4EFB_u52A1"><a href="#Linux_u5B9A_u65F6_u6267_u884C_u4EFB_u52A1" class="headerlink" title="Linux定时执行任务"></a>Linux定时执行任务</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 命令格式 at[参数][时间] </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 命令功能：在一个指定的时间执行一个指定任务，只能执行一次</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 需要开启atd进程</span></span><br><span class="line">$ ps -ef | grep atd  查看</span><br><span class="line"></span><br><span class="line"><span class="comment"># mac下开启服务</span></span><br><span class="line">$ sudo launchctl unload -F /System/Library/LaunchDaemons/com.apple.atrun.plist</span><br><span class="line">$ sudo launchctl load -F /System/Library/LaunchDaemons/com.apple.atrun.plist</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例</span></span><br><span class="line">$ at <span class="number">13</span>:<span class="number">00</span></span><br><span class="line">&gt;  ls </span><br><span class="line">&gt; &lt;EOT&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 详细用法如下</span></span><br><span class="line">$ man at</span><br></pre></td></tr></table></figure>
-<h4 id="crontab"><a href="#crontab" class="headerlink" title="crontab"></a>crontab</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mac下启动、关闭cron服务</span></span><br><span class="line">$ launchctl load -w /System/Library/LaunchDaemons/com.vix.cron.plist</span><br><span class="line">$ launchctl unload -w /System/Library/LaunchDaemons/com.vix.cron.plist</span><br><span class="line"></span><br><span class="line"><span class="comment">###  使用方法，step by step  ###</span></span><br><span class="line"><span class="number">1</span>. 设置crontab <span class="operator">-e</span> 默认打开浏览器，推荐用nano，vim可能会报错</span><br><span class="line">$ EDITOR=nano; <span class="built_in">export</span>=EDITOR</span><br><span class="line"><span class="number">2</span>. 编写任务crontab job</span><br><span class="line">$ crontab <span class="operator">-e</span>  // 这条命令会用nano打开编辑框，下面是每分钟执行下指定目录的脚本任务（一定要用绝对路径，脚本里也是）</span><br><span class="line">* * * * * /Users/xiuhong/xh_github/monitoring/gruntPhantomas/task.sh</span><br><span class="line"><span class="number">3</span>. 保存退出即可，crontab会自动运行</span><br><span class="line"></span><br><span class="line"><span class="comment">### 下面这个是我的脚本，一定要用绝对路径！！！包括命令也是  ###</span></span><br><span class="line"><span class="shebang">#!/bin/sh</span></span><br><span class="line">PATH=/usr/<span class="built_in">local</span>/bin:/usr/<span class="built_in">local</span>/sbin:~/bin:/usr/bin:/bin:/usr/sbin:/sbin</span><br><span class="line"><span class="built_in">cd</span> /Users/xiuhong/xh_github/monitoring/gruntPhantomas</span><br><span class="line">/usr/<span class="built_in">local</span>/bin/grunt</span><br></pre></td></tr></table></figure>
-<h4 id="Linux_u5173_u95ED_u8FDB_u7A0B"><a href="#Linux_u5173_u95ED_u8FDB_u7A0B" class="headerlink" title="Linux关闭进程"></a>Linux关闭进程</h4><p>需求：node进程在后台开启，如何通过shell关闭<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看当前进程</span></span><br><span class="line">$ lsof -Pi | grep LISTEN</span><br><span class="line">mongod     <span class="number">8662</span> jacob    <span class="number">6</span>u  IPv4 <span class="number">0</span>x17ceae4e0970fbe9      <span class="number">0</span>t0  TCP localhost:<span class="number">27017</span> (LISTEN)</span><br><span class="line">mongod     <span class="number">8662</span> jacob    <span class="number">7</span>u  IPv4 <span class="number">0</span>x17ceae4e0f9c24b1      <span class="number">0</span>t0  TCP localhost:<span class="number">28017</span> (LISTEN)</span><br><span class="line">……</span><br><span class="line"></span><br><span class="line"><span class="comment"># 也可以这样查找</span></span><br><span class="line">$ netstat -nlp | grep :<span class="number">8341</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># 终止与node相关的服务</span></span><br><span class="line">$ killall node</span><br></pre></td></tr></table></figure></p>
-<p><img src="/uploads/linux2-kill.png" alt=""></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;u672C_u8282_u5185_u5BB9&quot;&gt;&lt;a href=&quot;#u672C_u8282_u5185_u5BB9&quot; class=&quot;headerlink&quot; title=&quot;本节内容&quot;&gt;&lt;/a&gt;本节内容&lt;/h4&gt;&lt;figure class=&quot;highlight sh
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="http://xiuhonglee.com/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>gulp常用插件（1）</title>
-    <link href="http://xiuhonglee.com/2016/04/08/gulp-plugins/"/>
-    <id>http://xiuhonglee.com/2016/04/08/gulp-plugins/</id>
-    <published>2016-04-08T06:37:14.000Z</published>
-    <updated>2016-04-08T08:16:08.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">自启动Node服务插件</span><br><span class="line">同一个项目使用Gulp和Grunt</span><br></pre></td></tr></table></figure>
-<h4 id="u81EA_u542F_u52A8Node_u670D_u52A1"><a href="#u81EA_u542F_u52A8Node_u670D_u52A1" class="headerlink" title="自启动Node服务"></a>自启动Node服务</h4><p><cite style="background: #f5f5d5;padding:10px;">刚开始学习node时，每次修改完app.js，都去手动敲$ node app.js重启node Server，在stackoverflow上发现了gulp-develop-server这个插件<br></cite></p>
-<ul>
-<li>特点：task可以监听app.js文件变化，自动重启Node Server☞<a href="https://github.com/narirou/gulp-develop-server" target="_blank" rel="external">插件地址</a></li>
-<li>监听文件变化需要结合gulp-livereload这个插件使用</li>
-<li>server.restart == server.changed</li>
-<li>下面是示例<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>),</span><br><span class="line">    server = <span class="built_in">require</span>(<span class="string">'gulp-develop-server'</span>),</span><br><span class="line">    livereload = <span class="built_in">require</span>(<span class="string">'gulp-livereload'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">    path: <span class="string">'./app.js'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> serverFiles = [</span><br><span class="line">    <span class="string">'./app.js'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'server:start'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    server.listen(options, livereload.listen);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// If server scripts change, restart the server and then livereload.</span></span><br><span class="line">gulp.task(<span class="string">'default'</span>, [<span class="string">'server:start'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">restart</span>(<span class="params">file</span>) </span>&#123;</span><br><span class="line">        server.changed(<span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (!error) livereload.changed(file.path);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    gulp.watch(serverFiles).on(<span class="string">'change'</span>, restart);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<a id="more"></a>
-<h4 id="u540C_u4E00_u4E2A_u9879_u76EE_u4F7F_u7528Gulp_u548CGrunt"><a href="#u540C_u4E00_u4E2A_u9879_u76EE_u4F7F_u7528Gulp_u548CGrunt" class="headerlink" title="同一个项目使用Gulp和Grunt"></a>同一个项目使用Gulp和Grunt</h4><p><cite style="background: #f5f5d5;padding:10px;">有这样一个需求，要在项目中使用grunt-phantomas这个插件做自动化监控，可是项目当初使用的Gulp。难道为要为了使用这个插件弃用Gulp？果然：我遇到的每个问题已经有100个人（何止）也遇到过，找到了解决方案，就是（gulp-grunt，This classifies gulp-grunt as gulpfriendly, not a gulpplugin.）☞<a href="https://www.npmjs.com/package/gulp-grunt" target="_blank" rel="external">地址</a><br></cite></p>
-<h5 id="u6B65_u9AA4_u4E00"><a href="#u6B65_u9AA4_u4E00" class="headerlink" title="步骤一"></a>步骤一</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install gulp-grunt --save-dev</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>gulp和grunt可以共用package.json，它们的插件可以放在一起</p>
-</blockquote>
-<h5 id="u6B65_u9AA4_u4E8C"><a href="#u6B65_u9AA4_u4E8C" class="headerlink" title="步骤二"></a>步骤二</h5><p>新建Gruntfile.js文件，gulpfile.js和Gruntfile.js里写各自的task即可。</p>
-<h5 id="u6B65_u9AA4_u4E09"><a href="#u6B65_u9AA4_u4E09" class="headerlink" title="步骤三"></a>步骤三</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Gruntfile.js里的uglify task</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">grunt</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Project configuration.</span></span><br><span class="line">    grunt.initConfig(&#123;</span><br><span class="line">        pkg: grunt.file.readJSON(<span class="string">'package.json'</span>),</span><br><span class="line">        uglify: &#123;</span><br><span class="line">            options: &#123;</span><br><span class="line">            &#125;,</span><br><span class="line">            build: &#123;</span><br><span class="line">                src: <span class="string">'public/js/index.js'</span>,</span><br><span class="line">                dest: <span class="string">'build/index.min.js'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Load the plugin that provides the "uglify" task.</span></span><br><span class="line">    grunt.loadNpmTasks(<span class="string">'grunt-contrib-uglify'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Default task(s).</span></span><br><span class="line">    grunt.registerTask(<span class="string">'uglify'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Gulpfile.js里的uglify task</span></span><br><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'gulp-grunt'</span>)(gulp); <span class="comment">// 重点是这句，建立了gulp-grunt的连接机制</span></span><br><span class="line">gulp.task(<span class="string">'grunt-uglify'</span>); <span class="comment">// 然后就可以调用grunt的task</span></span><br></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;u672C_u8282_u5185_u5BB9&quot;&gt;&lt;a href=&quot;#u672C_u8282_u5185_u5BB9&quot; class=&quot;headerlink&quot; title=&quot;本节内容&quot;&gt;&lt;/a&gt;本节内容&lt;/h4&gt;&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;自启动Node服务插件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;同一个项目使用Gulp和Grunt&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h4 id=&quot;u81EA_u542F_u52A8Node_u670D_u52A1&quot;&gt;&lt;a href=&quot;#u81EA_u542F_u52A8Node_u670D_u52A1&quot; class=&quot;headerlink&quot; title=&quot;自启动Node服务&quot;&gt;&lt;/a&gt;自启动Node服务&lt;/h4&gt;&lt;p&gt;&lt;cite style=&quot;background: #f5f5d5;padding:10px;&quot;&gt;刚开始学习node时，每次修改完app.js，都去手动敲$ node app.js重启node Server，在stackoverflow上发现了gulp-develop-server这个插件&lt;br&gt;&lt;/cite&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;特点：task可以监听app.js文件变化，自动重启Node Server☞&lt;a href=&quot;https://github.com/narirou/gulp-develop-server&quot;&gt;插件地址&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;监听文件变化需要结合gulp-livereload这个插件使用&lt;/li&gt;
-&lt;li&gt;server.restart == server.changed&lt;/li&gt;
-&lt;li&gt;下面是示例&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; gulp = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;gulp&#39;&lt;/span&gt;),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;gulp-develop-server&#39;&lt;/span&gt;),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    livereload = &lt;span class=&quot;built_in&quot;&gt;require&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&#39;gulp-livereload&#39;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; options = &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    path: &lt;span class=&quot;string&quot;&gt;&#39;./app.js&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; serverFiles = [&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&#39;./app.js&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;gulp.task(&lt;span class=&quot;string&quot;&gt;&#39;server:start&#39;&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    server.listen(options, livereload.listen);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// If server scripts change, restart the server and then livereload.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;gulp.task(&lt;span class=&quot;string&quot;&gt;&#39;default&#39;&lt;/span&gt;, [&lt;span class=&quot;string&quot;&gt;&#39;server:start&#39;&lt;/span&gt;], &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;restart&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;file&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        server.changed(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;error&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (!error) livereload.changed(file.path);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    gulp.watch(serverFiles).on(&lt;span class=&quot;string&quot;&gt;&#39;change&#39;&lt;/span&gt;, restart);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="Gulp" scheme="http://xiuhonglee.com/tags/Gulp/"/>
     
   </entry>
   

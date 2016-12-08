@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://xiuhonglee.com/2016/12/08/%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F/</loc>
+    
+    <lastmod>2016-12-08T07:21:48.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xiuhonglee.com/2016/10/31/testable-javascript/</loc>
+    
+    <lastmod>2016-11-03T07:29:04.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xiuhonglee.com/2016/03/03/karma-jasmine/</loc>
+    
+    <lastmod>2016-10-31T09:03:56.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://xiuhonglee.com/2016/08/22/render-blocking-css/</loc>
     
-    <lastmod>2016-09-07T02:59:38.000Z</lastmod>
+    <lastmod>2016-09-07T03:00:48.000Z</lastmod>
     
   </url>
   
@@ -226,14 +247,7 @@
   </url>
   
   <url>
-    <loc>http://xiuhonglee.com/2016/02/15/git-03/</loc>
-    
-    <lastmod>2016-04-03T15:01:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xiuhonglee.com/2016/03/03/karma-jasmine/</loc>
+    <loc>http://xiuhonglee.com/2016/02/15/amd-cmd/</loc>
     
     <lastmod>2016-04-03T15:01:32.000Z</lastmod>
     
@@ -247,42 +261,7 @@
   </url>
   
   <url>
-    <loc>http://xiuhonglee.com/2016/02/28/gulp-01/</loc>
-    
-    <lastmod>2016-04-03T15:01:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xiuhonglee.com/2016/02/12/mongodb/</loc>
-    
-    <lastmod>2016-04-03T15:01:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xiuhonglee.com/2016/03/03/githubpages-hexo/</loc>
-    
-    <lastmod>2016-04-03T15:01:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xiuhonglee.com/2016/02/24/git-07/</loc>
-    
-    <lastmod>2016-04-03T15:01:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xiuhonglee.com/2016/02/25/git-08/</loc>
-    
-    <lastmod>2016-04-03T15:01:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xiuhonglee.com/2016/02/15/amd-cmd/</loc>
+    <loc>http://xiuhonglee.com/2016/02/28/git-09/</loc>
     
     <lastmod>2016-04-03T15:01:32.000Z</lastmod>
     
@@ -296,6 +275,20 @@
   </url>
   
   <url>
+    <loc>http://xiuhonglee.com/2016/02/12/mongodb/</loc>
+    
+    <lastmod>2016-04-03T15:01:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xiuhonglee.com/2016/02/25/git-08/</loc>
+    
+    <lastmod>2016-04-03T15:01:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://xiuhonglee.com/2016/02/20/git-06/</loc>
     
     <lastmod>2016-04-03T15:01:32.000Z</lastmod>
@@ -303,35 +296,14 @@
   </url>
   
   <url>
-    <loc>http://xiuhonglee.com/2016/02/15/jQuery-deferred/</loc>
+    <loc>http://xiuhonglee.com/2016/02/24/git-07/</loc>
     
     <lastmod>2016-04-03T15:01:32.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://xiuhonglee.com/2016/02/11/jade/</loc>
-    
-    <lastmod>2016-04-03T15:01:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xiuhonglee.com/2016/02/15/CommonJs/</loc>
-    
-    <lastmod>2016-04-03T15:01:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xiuhonglee.com/2016/03/03/jasmine-syntax/</loc>
-    
-    <lastmod>2016-04-03T15:01:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://xiuhonglee.com/2016/03/01/jasmine%E5%85%A5%E9%97%A8/</loc>
+    <loc>http://xiuhonglee.com/2016/02/28/gulp-01/</loc>
     
     <lastmod>2016-04-03T15:01:32.000Z</lastmod>
     
@@ -345,14 +317,56 @@
   </url>
   
   <url>
-    <loc>http://xiuhonglee.com/2016/03/03/javascript-date/</loc>
+    <loc>http://xiuhonglee.com/2016/02/16/git-04/</loc>
     
     <lastmod>2016-04-03T15:01:32.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://xiuhonglee.com/2016/02/16/git-04/</loc>
+    <loc>http://xiuhonglee.com/2016/02/15/jQuery-deferred/</loc>
+    
+    <lastmod>2016-04-03T15:01:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xiuhonglee.com/2016/02/15/CommonJs/</loc>
+    
+    <lastmod>2016-04-03T15:01:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xiuhonglee.com/2016/02/11/jade/</loc>
+    
+    <lastmod>2016-04-03T15:01:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xiuhonglee.com/2016/03/03/jasmine-syntax/</loc>
+    
+    <lastmod>2016-04-03T15:01:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xiuhonglee.com/2016/02/15/git-03/</loc>
+    
+    <lastmod>2016-04-03T15:01:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xiuhonglee.com/2016/03/01/jasmine%E5%85%A5%E9%97%A8/</loc>
+    
+    <lastmod>2016-04-03T15:01:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://xiuhonglee.com/2016/03/03/javascript-date/</loc>
     
     <lastmod>2016-04-03T15:01:32.000Z</lastmod>
     
@@ -366,7 +380,7 @@
   </url>
   
   <url>
-    <loc>http://xiuhonglee.com/2016/02/28/git-09/</loc>
+    <loc>http://xiuhonglee.com/2016/03/03/githubpages-hexo/</loc>
     
     <lastmod>2016-04-03T15:01:32.000Z</lastmod>
     
