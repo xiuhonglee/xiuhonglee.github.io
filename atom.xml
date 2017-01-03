@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xiuhonglee.com/"/>
-  <updated>2016-12-08T07:21:48.000Z</updated>
+  <updated>2017-01-03T08:30:04.000Z</updated>
   <id>http://xiuhonglee.com/</id>
   
   <author>
@@ -16,11 +16,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>图标字体制作</title>
+    <link href="http://xiuhonglee.com/2017/01/03/iconfont/"/>
+    <id>http://xiuhonglee.com/2017/01/03/iconfont/</id>
+    <published>2017-01-03T08:03:50.000Z</published>
+    <updated>2017-01-03T08:30:04.000Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://d17oy1vhnax1f7.cloudfront.net/items/2k0k2G3G1O0p0F1y1h2P/Image%202017-01-03%20at%204.15.12%20%E4%B8%8B%E5%8D%88.png?v=84e3d81a" alt=""></p>
+<h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># &#22914;&#20309;&#21046;&#20316;&#22270;&#26631;&#23383;&#20307;&#10;# &#22914;&#20309;&#22312;&#39033;&#30446;&#20013;&#24341;&#20837;</span><br></pre></td></tr></table></figure>
+<h4 id="1-__u5982_u4F55_u5236_u4F5C_u56FE_u6807_u5B57_u4F53"><a href="#1-__u5982_u4F55_u5236_u4F5C_u56FE_u6807_u5B57_u4F53" class="headerlink" title="1. 如何制作图标字体"></a>1. 如何制作图标字体</h4><p><strong>步骤1：</strong> 进入<a href="https://icomoon.io/" target="_blank" rel="external">IconMoon</a>，点击页面右上角 IconMoon App按钮<br><img src="https://d17oy1vhnax1f7.cloudfront.net/items/0X0Q0g1L3k2O3m373b2K/Image%202017-01-03%20at%204.18.02%20%E4%B8%8B%E5%8D%88.png?v=fcee566e" alt=""></p>
+<p><strong>步骤2：</strong> <a href="https://icomoon.io/app/#/select" target="_blank" rel="external">选择页</a>，点击页面左上角Import Icons按钮上传本地svg图标文件<br><img src="https://d17oy1vhnax1f7.cloudfront.net/items/3n1r1i0o3t2D3805250X/Image%202017-01-03%20at%204.21.20%20%E4%B8%8B%E5%8D%88.png?v=cf16d1a9" alt=""><br><strong>步骤3：</strong> 上传完毕单击选中图标 &amp; 点击页面右下角Generate Font按钮生成图标字体<br><img src="https://d17oy1vhnax1f7.cloudfront.net/items/143n2C1w0H3T0B442W1m/Image%202017-01-03%20at%204.23.02%20%E4%B8%8B%E5%8D%88.png?v=fbc7f7b1" alt=""><br><strong>步骤4：</strong> 可选择Preferences进行配置 &amp; 点击页面右下角Download进行图标字体下载<br><img src="https://d17oy1vhnax1f7.cloudfront.net/items/0j1U0x2F1p2W2c3S1T2l/Image%202017-01-03%20at%204.27.57%20%E4%B8%8B%E5%8D%88.png?v=dafb0e65" alt=""></p>
+<h4 id="2-__u5982_u4F55_u5728_u9879_u76EE_u4E2D_u5F15_u5165"><a href="#2-__u5982_u4F55_u5728_u9879_u76EE_u4E2D_u5F15_u5165" class="headerlink" title="2. 如何在项目中引入"></a>2. 如何在项目中引入</h4><ul>
+<li>将下载的文件解压，可以在浏览器打开demo.html，审查元素，参照写法</li>
+<li>将fonts目录和style.css文件拷贝到项目中去即可使用</li>
+</ul>
+<p><img src="https://d17oy1vhnax1f7.cloudfront.net/items/2e0b3H3D280O3P3x0O2T/Image%202017-01-03%20at%204.29.36%20%E4%B8%8B%E5%8D%88.png?v=4f18b3a7" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://d17oy1vhnax1f7.cloudfront.net/items/2k0k2G3G1O0p0F1y1h2P/Image%202017-01-03%20at%204.15.12%20%E4%B8%8B%E5%8D%88.png?v=8
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="http://xiuhonglee.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
     <title>硬件加速</title>
     <link href="http://xiuhonglee.com/2016/12/08/%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F/"/>
     <id>http://xiuhonglee.com/2016/12/08/硬件加速/</id>
     <published>2016-12-08T03:06:44.000Z</published>
-    <updated>2016-12-08T07:21:48.000Z</updated>
+    <updated>2017-01-03T08:04:02.000Z</updated>
     
     <content type="html"><![CDATA[<p><a href="https://www.sitepoint.com/introduction-to-hardware-acceleration-css-animations/" target="_blank" rel="external">文章来源</a></p>
 <h4 id="1-__u672C_u8282_u5185_u5BB9"><a href="#1-__u672C_u8282_u5185_u5BB9" class="headerlink" title="1. 本节内容"></a>1. 本节内容</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1. &#30828;&#20214;&#21152;&#36895;&#22914;&#20309;&#24037;&#20316;&#10;2. &#22914;&#20309;&#21512;&#29702;&#20351;&#29992;&#30828;&#20214;&#21152;&#36895;</span><br></pre></td></tr></table></figure>
@@ -1031,33 +1060,6 @@
     
     
       <category term="性能监控" scheme="http://xiuhonglee.com/tags/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>搭建Jenkins Server(安装Jenkins)</title>
-    <link href="http://xiuhonglee.com/2016/04/16/jenkins/"/>
-    <id>http://xiuhonglee.com/2016/04/16/jenkins/</id>
-    <published>2016-04-16T02:13:11.000Z</published>
-    <updated>2016-04-16T08:09:05.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CentOS下安装Jenkins</span><br></pre></td></tr></table></figure>
-<h4 id="u9700_u6C42/_u4FE1_u606F"><a href="#u9700_u6C42/_u4FE1_u606F" class="headerlink" title="需求/信息"></a>需求/信息</h4><ul>
-<li>在远程Server上安装Jenkins，搭建CI环境</li>
-<li>服务器在bandwagonhost(搬瓦工)购买的,安装速度够快~推荐</li>
-<li>Server OS: CentOS</li>
-</ul>
-<h4 id="CentOS_u5B89_u88C5Jenkins"><a href="#CentOS_u5B89_u88C5Jenkins" class="headerlink" title="CentOS安装Jenkins"></a>CentOS安装Jenkins</h4><p><a href="wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo">官网教程</a><br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. ssh连接远程主机（服务器），下面是Mac连接方式</span><br><span class="line">[本地]$ ssh root@IpAddress -p </span><br><span class="line"></span><br><span class="line"><span class="number">2</span>. 进入远程主机安装Jenkins</span><br><span class="line">非root用户下面命令加sudo </span><br><span class="line">[远程主机]<span class="comment"># wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo</span></span><br><span class="line">[远程主机]<span class="comment"># rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key</span></span><br><span class="line">[远程主机]<span class="comment"># yum install jenkins</span></span><br><span class="line"></span><br><span class="line"><span class="number">3</span>. 安装Java</span><br><span class="line"><span class="comment"># yum install java</span></span><br><span class="line"></span><br><span class="line"><span class="number">4</span>. 启动/停止/重启Jenkins</span><br><span class="line"><span class="comment"># service jenkins start/stop/restart</span></span><br><span class="line"><span class="comment"># chkconfig jenkins on(这句检查是否成功，如果没有报错就说明成功了)</span></span><br><span class="line"></span><br><span class="line"><span class="number">5</span>. 如果上面步骤没有报错，此时就可以通过IP访问到Jenkins界面了</span><br><span class="line">[远程主机IP地址:端口] <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8080</span></span><br><span class="line"></span><br><span class="line"><span class="number">6</span>. 安装目录: /usr/lib/jenkins</span><br><span class="line"><span class="number">7</span>. jenkins配置文件: /etc/sysconfig</span><br></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;u672C_u8282_u5185_u5BB9&quot;&gt;&lt;a href=&quot;#u672C_u8282_u5185_u5BB9&quot; class=&quot;headerlink&quot; title=&quot;本节内容&quot;&gt;&lt;/a&gt;本节内容&lt;/h4&gt;&lt;figure class=&quot;highlight sh
-    
-    </summary>
-    
-    
-      <category term="Jenkins" scheme="http://xiuhonglee.com/tags/Jenkins/"/>
     
   </entry>
   
