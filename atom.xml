@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://xiuhonglee.com/"/>
-  <updated>2017-01-03T08:30:04.000Z</updated>
+  <updated>2017-01-04T03:13:04.000Z</updated>
   <id>http://xiuhonglee.com/</id>
   
   <author>
@@ -14,6 +14,55 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Html5 History API</title>
+    <link href="http://xiuhonglee.com/2017/01/04/historyAPI/"/>
+    <id>http://xiuhonglee.com/2017/01/04/historyAPI/</id>
+    <published>2017-01-04T02:09:28.000Z</published>
+    <updated>2017-01-04T03:13:04.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># History是什么</span></span><br><span class="line"><span class="comment"># History怎么用-语法</span></span><br><span class="line"><span class="comment"># History如何用-应用场景</span></span><br></pre></td></tr></table></figure>
+<h4 id="1-_History_u662F_u4EC0_u4E48"><a href="#1-_History_u662F_u4EC0_u4E48" class="headerlink" title="1. History是什么"></a>1. History是什么</h4><ul>
+<li>操纵浏览器的历史记录</li>
+<li>Html5新特性</li>
+<li>可与Ajax结合实现页面无刷新更新 &amp; 前进/后退</li>
+</ul>
+<h4 id="2-_History_u600E_u4E48_u7528"><a href="#2-_History_u600E_u4E48_u7528" class="headerlink" title="2. History怎么用"></a>2. History怎么用</h4><h5 id="2-1__u5C5E_u6027"><a href="#2-1__u5C5E_u6027" class="headerlink" title="2.1 属性"></a>2.1 属性</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 当前窗口访问了三个网址，那么history对象包括三项(history.length === 3)</span></span><br><span class="line"><span class="built_in">window</span>.history.length === history.length</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回一个表示历史堆栈`顶部`的状态的值</span></span><br><span class="line">history.state</span><br></pre></td></tr></table></figure>
+<h5 id="2-2_u65B9_u6CD5"><a href="#2-2_u65B9_u6CD5" class="headerlink" title="2.2方法"></a>2.2方法</h5><p><strong>改变浏览器访问地址</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 回退</span></span><br><span class="line">history.back() &lt;=&gt; history.go(-<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 前进</span></span><br><span class="line">history.forward() &lt;=&gt; history.go(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 刷新当前页面</span></span><br><span class="line">history.go(<span class="number">0</span>)</span><br></pre></td></tr></table></figure></p>
+<p><strong>新特性</strong></p>
+<ul>
+<li>history.pushState()</li>
+<li>history.replaceState() // 和pushState的唯一区别在于replace<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * @param state: 一个与指定网址相关的状态对象，popstate事件触发时，该对象会传入回调函数。如果不需要这个对象，此处可以填null</span><br><span class="line"> * title: 新页面的标题，但是所有浏览器目前都忽略这个值，因此这里可以填null</span><br><span class="line"> * url: 新的网址，必须与当前页面处在同一个域。浏览器的地址栏将显示这个网址；不过url不能跨域，否则报错</span><br><span class="line"> */</span></span><br><span class="line">history.pushState(state, title, url) <span class="comment">// 格式</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * 示例</span><br><span class="line"> * 1. 页面并不会刷新</span><br><span class="line"> * 2. 只会改变地址栏信息</span><br><span class="line"> * 3. 回退操作也只是改回地址栏信息，同样不会刷新页面</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">var</span> stateObj = &#123; scoff: <span class="number">2</span> &#125;</span><br><span class="line"><span class="built_in">window</span>.history.pushState(stateObj, <span class="string">'new page'</span>, <span class="string">'any_url.html'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="2-3__u4E8B_u4EF6"><a href="#2-3__u4E8B_u4EF6" class="headerlink" title="2.3 事件"></a>2.3 事件</h5><ul>
+<li>popstate事件</li>
+</ul>
+<blockquote>
+<p>同一个文档的浏览历史（history对象）出现变化时，就会触发popstate事件；触发条件，用户点击前进/后退按钮 | js操作history.go()、history.back()、history.forward()时触发</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'popstate'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'location: '</span> + <span class="built_in">document</span>.location);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'state: '</span> + <span class="built_in">JSON</span>.stringify(event.state));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="3-_History_u5982_u4F55_u7528"><a href="#3-_History_u5982_u4F55_u7528" class="headerlink" title="3. History如何用"></a>3. History如何用</h4><ul>
+<li>与ajax配合使用<blockquote>
+<p>Ajax可以实现页面的无刷新操作，但是无法前进与后退；History可以解决这个问题</p>
+</blockquote>
+</li>
+</ul>
+<p><a href="http://www.zhangxinxu.com/study/201306/ajax-page-html5-history-api.html?area=zhabei" target="_blank" rel="external">☞场景: 网络示例</a></p>
+<h4 id="4-__u53C2_u8003"><a href="#4-__u53C2_u8003" class="headerlink" title="4. 参考"></a>4. 参考</h4><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/History#See_also" target="_blank" rel="external">1. MDN API</a><br><a href="http://javascript.ruanyifeng.com/bom/history.html" target="_blank" rel="external">2. history对象</a><br><a href="http://www.zhangxinxu.com/wordpress/2013/06/html5-history-api-pushstate-replacestate-ajax/" target="_blank" rel="external">3. ajax与HTML5 history pushState/replaceState实例</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;u672C_u8282_u5185_u5BB9&quot;&gt;&lt;a href=&quot;#u672C_u8282_u5185_u5BB9&quot; class=&quot;headerlink&quot; title=&quot;本节内容&quot;&gt;&lt;/a&gt;本节内容&lt;/h4&gt;&lt;figure class=&quot;highlight sh
+    
+    </summary>
+    
+    
+      <category term="javascript" scheme="http://xiuhonglee.com/tags/javascript/"/>
+    
+  </entry>
   
   <entry>
     <title>图标字体制作</title>
@@ -1028,38 +1077,6 @@
     
     
       <category term="javascript" scheme="http://xiuhonglee.com/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>phantomas</title>
-    <link href="http://xiuhonglee.com/2016/04/26/phantomas/"/>
-    <id>http://xiuhonglee.com/2016/04/26/phantomas/</id>
-    <published>2016-04-26T13:24:17.000Z</published>
-    <updated>2016-04-28T01:38:16.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="u672C_u8282_u5185_u5BB9"><a href="#u672C_u8282_u5185_u5BB9" class="headerlink" title="本节内容"></a>本节内容</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">phantomas介绍</span><br><span class="line">Phantomas命令行下使用</span><br></pre></td></tr></table></figure>
-<h4 id="Phantomas_u4ECB_u7ECD"><a href="#Phantomas_u4ECB_u7ECD" class="headerlink" title="Phantomas介绍"></a>Phantomas介绍</h4><p></p><p style="background:#f5f5d5;padding:10px;border-radius:3px">基于PhantomJS的web性能指标监控框架。这个名字有点意思☞<a href="https://en.wikipedia.org/wiki/Fant%C3%B4mas" target="_blank" rel="external">戳这里</a>；需要NodeJS环境、PhantomJS1.9+<br></p><p></p>
-<h5 id="u5B89_u88C5"><a href="#u5B89_u88C5" class="headerlink" title="安装"></a>安装</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下条命令会预先安装最新版本的phantomjs，同时通过添加软链接</span></span><br><span class="line"><span class="comment"># 的方式在全局添加phantomas命令(将./bin/phantomas.js添加到PATH中)</span></span><br><span class="line">$ npm install --global phantomas</span><br></pre></td></tr></table></figure>
-<h5 id="u7279_u70B9"><a href="#u7279_u70B9" class="headerlink" title="特点"></a>特点</h5><ul>
-<li>模块方法：每一个性能指标由独立模块负责实现</li>
-<li>事件驱动：这点类似NodeJS，可以在phantomJS这里查找☞<a href="https://github.com/ariya/phantomjs/wiki/API-Reference-WebPage#webpage-onInitialized" target="_blank" rel="external">可监听事件名</a></li>
-<li>可获取底层性能指标：如通过jQuery绑定的事件数目、高级选择器属性使用情况等</li>
-<li>结果可以以JSON、CSV格式输出</li>
-<li>方便集成到持续集成(CI)工具中（如：Jenkins）</li>
-<li>有Node Module可供使用，方便集成到Node项目中（不过文档不怎么全）</li>
-</ul>
-<h4 id="Phantomas_u547D_u4EE4_u884C_u4E0B_u4F7F_u7528"><a href="#Phantomas_u547D_u4EE4_u884C_u4E0B_u4F7F_u7528" class="headerlink" title="Phantomas命令行下使用"></a>Phantomas命令行下使用</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不过这样也只能在命令行下看结果</span></span><br><span class="line">$ phantomas https://github.com/macbre/phantomas --verbose</span><br><span class="line"></span><br><span class="line"><span class="comment"># 想要把结果存到json</span></span><br><span class="line">$ phantomas https://github.com/macbre/phantomas --verbose --reporter=json &gt; result.json</span><br></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;u672C_u8282_u5185_u5BB9&quot;&gt;&lt;a href=&quot;#u672C_u8282_u5185_u5BB9&quot; class=&quot;headerlink&quot; title=&quot;本节内容&quot;&gt;&lt;/a&gt;本节内容&lt;/h4&gt;&lt;figure class=&quot;highlight sh
-    
-    </summary>
-    
-    
-      <category term="性能监控" scheme="http://xiuhonglee.com/tags/%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7/"/>
     
   </entry>
   
