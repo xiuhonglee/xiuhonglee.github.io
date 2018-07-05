@@ -1,0 +1,827 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="模板引擎," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="因为学习Node，用到了Jade模板引擎，花点时间整理了下；Node Template Engine，当然使用也不限于Node。类似的模板引擎还有doT/smarty/FreeMarker，都是为了节省代码量，数据和html融合在一起，还说不出哪个好用；不过Jade靠代码缩进来区别标签层级容易报错，使用时小心。
+
+官网：offcial
+常用命令安装1sudo npm install jade -g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jade模板引擎">
+<meta property="og:url" content="http://xiuhonglee.com/2016/02/11/jade/index.html">
+<meta property="og:site_name" content="xiuhong">
+<meta property="og:description" content="因为学习Node，用到了Jade模板引擎，花点时间整理了下；Node Template Engine，当然使用也不限于Node。类似的模板引擎还有doT/smarty/FreeMarker，都是为了节省代码量，数据和html融合在一起，还说不出哪个好用；不过Jade靠代码缩进来区别标签层级容易报错，使用时小心。
+
+官网：offcial
+常用命令安装1sudo npm install jade -g">
+<meta property="og:image" content="http://xiuhonglee.com/uploads/jade.jpeg">
+<meta property="og:updated_time" content="2016-02-13T09:31:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jade模板引擎">
+<meta name="twitter:description" content="因为学习Node，用到了Jade模板引擎，花点时间整理了下；Node Template Engine，当然使用也不限于Node。类似的模板引擎还有doT/smarty/FreeMarker，都是为了节省代码量，数据和html融合在一起，还说不出哪个好用；不过Jade靠代码缩进来区别标签层级容易报错，使用时小心。
+
+官网：offcial
+常用命令安装1sudo npm install jade -g">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Jade模板引擎 | xiuhong </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">xiuhong</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+      
+        <li class="menu-item menu-item-search">
+          <a href="#" class="st-search-show-outputs">
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '_dbi8dbgTfn51_2tXcKc','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Jade模板引擎
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-11T17:11:39+08:00" content="2016-02-11">
+              2016-02-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/11/jade/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/11/jade/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/uploads/jade.jpeg" alt="jade logo"></p>
+<blockquote>
+<p>因为学习Node，用到了Jade模板引擎，花点时间整理了下；Node Template Engine，当然使用也不限于Node。类似的模板引擎还有doT/smarty/FreeMarker，都是为了节省代码量，数据和html融合在一起，还说不出哪个好用；不过Jade靠代码缩进来区别标签层级容易报错，使用时小心。</p>
+</blockquote>
+<p><a href="http://jade-lang.com/command-line/" target="_blank" rel="external">官网：offcial</a></p>
+<h4 id="u5E38_u7528_u547D_u4EE4"><a href="#u5E38_u7528_u547D_u4EE4" class="headerlink" title="常用命令"></a>常用命令</h4><h5 id="u5B89_u88C5"><a href="#u5B89_u88C5" class="headerlink" title="安装"></a>安装</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install jade -global</span><br></pre></td></tr></table></figure>
+<h5 id="u7F16_u8BD1jade_u6587_u4EF6"><a href="#u7F16_u8BD1jade_u6587_u4EF6" class="headerlink" title="编译jade文件"></a>编译jade文件</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">jade index.jade </span><br><span class="line">jade -P index.jade (-P:格式化输出)</span><br></pre></td></tr></table></figure>
+<h5 id="u5B9E_u65F6_u7F16_u8BD1"><a href="#u5B9E_u65F6_u7F16_u8BD1" class="headerlink" title="实时编译"></a>实时编译</h5><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jade -P -w index.jade (-w:watch,实时监控文件输出)</span><br></pre></td></tr></table></figure>
+<h4 id="u5E38_u7528_u8BED_u6CD5"><a href="#u5E38_u7528_u8BED_u6CD5" class="headerlink" title="常用语法"></a>常用语法</h4><p><a href="http://jade-lang.com/reference/" target="_blank" rel="external">官网：reference</a><br><a id="more"></a></p>
+<h5 id="u5C5E_u6027_uFF08Attributes_uFF09"><a href="#u5C5E_u6027_uFF08Attributes_uFF09" class="headerlink" title="属性（Attributes）"></a>属性（Attributes）</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 常规 --&gt;</span></span><br><span class="line">a(class='button', href='google.com') Google</span><br><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"google.com"</span> <span class="attribute">class</span>=<span class="value">"button"</span>&gt;</span>Google<span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 定义变量 --&gt;</span></span><br><span class="line">- var authenticated = true</span><br><span class="line">body(class=authenticated ? 'authed' : 'anon')</span><br><span class="line"><span class="tag">&lt;<span class="title">body</span> <span class="attribute">class</span>=<span class="value">"authed"</span>&gt;</span><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 转义 --&gt;</span></span><br><span class="line">div(escaped="<span class="tag">&lt;<span class="title">code</span>&gt;</span>")</span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">escaped</span>=<span class="value">"&amp;lt;code&amp;gt;"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 非转义:不推荐使用 --&gt;</span></span><br><span class="line">div(unescaped!="<span class="tag">&lt;<span class="title">code</span>&gt;</span>")</span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">unescaped</span>=<span class="value">"&lt;code&gt;"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Boolean Attributes --&gt;</span></span><br><span class="line">input(type='checkbox', checked)</span><br><span class="line"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> <span class="attribute">checked</span>=<span class="value">"checked"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">input(type='checkbox', checked=true)</span><br><span class="line"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> <span class="attribute">checked</span>=<span class="value">"checked"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">input(type='checkbox', checked=false)</span><br><span class="line"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Style Attributes --&gt;</span></span><br><span class="line">a(style=&#123;color: 'red', background: 'green'&#125;)</span><br><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">style</span>=<span class="value">"color:red;background:green"</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Class Attributes --&gt;</span></span><br><span class="line">- var classes = ['foo', 'bar', 'baz']</span><br><span class="line">a(class=classes)</span><br><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">"foo bar baz"</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line">a.button</span><br><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">"button"</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line">.content</span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"content"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- ID Literal --&gt;</span></span><br><span class="line">a#main-link</span><br><span class="line"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">id</span>=<span class="value">"main-link"</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line">#content</span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"content"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="u6761_u4EF6_u5224_u65AD_uFF08case_uFF09"><a href="#u6761_u4EF6_u5224_u65AD_uFF08case_uFF09" class="headerlink" title="条件判断（case）"></a>条件判断（case）</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- var friends = 10</span><br><span class="line">case friends</span><br><span class="line">  when 0</span><br><span class="line">    p you have no friends</span><br><span class="line">  when 1</span><br><span class="line">    p you have a friend</span><br><span class="line">  default</span><br><span class="line">    p you have #&#123;friends&#125; friends</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">p</span>&gt;</span>you have 10 friends<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="u52A0_u6CE8_u91CA"><a href="#u52A0_u6CE8_u91CA" class="headerlink" title="加注释"></a>加注释</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">单行注释  =&gt;  '//', 会在代码中保留</span><br><span class="line">非缓冲注释 =&gt; '//- ' 注释文本不会在文本中保留</span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 块注释 --&gt;</span></span><br><span class="line">body</span><br><span class="line">  //</span><br><span class="line">    As much text as you want</span><br><span class="line">    can go here.</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!--</span><br><span class="line">  As much text as you want</span><br><span class="line">  can go here.</span><br><span class="line">  --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Conditional Comments --&gt;</span></span><br><span class="line"><span class="comment">&lt;!--[if IE 8]&gt;</span><br><span class="line">&lt;html lang="en" class="lt-ie9"&gt;</span><br><span class="line">&lt;![endif]--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--[if gt IE 8]&gt;&lt;!--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--&lt;![endif]--&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="u6761_u4EF6_u5224_u65AD_uFF08if-else_uFF09"><a href="#u6761_u4EF6_u5224_u65AD_uFF08if-else_uFF09" class="headerlink" title="条件判断（if-else）"></a>条件判断（if-else）</h5><ul>
+<li><p>if-else</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">- var user = &#123; description: 'foo bar baz' &#125;</span><br><span class="line">- var authorised = false</span><br><span class="line">#user</span><br><span class="line">  if user.description</span><br><span class="line">    h2 Description</span><br><span class="line">    p.description= user.description</span><br><span class="line">  else if authorised</span><br><span class="line">    h2 Description</span><br><span class="line">    p.description.</span><br><span class="line">      User has no description,</span><br><span class="line">      why not add one...</span><br><span class="line">  else</span><br><span class="line">    h1 Description</span><br><span class="line">    p.description User has no description</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>output</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">output:</span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"user"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">h2</span>&gt;</span>Description<span class="tag">&lt;/<span class="title">h2</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"description"</span>&gt;</span>foo bar baz<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>unless </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">unless user.isAnonymous</span><br><span class="line">  p You're logged in as #&#123;user.name&#125;</span><br><span class="line"></span><br><span class="line">等价于</span><br><span class="line"></span><br><span class="line">if !user.isAnonymous</span><br><span class="line">  p You're logged in as #&#123;user.name&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="u7EE7_u627F_28extends_29"><a href="#u7EE7_u627F_28extends_29" class="headerlink" title="继承(extends)"></a>继承(extends)</h5><ul>
+<li><p>父文件（layout.jade）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//- layout.jade</span></span><br><span class="line">doctype html</span><br><span class="line">html</span><br><span class="line">  head</span><br><span class="line">    block title</span><br><span class="line">      title Default title</span><br><span class="line">  body</span><br><span class="line">    block content</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>继承文件（index.jade）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//- index.jade</span></span><br><span class="line">extends ./layout.jade</span><br><span class="line"></span><br><span class="line">block title</span><br><span class="line">  title Article Title</span><br><span class="line"></span><br><span class="line">block content</span><br><span class="line">  h1 My Article</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结果输出</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//- output</span><br><span class="line"></span><br><span class="line"><span class="doctype">&lt;!doctype html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">title</span>&gt;</span>Article Title<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">h1</span>&gt;</span>My Article<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="u8FC7_u6EE4_u5668"><a href="#u8FC7_u6EE4_u5668" class="headerlink" title="过滤器"></a>过滤器</h5><ul>
+<li><p>可以在jade模板中使用其他语法，如：coffee-script、babel、uglify-js、less、markdown</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">:markdown</span><br><span class="line">  # Markdown</span><br><span class="line">  I often like including markdown documents.</span><br><span class="line">script</span><br><span class="line">  :coffee-script</span><br><span class="line">    console.log 'This is coffee script'</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>output</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">h1</span>&gt;</span>Markdown<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">p</span>&gt;</span>I often like including markdown documents.<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"><span class="built_in">console</span>.log(<span class="string">'This is coffee script'</span>)</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="u5F15_u7528_uFF08includes_uFF09"><a href="#u5F15_u7528_uFF08includes_uFF09" class="headerlink" title="引用（includes）"></a>引用（includes）</h5><ul>
+<li><p>jade文件之间相互引用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//- index.jade</span></span><br><span class="line">doctype html</span><br><span class="line">html</span><br><span class="line">  include ./includes/head.jade</span><br><span class="line">  body</span><br><span class="line">    h1 My Site</span><br><span class="line">    p Welcome to my <span class="keyword">super</span> lame site.</span><br><span class="line">    include ./includes/foot.jade</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>includes/head.jade</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">head</span><br><span class="line">  title My Site</span><br><span class="line">  <span class="title">script</span><span class="params">(src=<span class="string">'/javascripts/jquery.js'</span>)</span></span><br><span class="line">  <span class="title">script</span><span class="params">(src=<span class="string">'/javascripts/app.js'</span>)</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>includes/foot.jade</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#footer</span><br><span class="line">  p Copyright (c) foobar</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>补充：类似可引入.css/.js文件 </p>
+</blockquote>
+<h5 id="u8FED_u4EE3_uFF08Iteration_uFF09"><a href="#u8FED_u4EE3_uFF08Iteration_uFF09" class="headerlink" title="迭代（Iteration）"></a>迭代（Iteration）</h5><ul>
+<li><p>each</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ul</span><br><span class="line">  each val in [1, 2, 3]</span><br><span class="line">    li= val</span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- output --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>1<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>2<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>3<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>each 迭代数组</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ul</span><br><span class="line">  each val, index in ['zero', 'one', 'two']</span><br><span class="line">    li= index + ': ' + val</span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- output --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>0: zero<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>1: one<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>2: two<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>each 迭代对象</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ul</span><br><span class="line">  each val, index in &#123;1:'one',2:'two',3:'three'&#125;</span><br><span class="line">    li= index + ': ' + val</span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- output --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>1: one<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>2: two<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>3: three<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>还可以容错处理（空值情况）</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- var values = [];</span><br><span class="line">ul</span><br><span class="line">  each val in values.length ? values : ['There are no values']</span><br><span class="line">    li= val</span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- output --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>There are no values<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>while</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- var n = 0;</span><br><span class="line">ul</span><br><span class="line">  while n &lt; 4</span><br><span class="line">    li= n++</span><br><span class="line">s</span><br><span class="line">&lt;!-- output --&gt;</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li&gt;0&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;1&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;2&lt;/li&gt;</span><br><span class="line">  &lt;li&gt;3&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="Mixins"><a href="#Mixins" class="headerlink" title="Mixins"></a>Mixins</h5><ul>
+<li><p>Mixins 可用来定义可服用的代码块</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//- Declaration</span><br><span class="line">mixin list</span><br><span class="line">  ul</span><br><span class="line">    li foo</span><br><span class="line">    li bar</span><br><span class="line">//- Use</span><br><span class="line">+list</span><br><span class="line">+list</span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- output --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>foo<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>bar<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>foo<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>bar<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Mixins传递参数</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mixin pet(name)</span><br><span class="line">  li.pet= name</span><br><span class="line">ul</span><br><span class="line">  +pet('cat')</span><br><span class="line">  +pet('dog')</span><br><span class="line">  +pet('pig')</span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- output --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"pet"</span>&gt;</span>cat<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"pet"</span>&gt;</span>dog<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"pet"</span>&gt;</span>pig<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Mixins Blocks</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">mixin article(title)</span><br><span class="line">  .article</span><br><span class="line">    .article-wrapper</span><br><span class="line">      h1= title</span><br><span class="line">      if block</span><br><span class="line">        block</span><br><span class="line">      else</span><br><span class="line">        p No content provided</span><br><span class="line"></span><br><span class="line">+article('Hello world')</span><br><span class="line"></span><br><span class="line">+article('Hello world')</span><br><span class="line">  p This is my</span><br><span class="line">  p Amazing article</span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- output --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"article"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"article-wrapper"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">h1</span>&gt;</span>Hello world<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">p</span>&gt;</span>No content provided<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"article"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"article-wrapper"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">h1</span>&gt;</span>Hello world<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">p</span>&gt;</span>This is my<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">p</span>&gt;</span>Amazing article<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Mixins Rest Arguments</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mixin list(id, ...items)</span><br><span class="line">  ul(id=id)</span><br><span class="line">    each item in items</span><br><span class="line">      li= item</span><br><span class="line">+list('my-list', 1, 2, 3, 4)</span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- output --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">id</span>=<span class="value">"my-list"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>1<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>2<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>3<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">li</span>&gt;</span>4<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="u6DF7_u5408_u7684_u6587_u672C_u548C_u6807_u7B7E"><a href="#u6DF7_u5408_u7684_u6587_u672C_u548C_u6807_u7B7E" class="headerlink" title="混合的文本和标签"></a>混合的文本和标签</h5><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">a 大段的文本会换行  </span><br><span class="line">方案一：竖线加空格，独立成一行</span><br><span class="line">    p </span><br><span class="line">        | 1.aa</span><br><span class="line">        | 2.bb</span><br><span class="line">        | 3.cc</span><br><span class="line"></span><br><span class="line">方案二：紧贴p加点</span><br><span class="line">    p. </span><br><span class="line">        1.aa</span><br><span class="line">        2.bb</span><br><span class="line">        3.cc</span><br><span class="line"></span><br><span class="line">b 标签文本混合在一起</span><br><span class="line">p. </span><br><span class="line">    1.aa&lt;strong&gt;22&lt;/strong&gt;</span><br><span class="line">    2.bb</span><br><span class="line">    &lt;span&gt;333&lt;/span&gt;</span><br><span class="line">    3.cc    </span><br><span class="line">    &lt;a href="#" /&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="jade_API"><a href="#jade_API" class="headerlink" title="jade API"></a>jade API</h4><p><a href="http://jade-lang.com/api/" target="_blank" rel="external">官网：official</a></p>
+<h5 id="jade-compile"><a href="#jade-compile" class="headerlink" title="jade.compile"></a>jade.compile</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span><br><span class="line">语法：jade.compile (source, options)</span><br><span class="line">params:</span><br><span class="line">    source &lt;string&gt;    源jade string</span><br><span class="line">    options &lt;options&gt;  常见pretty:true增强可读性</span><br><span class="line">    return &lt;function&gt;  该function接受变量渲染出html</span><br><span class="line">***/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> jade = <span class="built_in">require</span>(<span class="string">'jade'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Compile a function</span></span><br><span class="line"><span class="keyword">var</span> fn = jade.compile(<span class="string">'div #&#123;course&#125;'</span>, options);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Render the function</span></span><br><span class="line"><span class="keyword">var</span> html = fn(&#123;course: <span class="string">'local value'</span>&#125;);</span><br><span class="line"><span class="comment">// =&gt; '&lt;div&gt;local value&lt;/div&gt;'</span></span><br></pre></td></tr></table></figure>
+<h5 id="jade-compileFile"><a href="#jade-compileFile" class="headerlink" title="jade.compileFile"></a>jade.compileFile</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span><br><span class="line">    语法：jade.compileFile (path, options)</span><br><span class="line">    params 同上 </span><br><span class="line">***/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> jade = <span class="built_in">require</span>(<span class="string">'jade'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Compile a function</span></span><br><span class="line"><span class="keyword">var</span> fn = jade.compileFile(<span class="string">'path to jade file'</span>, options);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Render the function</span></span><br><span class="line"><span class="keyword">var</span> html = fn(locals);</span><br><span class="line"><span class="comment">// =&gt; '&lt;string&gt;of jade&lt;/string&gt;'</span></span><br></pre></td></tr></table></figure>
+<h5 id="jade-render"><a href="#jade-render" class="headerlink" title="jade.render"></a>jade.render</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/***</span><br><span class="line">    语法：jade.render (source, options)</span><br><span class="line">    注：这里的options可传入变量locals </span><br><span class="line">***/</span></span><br><span class="line"><span class="keyword">var</span> jade = <span class="built_in">require</span>(<span class="string">'jade'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> html = jade.render(<span class="string">'div #&#123;course&#125;'</span>, &#123;course: <span class="string">'jade render'</span>&#125;);</span><br><span class="line"><span class="comment">// =&gt; '&lt;div&gt;jade render&lt;/div&gt;'</span></span><br></pre></td></tr></table></figure>
+<h5 id="jade-renderFile"><a href="#jade-renderFile" class="headerlink" title="jade.renderFile"></a>jade.renderFile</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*** 语法：jade.renderFile (source, options) ***/</span></span><br><span class="line"><span class="keyword">var</span> jade = <span class="built_in">require</span>(<span class="string">'jade'</span>);</span><br><span class="line"><span class="keyword">var</span> html = jade.renderFile(<span class="string">'path/to/file.jade'</span>, options);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/模板引擎/" rel="tag">#模板引擎</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/11/2016-plan/" rel="next" title="2016，一点愿景">
+                <i class="fa fa-chevron-left"></i> 2016，一点愿景
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/12/mongodb/" rel="prev" title="MongoDB">
+                MongoDB <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/02/11/jade/"
+           data-title="Jade模板引擎" data-url="http://xiuhonglee.com/2016/02/11/jade/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="修鸿" />
+          <p class="site-author-name" itemprop="name">修鸿</p>
+          <p class="site-description motion-element" itemprop="description">随便写写~</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xiuhonglee" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#u5E38_u7528_u547D_u4EE4"><span class="nav-number">1.</span> <span class="nav-text">常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#u5B89_u88C5"><span class="nav-number">1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u7F16_u8BD1jade_u6587_u4EF6"><span class="nav-number">1.2.</span> <span class="nav-text">编译jade文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u5B9E_u65F6_u7F16_u8BD1"><span class="nav-number">1.3.</span> <span class="nav-text">实时编译</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u5E38_u7528_u8BED_u6CD5"><span class="nav-number">2.</span> <span class="nav-text">常用语法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#u5C5E_u6027_uFF08Attributes_uFF09"><span class="nav-number">2.1.</span> <span class="nav-text">属性（Attributes）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u6761_u4EF6_u5224_u65AD_uFF08case_uFF09"><span class="nav-number">2.2.</span> <span class="nav-text">条件判断（case）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u52A0_u6CE8_u91CA"><span class="nav-number">2.3.</span> <span class="nav-text">加注释</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u6761_u4EF6_u5224_u65AD_uFF08if-else_uFF09"><span class="nav-number">2.4.</span> <span class="nav-text">条件判断（if-else）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u7EE7_u627F_28extends_29"><span class="nav-number">2.5.</span> <span class="nav-text">继承(extends)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u8FC7_u6EE4_u5668"><span class="nav-number">2.6.</span> <span class="nav-text">过滤器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u5F15_u7528_uFF08includes_uFF09"><span class="nav-number">2.7.</span> <span class="nav-text">引用（includes）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u8FED_u4EE3_uFF08Iteration_uFF09"><span class="nav-number">2.8.</span> <span class="nav-text">迭代（Iteration）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Mixins"><span class="nav-number">2.9.</span> <span class="nav-text">Mixins</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#u6DF7_u5408_u7684_u6587_u672C_u548C_u6807_u7B7E"><span class="nav-number">2.10.</span> <span class="nav-text">混合的文本和标签</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#jade_API"><span class="nav-number">3.</span> <span class="nav-text">jade API</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#jade-compile"><span class="nav-number">3.1.</span> <span class="nav-text">jade.compile</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#jade-compileFile"><span class="nav-number">3.2.</span> <span class="nav-text">jade.compileFile</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#jade-render"><span class="nav-number">3.3.</span> <span class="nav-text">jade.render</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#jade-renderFile"><span class="nav-number">3.4.</span> <span class="nav-text">jade.renderFile</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">修鸿</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"http://xiuhonglee.duoshuo.com/admin/"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+
+</body>
+</html>

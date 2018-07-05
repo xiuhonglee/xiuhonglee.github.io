@@ -1,0 +1,35 @@
+# navbar
+menu:
+  Home: /
+  Archives: /archives/
+  Categories: /categories/   # 添加 Categories 选项
+  Tags: /tags/   # 添加 Tags 选项
+  About: /about/
+
+# site icon
+favicon: /favicon.ico
+
+# comments
+comments:
+  post: true
+  about: true
+
+# article directory sidebar
+sidebar: true
+
+# Analytics
+## Baidu Analytics
+baidu_analytics: 9e0cbea7d3319c6c94c71dfb93c151b8
+## Google Analytics
+google_analytics: UA-74273646-1
+
+# Comments
+## Duoshuo
+# duoshuo_shortname: ahonn
+## Disqus
+disqus_shortname: ahonn
+
+# Social links
+social:
+  email: hz_likun@zju.edu.cn
+  github: https://github.com/xiuhonglee
